@@ -10,6 +10,7 @@ Versione %s %s
 import sys
 sys.path.append(r'../lib')
 from common import ottieni_moduli_tradotti
+from inline_sub import InlineSubs
 
 class Modulo(object):
     def __init__(self, nome):
@@ -23,11 +24,12 @@ class Modulo(object):
 
 def elenco_per_indice():
     elenco = []
+    insubs = InlineSubs()
     for k, v in ottieni_moduli_tradotti().iteritems():
         modulo = Modulo(k)
         isinstance(modulo, Modulo)
         modulo.data_agg = v['agg']
-        modulo.descrizione = v['descr']
+        modulo.descrizione = insubs.rimpiazza(v['descr'])
         modulo.titolo = v['titolo']
         modulo.versione = v['versione']
         elenco.append(modulo)

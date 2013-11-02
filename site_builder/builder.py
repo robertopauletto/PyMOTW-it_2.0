@@ -21,7 +21,11 @@ from dj_indice import Indice
 from modulo import Modulo, elenco_per_indice
 
 TEMPLATE_DIRS = ['../templates']
+TEMPLATE_INDEX_NAME = 'index.html'
 HTML_DIR = r'../html'
+INDICE_MODULI_PER_PAGINA = 12
+FILE_INDICE = 'index'
+HTML_EXT = '.html'
 
 def imposta_param_django(template_dirs):
     """(list of str)
@@ -66,31 +70,26 @@ def chunks(l, n):
     """
     return [l[i:i+n] for i in range(0, len(l), n)]
 
-def main(template_dirs):
+def crea_pagine_indice(template_dirs, template_name, file_indice):
+    """(list of str, str, str)
+    
+    Crea le pagine indice
+    """
     imposta_param_django(template_dirs)
-    #m = Modulo('codecs')
-    #m.data_agg = datetime.date(2013, 10, 1)
-    #m.descrizione = 'Descrizione del modulo codecs'
-    #m.titolo  = 'il modulo codecs'
-    #m.versione = '2.1'
     gm = []
-    #for i in range(12):
-        #gm.append(m)
     prg = 0
-    fn_index = 'index'
-    fn_ext = '.html'
     moduli =  elenco_per_indice()
-    pagine = ceil(len(moduli) / 12)
+    pagine = ceil(len(moduli) / INDICE_MODULI_PER_PAGINA)
     print pagine
-    for gruppo_moduli in chunks(moduli, 12):
+    for gruppo_moduli in chunks(moduli, INDICE_MODULI_PER_PAGINA):
         for m in gruppo_moduli:
             gm.append(m)
-            i = Indice(gm)
-            if ((prg + 1) < pagine):
-                i.prev_nr_page = prg + 1
-            dic = {'indice': i,}
-            fn = '%s%s.html' % (fn_index, "_" + str(prg) if prg else '')
-            build('index.html', dic, os.path.join(HTML_DIR, fn))
+        i = Indice(gm)
+        if ((prg + 1) < pagine):
+            i.prev_nr_page = prg + 1
+        dic = {'indice': i,}
+        fn = '%s%s.html' % (file_indice, "_" + str(prg) if prg else '')
+        build(template_name, dic, os.path.join(HTML_DIR, fn))
         prg += 1
         gm = []
 
@@ -98,5 +97,5 @@ def main(template_dirs):
 
 if __name__ == '__main__':
     print __doc__
-    main(TEMPLATE_DIRS)
+    crea_pagine_indice(TEMPLATE_DIRS, TEMPLATE_INDEX_NAME, FILE_INDICE)
     print "Ok"
