@@ -9,10 +9,11 @@ Versione %s %s
 
 import sys
 sys.path.append(r'../lib')
-from common import ottieni_moduli_tradotti
+from common import ottieni_moduli_tradotti, ottieni_modulo
 from inline_sub import InlineSubs
 
 class Modulo(object):
+    insubs = InlineSubs()
     def __init__(self, nome):
         self.nome = nome
         self.versione = None
@@ -20,6 +21,16 @@ class Modulo(object):
         self.descrizione = ''
         self.data_agg = None
         self.url = nome + '.html'
+
+    @staticmethod
+    def ottieni_modulo(nome_modulo):
+        diz = ottieni_modulo(nome_modulo)
+        m = Modulo(nome_modulo)
+        m.data_agg = diz['agg']
+        m.descrizione = Modulo.insubs.rimpiazza(diz['descr'])
+        m.titolo = diz['titolo']
+        m.versione = diz['versione']
+        return m
 
 
 def elenco_per_indice():

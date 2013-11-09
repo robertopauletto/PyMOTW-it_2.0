@@ -60,19 +60,29 @@ def xml_path():
     """
     return get_root(fixed_path=OLD_TRAN_FOLDER)
 
-def get_xml_files():
-    """
+def get_xml_files(nome_modulo=None):
+    """([str]) -> list
     Metodo di convenienza che estrae i percorsi completi dei file xml
     con la traduzione
+    
+    Se `nome_modulo` è valorizzato recupera solo i file il cui nome
+    contiene `nome_modulo` altrimenti recupera tutti i file .xml
     
     Modificare la variabile `OLD_TRAN_FOLDER` per impostare la directory
     dove sono contenuti i file
     """
-    return [
-        os.path.splitext(os.path.basename(f))[0]
-        for f in os.listdir(xml_path())
-        if f.endswith('.xml')
-    ]
+    if nome_modulo:
+        return [
+            os.path.splitext(os.path.basename(f))[0]
+            for f in os.listdir(xml_path())
+            if f.endswith('.xml') and nome_modulo in f
+        ]
+    else:
+        return [
+            os.path.splitext(os.path.basename(f))[0]
+            for f in os.listdir(xml_path())
+            if f.endswith('.xml')
+        ]
 
 def get_html_files():
     """
@@ -111,6 +121,27 @@ def _estrai_da_tag(righe, nome_tag, ripeti=False):
             if is_aperto:
                 retval.append(riga.strip())
     return retval            
+
+def ottieni_modulo(nome_modulo):
+    modulo = get_xml_files()[0]
+    xml_dir = xml_path()
+    fn = os.path.join(xml_dir, nome_modulo+'.xml')
+    if not os.path.exists(fn):
+        print "Articolo non presente: %s" % os.path.basename(fn)
+        return None
+    return _ottieni_modulo(fn)
+
+def _ottieni_modulo(nome_file):
+    righe = open(nome_file).readlines()
+    descr, vers = _estrai_da_tag(righe, 'descrizione')
+    titolo = " ".join(_estrai_da_tag(righe, 'titolo_1'))
+    ultimo_agg = datetime.date.fromtimestamp(os.stat(nome_file).st_mtime)
+    return {
+        'descr': descr,
+        'titolo': titolo.split('-')[1].strip(),
+        'agg': ultimo_agg,
+        'versione': vers,
+    }
         
 def ottieni_moduli_tradotti():
     """
@@ -129,16 +160,8 @@ def ottieni_moduli_tradotti():
         if not os.path.exists(fn):
             print "Articolo non presente: %s" % os.path.basename(fn)
             continue
-        righe = open(fn).readlines()
-        descr, vers = _estrai_da_tag(righe, 'descrizione')
-        titolo = " ".join(_estrai_da_tag(righe, 'titolo_1'))
-        ultimo_agg = datetime.date.fromtimestamp(os.stat(fn).st_mtime)
-        retval[modulo] = {  
-            'descr': descr,
-            'titolo': titolo.split('-')[1].strip(),
-            'agg': ultimo_agg,
-            'versione': vers,
-        }
+        retval[modulo] = _ottieni_modulo(fn)
+        
     return retval
 
 

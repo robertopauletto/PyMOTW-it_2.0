@@ -13,6 +13,33 @@ td.pymotwit-jumbo-key {
     background-color: #ffff00;
 }
 
+h2 { font-size: 22px; }
+
+.bkIstruzione {     
+	font-family: courier;
+	/* font-size: 10px; */
+	font-weight: bolder;
+ }	
+.bkItem { background-color: #FFC0CB; }	
+
+
+.well_console {
+	background-color: green;
+}
+
+div.code_console {
+	padding-top:3px;
+	padding-bottom:3px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-style: dashed;
+	border-color: #999999;
+	border-width: thin;
+	margin:25px 10px; 
+        overflow:auto
+
+	}
+dd.indent { margin-left: 50px; margin-bottom: 10px; margin-top: 10px; }
 
 /* Formattazione colorazione sintassi */
 .highlight .hll { background-color: #344fcc }

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-xs-12 col-sm-9">
+            <p class="pull-right visible-xs">
+                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+            </p>
+            <div class="jumbotron" >
+                <h3>{{ modulo.titolo }}</h3>
+                <table class="pymotwit-jumbo">
+                    <tr>
+                        <td class="pymotwit-jumbo-key">Scopo</td>
+                        <td>{{ modulo.descrizione }}</td>
+                    </tr>
+                    <tr>
+                        <td class="pymotwit-jumbo-key">Versione Python</td>
+                        <td>{{ modulo.versione }}</td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12">
+                {{ modulo.main_content|safe }}
+
+                </div><!--/span-->
+            </div><!--/row-->
+            <p>
+                <hr />
+            </p>
+        </div><!--/span-->
+
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+            <div class="well sidebar-nav">
+                <ul class="nav">
+                    <li>Indice articolo</li>
+                    {% for voce in modulo.indice_laterale %}
+                        <li>{{ voce|safe }}</li>
+                    {% endfor %}
+                </ul>
+            </div><!--/.well -->
+        </div><!--/span-->
+    </div><!--/row-->
+
+    <hr>
+    <footer>
+        <p>ultimo aggiornamento: 12.12.2013</p>
+    </footer>
+
+{% endblock %}
+
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="assets/js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="assets/js/offcanvas.js"></script>
+</body>
+</html>
+

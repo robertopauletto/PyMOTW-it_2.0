@@ -7,7 +7,6 @@ __doc__="""Costruisce le pagine indice
 Versione %s %s
 """ % ( __version__, __date__ )
 
-from dj_context import DjContext
 from modulo import Modulo
 import datetime
 
