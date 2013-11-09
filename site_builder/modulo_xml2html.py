@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 __date__='02/11/2013'
-__version__='0.1'
+__version__='2.0'
 
 __doc__ = """
 
@@ -20,56 +20,66 @@ I file sono stati così creati in
 quanto il progetto è individuale e volevo un file sorgente abbastanza
 leggibile e facile da elaborare. La condizione fondamentale, infatti,
 è che ogni tag che rappresenta una porzione di testo da rendere in
-HTML sta sempre da solo **ad inizio riga**
+HTML sia sempre da solo **ad inizio riga**
 
 Versione %s %s
 """ % ( __version__, __date__ )
 
 
-import unittest
 import os.path
 import codecs
 import traceback
 import re
+from functools import partial
+from django.utils.encoding import smart_text
+import my_html
+
+h = my_html.MyHtml()  # Si occupa del rendering in HTML dei dati
+
+DEF_CHARSET='utf-8'
 
 TESTSDIR = os.path.abspath(os.path.dirname(__file__))
 TEST_XML_FILE = r'/home/robby/Dropbox/Code/python/pymotw-it/tran/abc.xml'
 HTML_OUTPUT = 'xmt2html_test.html'
 
+
 # Lista dei tag - serve ad is_my_tag() per accertarsi di avere trovato un 
 # MIO tag e non un pezzo di codice od altro
-MY_TAGS = [
-    'avvertimento',
-    'categoria', 
-    'descrizione',
-    'deflist',
-    'incipit', 
-    'inserito_il', 
-    'lista', 
-    'lista_ricorsiva',
-    'mk_xml_code',
-    'mk_xml_code_lineno',
-    'note',
-    'py_code',
-    'py_code_lineno',
-    'py_output',
-    'sottotitolo',
-    'sql_code', 
-    'tabella_semplice',
-    'tabella_1',
-    'testo_normale', 
-    'titolo_1',
-    'titolo_2',
-    'titolo_3',
-    'vedi_anche',
-    
-]
+MY_TAGS = {
+    'avvertimento': None,
+    'categoria': None, 
+    'descrizione': None,
+    'deflist': None,
+    'incipit': None, 
+    'inserito_il': None, 
+    'lista': partial(h.ul), 
+    'lista_ricorsiva': None,
+    'mk_xml_code': None,
+    'mk_xml_code_lineno': None,
+    'note': None,
+    'py_code': partial(h.code, class_='well pre-scrollable'),
+    'py_code_lineno': None,
+    'py_output': partial(h.output_console, class_='well pre-scrollable'),
+    'sottotitolo': None,
+    'sql_code': None, 
+    'tabella_semplice': None,
+    'tabella_1': None,
+    'testo_normale': partial(h.p), 
+    'titolo_1': None,
+    'titolo_2': partial(h.h2),
+    'titolo_3': None,
+    'vedi_anche': partial(h.biblio, class_='well'),
+}
+
+MY_TAG_KEYS = MY_TAGS.keys()
 def is_my_tag(tag):
     """(str) -> bool
     
     Cerca `tag`  nella lista dei tag ammessi, ritorna True se trovato
+    
+    Precondizione: `tag` deve essere *lowercase*
     """
-    return re.sub(r'>|<|/', '', tag.strip()) in MY_TAGS
+    return re.sub(r'>|<|/', '', tag.strip()) in MY_TAG_KEYS
 
 RE_TAG_START = re.compile('^\<\w+\>')
 RE_TAG_END = re.compile('^\<\/\w+\>')
@@ -88,9 +98,10 @@ def load(xml_file):
     """(str) -> list of dict 
     
     Legge il contenuto di `xml_file` filtrando le righe con commenti
-    Ritorna una lista composta da un dizionario con chiave il nome del tag
-    e valore le righe da trasporre il html con il tag chiave
+    Ritorna una lista composta da un dizionario:
     
+    - chiave -> contiene il nome del tag
+    - buffer -> contiene le righe da trasporre in html con il tag chiave
 
     Prerequisito: Tutti i tag per l'estrazione degli elementi sono di
     apertura e chiusura e **devono** essere da soli su di una sola riga.
@@ -101,44 +112,89 @@ def load(xml_file):
     buffer = []  # Le righe da assegnare ad un tag ancora aperto
     is_aperto = False  # Se true la riga viene aggiunta al buffer del tag
     tag = ''  # conserva il nome del tag da utilizzare come chiave nel diz
-    for riga in [riga.strip() for riga in
+    for riga in [riga.rstrip() for riga in
                  codecs.open(xml_file, encoding='utf-8').readlines()
                  if riga and not riga.startswith('<!--')]:
-        if RE_TAG_START.match(riga) and is_my_tag(riga):
+        if RE_TAG_START.match(riga) and is_my_tag(riga.lower()):
             is_aperto = True
-            tag = pulisci_tag(riga)
-        elif RE_TAG_END.match(riga) and is_my_tag(riga):
-            seq_elementi.append({tag: buffer})
+            tag = pulisci_tag(riga.lower())
+        elif RE_TAG_END.match(riga) and is_my_tag(riga.lower()):
+            seq_elementi.append({'tag': tag, 'buffer': buffer})
             buffer = []
             tag = ''
             is_aperto = False
         else:
             if is_aperto:
                 buffer.append(riga)
+    # Visto che i tag sono sempre di apretura/chiusura non mi preoccupo
+    # di svuotare il buffer
     return seq_elementi
 
-class ClassTest(unittest.TestCase):
-    """ Classe per test """
-    def setUp(self):
-        self.xml = TEST_XML_FILE
+def check_my_tags(seq_elementi):
+    """(dict) -> list of string
     
-    def tearDown(self):
-        pass
+    Verifica se la chiave 'tag' in `seq_elementi` è un tag riconosciuto per
+    la conversione in html. Ritorna una lista degli elementi non trovati
     
-    def test_load(self):
-        seq = load(TEST_XML_FILE)
-        self.assertTrue(len(seq) > 0)
-    
+    Utilizzare prima di costruire la pagina per verificare errori di
+    sintassi dei tag del file xml
+    """
+    not_found = []
+    for item in seq_elementi:
+        tag = item['tag']
+        if not is_my_tag(tag):
+            not_found.append(tag)
+    return not_found
 
+# In produzione questo sparisce
+TEMP_FATTI = ('titolo_2', 'testo_normale', 'lista', 'py_code',
+              'py_output', 'vedi_anche')
+def prepara_articolo(seq_elementi, tag_da_indicizzare=('titolo_2')):
+    """(list of str, tuple of str) -> list, list
+    
+    Prepara il codice html per la pagina del modulo
+    
+    Ritorna:
+    
+    - il codice per l'indice nella barra destra
+    - il codice per il contenuto dell'articolo
+    """
+    indice = []
+    contenuti = []
+    prg = 0
+    for item in seq_elementi:
+        tag = item['tag']
+        if  is_my_tag(tag):
+            if  tag in tag_da_indicizzare:
+                item['a_name'] = h.a_name(str(prg))
+                b = " ".join(item['buffer'])
+                indice.append(h.a("#"+str(prg), smart_text(b, encoding='utf-8')))
+                contenuti.append(h.a_name(str(prg)))
+                prg += 1
+            if tag in TEMP_FATTI:
+                codice=MY_TAGS[tag](item['buffer'] )
+                contenuti.append(codice)
+        else:
+            print tag
+    return indice, contenuti    
+
+            
+
+def render_articolo(file_xml):
+    """(str) -> list, list
+    
+    Prepara il file html con l'articolo per il modulo contenuta in
+    `file_xml`
+    """
+    seq_elementi = load(file_xml)
+    indice_articolo, contenuti = prepara_articolo(seq_elementi)
+    return indice_articolo, contenuti
+
+
+def test_partial():
+    h2 = functools.partial(h.h2)
+    print h2("testo h2")
 
 if __name__ == '__main__':
     print __doc__
-    import sys
-    suite = unittest.TestSuite()
-    if len(sys.argv) == 1:
-        suite = unittest.TestLoader().loadTestsFromTestCase(ClassTest)
-    else:
-        for nome_test in sys.argv[1:]:
-            suite.addTest(ClassTest(nome_test))
-        
-    unittest.TextTestRunner(verbosity=2).run(suite)
+    test_partial()
