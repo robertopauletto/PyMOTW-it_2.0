@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="Latin-1"?>
+<categoria>servizi python in fase di esecuzione</categoria><!-- Riepilogo dei tag disponibili -->
+<!-- tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
+<!-- tag <titolo_1> titolo principale -->
+<!-- tag <titolo_2> contiene il testo per l'intestazione di un paragrafo -->
+<!-- tag <sottotitolo> <sottotitolo> contiene il testo per la sottointestazione di un paragrafo -->
+<!-- tag <testo_normale> contiene il testo normale dell'articolo -->
+<!-- tag <py_code> contiene il testo che rappresenta delle istruzioni python -->
+<!-- tag <py_output> contiene il testo che rappresenta l'output di uno script python -->
+<!-- tag <mk_xml_code> contiene il testo che rappresenta l'output di un file xml -->
+<!-- tag <mk_xml_code_lineno> contiene il testo che rappresenta l'output di un file xml con righe numerate -->
+<!-- tag <lista> contiene il testo che rappresenta una lista -->
+<!-- tag <lista_ricorsiva> contiene il testo che rappresenta una lista annidata -->
+<!-- tag <note> contiene il testo che rappresenta un riquadro con una annotazione -->
+<!-- tag <avvertimento> contiene il testo che rappresenta un riquadro con un avvertimento -->
+<!-- tag <def_list> contiene il testo che rappresenta una definition list -->
+<!-- tag <vedi_anche> contiene il testo che rappresentano i riferimenti bibliografici esterni -->
+<!-- tag <lista> ogni riga all'interno del tag rappresenta una riga di una lista non ordinata'-->
+
+<documento_tradotto>
+<titolo_1>
+warnings - Avvisi non fatali
+</titolo_1>
+<descrizione>
+Fornisce avvertimenti non fatali all'utente circa problemi incontrati durante l'esecuzione di un programma.
+2.1 e successive
+</descrizione>
+<titolo_2>
+Descrizione
+</titolo_2>
+<testo_normale>
+Il modulo <strong>warnings</strong> era stato introdotto in <a href='http://www.python.org/dev/peps/pep-0230' title='PEP 230'>PEP 230</a> come modo per avvertire i programmatori di cambiamenti nel linguaggio o di caratteristiche delle librerie come anticipazione di modifiche ad incompatibilità retroattiva che sarebbero intervenute con Python 3.0. Visto che gli avvertimenti non sono bloccanti, un programma potrebbe incorrere in questi avvertimenti molte volte nel corso della sua esecuzione. Il modulo <strong>warnings</strong> sopprime gli avvertimenti ripetuti generati dalla stessa fonte per ridurre il disturbo causato dal vedere lo stesso messaggio più e più volte. E' possibile controllare i messaggi stampati a livello di caso per caso usando l'opzione <pre>-W</pre> dell'interprete oppure chiamando funzioni del modulo <strong>warnings</strong> dal proprio codice.
+</testo_normale>
+<titolo_2>
+Categorizzare e Filtrare    
+</titolo_2>
+<testo_normale>
+Gli avvertimenti sono categorizzati usando sotto classi della classe di eccezione built-in <strong>Warning</strong>. Diversi valori standard sono <a href='eccezioni.html#warning'>descritti nella documentazione</a>, e se ne possono aggiungere di propri subclassando da <strong>Warning</strong> per creare una nuova classe
+</testo_normale>
+<testo_normale>
+I messaggi sono filtrati utilizzando impostazioni controllate tramite l'opzione <pre>-W</pre> dell'interprete. Un filtro consiste di 5 parti, <em>azione</em>, <em>messaggio</em>, <em>categoria</em>, <em>modulo</em> e <em>numero di riga</em>. Quando un messaggio viene generato, viene confrontato con tutti i filtri registrati. Il primo filtro che corrisponde controlla l'azione intrapresa per l'avvertimento. Se non ci sono corripondenze, viene intrapresa l'azione predefinita.
+</testo_normale>
+<testo_normale>
+Le azioni comprese dal meccanismo di filtro sono:    
+</testo_normale>
+<lista>
+<em>error</em>: Trasforma l'avvertimento in una eccezione
+<em>ignore</em>: Ignora l'avvertimento
+<em>always</em>: Emette sempre l'avvertimento
+<em>default</em>: Stampa l'avvertimento la prima volta che viene generato da ciascuna locazione
+<em>module</em>: Stampa l'avvertimento la prima volta che viene generato da ogni modulo
+<em>once</em>: Stampa l'avvertimento solo la prima volta che viene generato
+</lista>
+<testo_normale>
+La parte <em>message</em> del filtro è una espressione regolare utilizzate per confrontare il testo dell'avvertimento.
+</testo_normale>
+<testo_normale>
+<em>cateogory</em> è il nome di una classe di eccezione, come sopra descritto   
+</testo_normale>
+<testo_normale>
+<em>module</em> contiene una espressione regolare per il confronto con il nome del modulo che genera l'avvertimento
+</testo_normale>
+<testo_normale>
+<em>line number</em> può essere usato per cambiare la gestione di occorrenze specifiche di un avvertimento. Si usa <pre>0</pre> per applicare il filtro su tutte le occorrenze.
+</testo_normale>
+<vedi_anche>
+http://www.opml.org/|Outline Processor Markup Language (OPML)|Le specifiche dell'OPML di Dave Winer e la documentazione.
+http://effbot.org/zone/element-xpath.htm|Supporto XPath in ElementTree|Parte della documentazione originale per ElementTree di Fredrick Lundh
+csv.html|CSV|Leggere e scrivere file con valori separati da virgola
+</vedi_anche>
+</documento_tradotto>

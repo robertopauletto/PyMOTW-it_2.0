@@ -11,6 +11,7 @@ from os import name
 import sys 
 import os.path 
 import datetime
+import re
 
 sys.path.append(r'../database')
 
@@ -22,6 +23,19 @@ PATHS = {
 
 OLD_HTML_FOLDER = r'Dropbox/Code/python/pymotw-it/html'
 OLD_TRAN_FOLDER = r'Dropbox/Code/python/pymotw-it/tran'
+
+def clear_console():
+    """Lancia il comando di pulizia console per le 3 principali
+    piattaforme
+    """
+    cmds = {
+        'linux2': 'clear',
+        'darwin': 'clear',
+        'win32': 'cls',
+    }
+    platf = sys.platform
+    if platf in cmds:
+        os.system(cmds[platf])
 
 def get_root(paths=PATHS, fixed_path=''):
     """
@@ -138,7 +152,7 @@ def _ottieni_modulo(nome_file):
     ultimo_agg = datetime.date.fromtimestamp(os.stat(nome_file).st_mtime)
     return {
         'descr': descr,
-        'titolo': titolo.split('-')[1].strip(),
+        'titolo': titolo.split('-', 1)[1].strip(),
         'agg': ultimo_agg,
         'versione': vers,
     }
@@ -163,6 +177,17 @@ def ottieni_moduli_tradotti():
         retval[modulo] = _ottieni_modulo(fn)
         
     return retval
+
+def accenti2entity(val):
+    """(str) -> str
+    
+    Sostituisce le vocali accentate in `val` con le corrispondenti entità
+    xml
+    
+    >> accenti2entity("il colibrì è un volatile")
+    >> 'il colibr&igrave; &egrave un volatile
+    """
+    
 
 
 if __name__ == '__main__':

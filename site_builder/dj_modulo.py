@@ -8,12 +8,14 @@ Versione %s %s
 """ % ( __version__, __date__ )
 
 from modulo import Modulo
+from footer import Footer
 
 class DjModulo(object):
-    def __init__(self, indice, corpo, modulo):
+    def __init__(self, indice, corpo, modulo, footer=Footer()):
         self._indice_sidebar = indice
         self._corpo = corpo
         self.modulo = modulo
+        self.footer = footer
         isinstance(self.modulo, Modulo)
         
     @property

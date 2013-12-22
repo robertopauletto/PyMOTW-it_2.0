@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="Latin-1"?>
+<categoria>tipi di dato </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
+<!-- # tag <titolo_1> titolo principale -->
+<!-- # tag <titolo_1> titolo principale -->
+<!-- tag <testo_normale> contiene il testo normale dell'articolo -->
+<!-- tag <titolo_2> contiene il testo per l'intestazione di un paragrafo -->
+<!-- tag <py_code> contiene il testo che rappresenta delle istruzioni python -->
+<!-- tag <py_output> contiene il testo che rappresenta l'outpuy di uno script python -->
+<!-- tag <vedi_anche> contiene il testo che rappresentano i riferimenti esterni -->
+<documento_tradotto>
+<titolo_1>
+collections - Tipi di dato contenitore
+</titolo_1>
+<descrizione>
+Tipi di dato contenitore
+2.4 e superiore
+</descrizione>
+<testo_normale>
+Il modulo collections include tipi di dato contenitore oltre ai tipi builtin list e dict.
+</testo_normale>
+<titolo_2>
+Deque
+</titolo_2>
+<testo_normale>
+Una coda ad accesso da entrambe le estremità, o &apos;deque&apos;, consente l'aggiunta e la rimozione degli elementi da entrambi gli estremi. I più comunemente usati stack e queue sono forme degenerate di deque, dove i'input e l'output viene ristretto ad un solo estremo.
+</testo_normale>
+<testo_normale>
+Visto che le deque sono un tipo di contenitore di sequenze, supportano alcune delle operazioni che supportano le liste, come ad esempio  l'esaminare il contenuto con ${sbk}__getitem__()${ebk}, il determinare la lunghezza, e la rimozione di elementi all'interno confrontandone l'identità .
+</testo_normale>
+<py_code>
+import collections
+
+d = collections.deque('abcdefg')
+print 'Deque:', d
+print 'Lunghezza:', len(d)
+print 'Estremo sx:', d[0]
+print 'Estremo dx:', d[-1]
+
+d.remove('c')
+print 'rimuovo(c):', d
+</py_code>
+<py_output>
+$ python collections_deque.py
+Deque: deque(['a', 'b', 'c', 'd', 'e', 'f', 'g'])
+Lunghezza: 7
+Estremo sx: a
+Estremo dx: g
+rimuovo(c): deque(['a', 'b', 'd', 'e', 'f', 'g'])
+</py_output>
+<testo_normale>
+Una deque può essere incrementata da entrambi gli estremi, detti &apos;left&apos; (sinistra) e &apos;right&apos; (destra) nell'implementazione di Python.
+</testo_normale>
+<py_code>
+import collections
+
+# Aggiungo da destra
+d = collections.deque()
+d.extend('abcdefg')
+print 'extend    :', d
+d.append('h')
+print 'append    :', d
+
+# Aggiungo da sinistra
+d = collections.deque()
+d.extendleft('abcdefg')
+print 'extendleft:', d
+d.appendleft('h')
+print 'appendleft:', d
+</py_code>
+<testo_normale>
+Notare che ${sbk}extendleft()${ebk} itera attraverso il suo input ed esegue l'equivalente di ${sbk}appendleft()${ebk} per ogni elemento. Il risultato finale è che la deque contiene la sequenza di input in ordine inverso.
+</testo_normale>
+<py_output>
+$ python collections_deque_populating.py
+extend    : deque(['a', 'b', 'c', 'd', 'e', 'f', 'g'])
+append    : deque(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'])
+extendleft: deque(['g', 'f', 'e', 'd', 'c', 'b', 'a'])
+appendleft: deque(['h', 'g', 'f', 'e', 'd', 'c', 'b', 'a'])
+</py_output>
+<testo_normale>
+Allo stesso modo, gli elementi della deque possono essere consumati da entrambi o da uno degli estremi, a seconda dell'algoritmo che si sta applicando
+</testo_normale>
+<py_code>
+import collections
+
+print 'Da destra  :'
+d = collections.deque('abcdefg')
+while True:
+    try:
+        print d.pop()
+    except IndexError:
+        break
+
+print 'Da sinistra:'
+d = collections.deque('abcdefg')
+while True:
+    try:
+        print d.popleft()
+    except IndexError:
+        break
+    
+</py_code>
+<py_output>
+$ python collections_deque_consuming.py
+Da destra  :
+g
+f
+e
+d
+c
+b
+a
+Da sinistra:
+a
+b
+c
+d
+e
+f
+g    
+</py_output>
+<testo_normale>
+Visto che le deque sono thread-safe, se ne possono consumare i contenuti da entrambi gli estremi allo stesso tempo in thread separati.
+</testo_normale>
+<py_code>
+import collections
+import threading
+import time
+
+candle = collections.deque(xrange(11))
+
+def burn(direction, nextSource):
+    while True:
+        try:
+            next = nextSource()
+        except IndexError:
+            break
+        else:
+            print '%8s: %s' % (direction, next)
+            time.sleep(0.1)
+    print '%8s fatto' % direction
+    return
+
+left = threading.Thread(target=burn, args=('Sinistra', candle.popleft))
+right = threading.Thread(target=burn, args=('Destra', candle.pop))
+
+left.start()
+right.start()
+
+left.join()
+right.join()
+</py_code>
+<py_output>
+$ python collections_deque_both_ends.py
+    Sinistra: 0
+   Destra: 10
+    Sinistra: 1
+   Destra: 9
+    Sinistra: 2
+   Destra: 8
+    Sinistra: 3
+   Destra: 7
+    Sinistra: 4
+   Destra: 6
+    Sinistra: 5
+   Destra fatto
+    Sinistra fatto
+</py_output>
+<testo_normale>
+Un'altra utile capacità di deque è di ruotare in entrambe le direzioni, per saltare qualche elemento(i)    
+</testo_normale>
+<py_code>
+import collections
+
+d = collections.deque(xrange(10))
+print 'Normale           :', d
+d = collections.deque(xrange(10))
+d.rotate(2)
+print 'Rotazione destra  :', d
+d = collections.deque(xrange(10))
+d.rotate(-2)
+print 'Rotazione sinistra :', d
+</py_code>
+<testo_normale>
+Ruotando la deque verso destra (usando una rotazione positiva) si prendono gli elementi dall'estramo destro e si spostano verso l'estremo sinistro. Ruotando verso sinistra (con un valore negativo) si prendono gli elementi dall'estremo sinistro e si spostano verso l'estremo destro. Potrebbe essere d'aiuto immaginare gli elementi nella deque come se fossero incisi lungo il margine di un disco di selezione numeri di un telefono.
+</testo_normale>
+<py_output>
+$ python collections_deque_rotate.py
+Normale            : deque([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+Rotazione destra   : deque([8, 9, 0, 1, 2, 3, 4, 5, 6, 7])
+Rotazione sinistra : deque([2, 3, 4, 5, 6, 7, 8, 9, 0, 1])    
+</py_output>
+<titolo_2>
+defaultdict    
+</titolo_2>
+<testo_normale>
+Il dictionary standard include il metodo ${sbk}setdefault()${ebk} per recuperare un valore ed impostare un valore predefinito se detto valore non esiste. Di contro, defaultdict consente di specificare il valore predefinito durante l'inizializzazione.
+</testo_normale>
+<py_code>
+import collections
+
+def default_factory():
+    return 'valore predefinito'
+
+d = collections.defaultdict(default_factory, foo='bar')
+print d
+print d['foo']
+print d['bar']
+</py_code>
+<py_output>
+$ python collections_defaultdict.py
+defaultdict(&lt;function default_factory at 0x7ca70&gt;, {'foo': 'bar'})
+bar
+valore predefinito    
+</py_output>
+<testo_normale>
+La cosa funziona bene fintanto che è appropriato che tutte le chiavi usino lo stesso valore predefinito. Può essere specialmente utile se il valore predefinito è un tipo usato per aggregare od accumulare valori, tipo list, set, od anche interi. La documentazione della libreria standard comprende diversi esempi per l'uso di defaultdict in questo modo.    
+</testo_normale>
+<titolo_2>
+namedtuple    
+</titolo_2>
+<testo_normale>
+La classe tuple standard usa indici numerici per accedere ai propri membri. <strong>namedtuple</strong> consente di assegnare invece ad ogni membro dei nomi. Istanze di namedtuple sono altrettanto efficienti in memoria al pari delle normali tuple, perchè non hanno dizionari per istanza.
+</testo_normale>
+<testo_normale>
+Qualsiasi tipo di namedtuple si voglia creare è rappresentato dalla sua propria classe, creata usando la funzione fabbrica ${sbk}namedtuple()${ebk}. I parametri sono il nome della nuova classe ed una stringa contenente i nomi degli elementi.
+</testo_normale>
+<py_code>
+import collections
+
+Person = collections.namedtuple('Person', 'name age gender')
+
+print 'Tipo di Persona:', type(Person)
+
+bob = Person(name='Bob', age=30, gender='maschio')
+print '\nRappresentazione:', bob
+
+jane = Person(name='Jane', age=29, gender='femmina')
+print '\nCampo per nome:', jane.name
+
+print '\nCampi per indice:'
+for p in [ bob, jane ]:
+    print '%s ha %d anni, %s' % p
+
+</py_code>
+<testo_normale>
+Come illustra l'esempio, è possibile accedere ai campi della namedtuple tramite il nome usando la notazione con il punto (oggetto.attributo) così come tramite gli indici di posizione delle tuple standard.    
+</testo_normale>
+<py_output>
+$ python collections_namedtuple_person.py
+Tipo di Person: &lt;type 'type'&gt;
+
+Rappresentazione: Person(name='Bob', age=30, gender='maschio')
+
+Campo per nome: Jane
+
+Campi per indice:
+Bob ha 30 anni, maschio
+Jane ha 29 anni, femmina
+</py_output>
+<vedi_anche>
+http://docs.python.org/library/collections.html|collezioni|La documentazione della libreria standard per questo modulo.
+http://en.wikipedia.org/wiki/Deque|WikiPedia: Deque|Una discussione sulla struttura dati della deque.
+http://docs.python.org/lib/deque-recipes.html|Ricette di Deque|Esempi dell'uso di deque in algoritmi dalla documentazione della libreria standard.
+http://docs.python.org/lib/defaultdict-examples.html|esempi di defaultdict|Esempi dell'uso di defaultdict dalla documentazione della libreria standard
+http://jtauber.com/blog/2008/02/27/evolution_of_default_dictionaries_in_python/|James Tauber: Evoluzione dei dizionari predefiniti in Python|Discussione su come defaultdict si confronta con altri metodi di inizializzazione di dizionari.
+http://www.doughellmann.com/PyMOTW/articles/data_structures.html#article-data-structures||
+</vedi_anche>
+</documento_tradotto>

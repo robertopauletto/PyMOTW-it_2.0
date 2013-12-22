@@ -31,9 +31,19 @@ class Modulo(object):
         m.titolo = diz['titolo']
         m.versione = diz['versione']
         return m
+    
+    def per_tabella_indice(self):
+        return [
+            self.data_agg.strftime('%d.%m.%Y'),
+            self.nome,
+            self.titolo
+        ]
 
+    
 
 def elenco_per_indice():
+    """Ritorna una lista di oggetti `:py:class:Modulo`
+    """
     elenco = []
     insubs = InlineSubs()
     for k, v in ottieni_moduli_tradotti().iteritems():

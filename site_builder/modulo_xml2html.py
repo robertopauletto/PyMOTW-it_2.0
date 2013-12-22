@@ -31,6 +31,7 @@ import codecs
 import traceback
 import re
 from functools import partial
+from shutil import copyfile
 from django.utils.encoding import smart_text
 import my_html
 
@@ -46,28 +47,28 @@ HTML_OUTPUT = 'xmt2html_test.html'
 # Lista dei tag - serve ad is_my_tag() per accertarsi di avere trovato un 
 # MIO tag e non un pezzo di codice od altro
 MY_TAGS = {
-    'avvertimento': None,
+    'avvertimento': partial(h.warning),
     'categoria': None, 
     'descrizione': None,
-    'deflist': None,
+    'deflist': partial(h.dl),
     'incipit': None, 
     'inserito_il': None, 
     'lista': partial(h.ul), 
     'lista_ricorsiva': None,
     'mk_xml_code': None,
     'mk_xml_code_lineno': None,
-    'note': None,
+    'note': partial(h.note),
     'py_code': partial(h.code, class_='well pre-scrollable'),
     'py_code_lineno': None,
     'py_output': partial(h.output_console, class_='well pre-scrollable'),
-    'sottotitolo': None,
+    'sottotitolo': partial(h.h4),
     'sql_code': None, 
-    'tabella_semplice': None,
+    'tabella_semplice': partial(h.table, with_header=True, class_='table'),
     'tabella_1': None,
     'testo_normale': partial(h.p), 
     'titolo_1': None,
     'titolo_2': partial(h.h2),
-    'titolo_3': None,
+    'titolo_3': partial(h.h3),
     'vedi_anche': partial(h.biblio, class_='well'),
 }
 
@@ -93,6 +94,18 @@ def pulisci_tag(tag):
     assert isinstance(tag, basestring)
     return RE_STRIP_TAG.sub('', tag.strip())
 
+entities = { "à":"&agrave;", "è":"&egrave;", "ì":"&igrave;", "ò":"&ograve;", "ù":"&ugrave;" }
+def text2entity(file_name):
+    log = []
+    if not os.path.exists(file_name):
+        raise IOError("Manca " + file_name)    
+    copyfile(file_name, file_name + ".bak")
+    buffer = open(file_name, "r").read()
+    for k,v in entities.iteritems():
+        log.append( "Sostituzione di %s con %s " % (k,v))
+        buffer = buffer.replace(k,v)
+    open(file_name, 'w').write(buffer)    
+    return "\n".join(log)
 
 def load(xml_file):
     """(str) -> list of dict 
@@ -112,9 +125,10 @@ def load(xml_file):
     buffer = []  # Le righe da assegnare ad un tag ancora aperto
     is_aperto = False  # Se true la riga viene aggiunta al buffer del tag
     tag = ''  # conserva il nome del tag da utilizzare come chiave nel diz
+    righe = []
     for riga in [riga.rstrip() for riga in
                  codecs.open(xml_file, encoding='utf-8').readlines()
-                 if riga and not riga.startswith('<!--')]:
+                 if riga and not riga.startswith('<!--')]:    
         if RE_TAG_START.match(riga) and is_my_tag(riga.lower()):
             is_aperto = True
             tag = pulisci_tag(riga.lower())
@@ -148,7 +162,9 @@ def check_my_tags(seq_elementi):
 
 # In produzione questo sparisce
 TEMP_FATTI = ('titolo_2', 'testo_normale', 'lista', 'py_code',
-              'py_output', 'vedi_anche')
+              'py_output', 'vedi_anche', 'tabella_semplice',
+              'avvertimento', 'note', 'titolo_3', 'deflist',
+              'sottotitolo')
 def prepara_articolo(seq_elementi, tag_da_indicizzare=('titolo_2')):
     """(list of str, tuple of str) -> list, list
     
@@ -174,6 +190,8 @@ def prepara_articolo(seq_elementi, tag_da_indicizzare=('titolo_2')):
             if tag in TEMP_FATTI:
                 codice=MY_TAGS[tag](item['buffer'] )
                 contenuti.append(codice)
+            else:
+                print tag, "da gestire"
         else:
             print tag
     return indice, contenuti    

@@ -136,19 +136,19 @@ class MyHtml(object):
     # --------------------------------------------------------------------
     
     def h1(self, value, **kwargs):
-        return self._get_start_end_tag('h1', value, **kwargs)
+        return self._get_start_end_tag('h1', self._convert(value), **kwargs)
 
     def h2(self, value, **kwargs):
         return self._get_start_end_tag('h2', self._convert(value), **kwargs)
     
     def h3(self, value, **kwargs):
-        return self._get_start_end_tag('h3', value, **kwargs)
+        return self._get_start_end_tag('h3', self._convert(value), **kwargs)
 
     def h4(self, value, **kwargs):
-        return self._get_start_end_tag('h4', value, **kwargs)
+        return self._get_start_end_tag('h4', self._convert(value), **kwargs)
 
     def h5(self, value, **kwargs):
-        return self._get_start_end_tag('h5', value, **kwargs)
+        return self._get_start_end_tag('h5', self._convert(value), **kwargs)
 
     def p(self, value, **kwargs):
         return self._get_start_end_tag('p', self._convert(value), **kwargs)
@@ -183,6 +183,79 @@ class MyHtml(object):
         dl = self._vedi_anche(value, dd_class)
         return self._get_start_end_tag('div', header + dl, **kwargs)    
     
+    def td(self, values, is_header=False, **kwargs):
+        output = []
+        tag = 'td' if not is_header else 'th'
+        for value in values.split(";"):
+            output.append(self._get_start_end_tag(
+                tag, value=value, **kwargs
+            ))
+        return "\n".join(output)
+    
+    def tr(self, value,  **kwargs):
+        return self._get_start_end_tag('tr', value, **kwargs)
+    
+    def table(self, values, **kwargs):
+        """(list of lists) -> str
+        
+        Compone una tabella; ogni elemento in `values` è una lista
+        """
+        rows = []
+        if 'with_header' in kwargs:
+            with_header = True
+        for i, row in enumerate(values):
+            if with_header and i == 0:
+                rows.append(self.tr(self.td(row, True)))
+            else:
+                rows.append(self.tr(self.td(row)))
+        return self._get_start_end_tag('table', "\n".join(rows), **kwargs)
+    
+    def dl(self, values, dd_class=None, **kwargs):
+        """(list of str) -> str
+        
+        Genera una definition list
+        
+        Precondizione: values è una lista di stringhe che contengono i valori
+        del termine e della definizione dell'elemento separati da `|`
+        """
+        output = [""]
+        ddargs = {}
+        if dd_class:
+            kwargs['class'] = dd_class
+        for dt, dd in [riga.split("|") for riga in values]:
+            output.append(self._get_start_end_tag('dt', dt))
+            output.append(self._get_start_end_tag('dd', dd, **kwargs))
+        output.append("")
+        return self._get_start_end_tag('dl',"\n".join(output))
+        
+    
+    
+    
+    def _alerts(self, value, **kvargs):
+        """(list|str) -> str
+        
+        Genera il div per rendere gli alert, che possono essere:
+        - info (azzurro)
+        - warning (giallo)
+        - success (verde)
+        - danger (rpssp)
+        """ 
+        return self._get_start_end_tag(
+            'div',
+            self._convert(value),
+            **kvargs
+        )
+        
+    def warning(self, value, **kwargs):
+        """Metodi di convenienza che ottiene un box di avvertimento"""
+        return self._alerts(value, class_='alert alert-warning')
+
+    def note(self, value, **kwargs):
+        """Metodi di convenienza che ottiene un box di informazioni"""
+        return self._alerts(value, class_='alert alert-info')
+    
+    
+    
 if __name__ == '__main__':
     print __doc__
     h = MyHtml()
@@ -195,4 +268,10 @@ if __name__ == '__main__':
         'http://www.python.org/dev/peps/pep-3119|PEP 3119|Introduzione alle classi base astratte', 
         'http://docs.python.org/library/collections.html|collections|La documentazione della libreria standard per le collezioni'
     ]
-    print h._vedi_anche(lista)
+    #print h._vedi_anche(lista)
+    
+    l = (
+        ('qui', 'pippo', 'ciccio di nonna papera'),
+        ('snoopy', 'lucy', 'charlie'),
+    )
+    print h.table(l)

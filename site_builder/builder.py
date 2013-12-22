@@ -5,28 +5,47 @@ from __future__ import division
 __date__=''
 __version__='0.1'
 __doc__="""
+Il punto di entrata dell'applicazione (nella modalità console)
+
+Da qui vengono costruite le singole pagine, gli indici e le tabelle
+riepilogative
+
+Le pagine vengono costruite basandosi su bootstrap 3
+
 Versione %s %s
 """ % ( __version__, __date__ )
 
-import codecs
-import os.path
-import datetime
-import traceback
-
-from math import ceil
-from django import template
-from django.template import loader
-
-from dj_indice import Indice
-from dj_modulo import DjModulo
-from modulo import Modulo, elenco_per_indice
-import modulo_xml2html 
+try:
+    import codecs
+    import os.path
+    import os
+    import sys
+    import datetime
+    import traceback
+    
+    from math import ceil
+    from django import template
+    from django.template import loader
+    
+    from dj_indice import Indice
+    from dj_modulo import DjModulo
+    from dj_tabelle_indici import DjTabelleIndici
+    from modulo import Modulo, elenco_per_indice
+    import modulo_xml2html 
+    from index_builder import ottieni_tabella
+    sys.path.append(r'../lib')
+    from common import clear_console
+    from footer import Footer
+except ImportError as imperr:
+    raise Exception("Errore importazione modulo\n\n" + imperr.message)
 
 DEF_CHARSET='utf-8'
 
 TEMPLATE_DIRS = ['../templates']
+TRAN_DIR = r'../tran'
 TEMPLATE_INDEX_NAME = 'index.html'
 TEMPLATE_MODULE_NAME = 'modulo.html'
+TEMPLATE_TABALFA_NAME = 'tabella_moduli.html'
 HTML_DIR = r'../html'
 INDICE_MODULI_PER_PAGINA = 12
 FILE_INDICE = 'index'
@@ -63,7 +82,8 @@ def build(template_file, context_dict, rendered_file):
     try:
         t = loader.get_template(template_file)
         open(rendered_file, mode='w').write(
-            codecs.encode(t.render(template.Context(context_dict)), 'utf-8')
+            codecs.encode(t.render(
+                template.Context(context_dict)), DEF_CHARSET)
         )
     except Exception as ex:
         print traceback.format_exc()
@@ -76,16 +96,15 @@ def chunks(l, n):
     """
     return [l[i:i+n] for i in range(0, len(l), n)]
 
-def crea_pagine_indice(template_dirs, template_name, file_indice):
-    """(list of str, str, str)
+def crea_pagine_indice(template_name, file_indice):
+    """(str, str)
     
-    Crea le pagine indice
+    Crea le pagine indice, che contengono i teaser per 12 moduli ognuna
     """
     gm = []
     prg = 0
     moduli =  elenco_per_indice()
     pagine = ceil(len(moduli) / INDICE_MODULI_PER_PAGINA)
-    print pagine
     for gruppo_moduli in chunks(moduli, INDICE_MODULI_PER_PAGINA):
         for m in gruppo_moduli:
             gm.append(m)
@@ -98,22 +117,68 @@ def crea_pagine_indice(template_dirs, template_name, file_indice):
         prg += 1
         gm = []
 
-def crea_pagina_modulo(template_dirs, template_name, file_modulo):
+def crea_pagina_modulo(template_name, file_modulo, footer):
+    """(str, str)
+    
+    Crea la pagina per un modulo.
+    
+    `template_name` è il nome del modello per il rendering
+    `file_modulo` è il file xml dal quale ricavare la pagina html
+    """
+    #print modulo_xml2html.text2entity(file_modulo)
+    
     indice, main_content = modulo_xml2html.render_articolo(file_modulo)
     fn = os.path.splitext(os.path.basename(file_modulo))[0]
     modulo = Modulo.ottieni_modulo(fn)
-    m = DjModulo(indice, main_content, modulo)
-    fn = 'test_modulo.html'
+    m = DjModulo(indice, main_content, modulo, footer)
+    fn += '.html'
     dic = {'modulo': m,}
     build(template_name, dic, os.path.join(HTML_DIR, fn))
 
+def crea_tabella_indice(template_name):
+    """(str)
+    
+    Crea la pagina che contiene la tabella che riepiloga tutti i moduli
+
+    `template_name` è il nome del modello per il rendering
+    """
+    moduli = elenco_per_indice()
+    #corpo = ottieni_tabella(moduli)
+    m = DjTabelleIndici(moduli)
+    fn = 'indice_alfabetico.html'
+    dic = {'modulo': m,}
+    build(template_name, dic, os.path.join(HTML_DIR, fn))
+    
+
+
+        
+FOOTER = Footer(
+    'PyMOTW-it',
+    periodo='2013',
+    data_agg=datetime.date.today().strftime("%d-%m-%Y")
+)    
+
 if __name__ == '__main__':
     print __doc__
-    # Creazione di tutte le pagine indice
-    #crea_pagine_indice(TEMPLATE_DIRS, TEMPLATE_INDEX_NAME, FILE_INDICE)
-    
-    # Creazione di un modulo
+    parms = sys.argv
+    if not len(parms) == 2:
+        exit(0)
+    clear_console
+    # Per prima cosa si impostano i parametri per django
     imposta_param_django(TEMPLATE_DIRS)
-    crea_pagina_modulo(TEMPLATE_DIRS, TEMPLATE_MODULE_NAME, TEST_XML_FILE)
+    dummy, choice = parms
+    if choice.lower().startswith('ind'):
+        crea_pagine_indice(TEMPLATE_INDEX_NAME, FILE_INDICE)
+    elif choice.lower().startswith('tab'):
+        crea_tabella_indice(TEMPLATE_TABALFA_NAME)
+    else:
+        if not os.path.splitext(choice)[1]:
+            choice += '.xml'
+            choice = os.path.join(TRAN_DIR, choice)
+            if not os.path.exists(choice):
+                exit(0)
+            print "Costruzione pagina in corso ..."
+            crea_pagina_modulo(TEMPLATE_MODULE_NAME, choice, FOOTER)
     
-    print "Ok"
+    
+    print "Fine"
