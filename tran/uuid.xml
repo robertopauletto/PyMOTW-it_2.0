@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+﻿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>protocolli internet e supporto </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- tag <testo_normale> contiene il testo normale dell'articolo -->
@@ -248,33 +248,4 @@ ordinati
 http://docs.python.org/lib/module-uuid.html|uuid|La documentazione della libreria standard per questo modulo
 http://tools.ietf.org/html/rfc4122.html|RFC 4122|Uno spazio dei nomi URN per Universally Unique IDentifiers (UUID)
 </vedi_anche>
-
-<!--
-http://it.wikipedia.org/wiki/Namespace
-<avvertimento>
-</avvertimento>
-<descrizione>
-</descrizione>
-<lista>
-</lista>
-<lista_numerata>
-</lista_numerata>
-<note>
-</note>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<sottotitolo>
-</sottotitolo>
-<testo_normale>
-</testo_normale>
-<titolo_1>
-</titolo_1>
-<titolo_2>
-</titolo_2>
-<vedi_anche>
-</vedi_anche>
-
--->
 </documento_tradotto>

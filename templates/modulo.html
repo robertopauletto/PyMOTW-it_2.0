@@ -4,14 +4,13 @@
     <div class="row row-offcanvas row-offcanvas-right">
         <div class="col-xs-12 col-sm-9">
             <p class="pull-right visible-xs">
-                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
             </p>
             <div class="jumbotron" >
-                <h3>{{ modulo.titolo }}</h3>
+                <h3>{{ modulo.titolo|safe }}</h3>
                 <table class="pymotwit-jumbo">
                     <tr>
                         <td class="pymotwit-jumbo-key">Scopo</td>
-                        <td>{{ modulo.descrizione }}</td>
+                        <td>{{ modulo.descrizione|safe }}</td>
                     </tr>
                     <tr>
                         <td class="pymotwit-jumbo-key">Versione Python</td>
@@ -42,22 +41,12 @@
             </div><!--/.well -->
         </div><!--/span-->
     </div><!--/row-->
+    <div id="footer">
+        <div class="container">
+            <p class="text-muted">{{ modulo.footer.nome_sito }} {{ modulo.footer.periodo }} / Documento aggiornato il: {{ modulo.footer.data_agg }}</p>
+        </div>
+    </div
 
-    <hr>
-    <footer>
-        <p>ultimo aggiornamento: 12.12.2013</p>
-    </footer>
 
 {% endblock %}
-
-
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="assets/js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="assets/js/offcanvas.js"></script>
-</body>
-</html>
 

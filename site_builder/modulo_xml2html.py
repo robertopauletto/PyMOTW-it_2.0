@@ -54,15 +54,17 @@ MY_TAGS = {
     'incipit': None, 
     'inserito_il': None, 
     'lista': partial(h.ul), 
-    'lista_ricorsiva': None,
-    'mk_xml_code': None,
-    'mk_xml_code_lineno': None,
+    'lista_ricorsiva': partial(h.ul),
+    'mk_xml_code': partial(h.code_xml, class_='well pre-scrollable'),
+    'mk_xml_code_lineno': partial(
+        h.code_xml_with_lineno, class_='well pre-scrollable'
+        ),
     'note': partial(h.note),
     'py_code': partial(h.code, class_='well pre-scrollable'),
-    'py_code_lineno': None,
+    'py_code_lineno': partial(h.code_with_lineno, class_='well pre-scrollable'),
     'py_output': partial(h.output_console, class_='well pre-scrollable'),
     'sottotitolo': partial(h.h4),
-    'sql_code': None, 
+    'sql_code': partial(h.code_sql, class_='well pre-scrollable'),
     'tabella_semplice': partial(h.table, with_header=True, class_='table'),
     'tabella_1': None,
     'testo_normale': partial(h.p), 
@@ -161,10 +163,11 @@ def check_my_tags(seq_elementi):
     return not_found
 
 # In produzione questo sparisce
-TEMP_FATTI = ('titolo_2', 'testo_normale', 'lista', 'py_code',
-              'py_output', 'vedi_anche', 'tabella_semplice',
-              'avvertimento', 'note', 'titolo_3', 'deflist',
-              'sottotitolo')
+TEMP_FATTI = ('titolo_2', 'testo_normale', 'lista', 'py_code', ''
+              'py_output', 'vedi_anche', 'tabella_semplice', 'mk_xml_code', 
+              'avvertimento', 'note', 'titolo_3', 'deflist', 'sql_code', 
+              'sottotitolo', 'lista_ricorsiva', 'py_code_lineno',
+              'mk_xml_code_lineno')
 def prepara_articolo(seq_elementi, tag_da_indicizzare=('titolo_2')):
     """(list of str, tuple of str) -> list, list
     
@@ -184,8 +187,10 @@ def prepara_articolo(seq_elementi, tag_da_indicizzare=('titolo_2')):
             if  tag in tag_da_indicizzare:
                 item['a_name'] = h.a_name(str(prg))
                 b = " ".join(item['buffer'])
-                indice.append(h.a("#"+str(prg), smart_text(b, encoding='utf-8')))
-                contenuti.append(h.a_name(str(prg)))
+                indice.append(h.a("#"+str(prg), smart_text(b, encoding='utf-8'))
+                )
+                #indice.append(h.a("#"+str(prg), smart_text(b, encoding='utf-8')))
+                contenuti.append(h.section(str(prg)))
                 prg += 1
             if tag in TEMP_FATTI:
                 codice=MY_TAGS[tag](item['buffer'] )

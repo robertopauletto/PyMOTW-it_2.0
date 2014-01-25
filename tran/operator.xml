@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>moduli numerici e matematici </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- tag <testo_normale> contiene il testo normale dell'articolo -->
@@ -16,7 +16,7 @@ Interfaccia funzionale agli operatori built-in.
 1.4 e superiore
 </descrizione>
 <testo_normale>
-L'uso di iteratori nella programmazione funzionale richiede occasionalmente che si creino piccole funzioni per semplici espressioni. Talvolta esse possono essere espresse come funzioni lambda. Ma per alcune operazioni, non occorre definire le proprie funzioni. Il modulo operator definisce delle funzioni che corrispondono alle operazioni built-in per l'artitmetica, per il confronto così come per le operazioni su sequenze e dizionari.
+L'uso di iteratori nella programmazione funzionale richiede occasionalmente che si creino piccole funzioni per semplici espressioni. Talvolta esse possono essere espresse come funzioni lambda. Ma per alcune operazioni, non occorre definire le proprie funzioni. Il modulo operator definisce delle funzioni che corrispondono alle operazioni built-in per l'artitmetica, per il confronto cosÃ¬ come per le operazioni su sequenze e dizionari.
 </testo_normale>
 <titolo_2>
 Operazioni Logiche    
@@ -266,7 +266,7 @@ c = iconcat(c, d) => [1, 2, 3, 'a', 'b', 'c', 'a', 'b', 'c']
 Attributi e "Getters" di Elementi
 </titolo_2>
 <testo_normale>
-Una delle caratteristiche più inusuali del modulo operator è la nozione di <em>getters</em>. Essi sono oggetti chiamabili costruiti in fase di esecuzione per recuperare attributi di elementi dagli oggetti o dalle sequenze. I getters sono utili in particolar modo quando si lavora con iteratori o generatori di sequenze, laddove tendono a procurare un minore overhead rispetto ad una funzione lambda o Python.
+Una delle caratteristiche piÃ¹ inusuali del modulo operator Ã¨ la nozione di <em>getters</em>. Essi sono oggetti chiamabili costruiti in fase di esecuzione per recuperare attributi di elementi dagli oggetti o dalle sequenze. I getters sono utili in particolar modo quando si lavora con iteratori o generatori di sequenze, laddove tendono a procurare un minore overhead rispetto ad una funzione lambda o Python.
 </testo_normale>
 <testo_normale>
 I getters di attributi funzionano come <span><code> ${sbk}lambda x, n='attrname': getattr(x, n):${ebk}</code></span>
@@ -368,7 +368,7 @@ MyObj(3)
 Verifica del tipo    
 </titolo_2>
 <testo_normale>
-A parte gli operatori veri e propri, ci sono funzioni per verificare la conformità API per i tipi sequenza, numero e mappatura. I test non sono perfetti, visto che le interfacce non sono strettamente definite, ma danno qualche idea di ciò che è supportato.
+A parte gli operatori veri e propri, ci sono funzioni per verificare la conformitÃ  API per i tipi sequenza, numero e mappatura. I test non sono perfetti, visto che le interfacce non sono strettamente definite, ma danno qualche idea di ciÃ² che Ã¨ supportato.
 </testo_normale>
 <py_code>
 from operator import *
@@ -405,17 +405,4 @@ isSequenceType(t): True
 <vedi_anche>
 http://docs.python.org/lib/module-operator.html|operator|La documentazione della libreria standard per questo modulo.
 </vedi_anche>
-
-<!--
-<titolo_2>
-</titolo_2>
-<testo_normale>
-</testo_normale>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<vedi_anche>
-</vedi_anche>
--->
 </documento_tradotto>

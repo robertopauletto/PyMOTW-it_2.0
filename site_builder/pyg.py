@@ -53,7 +53,7 @@ def colora_codice(testo, numera_righe=False, lexer_name='python'):
     python 'colorato'.
     Opzionalmente incapsula detto codice in un tag div prescelto
     """
-    formatter = HtmlFormatter()
+    formatter = HtmlFormatter(linenos=numera_righe)
     return highlight(_prepara_testo(testo), _get_lexer(lexer_name), formatter) 
     
 

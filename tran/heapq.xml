@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>tipi di dato </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- # tag <titolo_1> titolo principale -->
@@ -16,10 +16,10 @@ heapq implementa un algoritmo di ordinamento sul min-heap adatto all'uso con le 
 Nuovo nella 2.3 con aggiunte nella 2.5
 </descrizione>
 <testo_normale>
-Un heap è una struttura dati a forma di albero dove i nodi figli hanno una relazione di ordinamento con i genitori. Gli heap binari possono essere rappresentati usando una lista di array organizzati in modo che l figli dell'elemento N siano alle posizioni 2*N+1 e 2*N+2 (per indici a base zero). Questa caratteristica rende possibile riorganizzare gli heap sul posto, così che non sia necessario riallocare  tanta memoria quando si aggiungono ed eliminano elementi.
+Un heap Ã¨ una struttura dati a forma di albero dove i nodi figli hanno una relazione di ordinamento con i genitori. Gli heap binari possono essere rappresentati usando una lista di array organizzati in modo che l figli dell'elemento N siano alle posizioni 2*N+1 e 2*N+2 (per indici a base zero). Questa caratteristica rende possibile riorganizzare gli heap sul posto, cosÃ¬ che non sia necessario riallocare  tanta memoria quando si aggiungono ed eliminano elementi.
 </testo_normale>
 <testo_normale>
-Un max-heap assicura che il genitore sia più largo od uguale ad entrambi i suoi figli. Un min-heap richiede che il genitore sia minore od uguale ai suoi figli. Il modulo Python heapq implementa un min-heap.
+Un max-heap assicura che il genitore sia piÃ¹ largo od uguale ad entrambi i suoi figli. Un min-heap richiede che il genitore sia minore od uguale ai suoi figli. Il modulo Python heapq implementa un min-heap.
 </testo_normale>
 <titolo_2>
 Dati di esempio
@@ -105,7 +105,7 @@ aggiungo   2:
     
 </py_output>
 <testo_normale>
-Se i dati sono già in memoria, è più efficiente usare heapify() per risistemare gli elementi della lista sul posto.    
+Se i dati sono giÃ  in memoria, Ã¨ piÃ¹ efficiente usare heapify() per risistemare gli elementi della lista sul posto.    
 </testo_normale>
 <py_code>
 import heapq
@@ -131,7 +131,7 @@ heapified :
 Accedere al Contenuto di un Heap
 </titolo_2>
 <testo_normale>
-Una volta che l'heap è organizzato correttamente, si usa ${sbk}heappop()${ebk} per togliere l'elemento con il valore più basso. In questo esempio, adattato dalla documentazione della stdlib, ${sbk}heapify()${ebk} e ${sbk}heappop()${ebk} sono usati per ordinare una lista di numeri.
+Una volta che l'heap Ã¨ organizzato correttamente, si usa ${sbk}heappop()${ebk} per togliere l'elemento con il valore piÃ¹ basso. In questo esempio, adattato dalla documentazione della stdlib, ${sbk}heapify()${ebk} e ${sbk}heappop()${ebk} sono usati per ordinare una lista di numeri.
 </testo_normale>
 <py_code>
 import heapq
@@ -225,7 +225,7 @@ for n in [0, 7, 13, 9, 5]:
     show_tree(data)
 </py_code>
 <testo_normale>
-Questa tecnica consente di mantenere uno heap a dimensione fissa, come una coda di attività ordinate per priorità
+Questa tecnica consente di mantenere uno heap a dimensione fissa, come una coda di attivitÃ  ordinate per prioritÃ 
 </testo_normale>
 <py_output>
 $ python heapq_heapreplace.py
@@ -275,7 +275,7 @@ sostituzione di  8 con  5:
 Estremi dei dati
 </titolo_2>
 <testo_normale>
-heapq comprende anche 2 funzioni per esaminare un iterabile per trovare un intervallo dei valori più grandi o più piccoli che esso contiene. L'uso di ${sbk}nlargest()${ebk} e ${sbk}nsmallest()${ebk} è veramente efficace per valori relativamente piccoli di n>1, ma può comunque tornare comodo in qualche caso.
+heapq comprende anche 2 funzioni per esaminare un iterabile per trovare un intervallo dei valori piÃ¹ grandi o piÃ¹ piccoli che esso contiene. L'uso di ${sbk}nlargest()${ebk} e ${sbk}nsmallest()${ebk} Ã¨ veramente efficace per valori relativamente piccoli di n>1, ma puÃ² comunque tornare comodo in qualche caso.
 </testo_normale>
 <py_code>
 import heapq
@@ -301,17 +301,4 @@ http://docs.python.org/library/heapq.html|heapq|La documentazione della libreria
 http://it.wikipedia.org/wiki/Heap|WikiPedia: Heap|Una generica descrizione delle strutture dati heap
 http://www.doughellmann.com/PyMOTW/articles/data_structures.html#article-data-structures|Strutture di dati in memoria|
 </vedi_anche>
-
-<!--
-<titolo_2>
-</titolo_2>
-<testo_normale>
-</testo_normale>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<vedi_anche>
-</vedi_anche>
--->
 </documento_tradotto>

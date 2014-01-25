@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>compressione dati ed archiviazione </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- tag <testo_normale> contiene il testo normale dell'articolo -->
@@ -22,7 +22,7 @@ Il modulo <strong>gzip</strong> fornisce una interfaccia tipo file ai file zip G
 Scrivere File Compressi
 </titolo_2>
 <testo_normale>
-La funzione a livello di modulo ${sbk}open()${ebk} crea una istanza della classe tipo file <strong>GzipFile</strong>. Sono forniti i metodi usuali per scrivere e leggere dati. Per scrivere dati in un file compresso si apre il file in modalità ${sbk}'w'${ebk}.
+La funzione a livello di modulo ${sbk}open()${ebk} crea una istanza della classe tipo file <strong>GzipFile</strong>. Sono forniti i metodi usuali per scrivere e leggere dati. Per scrivere dati in un file compresso si apre il file in modalitÃ  ${sbk}'w'${ebk}.
 </testo_normale>
 <py_code>
 
@@ -45,7 +45,7 @@ esempio.txt.gz contiene 73 byte di dati compressi
 application/x-gzip; charset=binary
 </py_output>
 <testo_normale>
-Si possono usare diversi livelli di compressione passando il parametro <em>compresslevel</em>. I valori validi vanno da 1 a 9 incluso. I valori inferiori sono più veloci e comprimono di meno. I valori più alti sono più lenti e comprimono di più, fino ad un certo punto.
+Si possono usare diversi livelli di compressione passando il parametro <em>compresslevel</em>. I valori validi vanno da 1 a 9 incluso. I valori inferiori sono piÃ¹ veloci e comprimono di meno. I valori piÃ¹ alti sono piÃ¹ lenti e comprimono di piÃ¹, fino ad un certo punto.
 </testo_normale>
 <py_code>
 import gzip
@@ -74,7 +74,7 @@ for i in xrange(1, 10):
     print '%5d    %10d  %s' % (i, size, cksum)
 </py_code>
 <testo_normale>
-La colonna centrale di cifre nel risultato dello script è la dimensione in byte dei file prodotti. Come si vede, per questi dati in input, i valori di compressione più alti non sempre pagano in termini di riduzione di spazio di salvataggio. I risultati possono variare a seconda dai dati in input
+La colonna centrale di cifre nel risultato dello script Ã¨ la dimensione in byte dei file prodotti. Come si vede, per questi dati in input, i valori di compressione piÃ¹ alti non sempre pagano in termini di riduzione di spazio di salvataggio. I risultati possono variare a seconda dai dati in input
 </testo_normale>
 <py_output>
 $ python gzip_compresslevel.py 
@@ -93,7 +93,7 @@ dati         717824  d90f6ff01d9929094f85502aba935250
 </py_output>
 <testo_normale>
 <testo_normale>
-Una istanza di GzipFile include anche il metodo ${sbk}writelines()${ebk} che può essere usato per scrivere una sequenza di stringhe.
+Una istanza di GzipFile include anche il metodo ${sbk}writelines()${ebk} che puÃ² essere usato per scrivere una sequenza di stringhe.
 </testo_normale>
 <py_code>
 import gzip
@@ -125,7 +125,7 @@ La stessa riga, ripetutamente.
 Leggere Dati Compressi    
 </titolo_2>
 <testo_normale>
-Per leggere dati da file precedentemente compressi si apre semplicemente il file in modalità ${sbk}'r'${ebk}.
+Per leggere dati da file precedentemente compressi si apre semplicemente il file in modalitÃ  ${sbk}'r'${ebk}.
 </testo_normale>
 <py_code>
 import gzip
@@ -144,7 +144,7 @@ $ python gzip_read.py
 Il contenuto del file di esempio va qui.
 </py_output>
 <testo_normale>
-Quando si legge un file, è anche possibile cercare e leggere solo alcune parti di dati.
+Quando si legge un file, Ã¨ anche possibile cercare e leggere solo alcune parti di dati.
 </testo_normale>
 <py_code>
 import gzip
@@ -172,7 +172,7 @@ finally:
     input_file.close()
 </py_code>
 <testo_normale>
-La poszione di ${sbk}seek()${ebk} è relativa ai dati <em>non compressi</em>, quindi il chiamante non deve neanche sapere che il file è compresso.
+La poszione di ${sbk}seek()${ebk} Ã¨ relativa ai dati <em>non compressi</em>, quindi il chiamante non deve neanche sapere che il file Ã¨ compresso.
 </testo_normale>
 <py_output>
 $ python gzip_seek.py 
@@ -198,7 +198,7 @@ True
 Lavorare con i Flussi    
 </titolo_2>
 <testo_normale>
-E' possibile usare la classe GzipFile per comprimere o decomprimere direttamente un flusso di dati, invece che un intero file. Questo risulta utile quando si lavora con dati che sono trasmessi attraverso un socket o da un handle di file (aperto) già esistente. Si può anche usare un buffer StringIO.    
+E' possibile usare la classe GzipFile per comprimere o decomprimere direttamente un flusso di dati, invece che un intero file. Questo risulta utile quando si lavora con dati che sono trasmessi attraverso un socket o da un handle di file (aperto) giÃ  esistente. Si puÃ² anche usare un buffer StringIO.    
 </testo_normale>
 <py_code>
 
@@ -233,7 +233,7 @@ print 'RILETTURA:', len(reread_data)
 print reread_data
 </py_code>
 <note>
-Quando si rileggono dati precedentemente compressi, si passa la lunghezza esplicita a read(). Se questo non viene fatto si otterrà un errore CRC, possibilmente perchè StringIO restituisce una stringa vuota prima di EOF. Se si sta lavorando con flussi di dati compressi, si vorrà far precedere i dati da una rappresentazione sotto forma di intero dell'effettivo ammontare dei dati da leggere.    
+Quando si rileggono dati precedentemente compressi, si passa la lunghezza esplicita a read(). Se questo non viene fatto si otterrÃ  un errore CRC, possibilmente perchÃ¨ StringIO restituisce una stringa vuota prima di EOF. Se si sta lavorando con flussi di dati compressi, si vorrÃ  far precedere i dati da una rappresentazione sotto forma di intero dell'effettivo ammontare dei dati da leggere.    
 </note>
 <py_output>
 $ python gzip_StringIO.py 
@@ -266,21 +266,9 @@ La stessa riga, ripetutamente.
 </py_output>
 <vedi_anche>
 http://docs.python.org/library/gzip.html|gzip|La documentazione della libreria standard per questo modulo.
-http://www.doughellmann.com/PyMOTW/zlib/index.html#module-zlib|zlib|Il modulo zlib è una interfaccia a basso livello della compressione gzip.
-http://www.doughellmann.com/PyMOTW/zipfile/index.html#module-zipfile|zipfile|Il modulo zipfile fornisce l'accesso agli archivi ZIP.
-http://www.doughellmann.com/PyMOTW/bz2/index.html#module-bz2|bz2|Il modulo bz2 usa il formato di compressione bz2.
-http://www.doughellmann.com/PyMOTW/tarfile/index.html#module-tarfile|tarfile|Il modulo tarfile include il supporto built-in per leggere archivi compressi tar.
+zlib.html|zlib|Il modulo zlib Ã¨ una interfaccia a basso livello della compressione gzip.
+zipfile.html|zipfile|Il modulo zipfile fornisce l'accesso agli archivi ZIP.
+bz2.html|bz2|Il modulo bz2 usa il formato di compressione bz2.
+tarfile.html|tarfile|Il modulo tarfile include il supporto built-in per leggere archivi compressi tar.
 </vedi_anche>
-<!--
-<titolo_2>
-</titolo_2>
-<testo_normale>
-</testo_normale>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<vedi_anche>
-</vedi_anche>
--->
 </documento_tradotto>

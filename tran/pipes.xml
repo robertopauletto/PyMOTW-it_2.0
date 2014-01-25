@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>servizi specifici per unix </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- # tag <titolo_1> titolo principale -->
@@ -52,10 +52,10 @@ t.close()
 Viene creato l'oggetto <em>pipelines.Template</em>, quindi viene aggiunto un singolo comando, ${sev}cat -${eev}. Il comando legge lo standard input e lo scrive allo standard output, senza modifiche. Il secondo parametro per ${sbk}append()${ebk} codifica le sorgenti di input ed output per il comando in due caratteri (input, quindi output). L'uso di ${sev}&nbsp;-&nbsp;${eev} significa che il comando usa lo standard I/O. L'uso di ${sev}&nbsp;f&nbsp;${eev} significa che il comando deve leggere da un file (come potrebbe essere nel caso di una pipeline per l'elaborazione di un'immagine).
 </testo_normale>
 <testo_normale>
-Il metodo ${sbk}debug()${ebk} attiva/disattiva l'output di debug. Quando il debug è abilitato, i comandi che sono eseguiti vengono stampati ed alla shell viene passato ${sev}set -x${eev} in modo che venga eseguito in modalità dettagliata ("verbose").
+Il metodo ${sbk}debug()${ebk} attiva/disattiva l'output di debug. Quando il debug Ã¨ abilitato, i comandi che sono eseguiti vengono stampati ed alla shell viene passato ${sev}set -x${eev} in modo che venga eseguito in modalitÃ  dettagliata ("verbose").
 </testo_normale>
 <testo_normale>
-Dopo che è stata impostata la pipeline, viene creato un <em>NamedTemporaryFile</em> per fornire alla pipeline un file su cui scrivere il suo output. Occorre sempre specificare un file come parametro per ${sbk}open()${ebk}, sia in lettura che scrittura.
+Dopo che Ã¨ stata impostata la pipeline, viene creato un <em>NamedTemporaryFile</em> per fornire alla pipeline un file su cui scrivere il suo output. Occorre sempre specificare un file come parametro per ${sbk}open()${ebk}, sia in lettura che scrittura.
 </testo_normale>
 <py_output>
 $ python pipes_simple_write.py 
@@ -64,7 +64,7 @@ cat - >/tmp/tmpqdcQW4
 Porzione di testo
 </py_output>
 <testo_normale>
-Leggere da una pipeline funziona praticamente allo stesso modo, con poche modifiche ai parametri. Per questo esempio, occorre impostare il contenuto del file di input prima di aprire la pipeline. Quindi si può passare quel nome di file come input di ${sbk}open()${ebk}.
+Leggere da una pipeline funziona praticamente allo stesso modo, con poche modifiche ai parametri. Per questo esempio, occorre impostare il contenuto del file di input prima di aprire la pipeline. Quindi si puÃ² passare quel nome di file come input di ${sbk}open()${ebk}.
 </testo_normale>
 <py_code>
 import pipes
@@ -91,11 +91,11 @@ finally:
 print contents
 </py_code>
 <testo_normale>
-Si può leggere il risultato dalla pipeline direttamente
+Si puÃ² leggere il risultato dalla pipeline direttamente
 </testo_normale>    
 <py_output>
 python pipes_simple_read.py 
-cat - </tmp/tmps_ABth
+cat - &lt;/tmp/tmps_ABth
 + cat -
 Porzione di testo
 </py_output>
@@ -103,7 +103,7 @@ Porzione di testo
 Usare i File invece che i Flussi
 </titolo_2>
 <testo_normale>
-Alcuni comandi devono lavorare sui file in un filesystem invece che con flussi di input. Comandi che elaborano un grande numero di dati potrebbero fornire prestazioni migliori in questo modo, visto che non si bloccheranno sul prossimo comando che sta leggendo il loro output. Qualsiasi cosa che funzioni su dati non basati su flussi deve avere questa capacità (es. i database od altri strumenti di manipolazione di file binari). Per supportare questa modalità operativa, ${sbk}append()${ebk} consente di specificare un <em>tipo</em> di ${sev}&nbsp;f&nbsp;${eev}, ed il codice della pipeline creerà i necessari file temporanei. I nomi di file sono passati alla shell come ${sev}$IN${eev} e ${sev}$OUT${eev}, quindi questi nomi di variabili devono comparire nella propria stringa di comandi.
+Alcuni comandi devono lavorare sui file in un filesystem invece che con flussi di input. Comandi che elaborano un grande numero di dati potrebbero fornire prestazioni migliori in questo modo, visto che non si bloccheranno sul prossimo comando che sta leggendo il loro output. Qualsiasi cosa che funzioni su dati non basati su flussi deve avere questa capacitÃ  (es. i database od altri strumenti di manipolazione di file binari). Per supportare questa modalitÃ  operativa, ${sbk}append()${ebk} consente di specificare un <em>tipo</em> di ${sev}&nbsp;f&nbsp;${eev}, ed il codice della pipeline creerÃ  i necessari file temporanei. I nomi di file sono passati alla shell come ${sev}$IN${eev} e ${sev}$OUT${eev}, quindi questi nomi di variabili devono comparire nella propria stringa di comandi.
 </testo_normale>
 <py_code>
 import pipes
@@ -125,7 +125,7 @@ print t.read()
 t.close()
 </py_code>
 <testo_normale>
-Così si vede, sono stati creati parecchi file temporanei intermedi per mantenere l'input e l'output di ogni passo.
+CosÃ¬ si vede, sono stati creati parecchi file temporanei intermedi per mantenere l'input e l'output di ogni passo.
 </testo_normale>
 <py_output>
 $ python pipes_file_kind.py 
@@ -165,7 +165,7 @@ print t.read()
 t.close()
 </py_code>
 <testo_normale>
-Le istruzioni <em>trap</em> che si vedono nell'output assicurano che i file temporanei creati dalla pipeline siano puliti anche se una attività nel mezzo fallisce oppure se la shell viene chiusa.
+Le istruzioni <em>trap</em> che si vedono nell'output assicurano che i file temporanei creati dalla pipeline siano puliti anche se una attivitÃ  nel mezzo fallisce oppure se la shell viene chiusa.
 </testo_normale>
 <py_output>
 $ python pipes_mixed_kinds.py 
@@ -184,13 +184,13 @@ rm -f /tmp/tmpN_eiEw
 Porzione di testo
 </py_output>
 <titolo_2>
-Un Esempio più Complesso    
+Un Esempio piÃ¹ Complesso    
 </titolo_2>
 <testo_normale>
-Tutti gli esempi fino a qui sono stati piuttosto rozzi. Sono stati concepiti per illustrare l'uso di ${sbk}pipes.Template()${ebk} senza dovere dipendere da una profonda conoscenza della programmazione della shell in generale. Questo esempio è più complesso, e mostra come parecchi comandi possano essere combinati per manipolare i dati prima di portarli all'interno di Python.
+Tutti gli esempi fino a qui sono stati piuttosto rozzi. Sono stati concepiti per illustrare l'uso di ${sbk}pipes.Template()${ebk} senza dovere dipendere da una profonda conoscenza della programmazione della shell in generale. Questo esempio Ã¨ piÃ¹ complesso, e mostra come parecchi comandi possano essere combinati per manipolare i dati prima di portarli all'interno di Python.
 </testo_normale>
 <testo_normale>
-Lo script <a href='http://www.doughellmann.com/projects/virtualenvwrapper/'>virtualwrapper</a> comprende una funzione di shell per elencare tutti gli ambienti virtuali che si sono creati. La funzione viene usata per il completamento con il tasto "tab" e può essere chiamata direttamente per elencare gli ambienti, nel caso ci si dimentichi un nome. Il cuore di quella funzione è una piccola pipeline che cerca in ${sev}$WORKON_HOME${eev} le directory che potrebbero sembrare degli ambienti virtuali (es. hanno uno script ${sev}activate${eev}). Quella pipeline é:
+Lo script <a href='http://www.doughellmann.com/projects/virtualenvwrapper/'>virtualwrapper</a> comprende una funzione di shell per elencare tutti gli ambienti virtuali che si sono creati. La funzione viene usata per il completamento con il tasto "tab" e puÃ² essere chiamata direttamente per elencare gli ambienti, nel caso ci si dimentichi un nome. Il cuore di quella funzione Ã¨ una piccola pipeline che cerca in ${sev}$WORKON_HOME${eev} le directory che potrebbero sembrare degli ambienti virtuali (es. hanno uno script ${sev}activate${eev}). Quella pipeline Ã©:
 </testo_normale>
 <py_output>
 (cd "$WORKON_HOME"; for f in */bin/activate; do echo $f; done) \
@@ -225,7 +225,7 @@ print 'SANDBOXES:'
 pprint.pprint(sandboxes)
 </py_code>
 <testo_normale>
-Visto che ogni nome di sandbox  viene scritto in una riga a parte, l'analisi dell'output è semplice:
+Visto che ogni nome di sandbox  viene scritto in una riga a parte, l'analisi dell'output Ã¨ semplice:
 </testo_normale>
 <py_output>
 $ python pipes_multistep.py
@@ -266,7 +266,7 @@ SANDBOXES:
 Passare File Attraverso le Pipeline
 </titolo_2>
 <testo_normale>
-Se l'input della propria pipeline esiste già in un file su disco, non c'è necessità di leggerlo dentro Python semplicemente per passarlo alla pipeline. Si può usare il metodo ${sbk}copy()${ebk} per passare il file direttamente attraverso la pipeline e creare un file di output per la lettura.
+Se l'input della propria pipeline esiste giÃ  in un file su disco, non c'Ã¨ necessitÃ  di leggerlo dentro Python semplicemente per passarlo alla pipeline. Si puÃ² usare il metodo ${sbk}copy()${ebk} per passare il file direttamente attraverso la pipeline e creare un file di output per la lettura.
 </testo_normale>
 <py_code>
 import pipes
@@ -334,35 +334,7 @@ $ python pipes_clone.py
 </py_output>
 <vedi_anche>
 http://docs.python.org/library/pipes.html|pipes|La documentazione della libreria standard per questo modulo.
-http://robyp.x10hosting.com/pymotw-it/tempfile.html|tempfile|Il modulo tempfile comprende delle classi per gestire i file temporanei
-http://robyp.x10hosting.com/pymotw-it/subprocess.html|subprocess|Anche il modulo subprocess supporta la concatenazione degli input ed output dei processi.
+tempfile.html|tempfile|Il modulo tempfile comprende delle classi per gestire i file temporanei
+subprocess.html|subprocess|Anche il modulo subprocess supporta la concatenazione degli input ed output dei processi.
 </vedi_anche>
-
-<!--
-<avvertimento>
-</avvertimento>
-<descrizione>
-</descrizione>
-<lista>
-</lista>
-<lista_numerata>
-</lista_numerata>
-<note>
-</note>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<sottotitolo>
-</sottotitolo>
-<testo_normale>
-</testo_normale>
-<titolo_1>
-</titolo_1>
-<titolo_2>
-</titolo_2>
-<vedi_anche>
-</vedi_anche>
-
--->
 </documento_tradotto>

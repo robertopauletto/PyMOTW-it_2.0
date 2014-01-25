@@ -1,4 +1,4 @@
-f<?xml version="1.0" encoding="Latin-1"?>
+ï»¿f<?xml version="1.0" encoding="Latin-1"?>
 <categoria>strumenti di sviluppo </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- # tag <titolo_1> titolo principale -->
@@ -34,7 +34,7 @@ Si ottiene un aiuto in testo semplice sulla console, usando il proprio pager (le
 Aiuto HTML    
 </titolo_2>
 <testo_normale>
-Si può anche far sì che pydoc generi un output HTML, sia scrivendo un file statico in una directory locale, che lanciando un web server per scorrere la documentazione in linea.    
+Si puÃ² anche far sÃ¬ che pydoc generi un output HTML, sia scrivendo un file statico in una directory locale, che lanciando un web server per scorrere la documentazione in linea.    
 </testo_normale>
 <py_output>
 $ pydoc -w atexit    
@@ -74,17 +74,4 @@ http://docs.python.org/library/pydoc.html|pydoc|La documentazione della libreria
 http://www.doughellmann.com/PyMOTW/about.html#motw-cli|L'interfaccia alla riga comandi di motw|Accedere agli articoli di Module Of The Week dalla riga comandi.
 http://www.doughellmann.com/PyMOTW/about.html#motw-interactive|Usare PyMOTW con l'interprete interattivo|Accedere agli articoli di Module Of The Week dall'interprete interattivo
 </vedi_anche>
-
-<!--
-<titolo_2>
-</titolo_2>
-<testo_normale>
-</testo_normale>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<vedi_anche>
-</vedi_anche>
--->
 </documento_tradotto>

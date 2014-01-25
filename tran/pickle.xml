@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>persistenza dati </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- # tag <titolo_1> titolo principale -->
@@ -16,10 +16,10 @@ Serializzazione di oggetti Python.
 pickle almeno dalla 1.4, cPickle dalla 1.5
 </descrizione>
 <testo_normale>
-Il modulo <strong>pickle</strong> implementa un algoritmo per trasformare un oggetto arbitrario Python in un una serie di byte. Questo processo viene anche detto <a href='http://it.wikipedia.org/wiki/Serializzazione'><em>serializzazione</em></a> dell'oggetto). Il flusso di byte che rappresenta l'oggetto può essere trasmesso o conservato, e successivamente ricostruito per creare un nuovo oggetto con le stesse caratteristiche.
+Il modulo <strong>pickle</strong> implementa un algoritmo per trasformare un oggetto arbitrario Python in un una serie di byte. Questo processo viene anche detto <a href='http://it.wikipedia.org/wiki/Serializzazione'><em>serializzazione</em></a> dell'oggetto). Il flusso di byte che rappresenta l'oggetto pu&ograve; essere trasmesso o conservato, e successivamente ricostruito per creare un nuovo oggetto con le stesse caratteristiche.
 </testo_normale>
 <testo_normale>
-Il modulo <strong>cPickle</strong> implementa lo stesso algoritmo, in C invece che in Python. E' molte volte più veloce dell'implementazione Python, ma non consente all'utente di derivare classi da Pickle. Se la derivazione di classi non è importante per le proprie esigenze, è consigliabile l'uso di cPickle.
+Il modulo <strong>cPickle</strong> implementa lo stesso algoritmo, in C invece che in Python. E' molte volte pi&ugrave; veloce dell'implementazione Python, ma non consente all'utente di derivare classi da Pickle. Se la derivazione di classi non &ograve; importante per le proprie esigenze, &ograve; consigliabile l'uso di cPickle.
 </testo_normale>
 <avvertimento>
 La documentazione di pickle mette in chiaro che non offre alcuna garanzia di sicurezza. Prestare attenzione se si usa pickle per comunicazioni tra processi o conservazione di dati. Non fidarsi di dati che non possono essere verificati come sicuri.    
@@ -28,7 +28,7 @@ La documentazione di pickle mette in chiaro che non offre alcuna garanzia di sic
 Importazione    
 </titolo_2>
 <testo_normale>
-E' prassi comune tentare di importare cPickle per primo, assegnandogli l'alias di "pickle". Se per una qualche ragione l'importazione fallisce si può successivamente ripiegare verso l'implementazione nativa di Python nel modulo pickle. Questo consente di ottenere l'implementazione più veloce, se disponibile, e l'implementazione portabile altrimenti.
+E' prassi comune tentare di importare cPickle per primo, assegnandogli l'alias di "pickle". Se per una qualche ragione l'importazione fallisce si pu&ograve; successivamente ripiegare verso l'implementazione nativa di Python nel modulo pickle. Questo consente di ottenere l'implementazione pi&ugrave; veloce, se disponibile, e l'implementazione portabile altrimenti.
 </testo_normale>
 <py_code>
 try:
@@ -40,7 +40,7 @@ except:
 Codificare e Decodificare Dati in Stringhe    
 </titolo_2>
 <testo_normale>
-Il primo esempio di pickle codifica una struttura dati come stringa, quindi stampa la stringa verso la console. Definisce una struttura dati fatta intermente di tipi nativi. Le istanze di qualsiasi classe possono essere serializzate con pickle, come verrà in seguito illustrato con un esempio. Si usa ${sbk}pickle.dumps()${ebk} per creare una rappresentazione stringa del valore del'oggetto.
+Il primo esempio di pickle codifica una struttura dati come stringa, quindi stampa la stringa verso la console. Definisce una struttura dati fatta intermente di tipi nativi. Le istanze di qualsiasi classe possono essere serializzate con pickle, come verr&agrave; in seguito illustrato con un esempio. Si usa ${sbk}pickle.dumps()${ebk} per creare una rappresentazione stringa del valore del'oggetto.
 </testo_normale>
 <py_code>
 try:
@@ -57,7 +57,7 @@ data_string = pickle.dumps(data)
 print 'PICKLE:', data_string
 </py_code>
 <testo_normale>
-In modalità predefinita, pickle contiene solo caratteri ASCII. E' anche disponibile un formato binario più efficiente, ma per questi esempi si manterrà la versione ASCII, in quanto più semplice da comprendere nella stampa.
+In modalit&agrave; predefinita, pickle contiene solo caratteri ASCII. E' anche disponibile un formato binario pi&ugrave; efficiente, ma per questi esempi si manterr&agrave; la versione ASCII, in quanto pi&ugrave; semplice da comprendere nella stampa.
 </testo_normale>
 <py_output>
 $ python pickle_string.py DATI:[{'a': 'A', 'b': 2, 'c': 3.0}]
@@ -72,7 +72,7 @@ I2
 sa.
 </py_output>
 <testo_normale>
-Una volta che i datai sono serializzati, possono essere scritti in un file, socket, pipe ecc. Quindi più tardi si può leggere il file e recuperare i dati per costruire un nuovo oggetto con gli stessi valori.    
+Una volta che i datai sono serializzati, possono essere scritti in un file, socket, pipe ecc. Quindi pi&ugrave; tardi si pu&ograve; leggere il file e recuperare i dati per costruire un nuovo oggetto con gli stessi valori.    
 </testo_normale>
 <py_code>
 try:
@@ -95,7 +95,7 @@ print 'STESSI?:', (data1 is data2)
 print 'UGUALI?:', (data1 == data2)
 </py_code>
 <testo_normale>
-Come si vede il nuovo oggetto costruito è uguale ma non è lo stesso oggetto originale. Nessuna sorpresa qui.    
+Come si vede il nuovo oggetto costruito &ograve; uguale ma non &ograve; lo stesso oggetto originale. Nessuna sorpresa qui.    
 </testo_normale>
 <py_output>
 $ python pickle_unpickle.py 
@@ -154,7 +154,7 @@ while True:
         print 'LETTURA: %s (%s)' % (o.name, o.name_backwards)
 </py_code>
 <testo_normale>
-L'esempio simula dei flussi usando i buffer di StringIO, quindi occorre usare qualche trucco per stabilire il flusso leggibile. Anche una semplice forma di database potrebbe usare pickle per conservare gli oggetti, anche se usando il modulo <a href='${baseurl}/pymotw-it/shelve.html'>shelve</a> potrebbe essere più facile lavorarci.
+L'esempio simula dei flussi usando i buffer di StringIO, quindi occorre usare qualche trucco per stabilire il flusso leggibile. Anche una semplice forma di database potrebbe usare pickle per conservare gli oggetti, anche se usando il modulo <a href='shelve.html'>shelve</a> potrebbe essere pi&ugrave; facile lavorarci.
 </testo_normale>
 <py_output>
 $ python pickle_stream.py
@@ -166,7 +166,7 @@ LETTURA: cPickle (elkciPc)
 LETTURA: ultimo (omitlu)
 </py_output>
 <testo_normale>
-Oltre alla conservazione di dati, gli oggetti serializzati da pickle sono molto comodi per comunicazioni tra processi. Ad esempio usando ${sbk}os.fork()${ebk} ed ${sbk}os.pipe()${ebk} si possono stabilire dei worker process (elaboratori di richieste) che leggono delle istruzioni da elaborare da una pipe e scrivono i risultati in un'altra pipe. Il codice base per la gestione del gruppo di worker  e per l'invio di job e la ricezione delle risposte può essere riusato, visto che gli oggetti per il job e la risposta non devono essere di una classe particolare. Se si stanno usando pipe o socket, non ci si deve dimenticare di eseguire uno svuotamento dopo avere disposto di ogni oggetto, per spingere i dati attraverso la connessione verso l'altro estremo. Vedere <a href='http://www.doughellmann.com/PyMOTW/multiprocessing/index.html#module-multiprocessing'>multiprocessing</a> se non si vuole scrivere il proprio gestore del gruppo di worker.
+Oltre alla conservazione di dati, gli oggetti serializzati da pickle sono molto comodi per comunicazioni tra processi. Ad esempio usando ${sbk}os.fork()${ebk} ed ${sbk}os.pipe()${ebk} si possono stabilire dei worker process (elaboratori di richieste) che leggono delle istruzioni da elaborare da una pipe e scrivono i risultati in un'altra pipe. Il codice base per la gestione del gruppo di worker  e per l'invio di job e la ricezione delle risposte pu&ograve; essere riusato, visto che gli oggetti per il job e la risposta non devono essere di una classe particolare. Se si stanno usando pipe o socket, non ci si deve dimenticare di eseguire uno svuotamento dopo avere disposto di ogni oggetto, per spingere i dati attraverso la connessione verso l'altro estremo. Vedere <a href='http://www.doughellmann.com/PyMOTW/multiprocessing/index.html#module-multiprocessing'>multiprocessing</a> se non si vuole scrivere il proprio gestore del gruppo di worker.
 </testo_normale>
 <titolo_2>
 Problemi nella Ricostruzione degli Oggetti
@@ -211,7 +211,7 @@ if __name__ == '__main__':
         out_s.close()
 </py_code>
 <testo_normale>
-Quando viene eseguito lo script, verrà creato un file il cui nome è quello passato come parametro alla riga comandi:    
+Quando viene eseguito lo script, verr&agrave; creato un file il cui nome &ograve; quello passato come parametro alla riga comandi:    
 </testo_normale>
 <py_output>
 $ python pickle_load_from_file_1.py test.dat
@@ -251,7 +251,7 @@ finally:
     in_s.close()
 </py_code>
 <testo_normale>
-Questa versione non funziona perchè non è disponibile alcuna classe <em>SimpleObject</em>:
+Questa versione non funziona perch&ograve; non &ograve; disponibile alcuna classe <em>SimpleObject</em>:
 </testo_normale>
 <py_output>
 $ python pickle_load_from_file_1.py test.dat
@@ -261,7 +261,7 @@ Traceback (most recent call last):
 AttributeError: 'module' object has no attribute 'SimpleObject'
 </py_output>
 <testo_normale>
-Una versione riveduta e corretta, che importa SimpleObject dallo script originale, avrà successo.
+Una versione riveduta e corretta, che importa SimpleObject dallo script originale, avr&agrave; successo.
 </testo_normale>
 <testo_normale>
 Si aggiunge:    
@@ -279,7 +279,7 @@ LETTURA: cPickle (elkciPc)
 LETTURA: ultimo (omitlu)
 </py_output>
 <testo_normale>
-Ci sono alcune speciali considerazioni quando si serializzano tipi di dati con valori che pickle non può elaborare (socket, handle di file, connessioni a database ecc.). Le classi che usano valori che non possono essere elaborati da pickle possono definire ${sbk}__getstate__()${ebk} e ${sbk}__setstate__()${ebk} per restituire un sottoinsieme dello stato dell'istanza da elaborare con pickle. Le classi di nuovo stile possono anche definire ${sbk}__getnewargs__()${ebk}, che dovrebbe restituire i parametri da passare all'allocatore di memoria della classe (${sbk}C.__new__())${ebk}). L'uso di queste caratteristiche è trattato più dettagliatamente nella documentazione della libreria standard.
+Ci sono alcune speciali considerazioni quando si serializzano tipi di dati con valori che pickle non pu&ograve; elaborare (socket, handle di file, connessioni a database ecc.). Le classi che usano valori che non possono essere elaborati da pickle possono definire ${sbk}__getstate__()${ebk} e ${sbk}__setstate__()${ebk} per restituire un sottoinsieme dello stato dell'istanza da elaborare con pickle. Le classi di nuovo stile possono anche definire ${sbk}__getnewargs__()${ebk}, che dovrebbe restituire i parametri da passare all'allocatore di memoria della classe (${sbk}C.__new__())${ebk}). L'uso di queste caratteristiche &ograve; trattato pi&ugrave; dettagliatamente nella documentazione della libreria standard.
 </testo_normale>
 <titolo_2>
 Riferimenti Circolari    
@@ -288,10 +288,10 @@ Riferimenti Circolari
 Il protocollo di pickle gestisce automaticamente i riferimenti circolari tra gli oggetti, quindi non ci si deve preoccupare di fare qualcosa di speciale con complesse strutture di dati. Si consideri il <a href='http://en.wikipedia.org/wiki/Directed_graph'>digraph</a>:  
 </testo_normale>
 <testo_normale>
-<img src='${baseurl}/pymotw-it/digraph.png' alt='esempio di digraph'></img>
+<img src='digraph.png' alt='esempio di digraph'></img>
 </testo_normale>
 <testo_normale>
-Sebbene il grafico includa diversi cicli, la struttura corretta può essere serializzata e successivamente ricaricata.
+Sebbene il grafico includa diversi cicli, la struttura corretta pu&ograve; essere serializzata e successivamente ricaricata.
 </testo_normale>
 <py_code>
 import pickle
@@ -360,7 +360,7 @@ print 'GRAPH RICARICATO:'
 show_edges(reloaded)
 </py_code>
 <testo_normale>
-I nodi ricaricati non sono lo stesso oggetto, ma la relazione tra i nodi è mantenuta e viene ricaricata solo una copia dell'oggetto con riferimenti multipli. Entrambe le affermazioni possono essere verificate esaminando i valori di ${sbk}id()${ebk} dei nodi, prima e dopo il passaggio tramite pickle.
+I nodi ricaricati non sono lo stesso oggetto, ma la relazione tra i nodi &ograve; mantenuta e viene ricaricata solo una copia dell'oggetto con riferimenti multipli. Entrambe le affermazioni possono essere verificate esaminando i valori di ${sbk}id()${ebk} dei nodi, prima e dopo il passaggio tramite pickle.
 </testo_normale>
 <py_output>
 $ python pickle_cycle.py
@@ -382,33 +382,7 @@ GRAPH RICARICATO:
 </py_output>
 <vedi_anche>
 http://docs.python.org/lib/module-pickle.html|pickle|La documentazione della libreria standard per questo modulo.
-${baseurl}/pymotw-it/shelve.html|shelve|Il modulo shelve
+shelve.html|shelve|Il modulo shelve
 http://peadrop.com/blog/2007/06/18/pickle-an-interesting-stack-language/|Pickle: An Interesting stack language|di Alexandre Vassalotti
 </vedi_anche>
-
-<!--
-<avvertimento>
-</avvertimento>
-<descrizione>
-</descrizione>
-<lista>
-</lista>
-<note>
-</note>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<sottotitolo>
-</sottotitolo>
-<testo_normale>
-</testo_normale>
-<titolo_1>
-</titolo_1>
-<titolo_2>
-</titolo_2>
-<vedi_anche>
-</vedi_anche>
-
--->
 </documento_tradotto>

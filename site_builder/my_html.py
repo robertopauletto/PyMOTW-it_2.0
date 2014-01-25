@@ -95,6 +95,19 @@ class MyHtml(object):
     
     def _codice(self, value, **kwargs):
         return colora_codice(value)
+
+    def _codice_sql(self, value, **kwargs):
+        return colora_codice(value, lexer_name='sql')
+
+    def _codice_xml(self, value, **kwargs):
+        return colora_codice(value, lexer_name='xml')
+
+    def _codice_con_numerazione(self, value, **kwargs):
+        return colora_codice(value, numera_righe=True)
+
+    def _codice_xml_con_numerazione(self, value, **kwargs):
+        return colora_codice(value, numera_righe=True, lexer_name='xml')
+
         
     def _vedi_anche(self, lista, dd_class=None, **kwargs):
         """(list [,str]) ->
@@ -156,6 +169,10 @@ class MyHtml(object):
     def strong(self, value, **kwargs):
         return self._get_start_end_tag('strong', self._convert(value), **kwargs)
 
+    def section(self, id, value='', **kwargs):
+        kwargs['id'] = "%s" % id
+        return self._get_start_end_tag('section', value, **kwargs)
+
     def a(self, url, value, **kwargs):
         kwargs['href'] = "%s" % url
         return self._get_start_end_tag('a', value, **kwargs)
@@ -170,6 +187,24 @@ class MyHtml(object):
     def code(self, value, **kwargs):
         pigmentato = self._codice(value)
         return self._get_start_end_tag('div', pigmentato, **kwargs)
+
+    def code_sql(self, value, **kwargs):
+        pigmentato = self._codice_sql(value)
+        return self._get_start_end_tag('div', pigmentato, **kwargs)
+
+    def code_xml(self, value, **kwargs):
+        pigmentato = self._codice_xml(value)
+        return self._get_start_end_tag('div', pigmentato, **kwargs)
+
+
+    def code_with_lineno(self, value, **kwargs):
+        pigmentato = self._codice_con_numerazione(value)
+        return self._get_start_end_tag('div', pigmentato, **kwargs)
+    
+    def code_xml_with_lineno(self, value, **kwargs):
+        pigmentato = self._codice_xml_con_numerazione(value)
+        return self._get_start_end_tag('div', pigmentato, **kwargs)
+    
     
     def output_console(self, value, **kwargs):
         """(str) -> str
@@ -238,7 +273,7 @@ class MyHtml(object):
         - info (azzurro)
         - warning (giallo)
         - success (verde)
-        - danger (rpssp)
+        - danger (rosso)
         """ 
         return self._get_start_end_tag(
             'div',

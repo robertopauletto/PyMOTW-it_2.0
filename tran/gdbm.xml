@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>persistenza dati </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- # tag <titolo_1> titolo principale -->
@@ -16,45 +16,19 @@ Versione GNU della libreria dbm.
 1.4 e superiore
 </descrizione>
 <testo_normale>
-Il modulo <strong>gdbm</strong> è la versione aggiornata da GNU della libreria <a href='${baseurl}/pymotw-it/dbm.html'>dbm</a>. Segue le stesse semantiche delle altre implementazioni di DBM descritte in <a href='${baseurl}/pymotw-it/anydbm.html'>anydbm</a>, con alcune modifiche ai <em>flag</em> supportati da ${sbk}open()${ebk}.
+Il modulo <strong>gdbm</strong> Ã¨ la versione aggiornata da GNU della libreria <a href='dbm.html'>dbm</a>. Segue le stesse semantiche delle altre implementazioni di DBM descritte in <a href='anydbm.html'>anydbm</a>, con alcune modifiche ai <em>flag</em> supportati da ${sbk}open()${ebk}.
 </testo_normale>
 <testo_normale>
 Oltre ai flag standard ${sbk}'r'${ebk}, ${sbk}'w'${ebk}, ${sbk}'c'${ebk} ed ${sbk}'n'${ebk} ${sbk}gdbm.open()${ebk} supporta:
 </testo_normale>
 <lista>
-${sbk}'f'${ebk} per aprire i database in modalità <em>veloce</em>. In questa modalità le scritture verso il database non sono sincronizzate.
-${sbk}'s'${ebk} per aprire i database in modalità <em>sincronizzata</em>. Le modifiche al database sono scritte nel file non appena sono eseguite, invece che essere differite fino a che il database viene chiuso o sincronizzato esplicitamente.
+${sbk}'f'${ebk} per aprire i database in modalitÃ  <em>veloce</em>. In questa modalitÃ  le scritture verso il database non sono sincronizzate.
+${sbk}'s'${ebk} per aprire i database in modalitÃ  <em>sincronizzata</em>. Le modifiche al database sono scritte nel file non appena sono eseguite, invece che essere differite fino a che il database viene chiuso o sincronizzato esplicitamente.
 ${sbk}'u'${ebk} per aprire il database non bloccato.
 </lista>
 <vedi_anche>
 http://docs.python.org/library/gdbm.html|gdbm|La documentazione della libreria standard per questo modulo.
-${baseurl}/pymotw-it/dbm.html|dbm|Il modulo dbm
-${baseurl}/pymotw-it/anydbm.html|anydbm|Il modulo anydbm
+dbm.html|dbm|Il modulo dbm
+anydbm.html|anydbm|Il modulo anydbm
 </vedi_anche>
-
-<!--
-<avvertimento>
-</avvertimento>
-<descrizione>
-</descrizione>
-<lista>
-</lista>
-<note>
-</note>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<sottotitolo>
-</sottotitolo>
-<testo_normale>
-</testo_normale>
-<titolo_1>
-</titolo_1>
-<titolo_2>
-</titolo_2>
-<vedi_anche>
-</vedi_anche>
-
--->
 </documento_tradotto>

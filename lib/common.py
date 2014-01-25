@@ -22,7 +22,7 @@ PATHS = {
 }
 
 OLD_HTML_FOLDER = r'Dropbox/Code/python/pymotw-it/html'
-OLD_TRAN_FOLDER = r'Dropbox/Code/python/pymotw-it/tran'
+OLD_TRAN_FOLDER = r'Dropbox/Code/python/pymotw-it2.0/tran'
 
 def clear_console():
     """Lancia il comando di pulizia console per le 3 principali
@@ -146,20 +146,31 @@ def ottieni_modulo(nome_modulo):
     return _ottieni_modulo(fn)
 
 def _ottieni_modulo(nome_file):
+    """(str) -> dict
+    
+    Legge `nome_file` e recupera i tag che contengono le info:
+    
+    - descrizione modulo
+    - titolo
+    - data aggiornamento (ultima data accesso al file)
+    - versione traduzione
+    """
     righe = open(nome_file).readlines()
-    descr, vers = _estrai_da_tag(righe, 'descrizione')
+    try:
+        descr, vers = _estrai_da_tag(righe, 'descrizione')
+    except ValueError:
+        descr, vers = '', ''
     titolo = " ".join(_estrai_da_tag(righe, 'titolo_1'))
     ultimo_agg = datetime.date.fromtimestamp(os.stat(nome_file).st_mtime)
     return {
         'descr': descr,
-        'titolo': titolo.split('-', 1)[1].strip(),
+        'titolo': titolo.split('-', 1)[1].strip() if '-' in titolo else titolo,
         'agg': ultimo_agg,
         'versione': vers,
     }
         
 def ottieni_moduli_tradotti():
-    """
-    Ritorna un dizionario con chiave nome modulo che contiene:
+    """Ritorna un dizionario con chiave nome modulo che contiene:
     
     - data ultima modifica
     - titolo

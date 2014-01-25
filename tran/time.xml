@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>servizi generici di sistema operativo </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- # tag <titolo_1> titolo principale -->
@@ -9,23 +9,23 @@
 <!-- tag <vedi_anche> contiene il testo che rappresentano i riferimenti esterni -->
 <documento_tradotto>
 <titolo_1>
-time - Funzioni per la manipolazione del tempo
+time - Funzioni per la manipolazione del tempo 
 </titolo_1>
 <descrizione>
 Funzioni per la manipolazione del tempo
 1.4 o precedente
 </descrizione>
 <testo_normale>
-Il modulo <strong>time</strong> espone le funzioni della libreria C per manipolare date e tempo. Visto che è legato all'implementazione C sottostante, alcuni dettagli (tipo l'inizio dell'epoca ed il valore massimo di data supportato) sono specifiche alla piattaforma. Fare riferimento alla documentazione della libreria per più completi dettagli.
+Il modulo <strong>time</strong> espone le funzioni della libreria C per manipolare date e tempo. Visto che Ã¨ legato all'implementazione C sottostante, alcuni dettagli (tipo l'inizio dell'epoca ed il valore massimo di data supportato) sono specifiche alla piattaforma. Fare riferimento alla documentazione della libreria per piÃ¹ completi dettagli.
 </testo_normale>
 <note>
-Nel <a name='vedinota'></a> documento originale, e lasciati invariati in questo documento, si parla di <strong>wall clock time</strong> e di <strong>processor clock time</strong>; mentre il primo si riferisce all'umana percezione del passaggio di tempo dalla partenza al completamento di un compito, il secondo fa riferimento al tempo effettivo impiegato dalla CPU per svolgere un certo compito. Visto che la CPU esegue anche altri compiti contemporanemente e deve comunque attendere altri processi o risposte dall'hardware.Il <strong>wall clock time</strong> è in genere maggiore rispetto al <strong>processor clock time</strong>. (<strong>n.d.t.</strong>)
+Nel <a name='vedinota'></a> documento originale, e lasciati invariati in questo documento, si parla di <strong>wall clock time</strong> e di <strong>processor clock time</strong>; mentre il primo si riferisce all'umana percezione del passaggio di tempo dalla partenza al completamento di un compito, il secondo fa riferimento al tempo effettivo impiegato dalla CPU per svolgere un certo compito. Visto che la CPU esegue anche altri compiti contemporanemente e deve comunque attendere altri processi o risposte dall'hardware.Il <strong>wall clock time</strong> Ã¨ in genere maggiore rispetto al <strong>processor clock time</strong>. (<strong>n.d.t.</strong>)
 </note>
 <titolo_2>
 Wall Clock Time
 </titolo_2>
 <testo_normale>
-Una delle funzioni base del modulo <strong>time</strong> è ${sbk}time()${ebk}, che restituisce il numero di secondi trascorsi dall'inizio dell'epoca sotto forma di valore a virgola mobile.
+Una delle funzioni base del modulo <strong>time</strong> Ã¨ ${sbk}time()${ebk}, che restituisce il numero di secondi trascorsi dall'inizio dell'epoca sotto forma di valore a virgola mobile.
 </testo_normale>
 <py_code>
 import time
@@ -37,15 +37,15 @@ Sebbene il valore sia sempre a virgola mobile, la precisione reale dipende dalla
 </testo_normale>
 <py_output>
 $ python time_time.py 
-L'ora è: 1280161322.19
+L'ora Ã¨: 1280161322.19
 </py_output>    
 <testo_normale>
-La rappresentazione a virgola mobile è utile quando si debbono conservare o confrontare date, ma non molto utile per produrre rappresentazioni leggibili dall'uomo. Per una registrazione o stampa del tempo ${sbk}ctime()${ebk} può essere molto più utile.
+La rappresentazione a virgola mobile Ã¨ utile quando si debbono conservare o confrontare date, ma non molto utile per produrre rappresentazioni leggibili dall'uomo. Per una registrazione o stampa del tempo ${sbk}ctime()${ebk} puÃ² essere molto piÃ¹ utile.
 </testo_normale>
 <py_code>
 import time
 
-print "L'ora è          :", time.ctime()
+print "L'ora Ã¨          :", time.ctime()
 later = time.time() + 15
 print '15 sec. da adesso:', time.ctime(later)
 </py_code>
@@ -54,14 +54,14 @@ In questo caso la seconda riga dell'output mostra come usare ${sbk}ctime()${ebk}
 </testo_normale>
 <py_output>
 $ python time_ctime.py 
-L'ora è          : Mon Jul 26 18:27:01 2010
+L'ora Ã¨          : Mon Jul 26 18:27:01 2010
 15 sec. da adesso: Mon Jul 26 18:27:16 2010
 </py_output>
 <titolo_2>
 Processor Clock Time    
 </titolo_2>
 <testo_normale>
-Laddove ${sbk}time()${ebk} restituisce il <em>wall clock time</em>, ${sbk}clock()${ebk} ritorna il <em>processor clock time</em>. I valori ritornati da ${sbk}clock()${ebk} dovrebbero essere usati per controllare prestazioni, per benchmarcking ecc., visto che essi rappresentatno i valori reali impiegati dal programma, e possono essere più precisi di quelli di ${sbk}time()${ebk}. <a href='#vedinota'> (vedere nota)</a>
+Laddove ${sbk}time()${ebk} restituisce il <em>wall clock time</em>, ${sbk}clock()${ebk} ritorna il <em>processor clock time</em>. I valori ritornati da ${sbk}clock()${ebk} dovrebbero essere usati per controllare prestazioni, per benchmarcking ecc., visto che essi rappresentatno i valori reali impiegati dal programma, e possono essere piÃ¹ precisi di quelli di ${sbk}time()${ebk}. <a href='#vedinota'> (vedere nota)</a>
 </testo_normale>
 <py_code>
 import hashlib
@@ -78,7 +78,7 @@ for i in range(5):
     cksum = h.digest()
 </py_code>
 <testo_normale>
-In questo esempio il tempo formattato ${sbk}ctime()${ebk} viene stampato assieme ai valori a virgola mobile da ${sbk}time()${ebk}, e ${sbk}clock()${ebk} per ogni iterazione attraverso il ciclo. Se si vuole eseguire l'esempio nel proprio sistema, si potrebbe dover aggiungere più cicli al loop più interno o lavorare con un numero maggiore di dati per vedere realmente la differenza.
+In questo esempio il tempo formattato ${sbk}ctime()${ebk} viene stampato assieme ai valori a virgola mobile da ${sbk}time()${ebk}, e ${sbk}clock()${ebk} per ogni iterazione attraverso il ciclo. Se si vuole eseguire l'esempio nel proprio sistema, si potrebbe dover aggiungere piÃ¹ cicli al loop piÃ¹ interno o lavorare con un numero maggiore di dati per vedere realmente la differenza.
 </testo_normale>
 <py_output>
 $ python time_clock.py 
@@ -100,7 +100,7 @@ for i in range(6, 1, -1):
     time.sleep(i)
 </py_code>
 <testo_normale>
-In questo esempio, il ciclo fa un lavoro minimo, mettendosi in pausa dopo ogni iterazione. Il valore di ${sbk}time()${ebk} aumenta anche quando l'applicazione è in pausa, ma il valore di ${sbk}clock()${ebk} rimane invariato:
+In questo esempio, il ciclo fa un lavoro minimo, mettendosi in pausa dopo ogni iterazione. Il valore di ${sbk}time()${ebk} aumenta anche quando l'applicazione Ã¨ in pausa, ma il valore di ${sbk}clock()${ebk} rimane invariato:
 </testo_normale>
 <py_output>
 $ python time_clock_sleep.py 
@@ -116,13 +116,13 @@ Mon Jul 26 18:48:24 2010 1280162904.05 0.01
 In pausa 2
 </py_output>
 <testo_normale>
-La chiamata di ${sbk}sleep()${ebk} cede il controllo dal thread corrente e gli chiede di attendere fino a che il sistema non esca dalla pausa. Se il proprio programma ha un solo thread, l'applicazione viene effettivamente bloccata e non esegue alcuna attività.
+La chiamata di ${sbk}sleep()${ebk} cede il controllo dal thread corrente e gli chiede di attendere fino a che il sistema non esca dalla pausa. Se il proprio programma ha un solo thread, l'applicazione viene effettivamente bloccata e non esegue alcuna attivitÃ .
 </testo_normale>
 <titolo_2>
 struct_time
 </titolo_2>
 <testo_normale>
-Convervare il tempo come secondi trascorsi puù essere utile in alcune situazioni, ma ci sono volte nelle quali ci deve avere accesso ai singoli campi di una data (anno, mese, ecc.). Il modulo <strong>time</strong> definisce <strong>struct_time</strong> per mantenere i valori di data ed ora con i componenti separati in modo da essere facilmente accessibili. Ci sono parecchie funzioni che lavorano con i valori di <strong>struct_time</strong> invece che con i valori a virgola mobile.
+Convervare il tempo come secondi trascorsi puÃ¹ essere utile in alcune situazioni, ma ci sono volte nelle quali ci deve avere accesso ai singoli campi di una data (anno, mese, ecc.). Il modulo <strong>time</strong> definisce <strong>struct_time</strong> per mantenere i valori di data ed ora con i componenti separati in modo da essere facilmente accessibili. Ci sono parecchie funzioni che lavorano con i valori di <strong>struct_time</strong> invece che con i valori a virgola mobile.
 </testo_normale>
 <py_code>
 import time
@@ -154,7 +154,7 @@ Giorno dell'anno: 207
 Analizzare e Formattare il Tempo
 </titolo_2>
 <testo_normale>
-Le funzioni ${sbk}strptime()${ebk} e ${sbk}strftime()${ebk} convertono tra struct_time e rappresentazioni stringa di valori di tempo. C'è una lunga lista di informazioni disponibile per la formattazione per il supporto di input ed output in stili differenti. L'elenco completo è inserito nella documentazione della libreria per questo modulo.
+Le funzioni ${sbk}strptime()${ebk} e ${sbk}strftime()${ebk} convertono tra struct_time e rappresentazioni stringa di valori di tempo. C'Ã¨ una lunga lista di informazioni disponibile per la formattazione per il supporto di input ed output in stili differenti. L'elenco completo Ã¨ inserito nella documentazione della libreria per questo modulo.
 </testo_normale>
 <testo_normale>
 Questo esempio converte il tempo corrente da una stringa ad una istanza di <strong>struct_time</strong>, quindi lo riscrive come stringa.
@@ -169,7 +169,7 @@ print parsed
 print time.strftime("%a %b %d %H:%M:%S %Y", parsed)
 </py_code>
 <testo_normale>
-La stringa di output non è esattamente come l'input, visto che il giorno del mese viene prefissato da uno zero.
+La stringa di output non Ã¨ esattamente come l'input, visto che il giorno del mese viene prefissato da uno zero.
 </testo_normale>
 <py_output>
 $ python time_strptime.py 
@@ -184,7 +184,7 @@ Lavorare con i Fusi Orari
 Le funzioni per determinare il tempo corrente dipendono dall'avere impostato il fuso orario, sia dal proprio programma che usando l'impostazione del fuso orario del sistema. La modifica del fuso orario non modifica l'orario effettivo, ma solo il modo in cui viene rappresentato.
 </testo_normale>
 <testo_normale>
-Per modificare il fuso orario, si imposta la variabile di ambiente ${sev}TZ${eev}, quindi si chiama ${sbk}tzset()${ebk}. Tramite l/'uso di TZ, si può specificare il fuso orario molto dettagliatamente, fino all'inizio ed alla fine dell'ora legale; è in genere più semplice usare il nome del fuso orario e lasciare che le librerie sottostanti ricavino le altre informazioni.
+Per modificare il fuso orario, si imposta la variabile di ambiente ${sev}TZ${eev}, quindi si chiama ${sbk}tzset()${ebk}. Tramite l/'uso di TZ, si puÃ² specificare il fuso orario molto dettagliatamente, fino all'inizio ed alla fine dell'ora legale; Ã¨ in genere piÃ¹ semplice usare il nome del fuso orario e lasciare che le librerie sottostanti ricavino le altre informazioni.
 </testo_normale>
 <testo_normale>
 In questo esempio il programma modifica il fuso orario ad un valore diverso e mostra come le modifiche si ripercuotono sulle altre impostazioni nel modulo time.
@@ -211,7 +211,7 @@ for zone in [ 'US/Eastern', 'US/Pacific', 'GMT', 'Europe/Amsterdam' ]:
     show_zone_info()
 </py_code>
 <testo_normale>
-Il fuso orario predefinito per l'esecuzione di questo script è Europe/Amsterdam, quindi l'impostazione di TZ a questo valore non ha effetto. ma le altre zone di fuso orario usate modificano il nome della zona, il flag dell'ora legale ed i valori di scostamento per quel fuso orario.
+Il fuso orario predefinito per l'esecuzione di questo script Ã¨ Europe/Amsterdam, quindi l'impostazione di TZ a questo valore non ha effetto. ma le altre zone di fuso orario usate modificano il nome della zona, il flag dell'ora legale ed i valori di scostamento per quel fuso orario.
 </testo_normale>
 <py_output>
 $ python time_timezone.py 
@@ -252,35 +252,7 @@ Europe/Amsterdam :
 </py_output>
 <vedi_anche>
 http://docs.python.org/lib/module-time.html|time|La documentazione della libreria standard per questo modulo.
-http://robyp.x10hosting.com/pymotw-it/datetime.html|datetime|Il modulo datetime include altre classi per eseguire calcoli con date ed ora.
-http://robyp.x10hosting.com/pymotw-it/calendar.html|calendar|Lavora con funzioni di data a più alto livello per produrre calendari o calcolare eventi ricorrenti.
+datetime.html|datetime|Il modulo datetime include altre classi per eseguire calcoli con date ed ora.
+calendar.html|calendar|Lavora con funzioni di data a piÃ¹ alto livello per produrre calendari o calcolare eventi ricorrenti.
 </vedi_anche>
-
-<!--
-<avvertimento>
-</avvertimento>
-<descrizione>
-</descrizione>
-<lista>
-</lista>
-<lista_numerata>
-</lista_numerata>
-<note>
-</note>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<sottotitolo>
-</sottotitolo>
-<testo_normale>
-</testo_normale>
-<titolo_1>
-</titolo_1>
-<titolo_2>
-</titolo_2>
-<vedi_anche>
-</vedi_anche>
-
--->
 </documento_tradotto>

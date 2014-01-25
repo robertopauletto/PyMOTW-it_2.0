@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>comunicazione interprocesso e networking </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- # tag <titolo_1> titolo principale -->
@@ -16,13 +16,13 @@ Genera e comunica con processi addizionali
 Nuovo nella 2.4
 </descrizione>
 <testo_normale>
-Il modulo <strong>subprocess</strong> fornisce un'interfaccia consistente per creare e lavorare con processi addizionali. Offre una interfaccia a livello più alto rispetto ad altri moduli disponibili, ed è destinato a rimpiazzare funzioni tipo ${sbk}os.system()${ebk}, ${sbk}os.spawn*()${ebk}, ${sbk}os.popen*()${ebk}, ${sbk}os.popen2*()${ebk} e ${sbk}commands.*()${ebk}. Per facilitare il confronto di subprocess con questi altri moduli, gli esempi di seguito ricreano quelli usati per <a href='${baseurl$}/pymotw-it/os.html'>os</a> e ${sbk}popen${ebk}.
+Il modulo <strong>subprocess</strong> fornisce un'interfaccia consistente per creare e lavorare con processi addizionali. Offre una interfaccia a livello piÃ¹ alto rispetto ad altri moduli disponibili, ed Ã¨ destinato a rimpiazzare funzioni tipo ${sbk}os.system()${ebk}, ${sbk}os.spawn*()${ebk}, ${sbk}os.popen*()${ebk}, ${sbk}os.popen2*()${ebk} e ${sbk}commands.*()${ebk}. Per facilitare il confronto di subprocess con questi altri moduli, gli esempi di seguito ricreano quelli usati per <a href='os.html'>os</a> e ${sbk}popen${ebk}.
 </testo_normale>
 <testo_normale>
-Il modulo <strong>subprocess</strong> definisce una classe: ${sbk}Popen${ebk} e qualche funzione wrapper che usa quella classe. Il  costruttore per ${sbk}Popen${ebk} riceve parecchi parametri per facilitare l'impostazione del nuovo processo, e quindi comunicare con esso tramite le pipe. Ci si concentrerà su un codice di esempio qui; per una descrizione completa degli argomenti fare riferimento alla sezione 17.1.1. della documentazione della libreria.
+Il modulo <strong>subprocess</strong> definisce una classe: ${sbk}Popen${ebk} e qualche funzione wrapper che usa quella classe. Il  costruttore per ${sbk}Popen${ebk} riceve parecchi parametri per facilitare l'impostazione del nuovo processo, e quindi comunicare con esso tramite le pipe. Ci si concentrerÃ  su un codice di esempio qui; per una descrizione completa degli argomenti fare riferimento alla sezione 17.1.1. della documentazione della libreria.
 </testo_normale>
 <note>
-L'API è grossomodo la stessa, ma l'implementazione sottostante è leggermente diversa tra Unix e Windows. Tutti gli esempi qui mostrati  sono testati su MAC OX X. L'esperienza personale (in un sistema operativo diverso da Unix) potrebbe essere diversa.
+L'API Ã¨ grossomodo la stessa, ma l'implementazione sottostante Ã¨ leggermente diversa tra Unix e Windows. Tutti gli esempi qui mostrati  sono testati su MAC OX X. L'esperienza personale (in un sistema operativo diverso da Unix) potrebbe essere diversa.
 </note>
 <titolo_2>
 Eseguire comandi esterni
@@ -56,7 +56,7 @@ subprocess_signal_parent_shell.py
 subprocess_signal_setsid.py
 </py_output>
 <testo_normale>
-Quando <em>shell</em> è impostato a <strong>True</strong>, le variabili di shell nella stringa di comando sono espanse
+Quando <em>shell</em> Ã¨ impostato a <strong>True</strong>, le variabili di shell nella stringa di comando sono espanse
 </testo_normale>
 <py_code>
 import subprocess
@@ -104,7 +104,7 @@ versioned_home_files
 Lavorare con le Pipe
 </titolo_2>
 <testo_normale>
-Passando diversi parametri per <em>stdin</em>, <em>stdout</em>, e <em>stderr</em> è possibile imitare le varianti di ${sbk}os.popen()${ebk}
+Passando diversi parametri per <em>stdin</em>, <em>stdout</em>, e <em>stderr</em> Ã¨ possibile imitare le varianti di ${sbk}os.popen()${ebk}
 </testo_normale>
 <testo_normale>
  <strong>popen</strong>
@@ -228,7 +228,7 @@ popen4:
 Connettere Segmenti di una Pipe    
 </titolo_2>
 <testo_normale>
-Creando istanze separate di Popen e concatenando i loro input ed output, si può creare la propia conduttura di comandi proprio come in una shell Unix.    
+Creando istanze separate di Popen e concatenando i loro input ed output, si puÃ² creare la propia conduttura di comandi proprio come in una shell Unix.    
 </testo_normale>
 <py_code>
 import subprocess
@@ -294,7 +294,7 @@ sys.stderr.write('repeater.py: uscita\n')
 sys.stderr.flush()    
 </py_code>
 <testo_normale>
-Si prenda nota del fatto che ${sev}<em>repeater.py</em>${eev}  scrive allo standard error quando parte e si interrompe. Quella informazione può essere usata per mostrare il ciclo di vita del processo figlio.
+Si prenda nota del fatto che ${sev}<em>repeater.py</em>${eev}  scrive allo standard error quando parte e si interrompe. Quella informazione puÃ² essere usata per mostrare il ciclo di vita del processo figlio.
 </testo_normale>
 <testo_normale>
 Il successivo esempio di interazione usa i gestori di file stdin ed stdout che appartengono all'istanza di <strong>Popen</strong> in modi diversi. Nel primo esempio, una sequenza di 10 numeri vengono scritti allo stdin del processo, e dopo ogni scrittura la successiva riga di output viene riletta. Nel secondo esempio, gli stessi 10 numeri sono scritti ma l'output viene letto in una sola volta usando ${sbk}communicate()${ebk}.
@@ -366,7 +366,7 @@ repeater.py: uscita
 Segnalazioni tra Processi    
 </titolo_2>
 <testo_normale>
-Gli esempi di <a href='${baseurl}/pymotw-it/os.html'>os</a> comprendono una dimostrazione della segnalazione tra processi usando os.fork() ed os.kill(). VIsto che ogni istanza di <strong>Popen</strong> fornisce un attributo <em>pid</em> con l'identificativo del processo figlio, è possibile fare qualcosa di simile con <strong>subprocess</strong>. Ad esempio usare questo script per fare in modo che il processo figlio venga eseguito dal processo genitore:
+Gli esempi di <a href='os.html'>os</a> comprendono una dimostrazione della segnalazione tra processi usando os.fork() ed os.kill(). VIsto che ogni istanza di <strong>Popen</strong> fornisce un attributo <em>pid</em> con l'identificativo del processo figlio, Ã¨ possibile fare qualcosa di simile con <strong>subprocess</strong>. Ad esempio usare questo script per fare in modo che il processo figlio venga eseguito dal processo genitore:
 </testo_normale>
 <py_code>
 import os
@@ -425,7 +425,7 @@ FIGLIO 3250: Ricevuto USR1
 Processi Gruppi/Sessioni    
 </titolo_2>
 <testo_normale>
-A causa del modo in cui funziona l'albero dei processi sotto Unix, se il processo creato da <strong>Popen</strong> genera dei sotto processi, questi suoi figli non riceveranno alcuno dei segnali inviati al genitore, Questo significa, ad esempio, che sarà difficile farli terminare inviandogli un ${sev}SIGINT${eev} od un ${sev}SIGTERM${eev}.
+A causa del modo in cui funziona l'albero dei processi sotto Unix, se il processo creato da <strong>Popen</strong> genera dei sotto processi, questi suoi figli non riceveranno alcuno dei segnali inviati al genitore, Questo significa, ad esempio, che sarÃ  difficile farli terminare inviandogli un ${sev}SIGINT${eev} od un ${sev}SIGTERM${eev}.
 </testo_normale>
 <py_code>
 import os
@@ -454,7 +454,7 @@ os.kill(proc.pid, signal.SIGUSR1)
 time.sleep(3)
 </py_code>
 <testo_normale>
-Si noti che il pid usato per inviare il segnale è diverso dal pid del figlio dello script della shell che è in attesa del segnale perchè in questo esempio, ci sono tre processi separati che interagiscono.:    
+Si noti che il pid usato per inviare il segnale Ã¨ diverso dal pid del figlio dello script della shell che Ã¨ in attesa del segnale perchÃ¨ in questo esempio, ci sono tre processi separati che interagiscono.:    
 </testo_normale>
 <lista_numerata>
 ${sev}subprocess_signal_parent_shell.py${eev}
@@ -472,7 +472,7 @@ GENITORE: Segnalazione al figlio  2592
 FIGLIO 2594: Segnale mai ricevuto
 </py_output>
 <testo_normale>
-La soluzione di questo problema è usare un <a href='http://it.wikipedia.org/wiki/PID_%28Unix%29'><em>gruppo di processi</em></a> da associare ai figli in modo che possa essere inviata una segnalazione a tutti insieme. Il gruppo di processi viene creato con ${sbk}os.setsid()${ebk}, impostando l'identificativo di sessione ("session id") all'id del processo corrente. Tutti i processi figlio ereditano il "session id", e visto che lo si vuole solamente impostare nella shell creata da <strong>Popen</strong> ed i suoi discendenti non occorre chiamare il processo corrente, al contrario lo si passa come parametro <em>preexec_fn</em> a Popen in mdodo che possa essere eseguito dopo il ${sbk}fork()${ebk} all'interno del nuovo processo, prima che chiami ${sbk}exec()${ebk}.
+La soluzione di questo problema Ã¨ usare un <a href='http://it.wikipedia.org/wiki/PID_%28Unix%29'><em>gruppo di processi</em></a> da associare ai figli in modo che possa essere inviata una segnalazione a tutti insieme. Il gruppo di processi viene creato con ${sbk}os.setsid()${ebk}, impostando l'identificativo di sessione ("session id") all'id del processo corrente. Tutti i processi figlio ereditano il "session id", e visto che lo si vuole solamente impostare nella shell creata da <strong>Popen</strong> ed i suoi discendenti non occorre chiamare il processo corrente, al contrario lo si passa come parametro <em>preexec_fn</em> a Popen in mdodo che possa essere eseguito dopo il ${sbk}fork()${ebk} all'interno del nuovo processo, prima che chiami ${sbk}exec()${ebk}.
 </testo_normale>
 <py_code>
 import os
@@ -521,39 +521,13 @@ FIGLIO 2959: Ricevuto USR1
 Conclusioni    
 </titolo_2>
 <testo_normale>
-Come si vede, lavorare con <strong>subprocess</strong> è molto più facile di fork, exex, e le pipe da soli. Fornisce tutte le funzionalità degli altri moduli e delle funzioni che sostituisce, ed altro. L'API è consistente per tutti gli utilizzi e la maggior parte dell'attività extra necessaria (tipo chiudere i descrittori di file extra, assicurarsi che le pipe siano chiuse, ecc) sono incorporate in esso invece che dover essere gestite separatamente dal codice della propria applicazione.
+Come si vede, lavorare con <strong>subprocess</strong> Ã¨ molto piÃ¹ facile di fork, exex, e le pipe da soli. Fornisce tutte le funzionalitÃ  degli altri moduli e delle funzioni che sostituisce, ed altro. L'API Ã¨ consistente per tutti gli utilizzi e la maggior parte dell'attivitÃ  extra necessaria (tipo chiudere i descrittori di file extra, assicurarsi che le pipe siano chiuse, ecc) sono incorporate in esso invece che dover essere gestite separatamente dal codice della propria applicazione.
 </testo_normale>
 <vedi_anche>
 http://docs.python.org/lib/module-subprocess.html|subprocess|La documentazione della libreria standard per questo modulo.
-http://robyp.x10hosting.com/pymotw-it/os.html|os|Sebbene molte di esse siano deprecate, le funzioni per lavorare con i processi contenute nel modulo os sono ancora largamente usate nel codice esistente.
+os.html|os|Sebbene molte di esse siano deprecate, le funzioni per lavorare con i processi contenute nel modulo os sono ancora largamente usate nel codice esistente.
 http://www.amazon.com/Programming-Environment-Addison-Wesley-Professional-Computing/dp/0201433079/ref=pd_bbs_3/002-2842372-4768037?ie=UTF8&s=books&amp;qid=1182098757&sr=8-3|Unix Signals and Process Groups|Una buona descrizione delle segnalazioni in Unix e come i gruppi di processi funzionano.
 http://www.amazon.com/Programming-Environment-Addison-Wesley-Professional-Computing/dp/0201433079/ref=pd_bbs_3/002-2842372-4768037?ie=UTF8&s=books&amp;qid=1182098757&sr=8-3|Advanced Programming in the UNIX(R) Environment|Tratta il lavorare con processi multipli, tipo la gestione di segnali, la chiusura di descrittori di file duplicati, ecc.
-http://robyp.x10hosting.com/pymotw-it/pipes.html|pipe|modelli di pipeline di comandi della shell unix nella libreria standard
+pipes.html|pipe|modelli di pipeline di comandi della shell unix nella libreria standard
 </vedi_anche>
-
-<!--
-<avvertimento>
-</avvertimento>
-<descrizione>
-</descrizione>
-<lista>
-</lista>
-<note>
-</note>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<sottotitolo>
-</sottotitolo>
-<testo_normale>
-</testo_normale>
-<titolo_1>
-</titolo_1>
-<titolo_2>
-</titolo_2>
-<vedi_anche>
-</vedi_anche>
-
--->
 </documento_tradotto>

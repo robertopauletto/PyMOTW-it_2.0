@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>accedere a file e directory </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- tag <testo_normale> contiene il testo normale dell'articolo -->
@@ -38,7 +38,7 @@ PRIMA: ['shutil_copyfile.py']
 DOPO : ['shutil_copyfile.py', 'shutil_copyfile.py.copy' ]
 </py_output>
 <testo_normale>
-copyfile() è scritta usando la funzione a basso livello ${sbk}copyfileobj()${ebk}. Mentre i parametri per copyfile() sono nomi di file, quelli per copyfileobj() sono handle dei file aperti. Il terzo parametro (opzionale) è la lunghezza del buffer da usare per leggere porzioni di file (nel modo predefinito l'intero file viene letto tutto in una volta).
+copyfile() Ã¨ scritta usando la funzione a basso livello ${sbk}copyfileobj()${ebk}. Mentre i parametri per copyfile() sono nomi di file, quelli per copyfileobj() sono handle dei file aperti. Il terzo parametro (opzionale) Ã¨ la lunghezza del buffer da usare per leggere porzioni di file (nel modo predefinito l'intero file viene letto tutto in una volta).
 </testo_normale>
 <py_code>
 from shutil import *
@@ -76,7 +76,7 @@ output = StringIO()
 copyfileobj(input, output, 20)
 </py_code>
 <testo_normale>
-Il comportamento predefinito è quello di leggere usando grandi blocchi. Si usa -1 per leggere tutto l'input in una volta oppure un numero positivo per impostare la dimensione del blocco desiderata.    
+Il comportamento predefinito Ã¨ quello di leggere usando grandi blocchi. Si usa -1 per leggere tutto l'input in una volta oppure un numero positivo per impostare la dimensione del blocco desiderata.    
 </testo_normale>
 <py_output>
 $ python shutil_copyfileobj.py 
@@ -162,7 +162,7 @@ DESTIN:
 Copiare i Meta-dati del file    
 </titolo_2>
 <testo_normale>
-In modalità predefinita in Unix, quando viene creato un nuovo file riceve i parmessi in base alla <em>umask</em> dell'utente corrente. Per copiare i permessi da un file ad un altro si usa ${sbk}copymode()${ebk}
+In modalitÃ  predefinita in Unix, quando viene creato un nuovo file riceve i parmessi in base alla <em>umask</em> dell'utente corrente. Per copiare i permessi da un file ad un altro si usa ${sbk}copymode()${ebk}
 </testo_normale>
 <py_code>
 from shutil import *
@@ -188,7 +188,7 @@ touch file_da_cambiare.txt
 chmod ugo+w file_da_cambiare.txt
 </py_output>
 <testo_normale>
-L'esecuzione dello script modificherà i permessi.    
+L'esecuzione dello script modificherÃ  i permessi.    
 </testo_normale>
 <py_output>
 $ python shutil_copymode.py 
@@ -238,10 +238,10 @@ DOPO :
 Lavorare con Alberi di Directory    
 </titolo_2>
 <testo_normale>
-Il modulo <strong>shutil</strong> comprende 3 funzioni per lavorare con alberi di directory. Per copiare una directory da un posto ad un altro si usa ${sbk}copytree()${ebk}. Attraversa ricorsivamente l'alberto di directory sorgente, copiandone i file nella destinazione. La directory destinazione non deve essere già esistente. Con il parametro <em>symlinks</em> si controlla se i collegamenti simbolici devono essere copiati come collegamenti o come file. Il modo predefinito è copiare il contenuto nei nuovi file. Se l'opione è <en>True</en>, vengono creati nuovi collegamenti simbolici nella destinazione.
+Il modulo <strong>shutil</strong> comprende 3 funzioni per lavorare con alberi di directory. Per copiare una directory da un posto ad un altro si usa ${sbk}copytree()${ebk}. Attraversa ricorsivamente l'alberto di directory sorgente, copiandone i file nella destinazione. La directory destinazione non deve essere giÃ  esistente. Con il parametro <em>symlinks</em> si controlla se i collegamenti simbolici devono essere copiati come collegamenti o come file. Il modo predefinito Ã¨ copiare il contenuto nei nuovi file. Se l'opione Ã¨ <en>True</en>, vengono creati nuovi collegamenti simbolici nella destinazione.
 </testo_normale>
 <testo_normale>
-Nota: La documentazione per copytree() dice che dovrebbe essere considerata una semplice implementazione piuttosto che uno strumento. Si potrebbe volere copiare l'implementazione e renderla più robusta, oppure aggiungere altre caratteristiche tipo un indicatore di progresso.    
+Nota: La documentazione per copytree() dice che dovrebbe essere considerata una semplice implementazione piuttosto che uno strumento. Si potrebbe volere copiare l'implementazione e renderla piÃ¹ robusta, oppure aggiungere altre caratteristiche tipo un indicatore di progresso.    
 </testo_normale>
 <py_code>
 from shutil import *
@@ -264,7 +264,7 @@ totale 12
 4 drwxrwxrwt 15 root  root  4096 2010-02-27 13:24 ..
 </py_output>
 <testo_normale>
-Per eliminare una directory ed il suo contenuto, si usa ${sbk}rmtree()${ebk}. Gli errori sono sollevati come eccezioni in modalità predefinita. Gli errori possono essere ignorati se il secondo parametro è <em>True</em>, ed una funzione speciale per la gestione dell'errore può essere fornita come terzo parametro.
+Per eliminare una directory ed il suo contenuto, si usa ${sbk}rmtree()${ebk}. Gli errori sono sollevati come eccezioni in modalitÃ  predefinita. Gli errori possono essere ignorati se il secondo parametro Ã¨ <em>True</em>, ed una funzione speciale per la gestione dell'errore puÃ² essere fornita come terzo parametro.
 </testo_normale>
 <py_code>
 from shutil import *
@@ -287,7 +287,7 @@ DOPO :
 ls: impossibile accedere a /tmp/esempio: Nessun file o directory
 </py_output>
 <testo_normale>
-Per spostare un file od una directory da un posto all'altro si usa ${sbk}move()${ebk}. La semantica è simile a quella del comando Unix ${sbk}mv${ebk}. Se la sorgente e la destinazione sono all'interno dello stesso filesystem, la sorgente viene semplicemente rinominata. Altrimenti la sorgente viene copiata nella destinazione, quindi la sorgente viene rimossa.
+Per spostare un file od una directory da un posto all'altro si usa ${sbk}move()${ebk}. La semantica Ã¨ simile a quella del comando Unix ${sbk}mv${ebk}. Se la sorgente e la destinazione sono all'interno dello stesso filesystem, la sorgente viene semplicemente rinominata. Altrimenti la sorgente viene copiata nella destinazione, quindi la sorgente viene rimossa.
 </testo_normale>
 <py_code>
 from shutil import *
@@ -309,16 +309,4 @@ DOPO :  ['esempio.out']
 <vedi_anche>
 http://docs.python.org/lib/module-shutil.html|shutil|La documentazione della libreria standard per questo modulo.
 </vedi_anche>
-<!--
-<titolo_2>
-</titolo_2>
-<testo_normale>
-</testo_normale>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<vedi_anche>
-</vedi_anche>
--->
 </documento_tradotto>

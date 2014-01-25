@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+﻿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>persistenza dati </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- tag <testo_normale> contiene il testo normale dell'articolo -->
@@ -67,10 +67,10 @@ Il passo successivo dopo la creazione del nuovo file di database, &egrave; quell
 <strong>progetto</strong>
 </testo_normale>
 <tabella_semplice>
-Colonna,Tipo,Descrizione
-nome,testo,Nome del progetto
-descrizione,testo,Descrizione dettagliata del progetto
-scadenza,data,Data di scadenza per l'intero progetto
+Colonna;Tipo;Descrizione
+nome;testo;Nome del progetto
+descrizione;testo;Descrizione dettagliata del progetto
+scadenza;data;Data di scadenza per l'intero progetto
 </tabella_semplice>
 <testo_normale>
 
@@ -79,14 +79,14 @@ scadenza,data,Data di scadenza per l'intero progetto
 <strong>compito</strong>
 </testo_normale>
 <tabella_semplice>
-Colonna,Tipo,Descrizione
-id,numerico,Identifcativo univoco del compito
-priorita,intero,Priorit&agrave; numerica numero pi&ugrave; basso = priorit&agrave; maggiore
-dettagli,testo,Descrizione completa del compito
-stato,testo,Stato del compito (uno tra 'nuovo' - 'da finire' - 'finito' - 'eliminato')
-scadenza,data,Data di scadenza per questo compito
-completato_il,data,Quando il compito viene completato
-progetto,testo,il nome del progetto per questo compito.
+Colonna;Tipo;Descrizione
+id;numerico;Identifcativo univoco del compito
+priorita;intero;Priorità numerica numero più basso = priorità maggiore
+dettagli;testo;Descrizione completa del compito
+stato;testo;Stato del compito (uno tra 'nuovo' - 'da finire' - 'finito' - 'eliminato')
+scadenza;data;Data di scadenza per questo compito
+completato_il;data;Quando il compito viene completato
+progetto;testo;il nome del progetto per questo compito.
 </tabella_semplice>
 <testo_normale>
 
@@ -453,7 +453,7 @@ $ python sqlite3_argument_named.py pymotw-it
 Caricamento Massivo
 </titolo_2>
 <testo_normale>
-Per applicare la stessa istruzione SQL ad un gran numero di dati si usa ${sbk}executemany()${ebk}. Questo metodo &egrave; utile per caricare i dati, visto che si evita di iterare attraverso gli input in Python e si lascia che sia la libreria sottostante ad occuparsi dell'ottimizzazione delle iterazioni. Questo programma di esempio legge una lista di compiti da un file in formato .csv (valori separati da virgola) usando il modulo <a href='${baseurl}/pymotw-it/csv.html'>csv</a> e li carica nel database.
+Per applicare la stessa istruzione SQL ad un gran numero di dati si usa ${sbk}executemany()${ebk}. Questo metodo &egrave; utile per caricare i dati, visto che si evita di iterare attraverso gli input in Python e si lascia che sia la libreria sottostante ad occuparsi dell'ottimizzazione delle iterazioni. Questo programma di esempio legge una lista di compiti da un file in formato .csv (valori separati da virgola) usando il modulo <a href='csv.html'>csv</a> e li carica nel database.
 </testo_normale>
 <py_code>
 import csv
@@ -538,7 +538,7 @@ with sqlite3.connect(db_filename, detect_types=sqlite3.PARSE_DECLTYPES) as conn:
     show_deadline(conn)
 </py_code>
 <testo_normale>
-<strong>sqlite3</strong> fornisce del convertitori per colonne data e timestamp, usando ${sbk}date${ebk} e ${sbk}datetime${ebk} dal modulo <a href='${baseurl}/pymotw-it/datetime.html'>datetime</a> per rappresentare i valori in Python. Entrambi i convertitori relativi alle date sono abilitati automaticamente quando viene attivata l'identificazione del tipo.
+<strong>sqlite3</strong> fornisce del convertitori per colonne data e timestamp, usando ${sbk}date${ebk} e ${sbk}datetime${ebk} dal modulo <a href='datetime.html'>datetime</a> per rappresentare i valori in Python. Entrambi i convertitori relativi alle date sono abilitati automaticamente quando viene attivata l'identificazione del tipo.
 </testo_normale>
 <py_output>
 $ python sqlite3_date_types.py 
@@ -628,7 +628,7 @@ with sqlite3.connect(db_filename, detect_types=sqlite3.PARSE_DECLTYPES) as conn:
         print
 </py_code>
 <testo_normale>
-Questo esempio usa <a href='{baseurl}/pymotw-it/picke.html'>pickle</a> per salvare un oggetto verso una stringa che possa essere conservata nel database. Questa tecnica &egrave; utile per conservare oggetti arbitrari, ma non consente una interrogazione basata sugli attributi dell'oggetto. Un vero mappatore relazionale di oggetti tipo SQLAlchemy che conserva i valori di attributo nelle sue proprie colonne sarebbe molto pi&ugrave; utile per grandi quantit&agrave; di dati.
+Questo esempio usa <a href='pickle.html'>pickle</a> per salvare un oggetto verso una stringa che possa essere conservata nel database. Questa tecnica &egrave; utile per conservare oggetti arbitrari, ma non consente una interrogazione basata sugli attributi dell'oggetto. Un vero mappatore relazionale di oggetti tipo SQLAlchemy che conserva i valori di attributo nelle sue proprie colonne sarebbe molto pi&ugrave; utile per grandi quantit&agrave; di dati.
 </testo_normale>
 <py_output>
 $ python sqlite3_custom_type.py 
@@ -1155,7 +1155,6 @@ def decrypt(s):
 
 
 with sqlite3.connect(db_filename) as conn:
-
     conn.create_function('encrypt', 1, encrypt)
     conn.create_function('decrypt', 1, decrypt)
     cursor = conn.cursor()
@@ -1649,36 +1648,7 @@ ERRORE: SQLite objects created in a thread can only be used in that same thread.
 http://docs.python.org/library/sqlite3.html|sqlite3|La documentazione della libreria standard per questo modulo
 http://www.python.org/dev/peps/pep-0249|PEP 249 - Specifiche DB API 2.0|Una interfaccia standard per moduli che forniscono l'accesso a database relazionali.
 http://www.sqlite.org/|SQLite|Il sito ufficiale della libreria SQLite.
-${baseurl}/pymotw-it/shelve.html|shelve|Convervazione chiave-valore per salvare oggetti arbitrari Python
+shelve.html|shelve|Convervazione chiave-valore per salvare oggetti arbitrari Python
 http://sqlalchemy.org/|SQLAlchemy|Un diffuso mappatore relazionale di oggetti che supporta tra i molti altri database relazionali anche SQLite.
 </vedi_anche>
-
-<!--
-http://it.wikipedia.org/wiki/Namespace
-<avvertimento>
-</avvertimento>
-<descrizione>
-</descrizione>
-<lista>http://www.oreillyschool.com/courses/python2/
-</lista>
-<lista_numerata>
-</lista_numerata>
-<note>
-</note>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<sottotitolo>
-</sottotitolo>
-<testo_normale>
-</testo_normale>
-<titolo_1>
-</titolo_1>
-<titolo_2>
-</titolo_2>
-<vedi_anche>
-</vedi_anche>
-
--->
 </documento_tradotto>

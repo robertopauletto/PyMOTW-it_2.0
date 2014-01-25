@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>servizi di stringa </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- # tag <titolo_1> titolo principale -->
@@ -16,7 +16,7 @@ Lavorare con i buffer di testo usando le API tipo file
 StringIO: 1.4, cStringIO: 1.5
 </descrizione>
 <testo_normale>
-La classe <strong>StringIO</strong> fornisce comodi strumenti per lavorare con del testo in memoria usando le API di file (read, write, ecc.). Ci sono due implementazioni distinte. Il modulo cStringIO è scritto in C per privilegiare la velocità, mentre il modulo StringIO è scritto in Python per privilegiare la portabilità. L'uso di cStringIO per costruire grandi stringhe può offrire un risparmio nelle prestazioni rispetto ad altre tecniche di concatenazione di stringhe.
+La classe <strong>StringIO</strong> fornisce comodi strumenti per lavorare con del testo in memoria usando le API di file (read, write, ecc.). Ci sono due implementazioni distinte. Il modulo cStringIO Ã¨ scritto in C per privilegiare la velocitÃ , mentre il modulo StringIO Ã¨ scritto in Python per privilegiare la portabilitÃ . L'uso di cStringIO per costruire grandi stringhe puÃ² offrire un risparmio nelle prestazioni rispetto ad altre tecniche di concatenazione di stringhe.
 </testo_normale>
 <titolo_2>
 Esempio
@@ -48,13 +48,13 @@ input = StringIO('Valore iniziale per il buffer in lettura')
 print input.read()
 </py_code>
 <testo_normale>
-Questo esempio usa ${sbk}read()${ebk}, ma naturalmente sono disponibili anche i metodi ${sbk}readline()${ebk} e ${sbk}readlines()${ebk}. La classe StringIO fornisce anche un metodo seek() così che sia possibile spostarsi all'interno del buffer mentre si sta leggendo, la qual cosa può essere utile per risalire il buffer se si sta usando una qualche forma di algoritmo di parsing look-ahead.
+Questo esempio usa ${sbk}read()${ebk}, ma naturalmente sono disponibili anche i metodi ${sbk}readline()${ebk} e ${sbk}readlines()${ebk}. La classe StringIO fornisce anche un metodo seek() cosÃ¬ che sia possibile spostarsi all'interno del buffer mentre si sta leggendo, la qual cosa puÃ² essere utile per risalire il buffer se si sta usando una qualche forma di algoritmo di parsing look-ahead.
 </testo_normale>
 <testo_normale>
 Le applicazioni nel mondo reale di StringIO includono uno stack di una applicazione web dove le varie parti dello stack possono aggiungere testo alla risposta, oppure il testare il risultato generato da parti di un programma che tipicamente scrivono in un file.
 </testo_normale>
 <testo_normale>
-L'applicazione che stiamo realizzando al lavoro comprende una interfaccia allo shell scripting nella forma di parecchi programmi da riga comando. Alcuni di questi programmi sono responsabili del recupero di dati dal database e dello scarico sulla console (sia per mostrarlo all'utente, oppure affinchè il testo possa servire come input per un altro comando). I comandi condividono un insieme di plugin di formattazione per produrre una rappresentazione testuale di un oggetto in svariati modi (XML, sintassi bash, leggibili, ecc). Visto che i formattatori in genere scrivono sullo standard output, il test dei risulati risulterebbe un tantino complicato senza il modulo StringIO. L'uso di StringIO per intercettare l'output del formattatore fornisce un facile modo per raccogliere l'output in memoria per confrontarlo con i risultati che ci si aspetta.
+L'applicazione che stiamo realizzando al lavoro comprende una interfaccia allo shell scripting nella forma di parecchi programmi da riga comando. Alcuni di questi programmi sono responsabili del recupero di dati dal database e dello scarico sulla console (sia per mostrarlo all'utente, oppure affinchÃ¨ il testo possa servire come input per un altro comando). I comandi condividono un insieme di plugin di formattazione per produrre una rappresentazione testuale di un oggetto in svariati modi (XML, sintassi bash, leggibili, ecc). Visto che i formattatori in genere scrivono sullo standard output, il test dei risulati risulterebbe un tantino complicato senza il modulo StringIO. L'uso di StringIO per intercettare l'output del formattatore fornisce un facile modo per raccogliere l'output in memoria per confrontarlo con i risultati che ci si aspetta.
 </testo_normale>
 <vedi_anche>
 http://docs.python.org/lib/module-StringIO.html|StringIO|La documentazione standard della libreria per questo modulo

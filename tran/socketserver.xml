@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>protocolli internet e supporto </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- tag <testo_normale> contiene il testo normale dell'articolo -->
@@ -16,16 +16,16 @@ Creazione di server di rete
 1.4
 </descrizione>
 <testo_normale>
-Il modulo <strong>SocketServer</strong> è una infrastruttura per la creazione di server di rete. Definisce le classi per la gestione di richieste di rete sincrone (il gestore della richiesta del server si blocca fino al completamento di una richiesta) su TCP, UDP, flussi Unix e <a href='http://it.wikipedia.org/wiki/Pacchetto_(reti)'>datagrammi</a> Unix. Può anche fornire classi mix-in per convertire facilmente i server all'uso di un thread o processo separato per ogni richiesta, a seconda di quello che è più appropriato per le proprie esigenze.
+Il modulo <strong>SocketServer</strong> Ã¨ una infrastruttura per la creazione di server di rete. Definisce le classi per la gestione di richieste di rete sincrone (il gestore della richiesta del server si blocca fino al completamento di una richiesta) su TCP, UDP, flussi Unix e <a href='http://it.wikipedia.org/wiki/Pacchetto_(reti)'>datagrammi</a> Unix. PuÃ² anche fornire classi mix-in per convertire facilmente i server all'uso di un thread o processo separato per ogni richiesta, a seconda di quello che Ã¨ piÃ¹ appropriato per le proprie esigenze.
 </testo_normale>
 <testo_normale>
-La responsabilità per l'elaborazione di una richiesta viene condivisa da una classe per il server e da un classe per la gestione della richiesta. Il server si occupa degli aspetti della comunicazione (stare in ascolto su di un socket, accettare connessioni, ecc.) ed il gestore di richiesta  si occupa degli aspetti del "protocollo" (interpretazione dei dati in ricezione, elaborazione, re-invio dei dati al client). Questa divisione di responsabilità comporta che in molti casi si può semplicemente usare una delle classi server esistenti senza ulteriori modifiche, e fornire una classe per la gestione della richiesta che possa lavorare con il proprio protocollo.
+La responsabilitÃ  per l'elaborazione di una richiesta viene condivisa da una classe per il server e da un classe per la gestione della richiesta. Il server si occupa degli aspetti della comunicazione (stare in ascolto su di un socket, accettare connessioni, ecc.) ed il gestore di richiesta  si occupa degli aspetti del "protocollo" (interpretazione dei dati in ricezione, elaborazione, re-invio dei dati al client). Questa divisione di responsabilitÃ  comporta che in molti casi si puÃ² semplicemente usare una delle classi server esistenti senza ulteriori modifiche, e fornire una classe per la gestione della richiesta che possa lavorare con il proprio protocollo.
 </testo_normale>
 <titolo_2>
 Tipi di Server
 </titolo_2>
 <testo_normale>
-Ci sono cinque diverse classi server definite in <strong>SocketServer</strong>. <strong>BaseServer</strong> definisce l'API, e non è concepita per essere istanziata ed usata direttamente. <strong>TCPServer</strong> usa i socket TCP/IP per comunicare. <strong>UDPServer</strong> usa i socket datagramma. <strong>UnixStreamServer</strong> e <strong>UnixDatagramServer</strong> usano i socket domain di Unix sono sono disponibili solo su piattaforme Unix.
+Ci sono cinque diverse classi server definite in <strong>SocketServer</strong>. <strong>BaseServer</strong> definisce l'API, e non Ã¨ concepita per essere istanziata ed usata direttamente. <strong>TCPServer</strong> usa i socket TCP/IP per comunicare. <strong>UDPServer</strong> usa i socket datagramma. <strong>UnixStreamServer</strong> e <strong>UnixDatagramServer</strong> usano i socket domain di Unix sono sono disponibili solo su piattaforme Unix.
 </testo_normale>
 <titolo_2>
 Oggetti server
@@ -34,24 +34,24 @@ Oggetti server
 Per costruire un server, si passa un indirizzo al quale si ascoltano le richieste ed una <i>classe</i> (non una istanza) di un gestore di richiesta. Il formato dell'indirizzo dipende dal tipo di server e dalla famiglia di socket usati. Si faccia riferimento alla documentazione del modulo <a href='http://www.doughellmann.com/PyMOTW/socket/index.html#module-socket'>socket</a> per i dettagli.
 </testo_normale>
 <<testo_normale>
-Una volta l'oggetto server è stato istanziato, si usa ${sbk}handle_request()${ebk} oppure ${sbk}serve_forever()${ebk} per elaborare le richieste. Il metodo ${sbk}serve_forever()${ebk} chiama semplicemente  ${sbk}handle_request()${ebk} in un ciclo infinito, quindi se si vuole intergrare il server con un altro ciclo di eventi oppure usare select() per monitorare socket diversi per server diversi so potrebbe chiamare ${sbk}handle_request()${ebk} personalmente. Si veda l'esempio qui sotto per maggiori dettagli.
+Una volta l'oggetto server Ã¨ stato istanziato, si usa ${sbk}handle_request()${ebk} oppure ${sbk}serve_forever()${ebk} per elaborare le richieste. Il metodo ${sbk}serve_forever()${ebk} chiama semplicemente  ${sbk}handle_request()${ebk} in un ciclo infinito, quindi se si vuole intergrare il server con un altro ciclo di eventi oppure usare select() per monitorare socket diversi per server diversi so potrebbe chiamare ${sbk}handle_request()${ebk} personalmente. Si veda l'esempio qui sotto per maggiori dettagli.
 </testo_normale>
 <titolo_2>
 Implementare un server
 </titolo_2>
 <testo_normale>
-Se si sta creando un server, in genere è possibile riutilizzare una delle classi esistenti e fornire semplicemnte un classe per la gestione della richiesta personalizzata. Se questo non fa al caso proprio, ci sono diversi metodi di <strong>BaseServer</strong> a disposizione per eseguire la riscrittura in una sotto classe:
+Se si sta creando un server, in genere Ã¨ possibile riutilizzare una delle classi esistenti e fornire semplicemnte un classe per la gestione della richiesta personalizzata. Se questo non fa al caso proprio, ci sono diversi metodi di <strong>BaseServer</strong> a disposizione per eseguire la riscrittura in una sotto classe:
 </testo_normale>
 <lista>
 ${sbk}verify_request(request, client_address)${ebk} - Restituisce True per elaborare la richiesta o False per ignorarla. Si potrebbe, ad esempio, rifiutare richieste provenienti da un ventaglio di indirizzi IP se si vuole bloccare l'accesso al server a client particolari.
-${sbk}process_request(request, client_address)${ebk} - In genere la semplice chiamata di ${sbk}finish_request()${ebk} svolge il lavoro necessario. Si può anche creare un thread o processo separato, come fanno le classi mix-in (vedere sotto).
+${sbk}process_request(request, client_address)${ebk} - In genere la semplice chiamata di ${sbk}finish_request()${ebk} svolge il lavoro necessario. Si puÃ² anche creare un thread o processo separato, come fanno le classi mix-in (vedere sotto).
 ${sbk}finish_request(request, client_address)${ebk} - Crea una istanza di un gestore di richiesta che usa la classe fornita al costruttore del server. Si chiama ${sbk}handle()${ebk} sul gestore di richiesta per elaborare la richiesta.
 </lista>
 <titolo_2>
 Gestori di richiesta
 </titolo_2>
 <testo_normale>
-Essi svolgono la maggior parte del lavoro di ricezione delle richieste in arrivo e decidono quale azione intraprendere. Il gestore è responsabile dell'implementazione del "protocollo" alla sommità del socket layer (ad esempio HTTP oppure XML-RPC). Il gestore di richiesta legge la richiesta dal canale dati in arrivo, lo elabora e invia la risposta. Ci sono 3 metodi disponibili per la riscrittura.
+Essi svolgono la maggior parte del lavoro di ricezione delle richieste in arrivo e decidono quale azione intraprendere. Il gestore Ã¨ responsabile dell'implementazione del "protocollo" alla sommitÃ  del socket layer (ad esempio HTTP oppure XML-RPC). Il gestore di richiesta legge la richiesta dal canale dati in arrivo, lo elabora e invia la risposta. Ci sono 3 metodi disponibili per la riscrittura.
 </testo_normale>
 <lista>
 ${sbk}setup()${ebk} - Prepara il gestore di richiesta la richiesta. Ad esempio in <strong>StreamRequestHandler</strong>, il metodo ${sbk}setup()${ebk} crea oggetti di tipo file per la lettura dal socket e per la scrittura verso il medesimo.
@@ -59,16 +59,16 @@ ${sbk}handle()${ebk} - Svolge l'effettivo lavoro per la richiesta. Analizza la r
 ${sbk}finish()${ebk} - Pulisce tutto quanto creato durante ${sbk}setup()${ebk}.
 </lista>
 <testo_normale>
-Nella maggior parte dei casi si può semplicemente fornire un metodo ${sbk}handle()${ebk}.
+Nella maggior parte dei casi si puÃ² semplicemente fornire un metodo ${sbk}handle()${ebk}.
 </testo_normale>
 <titolo_2>
 Esempio di Eco
 </titolo_2>
 <testo_normale>
-Si esamina una semplice coppia server/gestore di richiesta che accetta connessioni TCP e ritorna gli stessi dati inviati dal client. Il solo metodo che occorre fornire nel codice di esempio è ${sbk}EchoRequestHandler.handle()${ebk} , ma tutti i metodi sopra descritti sono riscritti per inserire delle chiamate a <a href=http://www.doughellmann.com/PyMOTW/logging/index.html#module-logging>logging</a> in modo che l'output del programma di esempio possa illustrare la sequenza delle chiamate fatte.
+Si esamina una semplice coppia server/gestore di richiesta che accetta connessioni TCP e ritorna gli stessi dati inviati dal client. Il solo metodo che occorre fornire nel codice di esempio Ã¨ ${sbk}EchoRequestHandler.handle()${ebk} , ma tutti i metodi sopra descritti sono riscritti per inserire delle chiamate a <a href=http://www.doughellmann.com/PyMOTW/logging/index.html#module-logging>logging</a> in modo che l'output del programma di esempio possa illustrare la sequenza delle chiamate fatte.
 </testo_normale>
 <testo_normale>
-La sola cosa rimasta da fare è quella di avere un semplice programma che crea il server, lo esegue in un thread, e si connette ad esso per illustrare quali metodi sono stati chiamati mentre i dati sono restituiti
+La sola cosa rimasta da fare Ã¨ quella di avere un semplice programma che crea il server, lo esegue in un thread, e si connette ad esso per illustrare quali metodi sono stati chiamati mentre i dati sono restituiti
 </testo_normale>
 <py_code>
 import logging
@@ -154,7 +154,7 @@ if __name__ == '__main__':
 
     address = ('localhost', 0) # si ottiene una porta dal kernel 
     server = EchoServer(address, EchoRequestHandler)
-    ip, port = server.server_address # si trova quale porta si è ottenuto
+    ip, port = server.server_address # si trova quale porta si Ã¨ ottenuto
 
     t = threading.Thread(target=server.serve_forever)
     t.setDaemon(True) # non rimane appeso in uscita
@@ -215,7 +215,7 @@ EchoServer: handle_request
 client: done
 </py_output>
 <testo_normale>
-Il numero della porta usata cambierà ogni volta che il programma viene eseguito, visto che il kernel alloca automaticamente una porta disponibile. Se si vuole che il server sia in ascolto su di una specifica porta ogni volta che si esegue, allora si fornisce il numero di porta desiderato nella tupla dell'indirizzo invece che 0.
+Il numero della porta usata cambierÃ  ogni volta che il programma viene eseguito, visto che il kernel alloca automaticamente una porta disponibile. Se si vuole che il server sia in ascolto su di una specifica porta ogni volta che si esegue, allora si fornisce il numero di porta desiderato nella tupla dell'indirizzo invece che 0.
 </testo_normale>
 <testo_normale>
 Ecco una versione semplificata dello stesso programma, senza <a href=http://www.doughellmann.com/PyMOTW/logging/index.html#module-logging>logging</a>:
@@ -237,7 +237,7 @@ if __name__ == '__main__':
 
     address = ('localhost', 0) # si ottiene una porta dal kernel 
     server = SocketServer.TCPServer(address, EchoRequestHandler)
-    ip, port = server.server_address # si trova quale porta si è ottenuto
+    ip, port = server.server_address # si trova quale porta si Ã¨ ottenuto
 
     t = threading.Thread(target=server.serve_forever)
     t.setDaemon(True) # non rimane appeso in uscita
@@ -272,7 +272,7 @@ Ricevuti: "Hello, world"
 Threading e Forking
 </titolo_2>
 <testo_normale>
-Aggiungere il supporto al threading ed al forking è tanto semplice quanto l'includere l'appropriato mix-in nella gerarchia di classe per il server. Le classi mix-in riscrivono ${sbk}process_request()${ebk} per iniziare un nuovo thread o processo quando una richiesta è pronta per essere gestita, ed il lavoro viene effettuato nel nuovo figlio.
+Aggiungere il supporto al threading ed al forking Ã¨ tanto semplice quanto l'includere l'appropriato mix-in nella gerarchia di classe per il server. Le classi mix-in riscrivono ${sbk}process_request()${ebk} per iniziare un nuovo thread o processo quando una richiesta Ã¨ pronta per essere gestita, ed il lavoro viene effettuato nel nuovo figlio.
 </testo_normale>
 <testo_normale>
 Per i thread si usa <strong>ThreadingMixIn</strong>:
@@ -300,7 +300,7 @@ if __name__ == '__main__':
 
     address = ('localhost', 0) # si ottiene una porta dal kernel 
     server = ThreadedEchoServer(address, ThreadedEchoRequestHandler)
-    ip, port = server.server_address # si trova quale porta si è ottenuto
+    ip, port = server.server_address # si trova quale porta si Ã¨ ottenuto
 
     t = threading.Thread(target=server.serve_forever)
     t.setDaemon(True) # non rimane appeso in uscita
@@ -360,7 +360,7 @@ if __name__ == '__main__':
 
     address = ('localhost', 0) # si ottiene una porta dal kernel 
     server = ForkingEchoServer(address, ForkingEchoRequestHandler)
-    ip, port = server.server_address # si trova quale porta si è ottenuto
+    ip, port = server.server_address # si trova quale porta si Ã¨ ottenuto
 
     t = threading.Thread(target=server.serve_forever)
     t.setDaemon(True) # non rimane appeso in uscita
@@ -400,32 +400,4 @@ http://docs.python.org/lib/module-SocketServer.html|SocketServer|La documentazio
 http://www.doughellmann.com/PyMOTW/asyncore/index.html#module-asyncore|asyncore|Si usa asyncore per creare server asincroni che non si bloccano durante l'elaborazione di una richiesta.
 http://www.doughellmann.com/PyMOTW/SimpleXMLRPCServer/index.html#module-SimpleXMLRPCServer|SimpleXMLRPCServer|Server XML-RPC costruito usando SocketServer.
 </vedi_anche>
-
-<!--
-<avvertimento>
-</avvertimento>
-<descrizione>
-</descrizione>
-<lista>
-</lista>
-<lista_numerata>
-</lista_numerata>
-<note>
-</note>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<sottotitolo>
-</sottotitolo>
-<testo_normale>
-</testo_normale>
-<titolo_1>
-</titolo_1>
-<titolo_2>
-</titolo_2>
-<vedi_anche>
-</vedi_anche>
-
--->
 </documento_tradotto>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>moduli numerici e matematici </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- tag <testo_normale> contiene il testo normale dell'articolo -->
@@ -22,7 +22,7 @@ La classe <strong>Fraction</strong> implementa le operazioni numeriche per i num
 Creare istanze di frazioni
 </titolo_2>
 <testo_normale>
-Come per <a href='http://robyp.freesitespace.net/pymotw-it/decimal.html'><strong>decimal</strong></a>, i nuovi valori possono essere creati in diversi modi. Uno facile è quello di crearli da valori di numeratore e denominatore separati:
+Come per <a href='decimal.html'><strong>decimal</strong></a>, i nuovi valori possono essere creati in diversi modi. Uno facile Ã¨ quello di crearli da valori di numeratore e denominatore separati:
 </testo_normale>
 <py_code>
 import fractions
@@ -32,7 +32,7 @@ for n, d in [ (1, 2), (2, 4), (3, 6) ]:
     print '%s/%s = %s' % (n, d, f)
 </py_code>
 <testo_normale>
-Il comune denominatore più basso viene mantenuto mentre vengono calcolati i nuovi valori.
+Il comune denominatore piÃ¹ basso viene mantenuto mentre vengono calcolati i nuovi valori.
 </testo_normale>
 <py_output>
 $ python fractions_create_integers.py
@@ -41,7 +41,7 @@ $ python fractions_create_integers.py
 3/6 = 1/2
 </py_output>
 <testo_normale>
-Un altro modo per creare una frazione è usare una rappresentazione stringa di ${sbk}&lt;numeratore&gt; / &lt;denominatore&gt;${ebk}
+Un altro modo per creare una frazione Ã¨ usare una rappresentazione stringa di ${sbk}&lt;numeratore&gt; / &lt;denominatore&gt;${ebk}
 </testo_normale>
 <py_code>
 import fractions
@@ -57,7 +57,7 @@ $ python fractions_create_strings.py
 3/6 = 1/2
 </py_output>
 <testo_normale>
-Le stringhe possono anche usare la più comune notazione decimale o a virgola mobile di ${sbk}[&lt;cifre&gt;].[&lt;cifre&gt;]${ebk}.
+Le stringhe possono anche usare la piÃ¹ comune notazione decimale o a virgola mobile di ${sbk}[&lt;cifre&gt;].[&lt;cifre&gt;]${ebk}.
 </testo_normale>
 <py_code>
 import fractions
@@ -73,7 +73,7 @@ $ python fractions_create_strings_floats.py
 2.0 = 2
 </py_output>
 <testo_normale>
-Ci sono metodi di classe per creare istanze di Fraction direttamente da altre rappresentazioni di valori razionali tipo float o <a href='http://robyp.freesitespace.net/pymotw-it/decimal.html'><strong>decimal</strong></a>.
+Ci sono metodi di classe per creare istanze di Fraction direttamente da altre rappresentazioni di valori razionali tipo float o <a href='decimal.html'><strong>decimal</strong></a>.
 </testo_normale>
 <py_code>
 import fractions
@@ -92,7 +92,7 @@ $ python fractions_from_float.py
 2.0 = 2
 </py_output>
 <testo_normale>
-L'uso di rappresentazioni <a href='http://robyp.freesitespace.net/pymotw-it/decimal.html'><strong>decimali</strong></a> dei valori fornisce il risultato che ci si aspetta.
+L'uso di rappresentazioni <a href='decimal.html'><strong>decimali</strong></a> dei valori fornisce il risultato che ci si aspetta.
 </testo_normale>
 <py_code>
 import decimal
@@ -140,7 +140,7 @@ $ python fractions_arithmetic.py
 Approssimazione dei valori
 </titolo_2>
 <testo_normale>
-Una utile caratteristica di <strong>Fraction</strong> è la capacità di convertire un numero a virgola mobile in un valore razionale approssimato limitando la dimensione del denominatore.
+Una utile caratteristica di <strong>Fraction</strong> Ã¨ la capacitÃ  di convertire un numero a virgola mobile in un valore razionale approssimato limitando la dimensione del denominatore.
 </testo_normale>
 <py_code>
 import fractions
@@ -182,20 +182,7 @@ Nessun limite = 314159265359/100000000000
 </py_output>
 <vedi_anche>
 http://docs.python.org/library/fractions.html|fractions|La documentazione della libreria standard per questo modulo.
-http://robyp.freesitespace.net/pymotw-it/decimal.html|decimal|Il modulo decimal fornisce una API per matematica a virgola fissa e mobile.
+decimal.html|decimal|Il modulo decimal fornisce una API per matematica a virgola fissa e mobile.
 http://docs.python.org/library/fractions.html|numbers|Classi base astratte numeriche.
 </vedi_anche>
-
-<!--
-<titolo_2>
-</titolo_2>
-<testo_normale>
-</testo_normale>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<vedi_anche>
-</vedi_anche>
--->
 </documento_tradotto>

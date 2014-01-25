@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>tipi di dato </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- # tag <titolo_1> titolo principale -->
@@ -17,13 +17,13 @@ Schedulatore di eventi per uso generale
 1.4
 </descrizione>
 <testo_normale>
-Il modulo <strong>sched</strong> implementa uno schedulatore di eventi per eseguire dei compiti ad un tempo specificato. La classe <i>scheduler</i> usa una funzione <i>time</i> per acquisire l'ora attuale, ed una funzione <i>delay</i> per attendere uno specifico periodo di tempo. Le reali unità di tempo non sono importanti, cosa che rende l'interfaccia sufficientemente flessibile per essere usata per diversi scopi.
+Il modulo <strong>sched</strong> implementa uno schedulatore di eventi per eseguire dei compiti ad un tempo specificato. La classe <i>scheduler</i> usa una funzione <i>time</i> per acquisire l'ora attuale, ed una funzione <i>delay</i> per attendere uno specifico periodo di tempo. Le reali unitÃ  di tempo non sono importanti, cosa che rende l'interfaccia sufficientemente flessibile per essere usata per diversi scopi.
 </testo_normale>
 <testo_normale>
-La funzione <i>time</i> viene chiamata senza parametri, e dovrebbe restituire un numero che corrisponde all'ora attuale. La funzione <i>delay</i> viene chiamata con un singolo intero come parametro, usando la stessa scala della funzione time, e dovrebbe attendere le unità temporali rappresentate da quel parametro prima di ritornare. Ad esempio le funzioni ${sbk}time.time()${ebk} e ${sbk}time.sleep()${ebk} soddisfano questi requisiti.
+La funzione <i>time</i> viene chiamata senza parametri, e dovrebbe restituire un numero che corrisponde all'ora attuale. La funzione <i>delay</i> viene chiamata con un singolo intero come parametro, usando la stessa scala della funzione time, e dovrebbe attendere le unitÃ  temporali rappresentate da quel parametro prima di ritornare. Ad esempio le funzioni ${sbk}time.time()${ebk} e ${sbk}time.sleep()${ebk} soddisfano questi requisiti.
 </testo_normale>
 <testo_normale>
-Per supportare le applicazioni multi-threaded, la funzione delay viene chiamata con parametro 0 dopo che ogni evento viene generato, per assicurare che gli altri thread abbiano anch'essi la possibilità di venire eseguiti.    
+Per supportare le applicazioni multi-threaded, la funzione delay viene chiamata con parametro 0 dopo che ogni evento viene generato, per assicurare che gli altri thread abbiano anch'essi la possibilitÃ  di venire eseguiti.    
 </testo_normale>
 <titolo_2>
 Eseguire Eventi con Differimento
@@ -33,12 +33,12 @@ Gli eventi possono essere schedulati per essere eseguiti dopo un differimento, o
 </testo_normale>
 <lista>
     Un numero che rappresenta il differimento
-    Un valore di priorità
+    Un valore di prioritÃ 
     La funzione da chiamare
     Una tuple di parametri per la funzione
 </lista>
 <testo_normale>
-Questo esempio schedula due eventi diversi da eseguire rispettivamente dopo 2 e 3 secondi. Quando è l'ora di eseguire l'evento, viene chiamata ${sbk}print_event()${ebk} che stampa l'ora attuale ed il parametro name passato all'evento
+Questo esempio schedula due eventi diversi da eseguire rispettivamente dopo 2 e 3 secondi. Quando Ã¨ l'ora di eseguire l'evento, viene chiamata ${sbk}print_event()${ebk} che stampa l'ora attuale ed il parametro name passato all'evento
 </testo_normale>
 <py_code>
 import sched
@@ -56,7 +56,7 @@ scheduler.enter(3, 1, print_event, ('secondo',))
 scheduler.run()
 </py_code>
 <testo_normale>
-L'output è qualcosa di simile a:
+L'output Ã¨ qualcosa di simile a:
 </testo_normale>
 <py_output>
 $ python sched_basic.py
@@ -65,13 +65,13 @@ EVENTO: 1253463106.94 primo
 EVENTO: 1253463107.94 secondo
 </py_output>
 <testo_normale>
-L'orario stampato per il primo evento è due secondi dopo la partenza, e l'orario del secondo evento è 3 secondi dopo la partenza.
+L'orario stampato per il primo evento Ã¨ due secondi dopo la partenza, e l'orario del secondo evento Ã¨ 3 secondi dopo la partenza.
 </testo_normale>
 <titolo_2>
 Eventi Sovrapposti    
 </titolo_2>
 <testo_normale>
-La chiamata a ${sbk}run()${ebk} blocca fino a che tutti gli eventi sono stati elaborati. Ogni evento viene eseguito nello stesso thread, in modo che se un evento necessita di un tempo di esecuzione maggiore rispetto a quello del differimento tra gli eventi, essi saranno sovrapposti. La sovrapposizione viene risolta posponendo l'evento che è più avanti nel tempo. Nessun evento viene perso, ma alcuni eventi potrebbero essere chiamati più tardi del previsto. Nel prossimo esempio ${sbk}long_event()${ebk} contiene una istruzione di <i>sleep</i> ma il ritardo potrebbe essere facilmente determinato da un un lungo calcolo o da un blocco su di una operazione di I/O.
+La chiamata a ${sbk}run()${ebk} blocca fino a che tutti gli eventi sono stati elaborati. Ogni evento viene eseguito nello stesso thread, in modo che se un evento necessita di un tempo di esecuzione maggiore rispetto a quello del differimento tra gli eventi, essi saranno sovrapposti. La sovrapposizione viene risolta posponendo l'evento che Ã¨ piÃ¹ avanti nel tempo. Nessun evento viene perso, ma alcuni eventi potrebbero essere chiamati piÃ¹ tardi del previsto. Nel prossimo esempio ${sbk}long_event()${ebk} contiene una istruzione di <i>sleep</i> ma il ritardo potrebbe essere facilmente determinato da un un lungo calcolo o da un blocco su di una operazione di I/O.
 </testo_normale>
 <py_code>
 import sched
@@ -91,7 +91,7 @@ scheduler.enter(3, 1, long_event, ('secondo',))
 scheduler.run()
 </py_code>
 <testo_normale>
-Il risultato è che il secondo evento viene eseguito immediatamente dopo che finisce il primo, visto che per il primo evento ci è voluto abbastanza tempo per spingere l'orario dopo l'orario di partenza desiderato per il secondo evento.
+Il risultato Ã¨ che il secondo evento viene eseguito immediatamente dopo che finisce il primo, visto che per il primo evento ci Ã¨ voluto abbastanza tempo per spingere l'orario dopo l'orario di partenza desiderato per il secondo evento.
 </testo_normale>
 <py_output>
 $ python sched_overlap.py
@@ -102,10 +102,10 @@ INIZIO EVENTO : 1255906385.71 secondo
 FINE EVENTO: 1255906387.71 secondo
 </py_output>
 <titolo_2>
-Priorità degli Eventi    
+PrioritÃ  degli Eventi    
 </titolo_2>
 <testo_normale>
-Se più eventi vengono schedulati nello stesso tempo, i loro valori di priorità vengono usati per determinare l'ordine nel quale essi saranno eseguiti
+Se piÃ¹ eventi vengono schedulati nello stesso tempo, i loro valori di prioritÃ  vengono usati per determinare l'ordine nel quale essi saranno eseguiti
 </testo_normale>
 <py_code>
 import sched
@@ -124,7 +124,7 @@ scheduler.enterabs(now+2, 1, print_event, ('secondo',))
 scheduler.run()
 </py_code>
 <testo_normale>
-Per essere sicuri che gli eventi siano schedulati allo stesso esatto orario, viene usato il metodo ${sbk}enterabs()${ebk} in luogo di ${sbk}enter()${ebk}. Il primo parametro per ${sbk}enterabs()${ebk} è l'orario in cui eseguire l'evento, invece che il periodo di tempo di differimento.
+Per essere sicuri che gli eventi siano schedulati allo stesso esatto orario, viene usato il metodo ${sbk}enterabs()${ebk} in luogo di ${sbk}enter()${ebk}. Il primo parametro per ${sbk}enterabs()${ebk} Ã¨ l'orario in cui eseguire l'evento, invece che il periodo di tempo di differimento.
 </testo_normale>
 <py_output>
 $ python sched_priority.py
@@ -136,7 +136,7 @@ EVENTO: 1253463116.08 primo
 Cancellare eventi    
 </titolo_2>
 <testo_normale>
-Sia ${sbk}enter()${ebk} che ${sbk}enterabs()${ebk} restituiscono un riferimento all'evento che può essere usato per cancellarlo successivamente. Visto il blocco di ${sbk}run()${ebk}, l'evento deve essere eliminato in un thread differente. Per questo esempio, un thread viene lanciato per eseguire lo scheduler, quindi il thread di esecuzione principale viene usato per cancellare l'evento.
+Sia ${sbk}enter()${ebk} che ${sbk}enterabs()${ebk} restituiscono un riferimento all'evento che puÃ² essere usato per cancellarlo successivamente. Visto il blocco di ${sbk}run()${ebk}, l'evento deve essere eliminato in un thread differente. Per questo esempio, un thread viene lanciato per eseguire lo scheduler, quindi il thread di esecuzione principale viene usato per cancellare l'evento.
 </testo_normale>
 <py_code>
 import sched
@@ -145,7 +145,7 @@ import time
 
 scheduler = sched.scheduler(time.time, time.sleep)
 
-# Imposta un valore globale perchè sia modificabile dai thread
+# Imposta un valore globale perchÃ¨ sia modificabile dai thread
 counter = 0
 
 def increment_counter(name):
@@ -172,7 +172,7 @@ print 'FINALE:', counter
     
 </py_code>
 <testo_normale>
-Sono stati schedulati due eventi, ma il primo successivamente è stato eliminato. Solo il secondo evento è stato eseguito, quindi la variabile <i>counter</i> viene incrementata una sola volta.
+Sono stati schedulati due eventi, ma il primo successivamente Ã¨ stato eliminato. Solo il secondo evento Ã¨ stato eseguito, quindi la variabile <i>counter</i> viene incrementata una sola volta.
 </testo_normale>
 <py_output>
 $ python sched_cancel.py
@@ -183,19 +183,6 @@ FINALE: 1
 </py_output>
 <vedi_anche>
 http://docs.python.org/lib/module-sched.html|sched|La documentazione della libreria standard per questo modulo.
-http://www.doughellmann.com/PyMOTW/time/index.html#module-time|time|Il modulo time
+time.html|time|Il modulo time
 </vedi_anche>
-
-<!--
-<titolo_2>
-</titolo_2>
-<testo_normale>
-</testo_normale>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<vedi_anche>
-</vedi_anche>
--->
 </documento_tradotto>

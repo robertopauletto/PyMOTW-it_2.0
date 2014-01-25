@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Utf-8"?>
+﻿<?xml version="1.0" encoding="Utf-8"?>
 <categoria>protocolli internet e supporto </categoria><documento_tradotto>
 <titolo_1>
 imaplib - Libreria per client IMAP4
@@ -857,8 +857,8 @@ http://tools.ietf.org/html/rfc2822.html|RFC 2822|Formato Internet dei Messaggi
 http://snipplr.com/view/7955/imap-backup-script/|IMAP Backup Script|Uno script per la copia di email da un server IMAP
 |rfc822|Il modulo rfc822 include un parser per <a href='http://tools.ietf.org/html/rfc822'>RFC 822</a> / <a href='http://tools.ietf.org/html/rfc2822'>RFC 2822</a>.
 http://docs.python.org/library/email.html|email|Il modulo <strong>email</strong> per elaborare messaggi email.
-http://robyp.x10hosting.com/pymotw-it/mailbox.html|mailbox|Parser per <em>mailbox</em> locale.
-http://robyp.x10hosting.com/pymotw-it/configParser.html|ConfigParser|Legge e scrive file di configurazione
+mailbox.html|mailbox|Parser per <em>mailbox</em> locale.
+configParser.html|ConfigParser|Legge e scrive file di configurazione
 http://imapclient.freshfoo.com/|IMAPClient|Un client ad alto livello per comunicare con server IMAP, scritto da Menno Smits.
 </vedi_anche>
 </documento_tradotto>

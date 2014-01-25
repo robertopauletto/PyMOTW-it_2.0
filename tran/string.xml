@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+ï»¿<?xml version="1.0" encoding="UTF-8"?>
 <categoria>servizi di stringa </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- # tag <titolo_1> titolo principale -->
@@ -16,13 +16,13 @@ Contiene costanti e classi per lavorare con il testo
 2.5
 </descrizione>
 <testo_normale>
-Il modulo string è presente fin dalle prime versioni di Python. Nella versione 2.0 molte delle funzioni precedentemente implementate solo nel modulo sono state spostate come metodi degli oggetti stringa. Sono ancora disponibili le versioni per compatibilità di queste funzioni, ma il loro uso è deprecato ed esse verranno abbandonate in Python 3.0. Il modulo string contiene comunque parecchie costanti e classi  utili per lavorare con oggetti stringa ed unicode e questa discussione si concentrerà su di essi.
+Il modulo string Ã¨ presente fin dalle prime versioni di Python. Nella versione 2.0 molte delle funzioni precedentemente implementate solo nel modulo sono state spostate come metodi degli oggetti stringa. Sono ancora disponibili le versioni per compatibilitÃ  di queste funzioni, ma il loro uso Ã¨ deprecato ed esse verranno abbandonate in Python 3.0. Il modulo string contiene comunque parecchie costanti e classi  utili per lavorare con oggetti stringa ed unicode e questa discussione si concentrerÃ  su di essi.
 </testo_normale>
 <titolo_2>
 Costanti
 </titolo_2>
 <testo_normale>
-Le costanti nel modulo stringa possono essere usate per specificare categorie di caratteri come ${sbk}ascii_letters${ebk} e ${sbk}digits${ebk}. Alcune delle costanti dipendono dalla localizzazione, come ${sbk}lowercase${ebk}, così che i valori siano modificati per riflettere le impostazioni di lingua dell'utente. Altre tipo ${sbk}hexdigits${ebk} non subiscono mutamenti quando cambia la localizzazione.
+Le costanti nel modulo stringa possono essere usate per specificare categorie di caratteri come ${sbk}ascii_letters${ebk} e ${sbk}digits${ebk}. Alcune delle costanti dipendono dalla localizzazione, come ${sbk}lowercase${ebk}, cosÃ¬ che i valori siano modificati per riflettere le impostazioni di lingua dell'utente. Altre tipo ${sbk}hexdigits${ebk} non subiscono mutamenti quando cambia la localizzazione.
 </testo_normale>
 <py_code>
 import string
@@ -80,7 +80,7 @@ print s
 print string.capwords(s)
 </py_code>
 <testo_normale>
-Il risultato è identico a quello che si sarebbe ottenuto chiamando ${sbk}split()${ebk}, trasformando la prima lettera di ogni parola in maiuscolo, quindi chiamando ${sbk}join()${ebk} per unire il risultato.
+Il risultato Ã¨ identico a quello che si sarebbe ottenuto chiamando ${sbk}split()${ebk}, trasformando la prima lettera di ogni parola in maiuscolo, quindi chiamando ${sbk}join()${ebk} per unire il risultato.
 </testo_normale>
 <py_output>
 $ python string_capwords.py
@@ -154,17 +154,17 @@ foo
 fooiable
 </py_output>
 <testo_normale>
-Una differenza chiave tra i template e l'interpolazione di stringa standard è che il tipo dei parametri non viene preso in considerazione. I valori sono convertiti in stringhe e le stringhe sono inserite. Non è disponibile alcuna opzione di formattazione. Ad esempio, non vi è modo di controllare il numero di cifre usato per rappresentare un valore a virgola mobile.
+Una differenza chiave tra i template e l'interpolazione di stringa standard Ã¨ che il tipo dei parametri non viene preso in considerazione. I valori sono convertiti in stringhe e le stringhe sono inserite. Non Ã¨ disponibile alcuna opzione di formattazione. Ad esempio, non vi Ã¨ modo di controllare il numero di cifre usato per rappresentare un valore a virgola mobile.
 </testo_normale>
 <testo_normale>
-Un vantaggio, comunque, è che usando il metodo ${sbk}safe_substitute()${ebk}, è possibile evitare le eccezioni se non tutti i valori richiesti dal template sono passati come parametri.
+Un vantaggio, comunque, Ã¨ che usando il metodo ${sbk}safe_substitute()${ebk}, Ã¨ possibile evitare le eccezioni se non tutti i valori richiesti dal template sono passati come parametri.
 </testo_normale>
 <py_code>
 import string
 
 values = { 'var':'foo' }
 
-t = string.Template("$var esiste ma $mancante non è fornito")
+t = string.Template("$var esiste ma $mancante non Ã¨ fornito")
 
 try:
     print 'TEMPLATE:', t.substitute(values)
@@ -179,13 +179,13 @@ Visto che non esiste alcun valore per 'mancante' nel dizionario dei valori, vien
 <py_output>
 $ python string_template_mancante.py
 TEMPLATE: ERROR: 'mancante'
-TEMPLATE: foo esiste ma $mancante non è fornito
+TEMPLATE: foo esiste ma $mancante non Ã¨ fornito
 </py_output>
 <titolo_2>
 Template avanzati
 </titolo_2>
 <testo_normale>
-Se la sintassi predefinita di string.Template non è di proprio gradimento, si può modificarne il comportamento correggendo i modelli dell'espressione regolare che usa per trovare i nomi delle variabili nel corpo del template. Un modo semplice per fare questo è modificare gli attributi di classe ${sbk}delimiter${ebk} e ${sbk}idpattern${ebk}.
+Se la sintassi predefinita di string.Template non Ã¨ di proprio gradimento, si puÃ² modificarne il comportamento correggendo i modelli dell'espressione regolare che usa per trovare i nomi delle variabili nel corpo del template. Un modo semplice per fare questo Ã¨ modificare gli attributi di classe ${sbk}delimiter${ebk} e ${sbk}idpattern${ebk}.
 </testo_normale>
 <py_code>
 import string
@@ -202,14 +202,14 @@ d = { 'with_underscore':'replaced',
 print t.safe_substitute(d)
 </py_code>
 <testo_normale>
-In questo esempio, gli identificativi delle variabili devono includere un carattere di sottolineatura da qualche parte nel mezzo, così che ${sbk}%notunderscored${ebk} non sia sostituito.
+In questo esempio, gli identificativi delle variabili devono includere un carattere di sottolineatura da qualche parte nel mezzo, cosÃ¬ che ${sbk}%notunderscored${ebk} non sia sostituito.
 </testo_normale>
 <py_output>
 $ python string_template_advanced.py
 % replaced %notunderscored
 </py_output>
 <testo_normale>
-Per modifiche più complesse si può sovrascrivere l'attributo pattern e definire una espressione regolare completamente nuova. Il modello fornito deve contenere 4 gruppi distinti per catturare il delimitatore da stampare letteralmente, il nome della variabile, una versione tra parentesi graffe del nome della variabile ed il delimitatore non valido.
+Per modifiche piÃ¹ complesse si puÃ² sovrascrivere l'attributo pattern e definire una espressione regolare completamente nuova. Il modello fornito deve contenere 4 gruppi distinti per catturare il delimitatore da stampare letteralmente, il nome della variabile, una versione tra parentesi graffe del nome della variabile ed il delimitatore non valido.
 </testo_normale>
 <testo_normale>
 Diamo un'occhiata al modello predefinito:
@@ -221,7 +221,7 @@ t = string.Template('$var')
 print t.pattern.pattern
 </py_code>
 <testo_normale>
-Visto che $sbk t.pattern $ebk è una espressione regolare compilata, dobbiamo accedere al suo attributo pattern per vedere la stringa reale
+Visto che $sbk t.pattern $ebk Ã¨ una espressione regolare compilata, dobbiamo accedere al suo attributo pattern per vedere la stringa reale
 </testo_normale>
 <py_output>
 $ python string_template_defaultpattern.py
@@ -277,17 +277,7 @@ Per informazioni sulle funzioni deprecate spostate nelle classi string ed unicod
 </testo_normale>
 <vedi_anche>
 http://docs.python.org/lib/module-string.html|string|La documentazione standard della libreria per questo modulo
-http://www.python.org/dev/peps/pep-0292|PEP 202|Sostituzioni di stringa più semplici
+http://www.python.org/dev/peps/pep-0292|PEP 202|Sostituzioni di stringa piÃ¹ semplici
 http://www.doughellmann.com/PyMOTW/articles/text_processing.html#article-text-processing|Strumenti per l'elaborazione del testo|
 </vedi_anche>
-<!--
-<titolo_2>
-</titolo_2>
-<testo_normale>
-</testo_normale>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
--->
 </documento_tradotto>

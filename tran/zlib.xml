@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>compressione dati ed archiviazione </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- tag <testo_normale> contiene il testo normale dell'articolo -->
@@ -22,13 +22,13 @@ Il modulo <strong>zlib</strong> fornisce una interfaccia a basso livello a molte
 Lavorare con Dati in Memoria
 </titolo_2>
 <testo_normale>
-Il modo più semplice per lavorare con zlib richiede che tutti i dati da comprimere o decomprimere siano mantenuti in memoria, quindi si usa ${sbk}compress()${ebk} oppure ${sbk}decompress()${ebk}.
+Il modo piÃ¹ semplice per lavorare con zlib richiede che tutti i dati da comprimere o decomprimere siano mantenuti in memoria, quindi si usa ${sbk}compress()${ebk} oppure ${sbk}decompress()${ebk}.
 </testo_normale>
 <py_code>
 import zlib
 import binascii
 
-original_data = 'Questo è il testo originale.'
+original_data = 'Questo Ã¨ il testo originale.'
 print 'Originale    :', len(original_data), original_data
 
 compressed = zlib.compress(original_data)
@@ -39,17 +39,17 @@ print 'Decompresso  :', len(decompressed), decompressed
 </py_code>
 <py_output>
 $ python zlib_memory.py
-Originale    : 29 Questo è il testo originale.
+Originale    : 29 Questo Ã¨ il testo originale.
 Compresso    : 34 789c0b2c4d2d2ec95738bc42213347a104ccce2fca4ccfcc4bcc49d50300ae4e0b59
-Decompresso  : 29 Questo è il testo originale.
+Decompresso  : 29 Questo Ã¨ il testo originale.
 </py_output>
 <testo_normale>
-Si noti che, per testi brevi, la versione compressa può essere di dimensioni maggiori. Sebbene i risultati effettivi dipendano dai dati in input, per piccole porzioni di testo è interessante osservare il sovraccarico di compressione.
+Si noti che, per testi brevi, la versione compressa puÃ² essere di dimensioni maggiori. Sebbene i risultati effettivi dipendano dai dati in input, per piccole porzioni di testo Ã¨ interessante osservare il sovraccarico di compressione.
 </testo_normale>
 <py_code>
 import zlib
 
-original_data = 'Questo è il testo originale.'
+original_data = 'Questo Ã¨ il testo originale.'
 
 fmt = '%15s  %15s'
 print fmt % ('len(dati)', 'len(compressi)')
@@ -89,7 +89,7 @@ $ python zlib_lengths.py
 Lavorare con i Flussi
 </titolo_2>
 <testo_normale>
-L'approccio in-memoria presenta ovvii inconvenienti che lo rendono impraticabile per casi da usare nel mondo reale. L'alternativa è l'uso di oggetti <strong>Compress</strong> e <strong>Decompress</strong> per manipolare i flussi di dati, in modo che non occorra introdurre in memoria l'intero insieme di dati.
+L'approccio in-memoria presenta ovvii inconvenienti che lo rendono impraticabile per casi da usare nel mondo reale. L'alternativa Ã¨ l'uso di oggetti <strong>Compress</strong> e <strong>Decompress</strong> per manipolare i flussi di dati, in modo che non occorra introdurre in memoria l'intero insieme di dati.
 </testo_normale>
 <testo_normale>
 Il semplice server qui sotto risponde a delle richieste relative a nomi di file, scrivendone una versione compressa al socket usato per comunicare con il client. Ha una spezzettatura artificale sul posto per illustrare il comportamento di buffering che si verifica quando i dati passati a ${sbk}compress()${ebk} o ${sbk}decompress()${ebk} non risultano in un blocco completo di dati compressi o decompressi in uscita.
@@ -288,7 +288,7 @@ Client: la risposta corrisponde al contenuto del file: True
 Flussi con Contenuto Misto
 </titolo_2>
 <testo_normale>
-La classe Decompress restituita da ${sbk}decompressobj()${ebk} può essere anche usata in situazioni dove i dati compressi e non compressi sono mescolati assieme. Dopo la decompressione di tutti i dati, l'attributo <em>usused_data</em>  contiene tutti i dati che non sono stati usati.
+La classe Decompress restituita da ${sbk}decompressobj()${ebk} puÃ² essere anche usata in situazioni dove i dati compressi e non compressi sono mescolati assieme. Dopo la decompressione di tutti i dati, l'attributo <em>usused_data</em>  contiene tutti i dati che non sono stati usati.
 </testo_normale>
 <py_code>
 import zlib
@@ -312,10 +312,10 @@ Dati inutilizzati che corrispondono a lorem : True
 Checksum    
 </titolo_2>
 <testo_normale>
-Oltre alle funzioni di compressione e decompressione, zlib comprende due funzioni per calcolare i checksum dei dati, ${sbk}adler32()${ebk} e ${sbk}crc32()${ebk}. Nessuno dei due checksum può etichettarsi come crittograficamente sicuro, e sono intesi solamente per l'uso in fase di verifica dell'integrità dei dati.
+Oltre alle funzioni di compressione e decompressione, zlib comprende due funzioni per calcolare i checksum dei dati, ${sbk}adler32()${ebk} e ${sbk}crc32()${ebk}. Nessuno dei due checksum puÃ² etichettarsi come crittograficamente sicuro, e sono intesi solamente per l'uso in fase di verifica dell'integritÃ  dei dati.
 </testo_normale>
 <testo_normale>
-Entrambe le funzioni richiedono gli stessi parametri, una stringa di dati ed un valore opzionale da usarsi come punto di partenza per il checksum. Esse restituiscono un valore intero con segno a 32-bit che può anche essere ripassato in seguito a chiamate successive, come nuovo parametro di valore di partenza per produrre un cheksum <em>in esecuzione</em>
+Entrambe le funzioni richiedono gli stessi parametri, una stringa di dati ed un valore opzionale da usarsi come punto di partenza per il checksum. Esse restituiscono un valore intero con segno a 32-bit che puÃ² anche essere ripassato in seguito a chiamate successive, come nuovo parametro di valore di partenza per produrre un cheksum <em>in esecuzione</em>
 </testo_normale>
 <py_code>
 import zlib
@@ -338,7 +338,7 @@ CRC-32 :   -759833719
        :   1579823464
 </py_output>
 <testo_normale>
-L'algoritmo Adler32 è ritenuto più veloce rispetto ad un CRC standard, ma ho scoperto che, in alcuni test, è più lento.
+L'algoritmo Adler32 Ã¨ ritenuto piÃ¹ veloce rispetto ad un CRC standard, ma ho scoperto che, in alcuni test, Ã¨ piÃ¹ lento.
 </testo_normale>
 <py_code>
 import timeit
@@ -384,20 +384,8 @@ CRC-32, in esecuzione:	9.22 usec/passaggio
 </py_output>
 <vedi_anche>
 http://docs.python.org/library/zlib.html|zlib|La documentazione della libreria standard per questo modulo.
-http://robyp.freesitespace.net/pymotw-it/gzip.html|gzip|Il modulo gzip comprende una interfaccia a più alto livello (basata su file) alla libreria zlib.
+gzip.html|gzip|Il modulo gzip comprende una interfaccia a piÃ¹ alto livello (basata su file) alla libreria zlib.
 http://www.zlib.net/|http://www.zlib.net/|La home page della libreria zlib.
-http://robyp.freesitespace.net/pymotw-it/bz2.html|bz2|Il modulo bz2 fornisce una interfaccia similare alla libreria di compressione bzip2.
+bz2.html|bz2|Il modulo bz2 fornisce una interfaccia similare alla libreria di compressione bzip2.
 </vedi_anche>
-<!--
-<titolo_2>
-</titolo_2>
-<testo_normale>
-</testo_normale>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<vedi_anche>
-</vedi_anche>
--->
 </documento_tradotto>

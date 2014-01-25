@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>accedere a file e directory </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- tag <testo_normale> contiene il testo normale dell'articolo -->
@@ -50,13 +50,13 @@ def make_example_dir(top):
     os.mkdir('dir1/dir_comune')
     os.mkdir('dir2/dir_comune')
 
-    mkfile('dir1/file_comune', 'questo file è lo stesso')
-    mkfile('dir2/file_comune', 'questo file è lo stesso')
+    mkfile('dir1/file_comune', 'questo file Ã¨ lo stesso')
+    mkfile('dir2/file_comune', 'questo file Ã¨ lo stesso')
 
     mkfile('dir1/non_lo_stesso')
     mkfile('dir2/non_lo_stesso')
 
-    mkfile('dir1/file_in_dir1', 'Questo è un file in dir1')
+    mkfile('dir1/file_in_dir1', 'Questo Ã¨ un file in dir1')
     os.mkdir('dir2/file_in_dir1')
     
     os.chdir(curdir)
@@ -133,7 +133,7 @@ print filecmp.cmp('esempio/dir1/file_solo_in_dir1',
 
 </py_code>
 <testo_normale>
-Nel modo predefinito, ${sbk}cmp()${ebk} accede solo alle informazioni disponibili da ${sbk}os.stat()${ebk}. Il parametro <em>shallow</em> dice a ${sbk}cmp()${ebk} se guardare anche al contenuto del file. Il modo predefinito è quello di effettuare un confronto shallow, senza guardare al contenuto del file. Notare che file della stessa dimensione creati allo stesso momento sembrano essere uguali se il loro contenuto non viene confrontato.
+Nel modo predefinito, ${sbk}cmp()${ebk} accede solo alle informazioni disponibili da ${sbk}os.stat()${ebk}. Il parametro <em>shallow</em> dice a ${sbk}cmp()${ebk} se guardare anche al contenuto del file. Il modo predefinito Ã¨ quello di effettuare un confronto shallow, senza guardare al contenuto del file. Notare che file della stessa dimensione creati allo stesso momento sembrano essere uguali se il loro contenuto non viene confrontato.
 </testo_normale>
 <py_output>
 $ python filecmp_cmp.py
@@ -142,7 +142,7 @@ non_lo_stesso: True False
 identici: True True    
 </py_output>
 <testo_normale>
-Per confrontare un insieme di file in due directory senza ricorsione si usa ${sbk}filecmp.cmpfiles()${ebk}. I parametri sono i nomi delle directory ed un elenco di file da verificare nelle due locazioni. L'elenco dei file comuni dovrebbe contenere solo nomi di file (le directory risultano sempre in una discrepanza) ed i file devono essere presenti nelle due locazioni. Il codice seguente mostra un semplice modo di costruire un elenco comune. Se si pensa di avere una formula più breve, la si invii nei commenti. Il confronto riceve anche il flag shallow, proprio come ${sbk}cmp()${ebk}.
+Per confrontare un insieme di file in due directory senza ricorsione si usa ${sbk}filecmp.cmpfiles()${ebk}. I parametri sono i nomi delle directory ed un elenco di file da verificare nelle due locazioni. L'elenco dei file comuni dovrebbe contenere solo nomi di file (le directory risultano sempre in una discrepanza) ed i file devono essere presenti nelle due locazioni. Il codice seguente mostra un semplice modo di costruire un elenco comune. Se si pensa di avere una formula piÃ¹ breve, la si invii nei commenti. Il confronto riceve anche il flag shallow, proprio come ${sbk}cmp()${ebk}.
 </testo_normale>
 <py_code>
 import filecmp
@@ -180,7 +180,7 @@ Errori: []
 Usare dircmp    
 </titolo_2>
 <testo_normale>
-Le funzioni descritte qui sopra sono indicate per confronti relativamente semplici, ma per un confronto ricorsivo di grandi alberi di directory o per una  analisi più completa, la classe dircmp è più utile. Nel suo uso con la casistica più semplice, si può stampare un rapporto confrontando due directory con il metodo ${sbk}report()${ebk}.
+Le funzioni descritte qui sopra sono indicate per confronti relativamente semplici, ma per un confronto ricorsivo di grandi alberi di directory o per una  analisi piÃ¹ completa, la classe dircmp Ã¨ piÃ¹ utile. Nel suo uso con la casistica piÃ¹ semplice, si puÃ² stampare un rapporto confrontando due directory con il metodo ${sbk}report()${ebk}.
 </testo_normale>
 <py_code>
 import filecmp
@@ -188,7 +188,7 @@ import filecmp
 filecmp.dircmp('esempio/dir1', 'esempio/dir2').report()
 </py_code>
 <testo_normale>
-Il risultato è un rapporto con testo semplice che mostra i risultati per il contenuto delle directory fornite, senza ricorsione in questo caso, il file "non_lo_stesso" è ritenuto essere uguale poichè i contenuti non vengono confrontati. Non sembra esserci il modo di far sì che dircmp confronti i contenuti dei file come riesce a fare cmp().    
+Il risultato Ã¨ un rapporto con testo semplice che mostra i risultati per il contenuto delle directory fornite, senza ricorsione in questo caso, il file "non_lo_stesso" Ã¨ ritenuto essere uguale poichÃ¨ i contenuti non vengono confrontati. Non sembra esserci il modo di far sÃ¬ che dircmp confronti i contenuti dei file come riesce a fare cmp().    
 </testo_normale>
 <py_output>
 python filecmp_dircmp_report.py 
@@ -309,7 +309,7 @@ print 'Funny      :', dc.common_funny
 </py_code>
 <testo_normale>
 $ python filecmp_dircmp_common.py
-Nei dati di esempio l'elemento chiamato "file_in_dir1" è un file in una directory ed una sottodirectory in un altra; quindi viene messo nella lista "funny".    
+Nei dati di esempio l'elemento chiamato "file_in_dir1" Ã¨ un file in una directory ed una sottodirectory in un altra; quindi viene messo nella lista "funny".    
 </testo_normale>
 <py_output>
 Comuni     : ['file_comune', 'non_lo_stesso', 'dir_comune', 'file_in_dir1']
@@ -355,16 +355,4 @@ Sottodirectory:
 <vedi_anche>
 http://docs.python.org/library/filecmp.html|filecmp|La documentazione della libreria standard per questo modulo.
 </vedi_anche>
-<!--
-<titolo_2>
-</titolo_2>
-<testo_normale>
-</testo_normale>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<vedi_anche>
-</vedi_anche>
--->
 </documento_tradotto>

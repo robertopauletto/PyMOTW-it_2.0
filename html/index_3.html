@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <!-- Custom styles for this template -->
     <link href="css/offcanvas.css" rel="stylesheet">
-
+    <link href="css/my.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -33,11 +33,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">PyMOTW-it</a>
+            <a class="navbar-brand" href="#"><span style='color: green;'>PyM</span><span style='color: white;'>OTW</span><span style='color: red'>-it</span></a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="index.html">Home</a></li>
+                <li class="active"><a href="indice_alfabetico.html">Indice Moduli</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -70,79 +71,11 @@
                 <div class="row">
                 
                     <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>bisects</h2>
-                        <p><strong>Mantenere le liste ordinate</strong></p>
-                        <p>Mantiene una lista ordinata senza dover chiamare sort ogniqualvolta un elemento venga aggiunto alla lista.</p>
-                        <p><a class="btn btn-default" href="bisects.html">Leggi &raquo;</a></p>
+                        <h2>imp</h2>
+                        <p><strong>Interfaccia al meccanismo di importazione modulo.</strong></p>
+                        <p>Espone l'implementazione dell'istruzione Python import.</p>
+                        <p><a class="btn btn-default" href="imp.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>shlex</h2>
-                        <p><strong>Analisi lessicale delle sintassi tipo shell</strong></p>
-                        <p>Analisi lessicale delle sintassi tipo shell.</p>
-                        <p><a class="btn btn-default" href="shlex.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>fractions</h2>
-                        <p><strong>Numeri razionali</strong></p>
-                        <p>Implementa una classe per lavorare coi numeri razionali</p>
-                        <p><a class="btn btn-default" href="fractions.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                </div><!--/row-->
-            
-                <div class="row">
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>doctest</h2>
-                        <p><strong>Test attraverso la documentazione</strong></p>
-                        <p>Scrive test automatizzati come parte della documentazione di un modulo</p>
-                        <p><a class="btn btn-default" href="doctest.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>sched</h2>
-                        <p><strong>Schedulatore di eventi per uso generale</strong></p>
-                        <p>Schedulatore di eventi per uso generale</p>
-                        <p><a class="btn btn-default" href="sched.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>string</h2>
-                        <p><strong>Lavorare con il testo</strong></p>
-                        <p>Contiene costanti e classi per lavorare con il testo</p>
-                        <p><a class="btn btn-default" href="string.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                </div><!--/row-->
-            
-                <div class="row">
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>trace</h2>
-                        <p><strong>Segue le istruzioni Python mentre sono eseguite</strong></p>
-                        <p>Monitora quali istruzioni e funzioni sono eseguite mentre un programma &egrave; in esecuzione per produrre informazioni di <em>code coverage</em> del e grafici di chiamata</p>
-                        <p><a class="btn btn-default" href="trace.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>optparse</h2>
-                        <p><strong>Analizzatore di opzioni di riga di comando per rimpiazzare getopt</strong></p>
-                        <p>Analizzatore di opzioni di riga di comando per rimpiazzare <a href='http://robyp.x10hosting.com/pymotw-it/getopt.html'>getopt</a></p>
-                        <p><a class="btn btn-default" href="optparse.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>linecache</h2>
-                        <p><strong>Leggere con efficacia i file di testo</strong></p>
-                        <p></p>
-                        <p><a class="btn btn-default" href="linecache.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                </div><!--/row-->
-            
-                <div class="row">
                 
                     <div class="col-6 col-sm-6 col-lg-4">
                         <h2>inspect</h2>
@@ -152,17 +85,85 @@
                     </div><!--/span-->
                 
                     <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>zipfile</h2>
-                        <p><strong>Leggere e scrivere file di archivio ZIP</strong></p>
-                        <p>Leggere e scrivere file di archivio ZIP.</p>
-                        <p><a class="btn btn-default" href="zipfile.html">Leggi &raquo;</a></p>
+                        <h2>itertools</h2>
+                        <p><strong>Funzioni di iterazione per un looping efficace</strong></p>
+                        <p>Il modulo itertools comprende una serie di funzioni per lavorare con insiemi di dati iterabili (tipo sequenze).</p>
+                        <p><a class="btn btn-default" href="itertools.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                </div><!--/row-->
+            
+                <div class="row">
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>json</h2>
+                        <p><strong>Serializzatore di JavaScript Object Notation</strong></p>
+                        <p>Codifica oggetti Python come stringhe JSON, e decodifica stringhe JSON in oggetti Python</p>
+                        <p><a class="btn btn-default" href="json.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                     <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>textwrap</h2>
-                        <p><strong>Formatta paragrafi di testo</strong></p>
-                        <p>Formatta il testo sistemando le interruzioni di riga in un paragrafo</p>
-                        <p><a class="btn btn-default" href="textwrap.html">Leggi &raquo;</a></p>
+                        <h2>linecache</h2>
+                        <p><strong>Leggere con efficacia i file di testo</strong></p>
+                        <p>Recupera righe di testo da file o da moduli python importati, mantenendo una cache dei risultati per rendere la lettura di molte righe dallo stesso file più efficiente.</p>
+                        <p><a class="btn btn-default" href="linecache.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>logging</h2>
+                        <p><strong>Riporta messaggi di stato, di errore ed informativi</strong></p>
+                        <p>Riporta messaggi di stato, di errore ed informativi</p>
+                        <p><a class="btn btn-default" href="logging.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                </div><!--/row-->
+            
+                <div class="row">
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>mailbox</h2>
+                        <p><strong>Accede e manipola archivi email</strong></p>
+                        <p>Lavora con i messaggi email in diversi formati di file locali.</p>
+                        <p><a class="btn btn-default" href="mailbox.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>operator</h2>
+                        <p><strong>Interfaccia funzionale agli operatori built-in</strong></p>
+                        <p>Interfaccia funzionale agli operatori built-in.</p>
+                        <p><a class="btn btn-default" href="operator.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>optparse</h2>
+                        <p><strong>Analizzatore di opzioni di riga di comando per rimpiazzare getopt</strong></p>
+                        <p>Analizzatore di opzioni di riga di comando per rimpiazzare <a href='getopt.html'>getopt</a></p>
+                        <p><a class="btn btn-default" href="optparse.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                </div><!--/row-->
+            
+                <div class="row">
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>os</h2>
+                        <p><strong>Accesso portabile alle funzionalit&amp;agrave; specifiche di un sistema operativo</strong></p>
+                        <p>Accesso portabile alle funzionalit&agrave; specifiche di un sistema operativo</p>
+                        <p><a class="btn btn-default" href="os.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>ospath</h2>
+                        <p><strong>Manipolare i nomi dei file indipendentemente dalla piattaforma</strong></p>
+                        <p>Elaborare, costruire, controllare ed altro sui nomi di file e percorsi</p>
+                        <p><a class="btn btn-default" href="ospath.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>pdb</h2>
+                        <p><strong>Debugger Interattivo</strong></p>
+                        <p>Il debugger interattivo di Python</p>
+                        <p><a class="btn btn-default" href="pdb.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                 </div><!--/row-->
@@ -173,6 +174,12 @@
                 <a href="index_4.html"
                    class="btn btn-primary btn-lg" >
                     <span class="glyphicon glyphicon-chevron-left"></span> Altri moduli
+                </a>
+            
+            
+                <a href="index_2.html"
+                   class="btn btn-primary btn-lg" >
+                    <span class="glyphicon glyphicon-chevron-right"></span> Altri moduli
                 </a>
             
             </p>
@@ -198,13 +205,14 @@
     </div><!--/row-->
 
     <hr>
+        <div id="footer">
+        <div class="container">
+            <p class="text-muted">PyMOTW-it 
+            2013 / 
+            Documento aggiornato il: 25-01-2014</p>
+        </div>
+    </div
 
-
-    <hr>
-
-    <footer>
-        <p>&copy; PyMOTW-it / 2013</p>
-    </footer>
 
 </div><!--/.container-->
 

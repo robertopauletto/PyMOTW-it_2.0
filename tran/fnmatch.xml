@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>accedere a file e directory </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- tag <testo_normale> contiene il testo normale dell'articolo -->
@@ -16,13 +16,13 @@ Gestisce il confronto con i nomi dei file in stile Unix
 1.4 e superiore
 </descrizione>
 <testo_normale>
-Il modulo <strong>fnmatch</strong> viene usato per confrontare nomi di file con i modelli in stile glob così come vengono usati dalle shell Unix.
+Il modulo <strong>fnmatch</strong> viene usato per confrontare nomi di file con i modelli in stile glob cosÃ¬ come vengono usati dalle shell Unix.
 </testo_normale>
 <titolo_2>
 Corrispondenza semplice    
 </titolo_2>
 <testo_normale>
-${sbk}fnmatch()${ebk} confronta un singolo nome di file con un modello e restituisce un valore booleano che indica se la corrispondenza è stata trovata. Se il sistema operativo usa un filesystem insensibile alle differenze tra maiuscolo e minuscolo il confronto non terrà conto della differenza tra maiuscolo/minuscole. Altrimenti sì'.
+${sbk}fnmatch()${ebk} confronta un singolo nome di file con un modello e restituisce un valore booleano che indica se la corrispondenza Ã¨ stata trovata. Se il sistema operativo usa un filesystem insensibile alle differenze tra maiuscolo e minuscolo il confronto non terrÃ  conto della differenza tra maiuscolo/minuscole. Altrimenti sÃ¬'.
 </testo_normale>
 <py_code>
 import fnmatch
@@ -85,7 +85,7 @@ Nome file: index.rst                 False
 Filtrare
 </titolo_2>
 <testo_normale>
-Per verificare una sequenza di nomi di file si può usare ${sbk}filter()${ebk}, che restituisce un elenco di nomi che corrispondono al parametro <em>pattern</em>
+Per verificare una sequenza di nomi di file si puÃ² usare ${sbk}filter()${ebk}, che restituisce un elenco di nomi che corrispondono al parametro <em>pattern</em>
 </testo_normale>
 <py_code>
 import fnmatch
@@ -112,7 +112,7 @@ Corrispondenze : ['fnmatch_filter.py', 'fnmatch_fnmatch.py', 'fnmatch_fnmatchcas
 Trascodifica dei Modelli
 </titolo_2>
 <testo_normale>
-Internamente, <strong>fnmatch</strong> converte il modello glob in una espressione regolare ed usa il modulo <strong>re</strong> per confrontare nome e modello. La funzione ${sbk}translate()${ebk} è l'API pubblica per convertire modelli glob in espressioni regolari.
+Internamente, <strong>fnmatch</strong> converte il modello glob in una espressione regolare ed usa il modulo <strong>re</strong> per confrontare nome e modello. La funzione ${sbk}translate()${ebk} Ã¨ l'API pubblica per convertire modelli glob in espressioni regolari.
 </testo_normale>
 <py_code>
 import fnmatch
@@ -133,16 +133,4 @@ Espr. regolare: fnmatch\_.*\.py$
 http://docs.python.org/library/fnmatch.html|fnmatch|La documentazione della libreria standard per questo modulo.
 http://www.doughellmann.com/PyMOTW/glob/index.html#module-glob|glob|Il modulo glob combina il sistema di corrispondenza di <strong>fnmatch</strong> con os.listdir() per produrre elenchi di file e directory che corrispondono a modelli.
 </vedi_anche>
-<!--
-<titolo_2>
-</titolo_2>
-<testo_normale>
-</testo_normale>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<vedi_anche>
-</vedi_anche>
--->
 </documento_tradotto>

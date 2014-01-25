@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>servizi python in fase di esecuzione </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- tag <testo_normale> contiene il testo normale dell'articolo -->
@@ -12,14 +12,14 @@
 trace - Segue le istruzioni Python mentre sono eseguite
 </titolo_1>
 <descrizione>
-Monitora quali istruzioni e funzioni sono eseguite mentre un programma &egrave; in esecuzione per produrre informazioni di <em>code coverage</em> del e grafici di chiamata
+Monitora quali istruzioni e funzioni sono eseguite mentre un programma &egrave; in esecuzione per produrre informazioni di <em>code coverage</em>  e <a href='http://en.wikipedia.org/wiki/Call_graph'>grafici di chiamata</a>
 2.3 e superiore
 </descrizione>
 <testo_normale>
 Il modulo <strong>trace </strong> aiuta nel comprendere in che modo viene eseguito un proprio programma. Si possono tracciare le istruzioni eseguite, produrre rapporti di coverage, ed investigare sulle relazioni tra le funzioni che si chiamano vicendevolmente.
 </testo_normale>
 <note>
-Code coverage &egrave; una misura usata nel test dei software. Descrive il grado di test a cui &egrave; stato sottoposto il codice sorgente di un programma. E' una forma di test che ispeziona il codice direttamente, quindi si tratta di una forma di <a href='http://it.wikipedia.org/wiki/Test_strutturale'>test strutturale</a>
+Code coverage &egrave; una misura usata nel test dei software. Descrive il grado di test a cui &egrave; stato sottoposto il codice sorgente di un programma. E' una forma di test che ispeziona il codice direttamente, quindi si tratta di una forma di <a href='http://it.wikipedia.org/wiki/Test_strutturale'>test strutturale</a>.
 In breve riguarda in quale misura i propri test utilizzano la propria base di codice. Lo scopo dei test, naturalmente, &egrave; di veriicare che il proprio codice faccia quello che ci si aspetti che faccia, ma anche per documentare quello che ci si aspetta dal codice. Pi&ugrave; estensivamente il code coverage pu&ograve; essere considerata una indiretta misura della qualit&agrave;, indiretta in quanto si tratta di quanto i test coprano il proprio codice, o semplicemente, la qualit&agrave; dei test. In altre parole il code coverage non si usa per verificare la qualit&agrave; del prodotto finale.
 </note>
 <titolo_2>
@@ -32,7 +32,7 @@ E' facile usare <strong>trace</strong> direttamente dalla riga di comando. Dati 
 from recurse import recurse
 
 def main():
-    print 'Questo è il programma principale.'
+    print 'Questo Ã¨ il programma principale.'
     recurse(2)
     return
 
@@ -47,7 +47,7 @@ def recurse(level):
     return
 
 def not_called():
-    print 'Questa funzione non è mai chiamata.'
+    print 'Questa funzione non Ã¨ mai chiamata.'
 </py_code>
 <titolo_3>
 Esecuzione della tracciatura
@@ -194,7 +194,7 @@ Oltre alle informazioni di coverage, <strong>trace</strong> raccoglie e riporta 
 Per una semplice lista delle funzioni chiamate si usa ${sev}--listfuncs${eev}:
 </testo_normale>
 <py_output>
-£ python -m trace --listfuncs trace_example/main.py 
+Â£ python -m trace --listfuncs trace_example/main.py 
 
 Questo &egrave; il programma principale.
 ricorsione(2)
@@ -391,33 +391,4 @@ http://www.doughellmann.com/PyMOTW/sys/tracing.html#sys-tracing|Tracing a Progra
 http://nedbatchelder.com/code/modules/coverage.html|coverage.py|Il modulo coverage di Ned Batchelder
 http://darcs.idyll.org/~t/projects/figleaf/doc/|flgleaf|L'applicazione di coverage di Titus Brown
 </vedi_anche>
-
-<!--
-http://it.wikipedia.org/wiki/Namespace
-<avvertimento>
-</avvertimento>
-<descrizione>
-</descrizione>
-<lista>http://www.oreillyschool.com/courses/python2/
-</lista>
-<lista_numerata>
-</lista_numerata>
-<note>
-</note>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<sottotitolo>
-</sottotitolo>
-<testo_normale>
-</testo_normale>
-<titolo_1>
-</titolo_1>
-<titolo_2>
-</titolo_2>
-<vedi_anche>
-</vedi_anche>
-
--->
 </documento_tradotto>

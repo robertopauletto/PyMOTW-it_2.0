@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>accedere a file e directory </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- tag <testo_normale> contiene il testo normale dell'articolo -->
@@ -16,13 +16,13 @@ Elaborare, costruire, controllare ed altro sui nomi di file e percorsi
 1.4 e superiore
 </descrizione>
 <testo_normale>
-Scrivere codice per lavorare con file su multiple piattaforme è facile se si usano le funzioni comprese nel modulo <strong>os.path</strong>. Anche i programmi che non si intende portare su diverse piattaforme dovrebbero usare os.path per rendere affidabile l'elaborazione dei percorsi.
+Scrivere codice per lavorare con file su multiple piattaforme Ã¨ facile se si usano le funzioni comprese nel modulo <strong>os.path</strong>. Anche i programmi che non si intende portare su diverse piattaforme dovrebbero usare os.path per rendere affidabile l'elaborazione dei percorsi.
 </testo_normale>
 <titolo_2>
 Elaborare i Percorsi    
 </titolo_2>
 <testo_normale>
-Il primo gruppo di funzioni in os.path può essere usato per elaborare delle stringhe che rappresentano dei nomi di file dividendole nelle parti che li compongono. E' importante capire che queste funzioni non dipendono dal fatto che questi percorsi esistano. Esse operano solamente sulle stringhe.
+Il primo gruppo di funzioni in os.path puÃ² essere usato per elaborare delle stringhe che rappresentano dei nomi di file dividendole nelle parti che li compongono. E' importante capire che queste funzioni non dipendono dal fatto che questi percorsi esistano. Esse operano solamente sulle stringhe.
 </testo_normale>
 <testo_normale>
 L'elaborazione dei percorsi dipende da un pugno di variabili definite nel modulo os:    
@@ -32,7 +32,7 @@ os.sep - Il separatore tra le porzioni del percorso (es. "/").
 os.extsep - Il separatore tra il nome del file e la sua "estensione" (es. ".").
 os.pardir - Il componente del percorso che serve per risalire l'albero delle directory su di un livello (es. "..").
 os.curdir - Il componente del percorso che fa riferimento alla directory corrente (es. ".").
-split() spezza il percorso in due parti separate e restituisce la tuple. Il secondo elemento è l'ultimo componente del percorso, ed il primo elemento è tutto quello che lo precede
+split() spezza il percorso in due parti separate e restituisce la tuple. Il secondo elemento Ã¨ l'ultimo componente del percorso, ed il primo elemento Ã¨ tutto quello che lo precede
 </lista>
 <py_code>
 import os.path
@@ -116,7 +116,7 @@ $ python ospath_splitext.py
 "" : ('', '')
 </py_output>
 <testo_normale>
-${sbk}commonprefix()${ebk} prende una lista di percorsi come parametro e restituisce una singola stringa che rappresenta un prefisso comune presente in tutti i percorsi. Il valore potrebbe rappresentare un percorso che in realtà non esiste, ed il separatore di percorso non viene considerato, quindi il prefisso potrebbe non fermarsi nei confini del separatore.
+${sbk}commonprefix()${ebk} prende una lista di percorsi come parametro e restituisce una singola stringa che rappresenta un prefisso comune presente in tutti i percorsi. Il valore potrebbe rappresentare un percorso che in realtÃ  non esiste, ed il separatore di percorso non viene considerato, quindi il prefisso potrebbe non fermarsi nei confini del separatore.
 </testo_normale>
 <py_code>
 import os.path
@@ -174,7 +174,7 @@ $ python ospath_expanduser.py
 ~postgres : /var/empty
 </py_output>
 <testo_normale>
-${sbk}expandvars()${ebk} è più generico, ed espande ogni variabile di ambiente della shell presente nel percorso
+${sbk}expandvars()${ebk} Ã¨ piÃ¹ generico, ed espande ogni variabile di ambiente della shell presente nel percorso
 </testo_normale>
 <py_code>
 import os.path
@@ -229,7 +229,7 @@ $ python ospath_abspath.py
 Data / Ora di File
 </titolo_2>
 <testo_normale>
-A parte il lavoro con i percorsi, <strong>os.path</strong> include anche qualche funzione per recuperare le proprietà dei file, la qual cosa può essere molto più conveniente che chiamare ${sbk}os.stat()${ebk}:
+A parte il lavoro con i percorsi, <strong>os.path</strong> include anche qualche funzione per recuperare le proprietÃ  dei file, la qual cosa puÃ² essere molto piÃ¹ conveniente che chiamare ${sbk}os.stat()${ebk}:
 </testo_normale>
 <py_code>
 import os.path
@@ -349,20 +349,7 @@ esempio/uno (Dati utente)
 </py_output>
 <vedi_anche>
 http://docs.python.org/lib/module-os.path.html|os.path|La documentazione della libreria standard per questo modulo.
-${baseurl}/pymotw-it/os.html|os|Il modulo os è il genitore di os.path.
+os.html|os|Il modulo os Ã¨ il genitore di os.path.
 http://www.doughellmann.com/PyMOTW/articles/file_access.html#article-file-access|Accesso ai File|
 </vedi_anche>
-
-<!--
-<titolo_2>
-</titolo_2>
-<testo_normale>
-</testo_normale>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<vedi_anche>
-</vedi_anche>
--->
 </documento_tradotto>

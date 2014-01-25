@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>servizi generici di sistema operativo </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- # tag <titolo_1> titolo principale -->
@@ -12,11 +12,11 @@
 optparse - Analizzatore di opzioni di riga di comando per rimpiazzare getopt
 </titolo_1>
 <descrizione>
-Analizzatore di opzioni di riga di comando per rimpiazzare <a href='http://robyp.x10hosting.com/pymotw-it/getopt.html'>getopt</a>
+Analizzatore di opzioni di riga di comando per rimpiazzare <a href='getopt.html'>getopt</a>
 2.3
 </descrizione>
 <testo_normale>
-Il modulo <strong>optparse</strong> è una moderna alternativa per l'analisi delle opzioni da riga di comando che offre diverse caratteristiche non disponibili in <a href='http://robyp.x10hosting.com/pymotw-it/getopt.html'>getopt</a>, inclusa la conversione del tipo, il callback delle opzioni, e la generazione automatica dell'aiuto. Ci sono molte più caratteristiche di optparse di quelle che possono essere trattate qui, ma si spera che questa introduzione consenta di potere scrivere in poco tempo un programma da riga di comando.
+Il modulo <strong>optparse</strong> Ã¨ una moderna alternativa per l'analisi delle opzioni da riga di comando che offre diverse caratteristiche non disponibili in <a href='getopt.html'>getopt</a>, inclusa la conversione del tipo, il callback delle opzioni, e la generazione automatica dell'aiuto. Ci sono molte piÃ¹ caratteristiche di optparse di quelle che possono essere trattate qui, ma si spera che questa introduzione consenta di potere scrivere in poco tempo un programma da riga di comando.
 </testo_normale>
 <titolo_2>
 Creare un OptionParser
@@ -29,7 +29,7 @@ import optparse
 parser = optparse.OptionParser()
 </py_code>
 <testo_normale>
-In genere, una volta che il parser è stato creato, ogni opzione viene aggiunta al parser esplicitamente, con le informazioni rispetto a cosa fare quando l'opzione viene riscontrata nella riga di comando. E' anche possibilie passare un elenco di opzioni al costruttore di <strong>OptionParser</strong>, ma questa forma non sembra essere usata così frequentemente.
+In genere, una volta che il parser Ã¨ stato creato, ogni opzione viene aggiunta al parser esplicitamente, con le informazioni rispetto a cosa fare quando l'opzione viene riscontrata nella riga di comando. E' anche possibilie passare un elenco di opzioni al costruttore di <strong>OptionParser</strong>, ma questa forma non sembra essere usata cosÃ¬ frequentemente.
 </testo_normale>
 <titolo_2>
 Definire le Opzioni    
@@ -38,19 +38,19 @@ Definire le Opzioni
 Le opzioni dovrebbero essere aggiunte una alla volta usando il metodo  ${sbk}add_option()${ebk}. Una qualsiasi stringa non nominata di parametri all'inizio dell'elenco dei parametri viene trattata come nome di opzione. Per creare alias per un'opzione, ad esempio per avere una forma breve ed una completa della stessa opzione basta passare entrambi i nomi.
 </testo_normale>
 <testo_normale>
-A differenza di <a href='http://robyp.x10hosting.com/pymotw-it/getopt.html'>getopt</a>, che elabora solamente le opzioni, <strong>optparse</strong> è una completa libreria per la <em>elaborazione</em> delle opzioni. Le opzioni possono attivare diverse azioni, specificate dal parametro <em>action</em> da passare ad ${sbk}add_option()${ebk}. Le azioni supportate comprendono la memorizzazione del parametro (singolarmente o come parte di un elenco), la memorizzazione di un valore costante quando l'opzione viene rilevata (inclusa la getione speciale dei valori true/false per gli switch booleani), il contare il numero di volte in cui una opzione viene vista e la chiamata di un callback.
+A differenza di <a href='getopt.html'>getopt</a>, che elabora solamente le opzioni, <strong>optparse</strong> Ã¨ una completa libreria per la <em>elaborazione</em> delle opzioni. Le opzioni possono attivare diverse azioni, specificate dal parametro <em>action</em> da passare ad ${sbk}add_option()${ebk}. Le azioni supportate comprendono la memorizzazione del parametro (singolarmente o come parte di un elenco), la memorizzazione di un valore costante quando l'opzione viene rilevata (inclusa la getione speciale dei valori true/false per gli switch booleani), il contare il numero di volte in cui una opzione viene vista e la chiamata di un callback.
 </testo_normale>
 <testo_normale>
-L'azione predefinita è la memorizzazione del parametro nell'opzione. In questo caso, se viene passato un tipo, il valore del parametro viene convertito in quel tipo prima di essere memorizzato. Se viene passato il parametro <em>dest</em>, il valore dell'opzione viene salvato in un attributo di quel nome nell'oggetto di opzioni restituito quando i parametri di riga di comando vengono analizzati.
+L'azione predefinita Ã¨ la memorizzazione del parametro nell'opzione. In questo caso, se viene passato un tipo, il valore del parametro viene convertito in quel tipo prima di essere memorizzato. Se viene passato il parametro <em>dest</em>, il valore dell'opzione viene salvato in un attributo di quel nome nell'oggetto di opzioni restituito quando i parametri di riga di comando vengono analizzati.
 </testo_normale>
 <titolo_2>
 Analizzare una Riga di Comando
 </titolo_2>
 <testo_normale>
-Una volta che tutte le opzioni sono definite, la riga di comando viene analizzata passando una sequenza di stringhe di parametro a ${sbk}parse_args()${ebk}. Nella modalità predefinita, i parametri sono presi da ${sev}sys.argv[1:]${eev}, ma è possibile anche passare la propria lista. Le opzioni sono elaborate usando la sintassi GNU/POSIX, in modo che le opzioni ed i valori dei parametri possano essere mescolati nella sequenza.
+Una volta che tutte le opzioni sono definite, la riga di comando viene analizzata passando una sequenza di stringhe di parametro a ${sbk}parse_args()${ebk}. Nella modalitÃ  predefinita, i parametri sono presi da ${sev}sys.argv[1:]${eev}, ma Ã¨ possibile anche passare la propria lista. Le opzioni sono elaborate usando la sintassi GNU/POSIX, in modo che le opzioni ed i valori dei parametri possano essere mescolati nella sequenza.
 </testo_normale>
 <testo_normale>
-Il valore restituito da ${sbk}parse_args()${ebk} è una tuple di due parti che contiene una istanza di <em>optparse.Values</em> e l'elenco dei parametri del comando che non sono stati interpretati come opzioni. L'istanza di <em>Values</em> contiene i valori dell'opzione come attributi, quindi se il valore di ${sev}dest${eev} è ${sev}"miaopzione"${eev}, al suo valore si accede come ${sev}options.miaopzione${eev}.
+Il valore restituito da ${sbk}parse_args()${ebk} Ã¨ una tuple di due parti che contiene una istanza di <em>optparse.Values</em> e l'elenco dei parametri del comando che non sono stati interpretati come opzioni. L'istanza di <em>Values</em> contiene i valori dell'opzione come attributi, quindi se il valore di ${sev}dest${eev} Ã¨ ${sev}"miaopzione"${eev}, al suo valore si accede come ${sev}options.miaopzione${eev}.
 </testo_normale>
 <titolo_2>
 Semplici Esempi    
@@ -76,10 +76,10 @@ $ python optparse_short.py
 (&lt;Values at 0xb788940c: {'a': True, 'c': 3, 'b': 'val'}&gt;, [])
 </py_output>
 <testo_normale>
-Si noti che il tipo del valore associato a ${sev}'c'${eev} nell'output è un intero, visto che ad <strong>OptionParser</strong> è stato detto di convertire il parametro prima di conservarlo.
+Si noti che il tipo del valore associato a ${sev}'c'${eev} nell'output Ã¨ un intero, visto che ad <strong>OptionParser</strong> Ã¨ stato detto di convertire il parametro prima di conservarlo.
 </testo_normale>
 <testo_normale>
-A differenza di <a href='http://robyp.x10hosting.com/pymotw-it/getopt.html'>getopt</a>, nomi di opzione "lunghi" non sono trattati in modo diverso da <strong>optparse</strong>:
+A differenza di <a href='getopt.html'>getopt</a>, nomi di opzione "lunghi" non sono trattati in modo diverso da <strong>optparse</strong>:
 </testo_normale>
 <py_code>
 import optparse
@@ -102,7 +102,7 @@ $ python optparse_long.py
 Confronto con getopt
 </titolo_2>
 <testo_normale>
-Ecco una implementazoine dello stesso programma di esempio usato nel capitolo riguardo a <a href='http://robyp.x10hosting.com/pymotw-it/getopt.html'>getopt</a>:    
+Ecco una implementazoine dello stesso programma di esempio usato nel capitolo riguardo a <a href='getopt.html'>getopt</a>:    
 </testo_normale>
 <py_code>
 import optparse
@@ -155,7 +155,7 @@ OUTPUT     : output.txt
 RIMANENTI  : []
 </py_output>
 <testo_normale>
-Può essere usato anche un qualsiasi prefisso univoco dell'opzione lunga:
+PuÃ² essere usato anche un qualsiasi prefisso univoco dell'opzione lunga:
 </testo_normale>
 <py_output>
 $ python optparse_getoptcomparison.py --out output.txt
@@ -169,7 +169,7 @@ RIMANENTI  : []
 Callback alle Opzioni
 </titolo_2>
 <testo_normale>
-A parte memorizzazione diretta dei parametri per le opzioni, è possibile definire delle funzioni di callback da chiamare quando l'opzione viene rilavata nella riga di comando. I callback per le opzioni ricevono 4 parametri: l'istanza di <strong>Option</strong> che sta causando il callback, la stringa dell'opzione da riga di comando, un qualsiasi valore di parametro associato all'opzione ed una istanza dell'OptionParser che sta eseguendo il lavoro di analisi.
+A parte memorizzazione diretta dei parametri per le opzioni, Ã¨ possibile definire delle funzioni di callback da chiamare quando l'opzione viene rilavata nella riga di comando. I callback per le opzioni ricevono 4 parametri: l'istanza di <strong>Option</strong> che sta causando il callback, la stringa dell'opzione da riga di comando, un qualsiasi valore di parametro associato all'opzione ed una istanza dell'OptionParser che sta eseguendo il lavoro di analisi.
 </testo_normale>
 <py_code>
 import optparse
@@ -255,7 +255,7 @@ with_callback:
 Messaggi di Aiuto
 </titolo_2>
 <testo_normale>
- <strong>OptionParser</strong> include automaticamente una opzione di aiuto per tutti gli insiemi di opzioni, quindi se l'utente passa ${sev}--help${eev} in riga di comando vedrà le istruzioni per eseguire il programma. Il messaggio di aiuto comprende tutte le opzioni con un'indicazione del fatto che ricevano o meno un parametro. E' anche possibile passare un testo di aiuto ad ${sbk}add_option()${ebk} per fornire una descrizione più dettagliata di una opzione.
+ <strong>OptionParser</strong> include automaticamente una opzione di aiuto per tutti gli insiemi di opzioni, quindi se l'utente passa ${sev}--help${eev} in riga di comando vedrÃ  le istruzioni per eseguire il programma. Il messaggio di aiuto comprende tutte le opzioni con un'indicazione del fatto che ricevano o meno un parametro. E' anche possibile passare un testo di aiuto ad ${sbk}add_option()${ebk} per fornire una descrizione piÃ¹ dettagliata di una opzione.
 </testo_normale>
 <py_code>
 import optparse
@@ -283,35 +283,7 @@ Options:
 </py_output>
 <vedi_anche>
 http://docs.python.org/lib/module-optparse.html|optparse|La documentazione della libreria standard per questo modulo.
-http://robyp.x10hosting.com/pymotw-it/getopt.html|getopt|Il modulo getopt
-http://www.doughellmann.com/PyMOTW/argparse/index.html#module-argparse|argparse|Rimpiazzo più recente per optparse.
+getopt.html|getopt|Il modulo getopt
+argparse.html|argparse|Rimpiazzo piÃ¹ recente per optparse.
 </vedi_anche>
-
-<!--
-<avvertimento>
-</avvertimento>
-<descrizione>
-</descrizione>
-<lista>
-</lista>
-<lista_numerata>
-</lista_numerata>
-<note>
-</note>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<sottotitolo>
-</sottotitolo>
-<testo_normale>
-</testo_normale>
-<titolo_1>
-</titolo_1>
-<titolo_2>
-</titolo_2>
-<vedi_anche>
-</vedi_anche>
-
--->
 </documento_tradotto>

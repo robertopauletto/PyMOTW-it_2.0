@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>compressione dati ed archiviazione </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- tag <testo_normale> contiene il testo normale dell'articolo -->
@@ -47,7 +47,7 @@ $ python tarfile_is_tarfile.py          LEGGIMI.txt  True
 Leggere Meta-dati da un Archivio    
 </titolo_2>
 <testo_normale>
-Per lavorare direttamente con un archivio tar si usa la classe <strong>TarFile</strong>. Essa supporta metodi per leggere dati su archivi esistenti così come la modifica di archivi aggiungendo ulteriori file.
+Per lavorare direttamente con un archivio tar si usa la classe <strong>TarFile</strong>. Essa supporta metodi per leggere dati su archivi esistenti cosÃ¬ come la modifica di archivi aggiungendo ulteriori file.
 </testo_normale>
 <testo_normale>
 Per leggere i nomi dei file in un archivio esistente si usa ${sbk}getnames()${ebk}.
@@ -59,7 +59,7 @@ t = tarfile.open('esempio.tar', 'r')
 print t.getnames()
 </py_code>
 <testo_normale>
-Il valore di ritorno è una lista di stringhe con i nomi del contenuto dell'archivio.
+Il valore di ritorno Ã¨ una lista di stringhe con i nomi del contenuto dell'archivio.
 </testo_normale>
 <py_output>
 $ python tarfile_getnames.py 
@@ -76,7 +76,7 @@ t = tarfile.open('esempio.tar', 'r')
 for member_info in t.getmembers():
     print member_info.name
     print '\tModificato:\t', time.ctime(member_info.mtime)
-    print '\tModalità  :\t', oct(member_info.mode)
+    print '\tModalitÃ   :\t', oct(member_info.mode)
     print '\tTipo      :\t', member_info.type
     print '\tDimensione:\t', member_info.size, 'bytes'
     print
@@ -85,13 +85,13 @@ for member_info in t.getmembers():
 $ python tarfile_getmembers.py 
 LEGGIMI.txt
 	Modificato:	Tue Mar 16 20:33:22 2010
-	Modalità  :	0644
+	ModalitÃ   :	0644
 	Tipo      :	0
 	Dimensione:	31 bytes
 
 </py_output>
 <testo_normale>
-Se si conosce in anticipo il nome del membro dell'archivio si può ottenere il suo oggetto Tarinfo con getmember().    
+Se si conosce in anticipo il nome del membro dell'archivio si puÃ² ottenere il suo oggetto Tarinfo con getmember().    
 </testo_normale>
 <py_code>
 import tarfile
@@ -104,14 +104,14 @@ for filename in [ 'LEGGIMI.txt', 'nonqui.txt' ]:
     except KeyError:
         print "ERRORE: Non trovato %s nell'archivio tar" % filename
     else:
-        print '%s è di %d bytes' % (info.name, info.size)
+        print '%s Ã¨ di %d bytes' % (info.name, info.size)
 </py_code>
 <testo_normale>
-Se il membro dell'archivio non è presente, getmember() solleva un KeyError.    
+Se il membro dell'archivio non Ã¨ presente, getmember() solleva un KeyError.    
 </testo_normale>
 <py_output>
 $ python tarfile_getmember.py 
-LEGGIMI.txt è di 31 bytes
+LEGGIMI.txt Ã¨ di 31 bytes
 ERRORE: Non trovato nonqui.txt nell'archivio tar
 </py_output>
 <titolo_2>
@@ -155,7 +155,7 @@ $ python tarfile_extractall.py
 ['LEGGIMI.txt']
 </py_output>
 <note>
-La documentazione della libreria standard comprende una nota che afferma che extractall() è più sicuro di extract(), quindi dovrebbe essere usato nella maggior parte dei casi.    
+La documentazione della libreria standard comprende una nota che afferma che extractall() Ã¨ piÃ¹ sicuro di extract(), quindi dovrebbe essere usato nella maggior parte dei casi.    
 </note>
 <py_code>
 import tarfile
@@ -187,7 +187,7 @@ $ python tarfile_extractall.py
 Creare Nuovi Archivi    
 </titolo_2>
 <testo_normale>
-Per creare un nuovo archivio, si apre semplicemente TarFile in modalità ${sbk}'w'${ebk}. Un qualsiasi file esistente viene troncato e viene creato un nuovo archivio. Per aggiungere dei file si usa il metodo ${sbk}add()${ebk}.
+Per creare un nuovo archivio, si apre semplicemente TarFile in modalitÃ  ${sbk}'w'${ebk}. Un qualsiasi file esistente viene troncato e viene creato un nuovo archivio. Per aggiungere dei file si usa il metodo ${sbk}add()${ebk}.
 </testo_normale>
 <py_code>
 import tarfile
@@ -257,7 +257,7 @@ RINOMINATO.txt
 Scrivere Dati da Sorgenti Diverse Dai File    
 </titolo_2>
 <testo_normale>
-Talvolta si vuole scrivere dati ad un archivio, ma gli stessi non sono rappresentati da un file nel filesystem. Invece che scrivere dei dati ad un file, quindi aggiungere quel file all'archivio, si può usare ${sbk}addfile()${ebk} per aggiungere dati da un handle di file aperto.
+Talvolta si vuole scrivere dati ad un archivio, ma gli stessi non sono rappresentati da un file nel filesystem. Invece che scrivere dei dati ad un file, quindi aggiungere quel file all'archivio, si puÃ² usare ${sbk}addfile()${ebk} per aggiungere dati da un handle di file aperto.
 </testo_normale>
 <py_code>
 import tarfile
@@ -282,7 +282,7 @@ for member_info in t.getmembers():
     print f.read()
 </py_code>
 <testo_normale>
-Se si costruisce autonomamente un oggetto Tarinfo, si può assegnare al membro dell'archivio un qualsiasi nome a scelta. Dopo averne impostata la dimensione, si possono scrivere i dati nell'archivio usando addfile(), e passando un buffer StringIO come sorgente dei dati.
+Se si costruisce autonomamente un oggetto Tarinfo, si puÃ² assegnare al membro dell'archivio un qualsiasi nome a scelta. Dopo averne impostata la dimensione, si possono scrivere i dati nell'archivio usando addfile(), e passando un buffer StringIO come sorgente dei dati.
 </testo_normale>
 <py_output>
 $ python tarfile_addfile_string.py 
@@ -295,7 +295,7 @@ Questi sono i dati da scrivere nell'archivio.
 Aggiungere agli Archivi    
 </titolo_2>
 <testo_normale>
-Oltre alla creazione di nuovi archivi, è possibile aggiungere dati ad un archivio esistente. Per farlo si apre il file usando la modalità ${sbk}'a'${ebk}.
+Oltre alla creazione di nuovi archivi, Ã¨ possibile aggiungere dati ad un archivio esistente. Per farlo si apre il file usando la modalitÃ  ${sbk}'a'${ebk}.
 </testo_normale>
 <py_code>
 import tarfile
@@ -321,7 +321,7 @@ print 'contenuto:', [m.name
                     for m in tarfile.open('tarfile_accoda.tar', 'r').getmembers()]
 </py_code>
 <testo_normale>
-L'archivio che ne deriva conterrà due membri.    
+L'archivio che ne deriva conterrÃ  due membri.    
 </testo_normale>
 <py_output>
 $ python tarfile_append.py 
@@ -334,7 +334,7 @@ contenuto: ['LEGGIMI.txt', 'index.rst']
 Lavorare con Archivi Compressi    
 </titolo_2>
 <testo_normale>
-Oltre ai normali archivi tar, il modulo tarfile può lavorare anche con archivi compressi tramite i protocolli gzip e bzip2. Per aprire un archivio compresso, si modifica la stringa della modalità passata ad open() per includere ${sbk}":gzip"${ebk} oppure ${sbk}:bz2${ebk}, a seconda del metodo di compressione che si intende usare.
+Oltre ai normali archivi tar, il modulo tarfile puÃ² lavorare anche con archivi compressi tramite i protocolli gzip e bzip2. Per aprire un archivio compresso, si modifica la stringa della modalitÃ  passata ad open() per includere ${sbk}":gzip"${ebk} oppure ${sbk}:bz2${ebk}, a seconda del metodo di compressione che si intende usare.
 </testo_normale>
 <py_code>
 import tarfile
@@ -359,7 +359,7 @@ for filename, write_mode in [
     print [m.name for m in tarfile.open(filename, 'r:*').getmembers()]
 </py_code>
 <testo_normale>
-Quando si apre un archivio esistente in lettura, si può specificare ${sbk}"r:*"${ebk} affinchè tarfile possa determinare il metodo di compressione da usare automaticamente.   
+Quando si apre un archivio esistente in lettura, si puÃ² specificare ${sbk}"r:*"${ebk} affinchÃ¨ tarfile possa determinare il metodo di compressione da usare automaticamente.   
 </testo_normale>
 <py_output>
 $ python tarfile_compression.py 
@@ -372,20 +372,8 @@ tarfile_compressione.tar.bz2   194        ['LEGGIMI.txt']
 <vedi_anche>
 http://docs.python.org/library/tarfile.html|tarfile|La documentazione della libreria standard per questo modulo.
 http://www.gnu.org/software/tar/manual/html_node/Standard.html|GNU tar manual|Documentazione del formato tar, incluse le estensioni (in inglese).
-http://robyp.freesitespace.net/pymotw-it/zipfile.html|zipfile|Accesso similare agli archivi ZIP
-http://robyp.freesitespace.net/pymotw-it/gzip.html|gzip|Compressione GNU zip
-http://robyp.freesitespace.net/pymotw-it/bz2.html|bz2|Compressione bz2
+zipfile.html|zipfile|Accesso similare agli archivi ZIP
+gzip.html|gzip|Compressione GNU zip
+pymotw-it/bz2.html|bz2|Compressione bz2
 </vedi_anche>
-<!--
-<titolo_2>
-</titolo_2>
-<testo_normale>
-</testo_normale>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<vedi_anche>
-</vedi_anche>
--->
 </documento_tradotto>

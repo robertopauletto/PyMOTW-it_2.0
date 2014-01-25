@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>servizi di crittografia </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- tag <testo_normale> contiene il testo normale dell'articolo -->
@@ -16,13 +16,13 @@ Hash crittografici e digest del messaggio
 2.5
 </descrizione>
 <note>
-I termini 'hash' e 'digest' con riferimento all'informatica in genere non sono tradotti nei testi italiani. Per una descrizione particolareggiata di hash e digest fare riferimento a <a href='http://it.wikipedia.org/wiki/Hash'>quesa pagina italiana di Wikipedia</a>
+I termini 'hash' e 'digest' con riferimento all'informatica in genere non sono tradotti nei testi italiani. Per una descrizione particolareggiata di hash e digest fare riferimento a <a href='http://it.wikipedia.org/wiki/Hash'>questa pagina italiana di Wikipedia</a>
 </note>
 <testo_normale>
-Il modulo <strong>hashlib</strong> depreca i moduli separati md5 e sha e rende le loro API consistenti. Per lavorare con uno specifico algoritmo hash, si usa la funzione appropriata del costruttore per creare un oggetto hash. Quindi si può usare la stessa API per interagire con l'hash a prescindere dall'algoritmo che è stato usato.
+Il modulo <strong>hashlib</strong> depreca i moduli separati md5 e sha e rende le loro API consistenti. Per lavorare con uno specifico algoritmo hash, si usa la funzione appropriata del costruttore per creare un oggetto hash. Quindi si puÃ² usare la stessa API per interagire con l'hash a prescindere dall'algoritmo che Ã¨ stato usato.
 </testo_normale>
 <testo_normale>
-Visto che hashlib è "supportato" da OpenSSL, tutti gli algoritmi forniti da quella libreria dovrebbero essere disponibili, incluso:    
+Visto che hashlib Ã¨ "supportato" da OpenSSL, tutti gli algoritmi forniti da quella libreria dovrebbero essere disponibili, incluso:    
 </testo_normale>
 <lista>
 md5
@@ -64,7 +64,7 @@ h.update(lorem)
 print h.hexdigest()
 </py_code>
 <testo_normale>
-Questo esempio usa il metodo ${sbk}hexdigest()${ebk} invece di ${sbk}digest()${ebk}, perchè il risultato viene formattato per essere stampato. Se fosse accettabile un valore binario, si può usare ${sbk}digest()${ebk}.
+Questo esempio usa il metodo ${sbk}hexdigest()${ebk} invece di ${sbk}digest()${ebk}, perchÃ¨ il risultato viene formattato per essere stampato. Se fosse accettabile un valore binario, si puÃ² usare ${sbk}digest()${ebk}.
 </testo_normale>
 <py_output>
 $ python hashlib_md5.py
@@ -74,7 +74,7 @@ c3abe541f361b1bfbbcfecbf53aad1fb
 Esempio SHA1    
 </titolo_2>
 <testo_normale>
-Un digest SHA1 per gli stessi dati dovrebbe essere calcolato pressochè allo stesso modo:
+Un digest SHA1 per gli stessi dati dovrebbe essere calcolato pressochÃ¨ allo stesso modo:
 </testo_normale>
 <py_code>
 import hashlib
@@ -86,7 +86,7 @@ h.update(lorem)
 print h.hexdigest()
 </py_code>
 <testo_normale>
-Naturalmente il valore di digest è diverso a causa dell'algoritmo differente.    
+Naturalmente il valore di digest Ã¨ diverso a causa dell'algoritmo differente.    
 </testo_normale>
 <py_output>
 $ python hashlib_sha1.py
@@ -96,7 +96,7 @@ ac2a96a4237886637d5352d606d7a7b6d7ad2f29
 new()    
 </titolo_2>
 <testo_normale>
-Qualche volta è più conveniente fare riferimento all'algoritmo per nome in una stringa piuttosto che usare direttamente la funzione del costruttore. E' utile, ad esempio, potere salvare il tipo di hash in un file di configurazione. In questi casi, si usa la funzione ${sbk}new()${ebk} per creare direttamente un nuovo calcolatore di hash.
+Qualche volta Ã¨ piÃ¹ conveniente fare riferimento all'algoritmo per nome in una stringa piuttosto che usare direttamente la funzione del costruttore. E' utile, ad esempio, potere salvare il tipo di hash in un file di configurazione. In questi casi, si usa la funzione ${sbk}new()${ebk} per creare direttamente un nuovo calcolatore di hash.
 </testo_normale>
 <py_code>
 import hashlib
@@ -136,10 +136,10 @@ $ python hashlib_new.py md5
 c3abe541f361b1bfbbcfecbf53aad1fb    
 </py_output>
 <titolo_2>
-Chiamare update() più di una volta    
+Chiamare update() piÃ¹ di una volta    
 </titolo_2>
 <testo_normale>
-Il metodo dei calcolatori hash ${sbk}update()${ebk} può essere chiamato ripetutamente. Ogni volta, il digest viene aggiornato in base al testo addizionale immesso. La qual cosa può essere più efficiente del leggere un intero file in memoria, ad esempio:
+Il metodo dei calcolatori hash ${sbk}update()${ebk} puÃ² essere chiamato ripetutamente. Ogni volta, il digest viene aggiornato in base al testo addizionale immesso. La qual cosa puÃ² essere piÃ¹ efficiente del leggere un intero file in memoria, ad esempio:
 </testo_normale>
 <py_code>
 import hashlib
@@ -169,7 +169,7 @@ print 'Riga per riga:', line_by_line
 print 'Uguale       :', (all_at_once == line_by_line)
 </py_code>
 <testo_normale>
-Questo esempio è un poco sacrificato perchè lavora con una piccolissima porzione di testo, ma illustra come si possa eseguire un aggiornamento incrementale di un digest mentre i dati vengono letti o prodotti in altro modo.
+Questo esempio Ã¨ un poco sacrificato perchÃ¨ lavora con una piccolissima porzione di testo, ma illustra come si possa eseguire un aggiornamento incrementale di un digest mentre i dati vengono letti o prodotti in altro modo.
 </testo_normale>
 <py_output>
 Tutto insieme: c3abe541f361b1bfbbcfecbf53aad1fb
@@ -181,17 +181,4 @@ http://docs.python.org/library/hashlib.html|hashlib|La documentazione della libr
 http://www.voidspace.org.uk/python/weblog/arch_d7_2006_10_07.shtml#e497|Voidspace: IronPython and haslib|Un wrapper per <strong>hashlib</strong> che funziona con IronPython
 http://robyp.freesitespace.net/pymotw-it/hmac.html|hmac|Il modulo <strong>hmac</strong>
 </vedi_anche>
-
-<!--
-<titolo_2>
-</titolo_2>
-<testo_normale>
-</testo_normale>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<vedi_anche>
-</vedi_anche>
--->
 </documento_tradotto>

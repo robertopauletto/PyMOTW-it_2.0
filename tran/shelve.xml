@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>persistenza dati </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- # tag <titolo_1> titolo principale -->
@@ -16,13 +16,13 @@ Il modulo <strong>shelve</strong> implementa una conservazione persistente di og
 1.4 e superiore (modificata dalla 2.3)
 </descrizione>
 <testo_normale>
-Il modulo <strong>shelve</strong> può essere usato come una semplice opzione per una conservazione persistente di oggetti Python, qualora un database relazionale sia eccessivo. Allo <em>shelf</em> si accede tramite chiavi, proprio come un dizionario. I valori vengono passati a pickle, quindi scritti in un database creato e gestito da <a href='${baseurl}/pymotw-it/antdbm.html'>anydbm</a>.
+Il modulo <strong>shelve</strong> puÃ² essere usato come una semplice opzione per una conservazione persistente di oggetti Python, qualora un database relazionale sia eccessivo. Allo <em>shelf</em> si accede tramite chiavi, proprio come un dizionario. I valori vengono passati a pickle, quindi scritti in un database creato e gestito da <a href='${baseurl}/pymotw-it/antdbm.html'>anydbm</a>.
 </testo_normale>
 <titolo_2>
 Creare Un Nuovo Shelf
 </titolo_2>
 <testo_normale>
-Il modo più semplice di usare shelve è tramite la classe ${sbk}DbfilenameShelf${ebk}. Essa usa anydbm per conservare i dati. Si può usare la classe direttamente, oppure chiamare semplicemente ${sbk}shelve.open()${ebk}:
+Il modo piÃ¹ semplice di usare shelve Ã¨ tramite la classe ${sbk}DbfilenameShelf${ebk}. Essa usa anydbm per conservare i dati. Si puÃ² usare la classe direttamente, oppure chiamare semplicemente ${sbk}shelve.open()${ebk}:
 </testo_normale>
 <py_code>
 import shelve
@@ -56,7 +56,7 @@ $ python shelve_existing.py
 {'int': 10, 'float': 9.5, 'string': 'Dati di esempio'}
 </py_output>
 <testo_normale>
-Il modulo <a href='${baseurl}/pymotw-it/dmb.html'>dbm</a> non supporta la scrittura di applicazioni multiple verso lo stesso database allo stesso tempo. Se si sa che un client non modificherà lo shelf, allora si può dire a shelve di aprire il database in sola lettura.   
+Il modulo <a href='${baseurl}/pymotw-it/dmb.html'>dbm</a> non supporta la scrittura di applicazioni multiple verso lo stesso database allo stesso tempo. Se si sa che un client non modificherÃ  lo shelf, allora si puÃ² dire a shelve di aprire il database in sola lettura.   
 </testo_normale>
 <py_code>
 import shelve
@@ -70,7 +70,7 @@ finally:
 print existing
 </py_code>
 <testo_normale>
-Se il proprio programma tenta di modificare il database mentre è aperto in sola lettura, viene generata una eccezione di errore di accesso. Il tipo di eccezione dipende dal modulo di database selezionato da anydbm quando viene creato il database.
+Se il proprio programma tenta di modificare il database mentre Ã¨ aperto in sola lettura, viene generata una eccezione di errore di accesso. Il tipo di eccezione dipende dal modulo di database selezionato da anydbm quando viene creato il database.
 </testo_normale>
 <titolo_2>
 Ri-Scrittura    
@@ -95,7 +95,7 @@ finally:
     s.close()    
 </py_code>
 <testo_normale>
-In questo esempio, il dizionario in 'chiave1' non è stato ancora salvato, quindi quando lo shelf viene riaperto, le modifiche non sono preservate.
+In questo esempio, il dizionario in 'chiave1' non Ã¨ stato ancora salvato, quindi quando lo shelf viene riaperto, le modifiche non sono preservate.
 </testo_normale>
 <py_output>
 $ python shelve_withoutwriteback.py 
@@ -103,7 +103,7 @@ $ python shelve_withoutwriteback.py
 {'int': 10, 'float': 9.5, 'string': 'Dati di esempio'}
 </py_output>
 <testo_normale>
-Per catturare automaticamente le modifiche agli oggetti volatili conservati nello shelf, si apre lo shelf con abilitato <em>writeback</em>. Il flag <em>writeback</em> fa sì che shelf ricordi tutti gli oggetti che ha recuperato dal database usando una cache di memoria. Ogni oggetto nella cache viene riscritto nel database quando viene chiuso lo shelf.
+Per catturare automaticamente le modifiche agli oggetti volatili conservati nello shelf, si apre lo shelf con abilitato <em>writeback</em>. Il flag <em>writeback</em> fa sÃ¬ che shelf ricordi tutti gli oggetti che ha recuperato dal database usando una cache di memoria. Ogni oggetto nella cache viene riscritto nel database quando viene chiuso lo shelf.
 </testo_normale>
 <py_code>
 import shelve
@@ -123,7 +123,7 @@ finally:
     s.close()
 </py_code>
 <testo_normale>
-Sebbene vengano ridotte le possibilità di un errore del programmatore e possa rendere la persistenza degli oggetti più trasparente, l'uso di <em>writeback</em> potrebbe non essere conveniente in tutte le situazioni. La cache consuma memoria extra mentre lo shelf è aperto, e la pausa per riscrivere ogni oggetto nella cache nel database quando viene chiuso può richiedere tempo supplementare. Visto che non vi è modo per conoscere se gli oggetti nella cache sono stati modificati, essi vengono tutti riscritti. Se la propria applicazione legge dati più di quanto li scriva, <em>writeback</em> potrebbe appesantire le cose più di quanto non si voglia.
+Sebbene vengano ridotte le possibilitÃ  di un errore del programmatore e possa rendere la persistenza degli oggetti piÃ¹ trasparente, l'uso di <em>writeback</em> potrebbe non essere conveniente in tutte le situazioni. La cache consuma memoria extra mentre lo shelf Ã¨ aperto, e la pausa per riscrivere ogni oggetto nella cache nel database quando viene chiuso puÃ² richiedere tempo supplementare. Visto che non vi Ã¨ modo per conoscere se gli oggetti nella cache sono stati modificati, essi vengono tutti riscritti. Se la propria applicazione legge dati piÃ¹ di quanto li scriva, <em>writeback</em> potrebbe appesantire le cose piÃ¹ di quanto non si voglia.
 </testo_normale>
 <py_output>
 $ python shelve_create.py
@@ -136,39 +136,13 @@ $ python shelve_writeback.py
 Tipi di Shelf Specifici    
 </titolo_2>
 <testo_normale>
-Gli esempi di cui sopra usano tutti l'implementazione shelf predefinita. Usando ${sbk}shelve.open()${ebk} invece che una delle implementazioni di shelf direttamente è un modello d'uso comune, specialmene se non ci si deve preoccupare di quale tipo di database venga usato per salvare i dati. Ci sono volte,  comunque, in qui occorre conoscere quale tipo di database usare. In queste situazioni si puà usare ${sbk}DbfilenameShelf${ebk} oppure ${sbk}BsdDbShelf${ebk} direttamente od addirittura derivare da ${sbk}Shelf${ebk} per una soluzione personalizzata.
+Gli esempi di cui sopra usano tutti l'implementazione shelf predefinita. Usando ${sbk}shelve.open()${ebk} invece che una delle implementazioni di shelf direttamente Ã¨ un modello d'uso comune, specialmene se non ci si deve preoccupare di quale tipo di database venga usato per salvare i dati. Ci sono volte,  comunque, in qui occorre conoscere quale tipo di database usare. In queste situazioni si puÃ  usare ${sbk}DbfilenameShelf${ebk} oppure ${sbk}BsdDbShelf${ebk} direttamente od addirittura derivare da ${sbk}Shelf${ebk} per una soluzione personalizzata.
 </testo_normale>
 <vedi_anche>
 http://docs.python.org/lib/module-shelve.html|shelve|La documentazione della libreria standard per questo modulo.
-http://robyp.x10hosting.com/pymotw-it/anydbm.html|anydbm|Il modulo anydbm
+anydbm.html|anydbm|Il modulo anydbm
 http://www.doughellmann.com/projects/feedcache/|feedcache|Il modulo feedcache usa shelve come opzione di conservazione predefinita
 http://pypi.python.org/pypi/shove/|shove|Shove implenta una API simile con molti formati backend
 http://www.doughellmann.com/PyMOTW/articles/data_persistence.html#article-data-persistence|Persistenza e scambio dati|Altri meccanismi per conservare dati usando i moduli della libreria standard.
 </vedi_anche>
-
-<!--
-<avvertimento>
-</avvertimento>
-<descrizione>
-</descrizione>
-<lista>
-</lista>
-<note>
-</note>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<sottotitolo>
-</sottotitolo>
-<testo_normale>
-</testo_normale>
-<titolo_1>
-</titolo_1>
-<titolo_2>
-</titolo_2>
-<vedi_anche>
-</vedi_anche>
-
--->
 </documento_tradotto>

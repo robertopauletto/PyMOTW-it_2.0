@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>persistenza dati </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- # tag <titolo_1> titolo principale -->
@@ -16,7 +16,7 @@ Esamina un file di database in stile DBM esistente e determina quale libreria do
 1.4 e superiore
 </descrizione>
 <testo_normale>
-Il modulo <strong>whicdb</strong> contiene una funzione, ${sbk}whicdb()${ebk}. Può essere usato per esaminare un file di database esistente per determinare quale libreria dbm si dovrebbe usare per aprirlo. Restituisce <strong>None</strong> se ci sono problemi nell'apertura del file, oppure la stringa con il nome del modulo da usare per aprire il file. Se riesce ad aprire il file ma non può determinare quale libreria usare, restituisce una stringa vuota.
+Il modulo <strong>whicdb</strong> contiene una funzione, ${sbk}whicdb()${ebk}. PuÃ² essere usato per esaminare un file di database esistente per determinare quale libreria dbm si dovrebbe usare per aprirlo. Restituisce <strong>None</strong> se ci sono problemi nell'apertura del file, oppure la stringa con il nome del modulo da usare per aprire il file. Se riesce ad aprire il file ma non puÃ² determinare quale libreria usare, restituisce una stringa vuota.
 </testo_normale>
 <py_code>
 import anydbm
@@ -37,33 +37,7 @@ dbhash
 </py_output>
 <vedi_anche>
 http://docs.python.org/lib/module-whichdb.html|whichdb|La documentazione della libreria standard per questo modulo.
-http://robyp.x10hosting.com/pymotw-it/anydbm.html|anydbm|Il modulo anydbm usa l'implementazione DBM migliore disponibile per la creazione di nuovi database.
-http://robyp.x10hosting.com/pymotw-it/shelve.html|shelve|Il modulo shelve fornisce una API in stile mappatura per i database DBM
+anydbm.html|anydbm|Il modulo anydbm usa l'implementazione DBM migliore disponibile per la creazione di nuovi database.
+shelve.html|shelve|Il modulo shelve fornisce una API in stile mappatura per i database DBM
 </vedi_anche>
-
-<!--
-<avvertimento>
-</avvertimento>
-<descrizione>
-</descrizione>
-<lista>
-</lista>
-<note>
-</note>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<sottotitolo>
-</sottotitolo>
-<testo_normale>
-</testo_normale>
-<titolo_1>
-</titolo_1>
-<titolo_2>
-</titolo_2>
-<vedi_anche>
-</vedi_anche>
-
--->
 </documento_tradotto>

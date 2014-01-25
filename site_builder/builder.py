@@ -12,6 +12,20 @@ riepilogative
 
 Le pagine vengono costruite basandosi su bootstrap 3
 
+I tipi di pagine che possono essere costruite sono:
+
+pagine riepilogative con teasers (:py:func:`crea_pagine_indice`)
+    sono le pagine che contengono gli incipit dei moduli (12 per pagina), dalle
+    quali si può accedere al dettaglio del singolo modulo
+    
+pagina modulo
+    la pagina che descrive il modulo (se ne possono costruire anche in batch)
+
+pagine indice (:py:func:`crea_tabella_indice`)
+    le pagine che riepilogano tutti i moduli presenti
+    
+    
+    
 Versione %s %s
 """ % ( __version__, __date__ )
 
@@ -39,8 +53,9 @@ try:
 except ImportError as imperr:
     raise Exception("Errore importazione modulo\n\n" + imperr.message)
 
-DEF_CHARSET='utf-8'
 
+# TODO: Trasferire su file di configurazione la gestione dei parametri
+DEF_CHARSET='utf-8'
 TEMPLATE_DIRS = ['../templates']
 TRAN_DIR = r'../tran'
 TEMPLATE_INDEX_NAME = 'index.html'
@@ -51,6 +66,11 @@ INDICE_MODULI_PER_PAGINA = 12
 FILE_INDICE = 'index'
 HTML_EXT = '.html'
 TEST_XML_FILE = r'/home/robby/Dropbox/Code/python/pymotw-it/tran/abc.xml'
+FOOTER = Footer(
+    'PyMOTW-it',
+    periodo='2013/2014',
+    data_agg=datetime.date.today().strftime("%d-%m-%Y")
+)    
 
 def imposta_param_django(template_dirs):
     """(list of str)
@@ -89,28 +109,37 @@ def build(template_file, context_dict, rendered_file):
         print traceback.format_exc()
 
 
-def chunks(l, n):
-    """(list, int)
+def _chunks(l, n):
+    """(list, int) -> list
     
     Ritorna blocchi di `n` elementi in `l`
     """
     return [l[i:i+n] for i in range(0, len(l), n)]
 
-def crea_pagine_indice(template_name, file_indice):
+def crea_pagine_indice(template_name, file_indice, mod_per_pagina, footer):
     """(str, str)
     
     Crea le pagine indice, che contengono i teaser per 12 moduli ognuna
     """
     gm = []
     prg = 0
-    moduli =  elenco_per_indice()
-    pagine = ceil(len(moduli) / INDICE_MODULI_PER_PAGINA)
-    for gruppo_moduli in chunks(moduli, INDICE_MODULI_PER_PAGINA):
+    moduli =  sorted(elenco_per_indice(), key=lambda x: x.nome)
+    #e = sorted(moduli, key=lambda x: x.nome)
+   
+    pagine = ceil(len(moduli) / mod_per_pagina)
+    for gruppo_moduli in _chunks(moduli, mod_per_pagina):
         for m in gruppo_moduli:
             gm.append(m)
-        i = Indice(gm)
+        i = Indice(gm, footer)
         if ((prg + 1) < pagine):
             i.prev_nr_page = prg + 1
+        if (prg + 1 ) == 1:
+            i.next_nr_page = int(pagine - 1)
+        elif (prg + 1) < pagine:
+            i.next_nr_page = prg - 1
+        else:
+            i.next_nr_page = int(pagine-2)
+        
         dic = {'indice': i,}
         fn = '%s%s.html' % (file_indice, "_" + str(prg) if prg else '')
         build(template_name, dic, os.path.join(HTML_DIR, fn))
@@ -118,12 +147,14 @@ def crea_pagine_indice(template_name, file_indice):
         gm = []
 
 def crea_pagina_modulo(template_name, file_modulo, footer):
-    """(str, str)
+    """(str, str, str)
     
     Crea la pagina per un modulo.
     
-    `template_name` è il nome del modello per il rendering
-    `file_modulo` è il file xml dal quale ricavare la pagina html
+    - `template_name` è il nome del modello per il rendering
+    - `file_modulo` è il file xml dal quale ricavare la pagina html
+    - 'footer' un oggetto :py:class:`Footer` che contiene informazioni da inserire
+      nel footer della pagina
     """
     #print modulo_xml2html.text2entity(file_modulo)
     
@@ -150,31 +181,33 @@ def crea_tabella_indice(template_name):
     build(template_name, dic, os.path.join(HTML_DIR, fn))
     
 
-
-        
-FOOTER = Footer(
-    'PyMOTW-it',
-    periodo='2013',
-    data_agg=datetime.date.today().strftime("%d-%m-%Y")
-)    
+def _sintassi(pn):
+    return '%s [ind|tab|<nome_modulo>]' % os.path.basename(pn)
 
 if __name__ == '__main__':
     print __doc__
     parms = sys.argv
     if not len(parms) == 2:
+        print _sintassi(sys.argv[0])
         exit(0)
     clear_console
     # Per prima cosa si impostano i parametri per django
     imposta_param_django(TEMPLATE_DIRS)
-    dummy, choice = parms
-    if choice.lower().startswith('ind'):
-        crea_pagine_indice(TEMPLATE_INDEX_NAME, FILE_INDICE)
-    elif choice.lower().startswith('tab'):
+    dummy, choices = parms
+    if choices.lower().startswith('ind'):
+        crea_pagine_indice(
+            TEMPLATE_INDEX_NAME,
+            FILE_INDICE,
+            INDICE_MODULI_PER_PAGINA,
+            FOOTER
+        )
+    elif choices.lower().startswith('tab'):
         crea_tabella_indice(TEMPLATE_TABALFA_NAME)
     else:
-        if not os.path.splitext(choice)[1]:
-            choice += '.xml'
-            choice = os.path.join(TRAN_DIR, choice)
+        for choice in choices.split(','):
+            if not os.path.splitext(choice)[1]:
+                choice += '.xml'
+                choice = os.path.join(TRAN_DIR, choice)
             if not os.path.exists(choice):
                 exit(0)
             print "Costruzione pagina in corso ..."
@@ -182,3 +215,5 @@ if __name__ == '__main__':
     
     
     print "Fine"
+    #raw_input()
+    

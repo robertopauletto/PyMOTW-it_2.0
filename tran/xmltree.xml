@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>strumenti per l'elaborazione di markup strutturato </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- tag <testo_normale> contiene il testo normale dell'articolo -->
@@ -16,13 +16,13 @@ Genera ed analizza documenti XML
 2.5 e successive
 </descrizione>
 <testo_normale>
-La libreria <strong>ElementTree</strong> è un contributo alla libreria standard di Fredrick Lundh. Comprende gli strumenti per analizzare XML usando API basate su eventi e documenti, per cercare nei documenti analizzati tramite espressioni XPath e per creare o modificare documenti.
+La libreria <strong>ElementTree</strong> Ã¨ un contributo alla libreria standard di Fredrick Lundh. Comprende gli strumenti per analizzare XML usando API basate su eventi e documenti, per cercare nei documenti analizzati tramite espressioni XPath e per creare o modificare documenti.
 </testo_normale>
 <titolo_2>
 Creare documenti XML con ElementTree	
 </titolo_2>
 <testo_normale>
-Tutti gli esempi in questa sezione usano l'implementazione Python di ElementTree per semplicità, ma esiste anche una implementazione C in ${sbk}xml.etree.cElementTree${ebk}.
+Tutti gli esempi in questa sezione usano l'implementazione Python di ElementTree per semplicitÃ , ma esiste anche una implementazione C in ${sbk}xml.etree.cElementTree${ebk}.
 </testo_normale>
 <testo_normale>
 I documenti XML analizzati sono rappresentati in memoria da da oggetti ElementTree ed Element connessi in una struttura ad albero basata sul modo nel quale sono annidati i nodi del documento XML
@@ -31,10 +31,10 @@ I documenti XML analizzati sono rappresentati in memoria da da oggetti ElementTr
 Analizzare un Intero Documento    
 </titolo_2>
 <testo_normale>
-Quando si analizza un intero documento con ${sbk}parse()${ebk} viene restituita una istanza di ElementTree. La struttura ad albero si riferisce a tutti i dati del documento di input ed i nodi dell'albero possono essere cercati o manipolati sul posto. Sebbene questa flessibilità possa facilitare il lavoro con il documento analizzato, in genere richiede più memoria rispetto ad un approccio di analisi basato sugli eventi, visto che l'intero documento deve essere caricato in una volta.
+Quando si analizza un intero documento con ${sbk}parse()${ebk} viene restituita una istanza di ElementTree. La struttura ad albero si riferisce a tutti i dati del documento di input ed i nodi dell'albero possono essere cercati o manipolati sul posto. Sebbene questa flessibilitÃ  possa facilitare il lavoro con il documento analizzato, in genere richiede piÃ¹ memoria rispetto ad un approccio di analisi basato sugli eventi, visto che l'intero documento deve essere caricato in una volta.
 </testo_normale>
 <testo_normale>
-L'ammontare di memoria richiesto per piccoli, semplici documenti tipo questo elenco di podcast rappresentati come uno schema <a href='http://www.opml.org/'>OPML</a> non è significativo.
+L'ammontare di memoria richiesto per piccoli, semplici documenti tipo questo elenco di podcast rappresentati come uno schema <a href='http://www.opml.org/'>OPML</a> non Ã¨ significativo.
 </testo_normale>
 <mk_xml_code>
  <?xml version="1.0" encoding="UTF-8"?>
@@ -115,7 +115,7 @@ $ python ElementTree_parse_opml.py
 Attraversare l'albero analizzato    
 </titolo_2>
 <testo_normale>
-Ora che si è ottenuto un albero XML analizzato, si possono eseguire iterazioni su di esso, visitando tutti i figli per esaminare i loro attributi e contenuto.
+Ora che si Ã¨ ottenuto un albero XML analizzato, si possono eseguire iterazioni su di esso, visitando tutti i figli per esaminare i loro attributi e contenuto.
 </testo_normale>
 <py_code>
 from xml.etree import ElementTree
@@ -157,7 +157,7 @@ outline {'text': 'Miscelaneous'}
 outline {'xmlUrl': 'http://www.castsampler.com/cast/feed/rss/dhellmann/', 'text': "dhellmann's CastSampler Feed", 'type': 'rss', 'htmlUrl': 'http://www.castsampler.com/users/dhellmann/'}
 </py_output>
 <testo_normale>
-Se si vuole stampare solo i gruppi di nomi e gli URL dei feed per i podcast, escludendo tutti i dati nella sezione di intestazione, si può iterare solo attraverso i nodi ${sbk}outline${ebk} e stampare gli attributi ${sbk}text${ebk} e ${sbk}xmlUrl${ebk}.
+Se si vuole stampare solo i gruppi di nomi e gli URL dei feed per i podcast, escludendo tutti i dati nella sezione di intestazione, si puÃ² iterare solo attraverso i nodi ${sbk}outline${ebk} e stampare gli attributi ${sbk}text${ebk} e ${sbk}xmlUrl${ebk}.
 </testo_normale>
 <py_code>
 from xml.etree import ElementTree
@@ -201,7 +201,7 @@ Miscelaneous
 Trovare Nodi in un Documento    
 </titolo_2>
 <testo_normale>
-Il metodo di attraversare l'intero albero in questo modo per cercare i nodi che interessano può essre incline ad errori. Nell'esempio di cui sopra, si è dovuto cercare in ogni nodo 'outline' per determinare se si trattava di un gruppo (nodi che hanno solo un attributo "text") o di un podcast (che ha sia "text" che "xmlUrl"). Se si volesse scrivere un programma che esegue il download di podcast ed occorre produrre un semplice elanco di URL dei feed dei podcast, senza nomi o gruppi, si potrebbe semplificare la logica usando ${sbk}findall()${ebk} per trovare i nodi con caratteristiche di ricerca più descrittiva.
+Il metodo di attraversare l'intero albero in questo modo per cercare i nodi che interessano puÃ² essre incline ad errori. Nell'esempio di cui sopra, si Ã¨ dovuto cercare in ogni nodo 'outline' per determinare se si trattava di un gruppo (nodi che hanno solo un attributo "text") o di un podcast (che ha sia "text" che "xmlUrl"). Se si volesse scrivere un programma che esegue il download di podcast ed occorre produrre un semplice elanco di URL dei feed dei podcast, senza nomi o gruppi, si potrebbe semplificare la logica usando ${sbk}findall()${ebk} per trovare i nodi con caratteristiche di ricerca piÃ¹ descrittiva.
 </testo_normale>
 <testo_normale>
 Un primo passo per convertire l'esempio di cui sopra potrebbe essere la costruzione di un parametro XPath per trovare tutti i nodi 'outline'    
@@ -218,7 +218,7 @@ for node in tree.findall('.//outline'):
         print url
 </py_code>
 <testo_normale>
-La logica in questa versione non è sostanzialmente diversa da quella che usa ${sbk}getiterator()${ebk}. Occorre ancora verificare la presenta dell'URL, ad eccezione del fatto che non viene stampato il nome del gruppo quando l'URL non viene trovato.
+La logica in questa versione non Ã¨ sostanzialmente diversa da quella che usa ${sbk}getiterator()${ebk}. Occorre ancora verificare la presenta dell'URL, ad eccezione del fatto che non viene stampato il nome del gruppo quando l'URL non viene trovato.
 </testo_normale>
 <py_output>
 $ python ElementTree_find_feeds_by_tag.py 
@@ -237,7 +237,7 @@ http://djangodose.com/everything/feed/
 http://www.castsampler.com/cast/feed/rss/dhellmann/
 </py_output>
 <testo_normale>
-Un'altra versione potrebbe trarre vantaggio dal fatto che si è a conoscenza che i nodi 'outline' hanno solo due livelli di nidificazione. Se si modifica il percorso di ricerca in ${sbk}.//outline/outline${ebk} verrà esaminato solo il secondo livello dei nodi 'outline'.
+Un'altra versione potrebbe trarre vantaggio dal fatto che si Ã¨ a conoscenza che i nodi 'outline' hanno solo due livelli di nidificazione. Se si modifica il percorso di ricerca in ${sbk}.//outline/outline${ebk} verrÃ  esaminato solo il secondo livello dei nodi 'outline'.
 </testo_normale>
 <py_code>
 from xml.etree import ElementTree
@@ -250,7 +250,7 @@ for node in tree.findall('.//outline/outline'):
     print url
 </py_code>
 <testo_normale>
-Ci si aspetta che tutti i nodi 'outline' nidificati due livelli in profondità nell'input abbiano l'attributo xmlURL che si riferisce al feed del podcast,  così, se si è sufficientemente coraggiosi si può evitare di verificare la presenza dell'attributo prima dell'uso.
+Ci si aspetta che tutti i nodi 'outline' nidificati due livelli in profonditÃ  nell'input abbiano l'attributo xmlURL che si riferisce al feed del podcast,  cosÃ¬, se si Ã¨ sufficientemente coraggiosi si puÃ² evitare di verificare la presenza dell'attributo prima dell'uso.
 </testo_normale>
 <py_output>
 $ python ElementTree_find_feeds_by_structure.py 
@@ -269,13 +269,13 @@ http://djangodose.com/everything/feed/
 http://www.castsampler.com/cast/feed/rss/dhellmann/
 </py_output>
 <testo_normale>
-Questa versione è limitata alla struttura esistente per questo esempio, quindi se i nodi 'outline' sono in un qualche modo riorganizzati in una struttura ad albero più profonda, lo script non funzionerà più.    
+Questa versione Ã¨ limitata alla struttura esistente per questo esempio, quindi se i nodi 'outline' sono in un qualche modo riorganizzati in una struttura ad albero piÃ¹ profonda, lo script non funzionerÃ  piÃ¹.    
 </testo_normale>
 <titolo_2>
 Analizzare gli Attributi dei Nodi    
 </titolo_2>
 <testo_normale>
-Gli elementi restituiti da ${sbk}findall()${ebk} e ${sbk}getiterator()${ebk} sono oggetti <em>Element</em>, ognuno dei quali rappresenta un nodo nell'albero XML elaborato. Ogni <em>Element</em> possiede attributi per accedere ai dati estratti dall'XML. La cosa può essere illustrata da un file di input di esempio in qualche modo più stringato: ${sbk}data.xml${ebk}:
+Gli elementi restituiti da ${sbk}findall()${ebk} e ${sbk}getiterator()${ebk} sono oggetti <em>Element</em>, ognuno dei quali rappresenta un nodo nell'albero XML elaborato. Ogni <em>Element</em> possiede attributi per accedere ai dati estratti dall'XML. La cosa puÃ² essere illustrata da un file di input di esempio in qualche modo piÃ¹ stringato: ${sbk}data.xml${ebk}:
 </testo_normale>
 <mk_xml_code_lineno>
  <?xml version="1.0" encoding="UTF-8"?>
@@ -287,7 +287,7 @@ Gli elementi restituiti da ${sbk}findall()${ebk} e ${sbk}getiterator()${ebk} son
  </top>
 </mk_xml_code_lineno>
 <testo_normale>
-Gli 'attributi' di un nodo sono disponibili tramite la proprietà ${sbk}attrib${ebk}, che si comporta come un dizionario.
+Gli 'attributi' di un nodo sono disponibili tramite la proprietÃ  ${sbk}attrib${ebk}, che si comporta come un dizionario.
 </testo_normale>
 <py_code>
 from xml.etree import ElementTree
@@ -310,7 +310,7 @@ with_attributes
   name = "value"
 </py_output>
 <testo_normale>
-Il testo contenuto nei nodi è disponibile, assieme al testo "coda" che segue la fine del tag di chiusura.    
+Il testo contenuto nei nodi Ã¨ disponibile, assieme al testo "coda" che segue la fine del tag di chiusura.    
 </testo_normale>
 <py_code>
 from xml.etree import ElementTree
@@ -338,7 +338,7 @@ child_with_tail
   e testo di coda      : e testo in "coda".
 </py_output>
 <testo_normale>
-Convenientemente, i riferimenti alle entità XML incorporati nel documenti sono convertiti nei caratteri appropriati prima che i valori vengano restituiti.    
+Convenientemente, i riferimenti alle entitÃ  XML incorporati nel documenti sono convertiti nei caratteri appropriati prima che i valori vengano restituiti.    
 </testo_normale>
 <py_code>
 from xml.etree import ElementTree
@@ -364,16 +364,16 @@ entity_expansion
 Osservare gli Eventi durante l'Analisi    
 </titolo_2>
 <testo_normale>
-L'altra API utile per l'elaborazione dei documenti XML è basata sugli eventi. Il parser genera eventi ${sbk}start${ebk} per i tag di apertura ed eventi ${sbk}end${ebk} per quelli di chiusura. Iterare attraverso il flusso di eventi consente di estrarre i dati dal documento mentre lo si analizza, che è conveniente se non si deve manipolare l'intero documento successivamente e si vuole evitare di mantenere l'intero documento analizzato in memoria.
+L'altra API utile per l'elaborazione dei documenti XML Ã¨ basata sugli eventi. Il parser genera eventi ${sbk}start${ebk} per i tag di apertura ed eventi ${sbk}end${ebk} per quelli di chiusura. Iterare attraverso il flusso di eventi consente di estrarre i dati dal documento mentre lo si analizza, che Ã¨ conveniente se non si deve manipolare l'intero documento successivamente e si vuole evitare di mantenere l'intero documento analizzato in memoria.
 </testo_normale>
 <testo_normale>
 ${sbk}iterparse()${ebk} restituisce un iterabile che produce delle tuple che contengono il nome dell'evento ed il nodo che ha scatenato l'evento. Gli eventi possono essere uno tra:
 </testo_normale>
 <deflist>
-${sbk}start${ebk}|E' stato rilevato un nuovo tag. E' stata elaborata la parentesi angolare di chiusura del tag ma non il contenuto.
-${sbk}end${ebk}|La parentesi angolare di chiusura di un tag di chiusura è stata elaborata. Tutti i figli sono già stati processati.
-${sbk}start-ns${ebk}|Inizia una dichiarazione di spazio dei nomi.
-${sbk}end-ns${ebk}|Fine di una dichiarazione di spazio dei nomi.
+start|E' stato rilevato un nuovo tag. E' stata elaborata la parentesi angolare di chiusura del tag ma non il contenuto.
+end|La parentesi angolare di chiusura di un tag di chiusura Ã¨ stata elaborata. Tutti i figli sono giÃ  stati processati.
+start-ns|Inizia una dichiarazione di spazio dei nomi.
+end-ns|Fine di una dichiarazione di spazio dei nomi.
 </deflist>
 <py_code>
 from xml.etree.ElementTree import iterparse
@@ -402,7 +402,7 @@ for (event, node) in iterparse('podcasts.opml', ['start', 'end', 'start-ns', 'en
         depth += 1
 </py_code>
 <testo_normale>
-Nella modalità predefinita, vengono generati solo gli eventi ${sbk}end${ebk}. Per vedere altri eventi, si passa la lista dei nomi di evento che si vuole ricevere ad ${sbk}iterparse()${ebk}, come in questo esempio.
+Nella modalitÃ  predefinita, vengono generati solo gli eventi ${sbk}end${ebk}. Per vedere altri eventi, si passa la lista dei nomi di evento che si vuole ricevere ad ${sbk}iterparse()${ebk}, come in questo esempio.
 </testo_normale>
 <py_output>
 $ python ElementTree_show_all_events.py 
@@ -456,7 +456,7 @@ start            opml         3077771180
 end              opml         3077771180
 </py_output>
 <testo_normale>
-Lo stile di elaborazione ad eventi potrebbe essere più naturale per alcune operazioni, tipo convertire un input XML in qualche altro formato. Ad esempio si supponga di volere convertire l'elenco di podcast sul quale si sta lavorando da un file XML ad un file di dati, che si possa caricare in un foglio elettronico o database. Non occorre mantenere tutto l'insieme di dati in memoria, visto che si sta semplicemente cambiando il formato.
+Lo stile di elaborazione ad eventi potrebbe essere piÃ¹ naturale per alcune operazioni, tipo convertire un input XML in qualche altro formato. Ad esempio si supponga di volere convertire l'elenco di podcast sul quale si sta lavorando da un file XML ad un file di dati, che si possa caricare in un foglio elettronico o database. Non occorre mantenere tutto l'insieme di dati in memoria, visto che si sta semplicemente cambiando il formato.
 </testo_normale>
 <py_code>
 import csv
@@ -506,10 +506,10 @@ $ python ElementTree_write_podcast_csv.py
 Creare il Proprio Costruttore di Albero    
 </titolo_2>
 <testo_normale>
-Un metodo potenzialmente più efficiente per gestire gli eventi di elaborazione è rimpiazzare il comportamento del costruttore di albero standard con il proprio. Il parser di ElementTree usa uno XMLTreeBuilder per elaborare l'XML e chiamare i metodi su una classe destinazione per salvare i risultati. Il risultato usuale è una istanza di ElementTree creata in modo predefinito dalla classe TreeBuilder. Rimpiazzando TreeBuilder con la propria classe, si possono ricevere gli eventi prima che i nodi Element vengano istanziati, risparmiando quella porzione di sovraccarico.
+Un metodo potenzialmente piÃ¹ efficiente per gestire gli eventi di elaborazione Ã¨ rimpiazzare il comportamento del costruttore di albero standard con il proprio. Il parser di ElementTree usa uno XMLTreeBuilder per elaborare l'XML e chiamare i metodi su una classe destinazione per salvare i risultati. Il risultato usuale Ã¨ una istanza di ElementTree creata in modo predefinito dalla classe TreeBuilder. Rimpiazzando TreeBuilder con la propria classe, si possono ricevere gli eventi prima che i nodi Element vengano istanziati, risparmiando quella porzione di sovraccarico.
 </testo_normale>
 <testo_normale>
-L'applicazione Da-XML-a-CSV di cui sopra può essere trasposta verso un tree builder.
+L'applicazione Da-XML-a-CSV di cui sopra puÃ² essere trasposta verso un tree builder.
 </testo_normale>
 <py_code>
 import csv
@@ -557,7 +557,7 @@ with open('podcasts.opml', 'rt') as f:
 parser.close()
 </py_code>
 <testo_normale>
-${sbk}PodcastListToCSV${ebk} implementa il protocollo TreeBuilder. Ogni volta che si incontra un nuovo tag XML, viene chiamato ${sbk}start()${ebk} con il nome del tag e gli attributi. Quando viene visto un tag di chiusura viene chiamato ${sbk}end()${ebk} con il nome. In mezzo viene chiamato ${sbk}data()${ebk} quando un nodo ha un contenuto (il costruttore dell'albero tiene traccia del nodo 'corrente'). Quando tutto l'input è stato processato viene chiamato ${sbk}close()${ebk}. E' possibile la restituzione di un valore, il quale può essere ritornato all'utilizzatore di XMLTreeBuilder.
+${sbk}PodcastListToCSV${ebk} implementa il protocollo TreeBuilder. Ogni volta che si incontra un nuovo tag XML, viene chiamato ${sbk}start()${ebk} con il nome del tag e gli attributi. Quando viene visto un tag di chiusura viene chiamato ${sbk}end()${ebk} con il nome. In mezzo viene chiamato ${sbk}data()${ebk} quando un nodo ha un contenuto (il costruttore dell'albero tiene traccia del nodo 'corrente'). Quando tutto l'input Ã¨ stato processato viene chiamato ${sbk}close()${ebk}. E' possibile la restituzione di un valore, il quale puÃ² essere ritornato all'utilizzatore di XMLTreeBuilder.
 </testo_normale>
 <py_output>
 $ python ElementTree_podcast_csv_treebuilder.py 
@@ -579,7 +579,7 @@ $ python ElementTree_podcast_csv_treebuilder.py
 Analizzare Stringhe    
 </titolo_2>
 <testo_normale>
-Per lavorare con porzioni più piccole di testo XML, specialmente stringhe letterali come potrebbero essere incorporate nel sorgente di un programma, si usa xml.etree.ElementTree.XML e si passa un singolo parametro, la stringa che contiene l'XML che deve essere analizzato.    
+Per lavorare con porzioni piÃ¹ piccole di testo XML, specialmente stringhe letterali come potrebbero essere incorporate nel sorgente di un programma, si usa xml.etree.ElementTree.XML e si passa un singolo parametro, la stringa che contiene l'XML che deve essere analizzato.    
 </testo_normale>
 <py_code>
 from xml.etree.ElementTree import XML
@@ -587,11 +587,11 @@ from xml.etree.ElementTree import XML
 parsed = XML('''
 .<root>
   <group>
-    <child id="a">Questo è il figlio "a".</child>
-    <child id="b">Questo è il figlio "b".</child>
+    <child id="a">Questo Ã¨ il figlio "a".</child>
+    <child id="b">Questo Ã¨ il figlio "b".</child>
   </group>
   <group>
-    <child id="c">Questo è il figlio "c".</child>
+    <child id="c">Questo Ã¨ il figlio "c".</child>
   </group>
 .</root>
 ''')
@@ -609,7 +609,7 @@ for elem in parsed.getiterator():
     print
 </py_code>
 <testo_normale>
-Si noti che al contrario di ${sbk}parse()${ebk}, il valore restituito è una istanza di Element invece che di ElementTree.
+Si noti che al contrario di ${sbk}parse()${ebk}, il valore restituito Ã¨ una istanza di Element invece che di ElementTree.
 </testo_normale>
 <py_output>
 $ python ElementTree_XML.py 
@@ -619,17 +619,17 @@ root
 group
 
 child
-  text: "Questo è il figlio "a"."
+  text: "Questo Ã¨ il figlio "a"."
   id   = "a"
 
 child
-  text: "Questo è il figlio "b"."
+  text: "Questo Ã¨ il figlio "b"."
   id   = "b"
 
 group
 
 child
-  text: "Questo è il figlio "c"."
+  text: "Questo Ã¨ il figlio "c"."
   id   = "c"
 </py_output>
 <testo_normale>
@@ -640,11 +640,11 @@ from xml.etree.ElementTree import XMLID
 tree, id_map = XMLID('''
 <root>
   <group>
-    <child id="a">Questo è il figlio "a".</child>
-    <child id="b">Questo è il figlio "b".</child>
+    <child id="a">Questo Ã¨ il figlio "a".</child>
+    <child id="b">Questo Ã¨ il figlio "b".</child>
   </group>
   <group>
-    <child id="c">Questo è il figlio "c".</child>
+    <child id="c">Questo Ã¨ il figlio "c".</child>
   </group>
 </root>
 ''')
@@ -662,7 +662,7 @@ b = <Element child at b761a0ec>
 c = <Element child at b761a1ac>
 </py_output>
 <testo_normale>
-Oltre alla capacità di analisi, ElementTree supporta anche la creazione di documenti XML well-formed da oggetti Element costruiti nella propria applicazione. La classe Element usata quando viene analizzato un documento è anche in grado di generare una forma serializzata del suo contenuto, che poi può essere scritta in un file od altro flusso di dati.
+Oltre alla capacitÃ  di analisi, ElementTree supporta anche la creazione di documenti XML well-formed da oggetti Element costruiti nella propria applicazione. La classe Element usata quando viene analizzato un documento Ã¨ anche in grado di generare una forma serializzata del suo contenuto, che poi puÃ² essere scritta in un file od altro flusso di dati.
 </testo_normale>
 <titolo_2>
 Costruire i Nodi Element	
@@ -697,16 +697,16 @@ L'output contiene solo i nodi XML nell'albero, non la dichiarazione XML con la v
 $ python ElementTree_create.py <top><!-- Generato per PyMOTW --><figlio>Questo figlio contiene testo.</figlio><figlio_con_coda>Questo figlio contiene testo normale.</figlio_con_coda>E testo "in coda".<figlio_con_rif_entita>Questo &amp; Quello</figlio_con_rif_entita></top>
 </py_output>
 <testo_normale>
-Si noti che il carattere ${sbk}&${ebk} nel testo di ${sbk}figlio_con_rif_entita${ebk} viene convertito nella corrispondente entità ${sbk}&amp;amp;${ebk} automaticamente.
+Si noti che il carattere ${sbk}&${ebk} nel testo di ${sbk}figlio_con_rif_entita${ebk} viene convertito nella corrispondente entitÃ  ${sbk}&amp;amp;${ebk} automaticamente.
 </testo_normale>
 <titolo_2>
 XML Pretty-Printing	
 </titolo_2>
 <nota>
-Pretty-Printing	è l'applicazione di convenzioni stilistiche di formattazione per testo, codice sorgente, linguaggi a marcatori, che mirano a facilitarne la lettura e la comprensionie tramite modifiche di posizione, spaziatura, contrasto, colore, dimensione e simili. - n.d.t. 
+Pretty-Printing	Ã¨ l'applicazione di convenzioni stilistiche di formattazione per testo, codice sorgente, linguaggi a marcatori, che mirano a facilitarne la lettura e la comprensionie tramite modifiche di posizione, spaziatura, contrasto, colore, dimensione e simili. - n.d.t. 
 </nota>
 <testo_normale>
-Non viene compiuto alcuno sforzo da ElementTree per stampare l'output prodotto da ${sbk}tostring()${ebk} in modo facilmente leggibile, visto che l'aggiunta di spazi modificherebbe il contenuto del documento. Per rendere il risultato pià facile da seguire all'occhio umano, gli esempi seguenti faranno uso in un <a href='http://renesd.blogspot.com/2007/05/pretty-print-xml-with-python.html'>suggerimento trovato in Internet</a> e rielaboreranno il testo XML con <strong>xml.dom.minidom</strong>, per usare il suo metodo ${sbk}toprettyxml()${ebk}.
+Non viene compiuto alcuno sforzo da ElementTree per stampare l'output prodotto da ${sbk}tostring()${ebk} in modo facilmente leggibile, visto che l'aggiunta di spazi modificherebbe il contenuto del documento. Per rendere il risultato piÃ  facile da seguire all'occhio umano, gli esempi seguenti faranno uso in un <a href='http://renesd.blogspot.com/2007/05/pretty-print-xml-with-python.html'>suggerimento trovato in Internet</a> e rielaboreranno il testo XML con <strong>xml.dom.minidom</strong>, per usare il suo metodo ${sbk}toprettyxml()${ebk}.
 </testo_normale>
 <py_code>
 from xml.etree import ElementTree
@@ -720,7 +720,7 @@ def prettify(elem):
     return reparsed.toprettyxml(indent="  ")
 </py_code>
 <testo_normale>
-L'esempio aggiornato è diventato:	
+L'esempio aggiornato Ã¨ diventato:	
 </testo_normale>
 <py_code>
 from xml.etree.ElementTree import Element, SubElement, Comment, tostring
@@ -744,7 +744,7 @@ child_with_entity_ref.text = 'Questo & Quello'
 print prettify(top)
 </py_code>
 <testo_normale>
-ed il risultato è più facile da leggere:	
+ed il risultato Ã¨ piÃ¹ facile da leggere:	
 </testo_normale>
 <py_output>
 $ python ElementTree_create.py
@@ -767,10 +767,10 @@ $ python ElementTree_create.py
 Oltre allo spazio supplementare per la formattazione, il pretty-printer di <strong>xml.dom.minidom</strong> aggiunge anche una dichiarazione XML nell'output.
 </testo_normale>
 <titolo_2>
-Impostare le Proprietà di Element	
+Impostare le ProprietÃ  di Element	
 </titolo_2>
 <testo_normale>
-L'esempio precedente creava dei nodi con tag e contenuto testo, ma non impostava alcun attributo dei nodi. Molti degli esempi della parte relativa all'elaborazione dei documenti XML lavoravano con un file <a href='http://www.opml.org/'>OPML</a> che elencava dei podcast ed i loro feed. I nodi ${sbk}outline${ebk} nell'albero usavano attributi per i nomi del gruppo e le proprietà dei podcast. Si può usare ElementTree_create per costruire un file XML simile usando un file CSV come input, impostando tutti gli attributi degli elementi mano a mano che l'albero viene costruito
+L'esempio precedente creava dei nodi con tag e contenuto testo, ma non impostava alcun attributo dei nodi. Molti degli esempi della parte relativa all'elaborazione dei documenti XML lavoravano con un file <a href='http://www.opml.org/'>OPML</a> che elencava dei podcast ed i loro feed. I nodi ${sbk}outline${ebk} nell'albero usavano attributi per i nomi del gruppo e le proprietÃ  dei podcast. Si puÃ² usare ElementTree_create per costruire un file XML simile usando un file CSV come input, impostando tutti gli attributi degli elementi mano a mano che l'albero viene costruito
 </testo_normale>
 <py_code>
 import csv
@@ -881,7 +881,7 @@ $ python ElementTree_csv_to_xml.py
 Serializzare XML ad un Flusso	
 </titolo_2>
 <testo_normale>
-${sbk}tostring()${ebk} in realtà scrive ad un oggetto in memoria tipo file, quindi restituisce la stringa che rappresenta l'intero albero degli elementi. Quando si lavora con un grande numero di dati, occorrerà meno memoria e si avrà un uso più efficiente delle librerie di I/O scrivendo direttamente verso un handle di file usando il metodo ${sbk}write()${ebk} di ElementTree.
+${sbk}tostring()${ebk} in realtÃ  scrive ad un oggetto in memoria tipo file, quindi restituisce la stringa che rappresenta l'intero albero degli elementi. Quando si lavora con un grande numero di dati, occorrerÃ  meno memoria e si avrÃ  un uso piÃ¹ efficiente delle librerie di I/O scrivendo direttamente verso un handle di file usando il metodo ${sbk}write()${ebk} di ElementTree.
 </testo_normale>
 <py_code>
 import sys
@@ -914,20 +914,6 @@ $ python ElementTree_write.py
 <vedi_anche>
 http://www.opml.org/|Outline Processor Markup Language (OPML)|Le specifiche dell'OPML di Dave Winer e la documentazione.
 http://effbot.org/zone/element-xpath.htm|Supporto XPath in ElementTree|Parte della documentazione originale per ElementTree di Fredrick Lundh
-${baseurl}/pymotw-it/csv.html|csv|Leggere e scrivere file con valori separati da virgola
+csv.html|csv|Leggere e scrivere file con valori separati da virgola
 </vedi_anche>
-<!--
-<titolo_2>
-</titolo_2>
-<testo_normale>
-</testo_normale>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<vedi_anche>
-</vedi_anche>
-<lista></lista>
-
--->
 </documento_tradotto>

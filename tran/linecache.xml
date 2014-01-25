@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>accedere a file e directory </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- tag <testo_normale> contiene il testo normale dell'articolo -->
@@ -12,11 +12,11 @@
 linecache - Leggere con efficacia i file di testo
 </titolo_1>
 <descrizione>
-Recupera righe di testo da file o da moduli python importati, mantenendo una cache dei risultati per rendere la lettura di molte righe dallo stesso file più efficiente.
+Recupera righe di testo da file o da moduli python importati, mantenendo una cache dei risultati per rendere la lettura di molte righe dallo stesso file piÃ¹ efficiente.
 1.4
 </descrizione>
 <testo_normale>
-Il modulo <strong>linecache</strong> viene usato estensivamente attraverso la libreria standard di Python quando occorre trattare file sorgente di Python. L'implementazione della cache mantiene semplicemente il contenuto dei file, elaborati in righe separate, in un dizionario in memoria. L'API restituisce le righe richieste indicizzate in una lista. Il tempo risparmiato è quello che occorrerebbe per leggere (ripetutamente) il file ed elaborare le righe per trovare quella richiesta. Questo è particolarmente utile quando occorre trovare righe multiple nello stesso file, come ad esempio per produrre una traccia dello stack per una rapporto di errore.
+Il modulo <strong>linecache</strong> viene usato estensivamente attraverso la libreria standard di Python quando occorre trattare file sorgente di Python. L'implementazione della cache mantiene semplicemente il contenuto dei file, elaborati in righe separate, in un dizionario in memoria. L'API restituisce le righe richieste indicizzate in una lista. Il tempo risparmiato Ã¨ quello che occorrerebbe per leggere (ripetutamente) il file ed elaborare le righe per trovare quella richiesta. Questo Ã¨ particolarmente utile quando occorre trovare righe multiple nello stesso file, come ad esempio per produrre una traccia dello stack per una rapporto di errore.
 </testo_normale>
 <titolo_2>
 Dati per il Test
@@ -84,7 +84,7 @@ CACHE   :  eros pede, egestas at, ultricies ac, pellentesque eu, tellus.
 Gestire le Righe Vuote    
 </titolo_2>
 <testo_normale>
-Ecco cosa accade se la riga desiderata è vuota:
+Ecco cosa accade se la riga desiderata Ã¨ vuota:
 </testo_normale>
 <py_code>
 import linecache
@@ -107,7 +107,7 @@ VUOTA : "
 Gestire gli Errori
 </titolo_2>
 <testo_normale>
-Se il numero della riga richiesta è fuori dall'intervallo delle righe valide nel file, <strong>linecache</strong> ritorna una stringa vuota.
+Se il numero della riga richiesta Ã¨ fuori dall'intervallo delle righe valide nel file, <strong>linecache</strong> ritorna una stringa vuota.
 </testo_normale>
 <py_code>
 import linecache
@@ -147,7 +147,7 @@ NESSUN FILE:
 Sorgenti Python
 </titolo_2>
 <testo_normale>
-Visto che <strong>linecache</strong> viene usato così frequentemente per produrre tracce dello stack, una della caratteristiche chiave è la capacità di trovare i sorgenti dei moduli Python inclusi in <em>sys.path</em> specificando il nome base del modulo. Il codice che serve per riempire la cache in <strong>linecache</strong> cerca il modulo in <em>sys.path</em> se non riesce a trovare il file direttamente.
+Visto che <strong>linecache</strong> viene usato cosÃ¬ frequentemente per produrre tracce dello stack, una della caratteristiche chiave Ã¨ la capacitÃ  di trovare i sorgenti dei moduli Python inclusi in <em>sys.path</em> specificando il nome base del modulo. Il codice che serve per riempire la cache in <strong>linecache</strong> cerca il modulo in <em>sys.path</em> se non riesce a trovare il file direttamente.
 </testo_normale>
 <py_code>
 import linecache
@@ -166,16 +166,4 @@ MODULO :  This is intended to read lines from modules imported -- hence if a fil
 http://docs.python.org/library/linecache.html|linecache|La documentazione della libreria standard per questo modulo.
 http://www.ipsum.com/|http://www.ipsum.com|Il generatore Lorem Ipsum.
 </vedi_anche>
-<!--
-<titolo_2>
-</titolo_2>
-<testo_normale>
-</testo_normale>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<vedi_anche>
-</vedi_anche>
--->
 </documento_tradotto>

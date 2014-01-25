@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>strumenti di sviluppo </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- tag <testo_normale> contiene il testo normale dell'articolo -->
@@ -16,13 +16,13 @@ Ambiente per l'automazione dei test
 2.1
 </descrizione>
 <testo_normale>
-Il modulo <strong>unittest</strong>, a cui talvolta ci si riferisce come PyUnit, è basato sul progetto dell'ambiente XUnit, di  Kent Beck ed Erich Gamma. Lo stesso modello viene ripetuto in molti altri linguaggi, incluso C, perl, Java e Smalltalk. L'ambiente  implementato da <strong>unittest</strong> supporta <i>fixtures</i> (impianti di test), <i>test suites</i> (raccolte di test) ed un <i>test runner</i> (esecutore di test) per consentire l'automazione del test per il proprio codice. 
+Il modulo <strong>unittest</strong>, a cui talvolta ci si riferisce come PyUnit, Ã¨ basato sul progetto dell'ambiente XUnit, di  Kent Beck ed Erich Gamma. Lo stesso modello viene ripetuto in molti altri linguaggi, incluso C, perl, Java e Smalltalk. L'ambiente  implementato da <strong>unittest</strong> supporta <i>fixtures</i> (impianti di test), <i>test suites</i> (raccolte di test) ed un <i>test runner</i> (esecutore di test) per consentire l'automazione del test per il proprio codice. 
 </testo_normale>
 <titolo_2>
 Struttura di Test Base    
 </titolo_2>
 <testo_normale>
-I test, così come definiti da <strong>unittest</strong>, sono composti da due parti: il codice per gestire "l'impianto" di test, ed il test stesso. Test individuali sono creati subclassando ${sbk}TestCase${ebk} e riscrivendo od aggiungendo i metodi appropriati. Ad esempio:    
+I test, cosÃ¬ come definiti da <strong>unittest</strong>, sono composti da due parti: il codice per gestire "l'impianto" di test, ed il test stesso. Test individuali sono creati subclassando ${sbk}TestCase${ebk} e riscrivendo od aggiungendo i metodi appropriati. Ad esempio:    
 </testo_normale>
 <py_code>
 import unittest
@@ -42,7 +42,7 @@ In questo caso, SimplisticTest ha un singolo metodo ${sbk}test()${ebk}, che fall
 Eseguire i Test    
 </titolo_2>
 <testo_normale>
-Il modo più semplice per eseguire i test di <strong>unittest</strong> è di includere:    
+Il modo piÃ¹ semplice per eseguire i test di <strong>unittest</strong> Ã¨ di includere:    
 </testo_normale>
 <py_code>
 if __name__ == '__main__':
@@ -60,7 +60,7 @@ Ran 1 test in 0.000s
 OK    
 </py_output>
 <testo_normale>
-L'output abbreviato comprende il tempo impiegato per il test, assieme ad un indicatore di stato per ogni test (il puntino  nella prima riga dell'output significa che un test è stato superato). Per maggiori dettagli nel risultato del test si include l'opzione ${sev}-v${eev}:
+L'output abbreviato comprende il tempo impiegato per il test, assieme ad un indicatore di stato per ogni test (il puntino  nella prima riga dell'output significa che un test Ã¨ stato superato). Per maggiori dettagli nel risultato del test si include l'opzione ${sev}-v${eev}:
 </testo_normale>
 <py_output>
 $ python unittest_simple.py -v
@@ -130,7 +130,7 @@ Ran 3 tests in 0.000s
 FAILED (failures=1, errors=1)
 </py_output>
 <testo_normale>
-Nell'esempio di cui sopra, ${sbk}testFail()${ebk}  fallisce, ed il traceback mostra la riga che comprende il codice che ha fallito. E' comunque compito di colui che legge il risultato del test di verificare il codice per desumere il significato semantico del fallimento del test. Per facilitare la comprensione della natura del fallimento del test, i metodi ${sbk}fail*()${ebk} ed ${sbk}assert*()${ebk} accettano tutti un parametro <i>msg</i>, che può essere usato per produrre un messaggio di errore più dettagliato.
+Nell'esempio di cui sopra, ${sbk}testFail()${ebk}  fallisce, ed il traceback mostra la riga che comprende il codice che ha fallito. E' comunque compito di colui che legge il risultato del test di verificare il codice per desumere il significato semantico del fallimento del test. Per facilitare la comprensione della natura del fallimento del test, i metodi ${sbk}fail*()${ebk} ed ${sbk}assert*()${ebk} accettano tutti un parametro <i>msg</i>, che puÃ² essere usato per produrre un messaggio di errore piÃ¹ dettagliato.
 </testo_normale>
 <py_code>
 import unittest
@@ -161,10 +161,10 @@ Ran 1 test in 0.000s
 FAILED (failures=1)
 </py_output>
 <titolo_2>
-Affermare la Verità
+Affermare la VeritÃ 
 </titolo_2>
 <testo_normale>
-La maggior parte dei test affermano la verità di una qualche condizione. Ci sono alcuni diversi modi di scrivere dei test che verifichino una verità, a seconda della prospettiva dell'autore del test ed del risultato voluto del codice che si sta verificando. Se il codice produce un valore che può essere valutato come vero, dovrebbero essere usati i metodi ${sbk}failUnless()${ebk} ed ${sbk}assertTrue()${ebk}. Se il codice produce un valore falso, ha più senso usare i metodi ${sbk}failIf()${ebk} ed ${sbk}assertFalse()${ebk}.
+La maggior parte dei test affermano la veritÃ  di una qualche condizione. Ci sono alcuni diversi modi di scrivere dei test che verifichino una veritÃ , a seconda della prospettiva dell'autore del test ed del risultato voluto del codice che si sta verificando. Se il codice produce un valore che puÃ² essere valutato come vero, dovrebbero essere usati i metodi ${sbk}failUnless()${ebk} ed ${sbk}assertTrue()${ebk}. Se il codice produce un valore falso, ha piÃ¹ senso usare i metodi ${sbk}failIf()${ebk} ed ${sbk}assertFalse()${ebk}.
 </testo_normale>
 <py_code>
 import unittest
@@ -318,7 +318,7 @@ FAILED (failures=2)
 Quasi Uguali?
 </titolo_2>
 <testo_normale>
-Oltre alla stretta eguaglianza, è possibile verificare una &quot;quasi&quot; eguaglianza di numeri a virgola mobile usando ${sbk}failIfAlmostEqual()${ebk} e ${sbk}failUnlessAlmostEqual()${ebk}.
+Oltre alla stretta eguaglianza, Ã¨ possibile verificare una &quot;quasi&quot; eguaglianza di numeri a virgola mobile usando ${sbk}failIfAlmostEqual()${ebk} e ${sbk}failUnlessAlmostEqual()${ebk}.
 </testo_normale>
 <py_code>
 import unittest
@@ -349,7 +349,7 @@ OK
 Verificare le Eccezioni
 </titolo_2>
 <testo_normale>
-Come detto precedentemente, se un test solleva una eccezione diversa da <a href='${baseurl}/pymotw-it/eccezioni.html#asserr'>AssertionError</a>, viene trattata come un errore. Questo è molto utile per scoprire errori che si compiono mentre si sta modificando del codice per il quale già esiste un test abbinato. Ci sono circostanze, comunque, nelle quali si vuole eseguire il test per verificare che un certo codice effettivamente produca una eccezione. Ad esempio se un valore non valido viene passato come attributo di un oggetto. In tali casi, ${sbk}failUnlessRaises()${ebk} rende il codice più chiaro che catturare l'eccezione nel proprio codice. Si confrontino questi due test:
+Come detto precedentemente, se un test solleva una eccezione diversa da <a href='eccezioni.html#asserr'>AssertionError</a>, viene trattata come un errore. Questo Ã¨ molto utile per scoprire errori che si compiono mentre si sta modificando del codice per il quale giÃ  esiste un test abbinato. Ci sono circostanze, comunque, nelle quali si vuole eseguire il test per verificare che un certo codice effettivamente produca una eccezione. Ad esempio se un valore non valido viene passato come attributo di un oggetto. In tali casi, ${sbk}failUnlessRaises()${ebk} rende il codice piÃ¹ chiaro che catturare l'eccezione nel proprio codice. Si confrontino questi due test:
 </testo_normale>
 <py_code>
 import unittest
@@ -375,7 +375,7 @@ if __name__ == '__main__':
     unittest.main()
 </py_code>
 <testo_normale>
-I risultati per entrambi sono gli stessi, tuttavia il secondo test, che usa ${sbk}failUnlessRaises()${ebk} è più succinto.
+I risultati per entrambi sono gli stessi, tuttavia il secondo test, che usa ${sbk}failUnlessRaises()${ebk} Ã¨ piÃ¹ succinto.
 </testo_normale>
 <py_output>
 $ python unittest_exception.py -v
@@ -393,7 +393,7 @@ OK
 Test Fixtures (Impianti di Test)
 </titolo_2>
 <testo_normale>
-Fixtures sono risorse necessarie per un test. Ad esempio, se si stanno scrivendo parecchi test per la stessa classe, questi test necessitano tutti una istanza di quella classe da usere per il test. Altri impianti includono connessioni a database e file temporanei (molta gente potrebbe argomentare che usando risorse esterne i test non sono più considerabili a livello di unità, ma sono comunque test, e sono comunque utili). ${sbk}TestCase${ebk} include uno speciale aggancio per configurare e ripulire un qualsivoglia impianto che sia necessario per i propri test. Per configurare gli impianti, si riscrive ${sbk}setup()${ebk}. Per ripulire, si riscrive ${sbk}tearDown()${ebk}.
+Fixtures sono risorse necessarie per un test. Ad esempio, se si stanno scrivendo parecchi test per la stessa classe, questi test necessitano tutti una istanza di quella classe da usere per il test. Altri impianti includono connessioni a database e file temporanei (molta gente potrebbe argomentare che usando risorse esterne i test non sono piÃ¹ considerabili a livello di unitÃ , ma sono comunque test, e sono comunque utili). ${sbk}TestCase${ebk} include uno speciale aggancio per configurare e ripulire un qualsivoglia impianto che sia necessario per i propri test. Per configurare gli impianti, si riscrive ${sbk}setup()${ebk}. Per ripulire, si riscrive ${sbk}tearDown()${ebk}.
 </testo_normale>
 <py_code>
 import unittest
@@ -416,7 +416,7 @@ if __name__ == '__main__':
     unittest.main()
 </py_code>
 <testo_normale>
-Quando il test di esempio viene eseguito, si può vedere l'ordine di esecuzione dell'impianto e dei metodi di test:
+Quando il test di esempio viene eseguito, si puÃ² vedere l'ordine di esecuzione dell'impianto e dei metodi di test:
 </testo_normale>
 <py_output>
 $ python unittest_fixtures.py 
@@ -433,40 +433,12 @@ OK
 Test Suite (Raccolte di Test)
 </titolo_2>
 <testo_normale>
-La documentazione della libreria standard descrive come organizzare manualmente le raccolte di test. Io (Doug Hellmann - n.d.t.) generalmente non uso raccolte di test direttamente, poichè preferisco costruire le raccolte automaticamente (si tratta dopo tutto di test automatizzati). Automatizzare la costruzione di raccolte di test è specialmente utile per vaste basi di codice, nelle quali i test collegati non sono tutti nello stesso posto. Strumenti tipo <strong>nose</strong> facilitano la gestione dei test quando essi sono sparsi attraverso file e directory multiple.
+La documentazione della libreria standard descrive come organizzare manualmente le raccolte di test. Io (Doug Hellmann - n.d.t.) generalmente non uso raccolte di test direttamente, poichÃ¨ preferisco costruire le raccolte automaticamente (si tratta dopo tutto di test automatizzati). Automatizzare la costruzione di raccolte di test Ã¨ specialmente utile per vaste basi di codice, nelle quali i test collegati non sono tutti nello stesso posto. Strumenti tipo <strong>nose</strong> facilitano la gestione dei test quando essi sono sparsi attraverso file e directory multiple.
 </testo_normale>
 <vedi_anche>
 http://docs.python.org/lib/module-unittest.html|unittest|La documentazione della libreria standard per questo modulo.
-${baseurl}/pymotw-it/doctest.html|doctest|Un modo alternativo di eseguire test incorporati in <i>docstring</i> e file di documentazione esterni
-http://somethingaboutorange.com/mrl/projects/nose/|nose|Un gestore di test più sofisticato
+doctest.html|doctest|Un modo alternativo di eseguire test incorporati in <i>docstring</i> e file di documentazione esterni
+http://somethingaboutorange.com/mrl/projects/nose/|nose|Un gestore di test piÃ¹ sofisticato
 http://pypi.python.org/pypi/unittest2|unittest2|Miglioramenti in corso di elaborazione per <strong>unittest</strong>
 </vedi_anche>
-
-<!--
-<avvertimento>
-</avvertimento>
-<descrizione>
-</descrizione>
-<lista>
-</lista>
-<lista_numerata>
-</lista_numerata>
-<note>
-</note>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<sottotitolo>
-</sottotitolo>
-<testo_normale>
-</testo_normale>
-<titolo_1>
-</titolo_1>
-<titolo_2>
-</titolo_2>
-<vedi_anche>
-</vedi_anche>
-
--->
 </documento_tradotto>

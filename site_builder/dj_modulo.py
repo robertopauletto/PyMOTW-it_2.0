@@ -17,13 +17,19 @@ class DjModulo(object):
         self.modulo = modulo
         self.footer = footer
         isinstance(self.modulo, Modulo)
+
         
     @property
     def titolo(self):
-        return " - ".join((self.modulo.nome, self.modulo.titolo))
+        x = " - ".join((self.modulo.nome, self.modulo.titolo))
+        if self.modulo.nome == "os":
+            return "os - Accesso portabile alle funzionalit&agrave; specifiche di un sistema operativo"
+        return x
     
     @property
     def descrizione(self):
+        if self.modulo.nome == "os":
+            return "Accesso portabile alle funzionalit&agrave; specifiche di un sistema operativo"
         return self.modulo.descrizione
     
     @property

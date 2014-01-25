@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>servizi generici di sistema operativo </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- # tag <titolo_1> titolo principale -->
@@ -16,7 +16,7 @@ Riporta messaggi di stato, di errore ed informativi
 2.3
 </descrizione>
 <testo_normale>
-Il modulo <strong>logging</strong> definisce una <a href='http://it.wikipedia.org/wiki/Application_programming_interface'>API</a> standard per segnalare errori ed informazioni da tutti i propri moduli. Il vantaggio chiave dell'avere l'API di logging fornita da un modulo di libreria standard è che tutti i moduli Python possono concorrere al logging, in modo che il log della propria applicazione possa includere messaggi da moduli di terze parti.
+Il modulo <strong>logging</strong> definisce una <a href='http://it.wikipedia.org/wiki/Application_programming_interface'>API</a> standard per segnalare errori ed informazioni da tutti i propri moduli. Il vantaggio chiave dell'avere l'API di logging fornita da un modulo di libreria standard Ã¨ che tutti i moduli Python possono concorrere al logging, in modo che il log della propria applicazione possa includere messaggi da moduli di terze parti.
 </testo_normale>
 <testo_normale>
 E' possibile registrare messaggi con livelli di dettaglio diversi oppure verso destinazioni diverse. Il modulo standard supporta la scrittura del registro dei messaggi ai file, ad indirizzi HTTP GET/POST, email tramite SMTP, socket generici oppure verso meccanismi di registrazione specifici di un sistema operativo. Si possono anche creare le proprie classi di destinazione del log se si hanno specifiche esigenze che non sono coperte dalle classi built-in.
@@ -25,7 +25,7 @@ E' possibile registrare messaggi con livelli di dettaglio diversi oppure verso d
 Logging ad un file    
 </titolo_2>
 <testo_normale>
-La maggior parte delle applicazioni probabilmente vorranno eseguire il log ad un file, quindi si inizia con questo caso. Tramite la funzione ${sbk}basicConfig()${ebk}, si può impostare l'handler predefinito in modo che i messaggi di debug siano scritti ad un file.
+La maggior parte delle applicazioni probabilmente vorranno eseguire il log ad un file, quindi si inizia con questo caso. Tramite la funzione ${sbk}basicConfig()${ebk}, si puÃ² impostare l'handler predefinito in modo che i messaggi di debug siano scritti ad un file.
 </testo_normale>
 <py_code>
 import logging
@@ -47,7 +47,7 @@ print 'FILE:'
 print body
 </py_code>
 <testo_normale>
-Adesso se si esegue lo script e si guarda quello che si è ottenuto, si dovrebbe trovare il messaggio di log:    
+Adesso se si esegue lo script e si guarda quello che si Ã¨ ottenuto, si dovrebbe trovare il messaggio di log:    
 </testo_normale>
 <py_output>
 $python logging_file_example.py
@@ -59,7 +59,7 @@ DEBUG:root:Questo messaggio dovrebbe andare nel file di log
 Rotazione dei file di log
 </titolo_2>
 <testo_normale>
-Se si esgue lo script ripetutamente, i messaggi di log aggiuntivi sono accodati al file. Per creare ogni volta un nuovo file, si passa un parametro ${sev}filemode${eev} a basicConfig() con il valore ${sev}'w'${eev}. Piuttosto che gestire in prima persona la dimensione del file è più semplice usare ${sbk}RotatingFileHandler${ebk}:
+Se si esgue lo script ripetutamente, i messaggi di log aggiuntivi sono accodati al file. Per creare ogni volta un nuovo file, si passa un parametro ${sev}filemode${eev} a basicConfig() con il valore ${sev}'w'${eev}. Piuttosto che gestire in prima persona la dimensione del file Ã¨ piÃ¹ semplice usare ${sbk}RotatingFileHandler${ebk}:
 </testo_normale>
 <py_code>
 import glob
@@ -101,16 +101,16 @@ logging_rotatingfile_example.out.4
 logging_rotatingfile_example.out.5
 </py_output>
 <testo_normale>
-Il file con le registrazioni più recenti è sempre ${sev}logging_rotatingfile_example.out${eev}, ed ogni volta che esso raggiunge il limite di dimensione viene rinominato con il suffisso ${sev}.1.${eev}. Ognuno dei file di backup esistenti viene rinominato incrementando il suffisso (${sev}.1.${eev}) diventa ${sev}.2.${eev} ecc.) mentre il file ${sev}.5.${eev} viene eliminato.
+Il file con le registrazioni piÃ¹ recenti Ã¨ sempre ${sev}logging_rotatingfile_example.out${eev}, ed ogni volta che esso raggiunge il limite di dimensione viene rinominato con il suffisso ${sev}.1.${eev}. Ognuno dei file di backup esistenti viene rinominato incrementando il suffisso (${sev}.1.${eev}) diventa ${sev}.2.${eev} ecc.) mentre il file ${sev}.5.${eev} viene eliminato.
 </testo_normale>
 <note>
-Ovviamente questo esempio imposta una dimensione del file di log molto ridotta per estremizzare l'esempio. Si dovrà impostare <em>maxBytes</em> ad un valore appropriato.
+Ovviamente questo esempio imposta una dimensione del file di log molto ridotta per estremizzare l'esempio. Si dovrÃ  impostare <em>maxBytes</em> ad un valore appropriato.
 </note>
 <titolo_2>
 Livelli di dettaglio
 </titolo_2>
 <testo_normale>
-Un'altra utile caratteristica dell'API di <strong>logging</strong>     è la capacità di produrre diversi messaggi per diversi livelli di log. Questo consente di fornire al proprio codice messaggi di debug, ad esempio; ma abbassando il livello di dettaglio del log questi messaggi di debug non sono scritti nel proprio sistema in produzione.
+Un'altra utile caratteristica dell'API di <strong>logging</strong>     Ã¨ la capacitÃ  di produrre diversi messaggi per diversi livelli di log. Questo consente di fornire al proprio codice messaggi di debug, ad esempio; ma abbassando il livello di dettaglio del log questi messaggi di debug non sono scritti nel proprio sistema in produzione.
 </testo_normale>
 <tabella_semplice>
 Livello,Valore
@@ -125,7 +125,7 @@ UNSET,0
 
 </testo_normale>
 <testo_normale>
-Le chiamate di logger, handler e messaggi di log possono ognuna specificare un livello. Il messaggio di log viene emesso solamente se l'handler ed il logger sono configurati per l'emissione di messaggi di quel livello o di quelli superiori. Ad esempio, se un messaggio è CRITICAL, ed il logger è impostato ad ERROR, il messaggio viene emesso (50 > 40). Se un messaggio è un WARNING, ed il logger viene impostato per produrre solo ERRORi, il messaggio non viene emesso (30 < 40).
+Le chiamate di logger, handler e messaggi di log possono ognuna specificare un livello. Il messaggio di log viene emesso solamente se l'handler ed il logger sono configurati per l'emissione di messaggi di quel livello o di quelli superiori. Ad esempio, se un messaggio Ã¨ CRITICAL, ed il logger Ã¨ impostato ad ERROR, il messaggio viene emesso (50 > 40). Se un messaggio Ã¨ un WARNING, ed il logger viene impostato per produrre solo ERRORi, il messaggio non viene emesso (30 < 40).
 </testo_normale>
 <py_code>
 import logging
@@ -143,34 +143,34 @@ if len(sys.argv) > 1:
     level = LEVELS.get(level_name, logging.NOTSET)
     logging.basicConfig(level=level)
 
-logging.debug('Questo è un messaggio di debug')
+logging.debug('Questo Ã¨ un messaggio di debug')
 logging.info('Questo + un messaggio di informazione')
-logging.warning('Questo è un messaggio di avvertimento')
-logging.error('Questo è un messaggio di errore')
-logging.critical('Questo è un messaggio di errore critico')    
+logging.warning('Questo Ã¨ un messaggio di avvertimento')
+logging.error('Questo Ã¨ un messaggio di errore')
+logging.critical('Questo Ã¨ un messaggio di errore critico')    
 </py_code>
 <testo_normale>
 Si esegua lo script con un parametro tipo 'debug' oppure 'warning' per vedere quali messaggi vengono mostrati ai livelli diversi
 </testo_normale>
 <py_output>
 $ python logging_level_example.py debug
-DEBUG:root:Questo è un messaggio di debug
-INFO:root:Questo è un messaggio di informazione
-WARNING:root:Questo è un messaggio di avvertimento
-ERROR:root:Questo è un messaggio di errore
-CRITICAL:root:Questo è un messaggio di errore critico
+DEBUG:root:Questo Ã¨ un messaggio di debug
+INFO:root:Questo Ã¨ un messaggio di informazione
+WARNING:root:Questo Ã¨ un messaggio di avvertimento
+ERROR:root:Questo Ã¨ un messaggio di errore
+CRITICAL:root:Questo Ã¨ un messaggio di errore critico
 </py_output>
 <titolo_2>
 Il Log nelle Librerie
 </titolo_2>
 <testo_normale>
-<strong>logging</strong> dovrebbe essere usato dagli sviluppatori di librerie piuttosto che di applicazioni. Per loro c'è perfino meno lavoro da fare. Occorre creare semplicemente una istanza di logger per ogni contesto, usando un nome appropriato, quindi registrare i messaggi usando i livelli standard. Fintanto che una libreria usa l'API di logging con consistente nomenclatura e selezione di livelli, l'applicazione può essere configurata per mostrare o nascondere i messaggi dalla libreria, a seconda delle necessità.
+<strong>logging</strong> dovrebbe essere usato dagli sviluppatori di librerie piuttosto che di applicazioni. Per loro c'Ã¨ perfino meno lavoro da fare. Occorre creare semplicemente una istanza di logger per ogni contesto, usando un nome appropriato, quindi registrare i messaggi usando i livelli standard. Fintanto che una libreria usa l'API di logging con consistente nomenclatura e selezione di livelli, l'applicazione puÃ² essere configurata per mostrare o nascondere i messaggi dalla libreria, a seconda delle necessitÃ .
 </testo_normale>
 <sottotitolo>
 Nominare le Istanze di Logging
 </sottotitolo>
 <testo_normale>
-Si noterà che tutti i precedenti messaggi di log hanno 'root' incorporato in essi. Il modulo <strong>logging</strong> supporta una gerarchia di logger con nomi diversi. Un facile modo per determinare da dove provenga uno specifico messaggio di log è usare un oggetto logger separato per ciascuno modulo. Ogni nuovo logger eredita la configurazione del genitore, ed i messaggi di log inviati ad un logger includono il nome di quel logger. Opzionalmente, ogni logger può essere configurato diversamente, in modo che i messaggi dai diversi moduli vengono gestiti in diversi modi. Si osservi un semplice esempio di come eseguire il log da diversi moduli in modo da tracciare facilmente la sorgente dei messaggi:
+Si noterÃ  che tutti i precedenti messaggi di log hanno 'root' incorporato in essi. Il modulo <strong>logging</strong> supporta una gerarchia di logger con nomi diversi. Un facile modo per determinare da dove provenga uno specifico messaggio di log Ã¨ usare un oggetto logger separato per ciascuno modulo. Ogni nuovo logger eredita la configurazione del genitore, ed i messaggi di log inviati ad un logger includono il nome di quel logger. Opzionalmente, ogni logger puÃ² essere configurato diversamente, in modo che i messaggi dai diversi moduli vengono gestiti in diversi modi. Si osservi un semplice esempio di come eseguire il log da diversi moduli in modo da tracciare facilmente la sorgente dei messaggi:
 </testo_normale>
 <py_code>
 import logging
@@ -192,37 +192,9 @@ WARNING:package1.module1:Questo messaggio proviene da un modulo
 WARNING:package2.module2:E questo messaggio proviene da un altro modulo
 </py_output>
 <testo_normale>
-Ci sono moltissime altre opzioni per configurazre logging, incluse diverse opzioni di formattazione dei messaggi di log, la possibilità di invaire messaggi a destinazioni multiple, e la modifica della configurazione di un applicazione da tempo in esecuzione al volo usando un'interfaccia socket. Tutte queste opzioni sono trattate dettagliatamente nella documentazione della libreria del modulo.
+Ci sono moltissime altre opzioni per configurazre logging, incluse diverse opzioni di formattazione dei messaggi di log, la possibilitÃ  di invaire messaggi a destinazioni multiple, e la modifica della configurazione di un applicazione da tempo in esecuzione al volo usando un'interfaccia socket. Tutte queste opzioni sono trattate dettagliatamente nella documentazione della libreria del modulo.
 </testo_normale>
 <vedi_anche>
 http://docs.python.org/library/logging.html|logging|La documentazione della libreria standard per questo modulo.
 </vedi_anche>
-
-<!--
-<avvertimento>
-</avvertimento>
-<descrizione>
-</descrizione>
-<lista>
-</lista>
-<lista_numerata>
-</lista_numerata>
-<note>
-</note>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<sottotitolo>
-</sottotitolo>
-<testo_normale>
-</testo_normale>
-<titolo_1>
-</titolo_1>
-<titolo_2>
-</titolo_2>
-<vedi_anche>
-</vedi_anche>
-
--->
 </documento_tradotto>

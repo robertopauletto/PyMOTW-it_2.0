@@ -1,4 +1,4 @@
-cu<?xml version="1.0" encoding="Latin-1"?>
+﻿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>importazione moduli </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- tag <testo_normale> contiene il testo normale dell'articolo -->
@@ -108,7 +108,7 @@ Sub-modulo:
 sorgente /home/robby/pydev/pymotw-it/dumpscripts/example/submodule.py
 </py_output>
 <testo_normale>
-Se ${sbk}find_module${ebk} non riesce a trovare il modulo, solleva una eccezione <a href='${baseurl}/pymotw-it/eccezioni.html#importerror'>ImportError</a>.
+Se ${sbk}find_module${ebk} non riesce a trovare il modulo, solleva una eccezione <a href='eccezioni.html#importerror'>ImportError</a>.
 </testo_normale>
 <py_code>
 import imp
@@ -185,37 +185,8 @@ $ python imp_load_module_reload.py
 <vedi_anche>
 http://docs.python.org/library/imp.html|imp|La documentazione della libreria standard per questo modulo
 http://www.doughellmann.com/PyMOTW/sys/imports.html#sys-imports|Moduli ed Import|Agganci per importazione, il percorso di ricerca dei moduli ed altro.
-${baseurl}/pymotw-it/inspect.html|inspect|Carica informazioni per un modulo programmaticamente.
+inspect.html|inspect|Carica informazioni per un modulo programmaticamente.
 http://www.python.org/dev/peps/pep-0302|PEP 302|Nuovi agganci per import
 http://www.python.org/dev/peps/pep-0369|POP 369|Agganci post import.
 </vedi_anche>
-
-<!--
-http://it.wikipedia.org/wiki/Namespace
-<avvertimento>
-</avvertimento>
-<descrizione>
-</descrizione>
-<lista>http://www.oreillyschool.com/courses/python2/
-</lista>
-<lista_numerata>
-</lista_numerata>
-<note>
-</note>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<sottotitolo>
-</sottotitolo>
-<testo_normale>
-</testo_normale>
-<titolo_1>
-</titolo_1>
-<titolo_2>
-</titolo_2>
-<vedi_anche>
-</vedi_anche>
-
--->
 </documento_tradotto>

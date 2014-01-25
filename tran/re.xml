@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+﻿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>servizi di stringa </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- tag <testo_normale> contiene il testo normale dell'articolo -->
@@ -2080,35 +2080,7 @@ http://docs.python.org/library/re.html|re|La documentazione della libreria stand
 http://docs.python.org/howto/regex.html|Regular Expressions HOWTO|Introduzione alle espressioni regolari per gli sviluppatori Python di Andrew Kuchling.
 http://kodos.sourceforge.net/|Kodos|Uno strumento per il test delle espressioni regolari di Phil Schwartz.
 http://it.wikipedia.org/wiki/Espressione_regolare|Wikipedia: Espressione Regolare| Una pagina introduttiva ai concetti delle espressioni regolari ed alle tecniche
-http://www.doughellmann.com/PyMOTW/locale/index.html#module-locale|locale|Il modulo <strong>locale</strong> si usa per impostare la propria configurazione di linguaggio quando si lavora con testo Unicode
+locale.html|locale|Il modulo <strong>locale</strong> si usa per impostare la propria configurazione di linguaggio quando si lavora con testo Unicode
 http://docs.python.org/2/library/unicodedata.html|unicodedata|Accesso programmatico al database delle proprietà dei caratteri Unicode
 </vedi_anche>
-<!--
-http://it.wikipedia.org/wiki/Namespace
-<avvertimento>
-</avvertimento>
-<descrizione>
-</descrizione>
-<lista>http://www.oreillyschool.com/courses/python2/
-</lista>
-<lista_numerata>
-</lista_numerata>
-<note>
-</note>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<sottotitolo>
-</sottotitolo>
-<testo_normale>
-</testo_normale>
-<titolo_1>
-</titolo_1>
-<titolo_2>
-</titolo_2>
-<vedi_anche>
-</vedi_anche>
-
--->
 </documento_tradotto>

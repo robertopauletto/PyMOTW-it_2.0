@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+﻿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>servizi python in fase di esecuzione </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- tag <testo_normale> contiene il testo normale dell'articolo -->
@@ -627,33 +627,4 @@ http://docs.python.org/library/inspect.html|inspect|La documentazione della libr
 http://www.doughellmann.com/projects/CommandLineApp/|CommandLineApp|Classe base per applicazioni da riga di comando orientate agli oggetti.
 http://www.python.org/download/releases/2.3/mro/|Ordine di risoluzione del Metodo in Python 2.3|Documentazione per l'ordine di Risoluzione del Metodo C3 usata da Python 2.3 e successivo.
 </vedi_anche>
-
-<!--
-http://it.wikipedia.org/wiki/Namespace
-<avvertimento>
-</avvertimento>
-<descrizione>
-</descrizione>
-<lista>http://www.oreillyschool.com/courses/python2/
-</lista>
-<lista_numerata>
-</lista_numerata>
-<note>
-</note>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<sottotitolo>
-</sottotitolo>
-<testo_normale>
-</testo_normale>
-<titolo_1>
-</titolo_1>
-<titolo_2>
-</titolo_2>
-<vedi_anche>
-</vedi_anche>
-
--->
 </documento_tradotto>

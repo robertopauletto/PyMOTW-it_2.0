@@ -22,6 +22,11 @@ class Modulo(object):
         self.data_agg = None
         self.url = nome + '.html'
 
+    @property
+    def nome_per_teaser(self):
+        return self.nome.replace('_', ' ')
+
+
     @staticmethod
     def ottieni_modulo(nome_modulo):
         diz = ottieni_modulo(nome_modulo)
@@ -42,8 +47,7 @@ class Modulo(object):
     
 
 def elenco_per_indice():
-    """Ritorna una lista di oggetti `:py:class:Modulo`
-    """
+    """Ritorna una lista di oggetti :py:class:`Modulo`"""
     elenco = []
     insubs = InlineSubs()
     for k, v in ottieni_moduli_tradotti().iteritems():

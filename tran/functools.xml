@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>moduli numerici e matematici </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- tag <testo_normale> contiene il testo normale dell'articolo -->
@@ -16,7 +16,7 @@ Il modulo functools include strumenti per il wrapping di funzioni ed altri ogget
 nuovo nella 2.5
 </descrizione>
 <testo_normale>
-Lo strumento primario fornito dal modulo <strong>functools</strong> è la classe ${sbk}partial${ebk}, che può essere usata per "impacchettare" un chiamabile con parametri predifiniti. L'oggetto risultante è a sua volta chiamabile e può essere trattato come se fosse la funzione originale. Richiede tutti gli stessi parametri del chiamabile originale e può essere chiamato con parametri aggiuntivi sia posizionali che nominativi.
+Lo strumento primario fornito dal modulo <strong>functools</strong> Ã¨ la classe ${sbk}partial${ebk}, che puÃ² essere usata per "impacchettare" un chiamabile con parametri predifiniti. L'oggetto risultante Ã¨ a sua volta chiamabile e puÃ² essere trattato come se fosse la funzione originale. Richiede tutti gli stessi parametri del chiamabile originale e puÃ² essere chiamato con parametri aggiuntivi sia posizionali che nominativi.
 </testo_normale>
 <titolo_2>
 partial
@@ -103,7 +103,7 @@ TypeError: myfunc() takes at least 1 non-keyword argument (0 given)
 update_wrapper    
 </titolo_2>
 <testo_normale>
-Come illustrato nell'esempio precedente, l'oggetto partial non ha attributi __name__ o __doc__ predefiniti. La perdita di questi attributi per le funzioni decorate le rende più difficili per il debug. Se si usa ${sbk}update_wrapper${ebk}, si possono copiare od aggiungere attributi dalla funzione originale all'oggetto partial.
+Come illustrato nell'esempio precedente, l'oggetto partial non ha attributi __name__ o __doc__ predefiniti. La perdita di questi attributi per le funzioni decorate le rende piÃ¹ difficili per il debug. Se si usa ${sbk}update_wrapper${ebk}, si possono copiare od aggiungere attributi dalla funzione originale all'oggetto partial.
 </testo_normale>
 <py_code>
 import functools
@@ -275,7 +275,7 @@ wrapper di istanza:
 wraps
 </titolo_2>
 <testo_normale>
-Come detto precedentemente, queste capacità sono particolarmente utili quando usate nei decoratori, visto che la funzione decorata risulta con le proprietà della funzione "grezza" originale. functools fornisce una comoda funzione, ${sbk}wraps()${ebk}, da usare essa stessa come decoratore e per applicare automaticamente ${sbk}update_wrapper()${ebk}.
+Come detto precedentemente, queste capacitÃ  sono particolarmente utili quando usate nei decoratori, visto che la funzione decorata risulta con le proprietÃ  della funzione "grezza" originale. functools fornisce una comoda funzione, ${sbk}wraps()${ebk}, da usare essa stessa come decoratore e per applicare automaticamente ${sbk}update_wrapper()${ebk}.
 </testo_normale>
 <py_code>
 import functools
@@ -340,17 +340,4 @@ wrapped_myfunc:
 <vedi_anche>
 http://docs.python.org/library/functools.html|functools|La documentazione della libreria standard per questo modulo.
 </vedi_anche>
-
-<!--
-<titolo_2>
-</titolo_2>
-<testo_normale>
-</testo_normale>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<vedi_anche>
-</vedi_anche>
--->
 </documento_tradotto>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>moduli numerici e matematici </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- tag <testo_normale> contiene il testo normale dell'articolo -->
@@ -16,10 +16,10 @@ Il modulo itertools comprende una serie di funzioni per lavorare con insiemi di 
 2.3
 </descrizione>
 <testo_normale>
-Le funzioni fornite sono ispirate da simili caratteristiche del "pigro linguaggio di programmazione funzionale" Haskell e SML. Esse sono concepite per essere veloci ed usare la memoria con efficienza, ma anche per essere agganciate insieme per esprimere algoritmi più complicati basati sull'iterazione.
+Le funzioni fornite sono ispirate da simili caratteristiche del "pigro linguaggio di programmazione funzionale" Haskell e SML. Esse sono concepite per essere veloci ed usare la memoria con efficienza, ma anche per essere agganciate insieme per esprimere algoritmi piÃ¹ complicati basati sull'iterazione.
 </testo_normale>
 <testo_normale>
-Il codice basato sull'iterazione potrebbe essere preferito al codice che usa le liste per parecchie ragioni. Visto che i dati non sono prodotti dall'iteratore fino a che non è necessario, tutti i dati non sono posti in memoria allo stesso tempo. La riduzione dell'uso di memoria può ridurre lo swapping ed altri effetti collaterali propri di grandi insiemi di dati, aumentando le prestazioni.  
+Il codice basato sull'iterazione potrebbe essere preferito al codice che usa le liste per parecchie ragioni. Visto che i dati non sono prodotti dall'iteratore fino a che non Ã¨ necessario, tutti i dati non sono posti in memoria allo stesso tempo. La riduzione dell'uso di memoria puÃ² ridurre lo swapping ed altri effetti collaterali propri di grandi insiemi di dati, aumentando le prestazioni.  
 </testo_normale>
 <titolo_2>
 Unire e Dividere Iteratori
@@ -102,7 +102,7 @@ Per incremento di decine fino a 100:
 90    
 </py_output>
 <testo_normale>
-La funzione ${sbk}tee()${ebk} restituisce diversi iteratori indipendenti (predefiniti 2) basati sull'input singolo originale. Ha semantiche simili all'utilità Unix tee, che ripete i valori letti dall'input e li scrive verso un file predeterminato e lo standard input.
+La funzione ${sbk}tee()${ebk} restituisce diversi iteratori indipendenti (predefiniti 2) basati sull'input singolo originale. Ha semantiche simili all'utilitÃ  Unix tee, che ripete i valori letti dall'input e li scrive verso un file predeterminato e lo standard input.
 </testo_normale>
 <py_code>
 from itertools import *
@@ -129,7 +129,7 @@ i2: 3
 i2: 4
 </py_output>
 <testo_normale>
-Visto che i nuovi iteratori creati da ${sbk}tee()${ebk} condividono l'input, non si dovrebbe più usare l'iteratore originale. Se si consumano valori dall'input originale, essi non saranno prodotti dai nuovi iteratori.
+Visto che i nuovi iteratori creati da ${sbk}tee()${ebk} condividono l'input, non si dovrebbe piÃ¹ usare l'iteratore originale. Se si consumano valori dall'input originale, essi non saranno prodotti dai nuovi iteratori.
 </testo_normale>
 <py_code>
 from itertools import *
@@ -161,7 +161,7 @@ i2: 4
 Convertire input    
 </titolo_2>
 <testo_normale>
-La funzione ${sbk}imap()${ebk} restituisce un iteratore che chiama una funzione sui valori degli iteratori in input, e restituisce i risultati. Funziona come la funzione built-in ${sbk}map()${ebk}, eccetto che si ferma quando un qualsiasi iteratore in input è esaurito (invece che inserire valori None per consumare completamente tutti gli iteratori in input).
+La funzione ${sbk}imap()${ebk} restituisce un iteratore che chiama una funzione sui valori degli iteratori in input, e restituisce i risultati. Funziona come la funzione built-in ${sbk}map()${ebk}, eccetto che si ferma quando un qualsiasi iteratore in input Ã¨ esaurito (invece che inserire valori None per consumare completamente tutti gli iteratori in input).
 </testo_normale>
 <testo_normale>
 Nel primo esempio, la funzione lambda moltiplica i valori in input per 2. In un secondo esempio, la funzione lambda moltiplica due parametri, presi da iteratori separati, e restituisce una tuple con i parametri originali ed il valore calcolato.    
@@ -193,7 +193,7 @@ Multipli:
 4 * 9 = 36
 </py_output>
 <testo_normale>
-La funzione ${sbk}starmap()${ebk} è simile ad ${sbk}imap()${ebk}, ma in luogo di costruire una tuple da iteratori multipli, divide gli elementi in un singolo iteratore come parametri della funzione mappatrice usando la sintassi ${sbk}*${ebk}. Dove la funzione mappatrice verso ${sbk}imap()${ebk} viene chiamata f(i1, i2)${sbk}f(i1, i2)${ebk}, la funzione mappatrice verso startmap() viene chiamata ${sbk}f(*i)${ebk}
+La funzione ${sbk}starmap()${ebk} Ã¨ simile ad ${sbk}imap()${ebk}, ma in luogo di costruire una tuple da iteratori multipli, divide gli elementi in un singolo iteratore come parametri della funzione mappatrice usando la sintassi ${sbk}*${ebk}. Dove la funzione mappatrice verso ${sbk}imap()${ebk} viene chiamata f(i1, i2)${sbk}f(i1, i2)${ebk}, la funzione mappatrice verso startmap() viene chiamata ${sbk}f(*i)${ebk}
 </testo_normale>
 <py_code>
 from itertools import *
@@ -214,7 +214,7 @@ $ python itertools_starmap.py
 Produrre Nuovi Valori    
 </titolo_2>
 <testo_normale>
-La funzione ${sbk}count()${ebk} restituisce un iteratore che produce interi consecutivi, indefinitivamente. Il primo numero può essere fornito come parametro, il predefinito è zero. Non ci sono parametri per il limite superiore (vedere la funzione built-in xrange() per un maggior controllo sull'insieme dei risultati). In questo esempio, l'iterazione si interrompe perchè la list passata come parametro viene consumata.
+La funzione ${sbk}count()${ebk} restituisce un iteratore che produce interi consecutivi, indefinitivamente. Il primo numero puÃ² essere fornito come parametro, il predefinito Ã¨ zero. Non ci sono parametri per il limite superiore (vedere la funzione built-in xrange() per un maggior controllo sull'insieme dei risultati). In questo esempio, l'iterazione si interrompe perchÃ¨ la list passata come parametro viene consumata.
 </testo_normale>
 <py_code>
 from itertools import *
@@ -229,7 +229,7 @@ $ python itertools_count.py
 (3, 'c')    
 </py_output>
 <testo_normale>
-La funzione ${sbk}cycle()${ebk} restituisce un iteratore che ripete il contenuto dei parametri ricevuti indefinitivamente. Visto che deve ricordare l'intero contenuto dell'iteratore in input, potrebbe utilizzare un grande quantitativo di memoria se l'iteratore è lungo. In questo esempio una variabile contatore viene usata per interrompere ed uscire dal loop dopo pochi cicli.
+La funzione ${sbk}cycle()${ebk} restituisce un iteratore che ripete il contenuto dei parametri ricevuti indefinitivamente. Visto che deve ricordare l'intero contenuto dell'iteratore in input, potrebbe utilizzare un grande quantitativo di memoria se l'iteratore Ã¨ lungo. In questo esempio una variabile contatore viene usata per interrompere ed uscire dal loop dopo pochi cicli.
 </testo_normale>
 <py_code>
 from itertools import *
@@ -271,7 +271,7 @@ ancora-una-volta
 ancora-una-volta
 </py_output>
 <testo_normale>
-E' utile combinare repeat() con izip() od imap() quando è necessario includere dei valori fissi con i valori dagli altri iteratori
+E' utile combinare repeat() con izip() od imap() quando Ã¨ necessario includere dei valori fissi con i valori dagli altri iteratori
 </testo_normale>
 <py_code>
 from itertools import *
@@ -305,7 +305,7 @@ $ python itertools_repeat_imap.py
 Filtrare    
 </titolo_2>
 <testo_normale>
-La funzione ${sbk}dropwhile()${ebk} restituisce un iteratore che ritorna elementi dall'iteratore in input dopo che una condizione diventa falsa o vera per la prima volta. Non filtra ogni elemento dell'input; dopo che la condizione è vera/falsa per la prima volta, vengono ritornati tutti gli elementi restanti dell'input.
+La funzione ${sbk}dropwhile()${ebk} restituisce un iteratore che ritorna elementi dall'iteratore in input dopo che una condizione diventa falsa o vera per la prima volta. Non filtra ogni elemento dell'input; dopo che la condizione Ã¨ vera/falsa per la prima volta, vengono ritornati tutti gli elementi restanti dell'input.
 </testo_normale>
 <py_code>
 from itertools import *
@@ -330,7 +330,7 @@ Trattengo: 1
 Trattengo: -2
 </py_output>
 <testo_normale>
-L'opposto di dropwhile() è ${sbk}takewhile()${ebk} che restituisce un iteratore che ritorna elementi dall'iteratore di input fintanto che la funzione di test ritorna vero.
+L'opposto di dropwhile() Ã¨ ${sbk}takewhile()${ebk} che restituisce un iteratore che ritorna elementi dall'iteratore di input fintanto che la funzione di test ritorna vero.
 </testo_normale>
 <py_code>
 from itertools import *
@@ -380,7 +380,7 @@ Testing: -2
 Trattengo: -2
 </py_output>
 <testo_normale>
-Opposto di ifilter() è ${sbk}ifilterfalse()${ebk} che restituisce un iteratore che include solo gli elementi per i queli la funzione di test ritorna falso.
+Opposto di ifilter() Ã¨ ${sbk}ifilterfalse()${ebk} che restituisce un iteratore che include solo gli elementi per i queli la funzione di test ritorna falso.
 </testo_normale>
 <py_code>
 from itertools import *
@@ -433,7 +433,7 @@ $ python itertools_groupby.py
 3 ['g']
 </py_output>
 <testo_normale>
-Questo esempio più complicato illustra un raggruppamento di valori in relazione ad un qualche attributo. Si noti che la sequenza di input deve essere ordinata sulla chiave per fare sì che il raggruppamento funzioni come ci si aspetta.    
+Questo esempio piÃ¹ complicato illustra un raggruppamento di valori in relazione ad un qualche attributo. Si noti che la sequenza di input deve essere ordinata sulla chiave per fare sÃ¬ che il raggruppamento funzioni come ci si aspetta.    
 </testo_normale>
 <py_code>
 from itertools import *
@@ -501,17 +501,4 @@ http://docs.python.org/library/itertools.html|itertools|La documentazione della 
 http://www.standardml.org/Basis/|La libreria Standard ML Basis|La libreria per SML
 http://www.haskell.org/definition/|Definizione di Haskell e delle Librerie Standard|Specifiche della libreria standard per il linguaggio funzionale Haskell.
 </vedi_anche>
-
-<!--
-<titolo_2>
-</titolo_2>
-<testo_normale>
-</testo_normale>
-<py_code>
-</py_code>
-<py_output>
-</py_output>
-<vedi_anche>
-</vedi_anche>
--->
 </documento_tradotto>

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <!-- Custom styles for this template -->
     <link href="css/offcanvas.css" rel="stylesheet">
-
+    <link href="css/my.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -33,11 +33,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">PyMOTW-it</a>
+            <a class="navbar-brand" href="#"><span style='color: green;'>PyM</span><span style='color: white;'>OTW</span><span style='color: red'>-it</span></a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="index.html">Home</a></li>
+                <li class="active"><a href="indice_alfabetico.html">Indice Moduli</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -70,49 +71,24 @@
                 <div class="row">
                 
                     <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>base64</h2>
-                        <p><strong>Codifica dati binari in caratteri ASCII</strong></p>
-                        <p>Il modulo base64 contiene le funzioni per trascodificare dati binari in un sottoinsieme di ASCII adatti alla trasmissione che usa protocolli di testo semplice</p>
-                        <p><a class="btn btn-default" href="base64.html">Leggi &raquo;</a></p>
+                        <h2>eccezioni</h2>
+                        <p><strong>Classi di errore built-in</strong></p>
+                        <p>il modulo delle eccezioni definisce gli errori built-in usati attraverso tutta la libreria standard e dall'interprete.</p>
+                        <p><a class="btn btn-default" href="eccezioni.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                     <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>tarfile</h2>
-                        <p><strong>Accesso ad Archivi Tar</strong></p>
-                        <p>Accesso ad archivi Tar</p>
-                        <p><a class="btn btn-default" href="tarfile.html">Leggi &raquo;</a></p>
+                        <h2>filecompare</h2>
+                        <p><strong>Confronta file</strong></p>
+                        <p>Confronta file e directory nel filesystem</p>
+                        <p><a class="btn btn-default" href="filecompare.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                     <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>dbhash</h2>
-                        <p><strong>API in stile DBM per la libreria database BSD</strong></p>
-                        <p>Fornisce una API tipo dizionario per accedere ai file <span class='bkIstruzione'>db</span> BSD.</p>
-                        <p><a class="btn btn-default" href="dbhash.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                </div><!--/row-->
-            
-                <div class="row">
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>dumbdbm</h2>
-                        <p><strong>Implementazione Portabile di DBM</strong></p>
-                        <p>Implementazione <a href='http://it.wikipedia.org/wiki/Front-end_e_back-end'>back-end</a> come ultima risorsa per <a href='/pymotw-it/anydbm.html'>anydbm</a>.</p>
-                        <p><a class="btn btn-default" href="dumbdbm.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>imp</h2>
-                        <p><strong>Interfaccia al meccanismo di importazione modulo.</strong></p>
-                        <p>Espone l'implementazione dell'istruzione Python import.</p>
-                        <p><a class="btn btn-default" href="imp.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>json</h2>
-                        <p><strong>Serializzatore di JavaScript Object Notation</strong></p>
-                        <p>Codifica oggetti Python come stringhe JSON, e decodifica stringhe JSON in oggetti Python</p>
-                        <p><a class="btn btn-default" href="json.html">Leggi &raquo;</a></p>
+                        <h2>fileinput</h2>
+                        <p><strong>Elabora righe da flussi di input</strong></p>
+                        <p>Crea programmi filtro da riga di comando per elaborare righe da flussi di input</p>
+                        <p><a class="btn btn-default" href="fileinput.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                 </div><!--/row-->
@@ -120,24 +96,24 @@
                 <div class="row">
                 
                     <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>collections</h2>
-                        <p><strong>Tipi di dato contenitore</strong></p>
-                        <p>Tipi di dato contenitore</p>
-                        <p><a class="btn btn-default" href="collections.html">Leggi &raquo;</a></p>
+                        <h2>fnmatch</h2>
+                        <p><strong>Confrontare nomi di file con i modelli di glob in stile Unix</strong></p>
+                        <p>Gestisce il confronto con i nomi dei file in stile Unix</p>
+                        <p><a class="btn btn-default" href="fnmatch.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                     <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>time</h2>
-                        <p><strong>Funzioni per la manipolazione del tempo</strong></p>
-                        <p>Funzioni per la manipolazione del tempo</p>
-                        <p><a class="btn btn-default" href="time.html">Leggi &raquo;</a></p>
+                        <h2>fractions</h2>
+                        <p><strong>Numeri razionali</strong></p>
+                        <p>Implementa una classe per lavorare coi numeri razionali</p>
+                        <p><a class="btn btn-default" href="fractions.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                     <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>sqlite3</h2>
-                        <p><strong>Database Relazionale Incorporabile</strong></p>
-                        <p>Implementa un database relazionale incorporabile con supporto SQL</p>
-                        <p><a class="btn btn-default" href="sqlite3.html">Leggi &raquo;</a></p>
+                        <h2>functools</h2>
+                        <p><strong>Strumenti per generare decoratori ed altri wrapper di funzione</strong></p>
+                        <p>Il modulo functools include strumenti per il wrapping di funzioni ed altri oggetti chiamabili</p>
+                        <p><a class="btn btn-default" href="functools.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                 </div><!--/row-->
@@ -145,24 +121,49 @@
                 <div class="row">
                 
                     <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>csv</h2>
-                        <p><strong>File con valori separati da virgole</strong></p>
-                        <p>Legge e scrive file con valori separati da virgole</p>
-                        <p><a class="btn btn-default" href="csv.html">Leggi &raquo;</a></p>
+                        <h2>gdbm</h2>
+                        <p><strong>Versione GNU della libreria dbm</strong></p>
+                        <p>Versione GNU della libreria dbm.</p>
+                        <p><a class="btn btn-default" href="gdbm.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                     <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>xmltree</h2>
-                        <p><strong>Api per la Manipolazione XML</strong></p>
-                        <p>Genera ed analizza documenti XML</p>
-                        <p><a class="btn btn-default" href="xmltree.html">Leggi &raquo;</a></p>
+                        <h2>gzip</h2>
+                        <p><strong>Leggere e scrivere file zip GNU</strong></p>
+                        <p>Leggere e scrivere file gzip.</p>
+                        <p><a class="btn btn-default" href="gzip.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                     <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>whichdb</h2>
-                        <p><strong>Identifica i formati di database in stile DBM</strong></p>
-                        <p>Esamina un file di database in stile DBM esistente e determina quale libreria dovrebbe essere usata per aprirlo</p>
-                        <p><a class="btn btn-default" href="whichdb.html">Leggi &raquo;</a></p>
+                        <h2>hashlib</h2>
+                        <p><strong>Hash crittografici e digest del messaggio</strong></p>
+                        <p>Hash crittografici e digest del messaggio</p>
+                        <p><a class="btn btn-default" href="hashlib.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                </div><!--/row-->
+            
+                <div class="row">
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>heapq</h2>
+                        <p><strong>Algoritmo di ordinamento sul posto dell&#39;heap</strong></p>
+                        <p>heapq implementa un algoritmo di ordinamento sul min-heap adatto all'uso con le liste di Python</p>
+                        <p><a class="btn btn-default" href="heapq.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>hmac</h2>
+                        <p><strong>Firma crittografica e controllo dei messaggi</strong></p>
+                        <p>Il modulo hmac implementa il keyed-hashing  per l'autenticazione dei messaggi, come descritto in <a href='http://tools.ietf.org/html/rfc2104.html'>RFC 2104</a></p>
+                        <p><a class="btn btn-default" href="hmac.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>imaplib</h2>
+                        <p><strong>Libreria per client IMAP4</strong></p>
+                        <p>Libreria client per il protocollo di comunicazione IMAP4</p>
+                        <p><a class="btn btn-default" href="imaplib.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                 </div><!--/row-->
@@ -173,6 +174,12 @@
                 <a href="index_3.html"
                    class="btn btn-primary btn-lg" >
                     <span class="glyphicon glyphicon-chevron-left"></span> Altri moduli
+                </a>
+            
+            
+                <a href="index_1.html"
+                   class="btn btn-primary btn-lg" >
+                    <span class="glyphicon glyphicon-chevron-right"></span> Altri moduli
                 </a>
             
             </p>
@@ -198,13 +205,14 @@
     </div><!--/row-->
 
     <hr>
+        <div id="footer">
+        <div class="container">
+            <p class="text-muted">PyMOTW-it 
+            2013 / 
+            Documento aggiornato il: 25-01-2014</p>
+        </div>
+    </div
 
-
-    <hr>
-
-    <footer>
-        <p>&copy; PyMOTW-it / 2013</p>
-    </footer>
 
 </div><!--/.container-->
 

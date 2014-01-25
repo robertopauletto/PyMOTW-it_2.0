@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <!-- Custom styles for this template -->
     <link href="css/offcanvas.css" rel="stylesheet">
-
+    <link href="css/my.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -33,11 +33,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">PyMOTW-it</a>
+            <a class="navbar-brand" href="#"><span style='color: green;'>PyM</span><span style='color: white;'>OTW</span><span style='color: red'>-it</span></a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="index.html">Home</a></li>
+                <li class="active"><a href="indice_alfabetico.html">Indice Moduli</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -70,24 +71,74 @@
                 <div class="row">
                 
                     <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>logging</h2>
-                        <p><strong>Riporta messaggi di stato, di errore ed informativi</strong></p>
-                        <p>Riporta messaggi di stato, di errore ed informativi</p>
-                        <p><a class="btn btn-default" href="logging.html">Leggi &raquo;</a></p>
+                        <h2>socketserver</h2>
+                        <p><strong>Creazione di server di rete</strong></p>
+                        <p>Creazione di server di rete</p>
+                        <p><a class="btn btn-default" href="socketserver.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                     <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>os</h2>
-                        <p><strong></strong></p>
+                        <h2>sqlite3</h2>
+                        <p><strong>Database Relazionale Incorporabile</strong></p>
+                        <p>Implementa un database relazionale incorporabile con supporto SQL</p>
+                        <p><a class="btn btn-default" href="sqlite3.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>string</h2>
+                        <p><strong>Lavorare con il testo</strong></p>
+                        <p>Contiene costanti e classi per lavorare con il testo</p>
+                        <p><a class="btn btn-default" href="string.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                </div><!--/row-->
+            
+                <div class="row">
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>stringIO</h2>
+                        <p><strong>Lavorare con i buffer di testo usando le API tipo file</strong></p>
+                        <p>Lavorare con i buffer di testo usando le API tipo file</p>
+                        <p><a class="btn btn-default" href="stringIO.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>struct dati binari</h2>
+                        <p><strong>Lavorare con dati binari</strong></p>
+                        <p>Converte tra stringhe e dati binari</p>
+                        <p><a class="btn btn-default" href="struct_dati_binari.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>subprocess</h2>
+                        <p><strong>Genera e comunica con processi addizionali</strong></p>
+                        <p>Genera e comunica con processi addizionali</p>
+                        <p><a class="btn btn-default" href="subprocess.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                </div><!--/row-->
+            
+                <div class="row">
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>tarfile</h2>
+                        <p><strong>Accesso ad Archivi Tar</strong></p>
+                        <p>Accesso ad archivi Tar</p>
+                        <p><a class="btn btn-default" href="tarfile.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>tempfile</h2>
+                        <p><strong>Creare risorse temporanee nel filesystem</strong></p>
+                        <p>Creare risorse temporanee nel filesystem</p>
+                        <p><a class="btn btn-default" href="tempfile.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>text processing</h2>
+                        <p><strong>Strumenti di Elaborazione del Testo</strong></p>
                         <p></p>
-                        <p><a class="btn btn-default" href="os.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>decimal</h2>
-                        <p><strong>matematica con virgola fissa e mobile</strong></p>
-                        <p>Artimetica decimale usando numeri a virgola fissa e mobile</p>
-                        <p><a class="btn btn-default" href="decimal.html">Leggi &raquo;</a></p>
+                        <p><a class="btn btn-default" href="text_processing.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                 </div><!--/row-->
@@ -95,74 +146,24 @@
                 <div class="row">
                 
                     <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>zlib</h2>
-                        <p><strong>Accesso a basso livello alla libreria di compressione GNU zlib</strong></p>
-                        <p>Accesso a basso livello alla libreria di compressione GNU zlib</p>
-                        <p><a class="btn btn-default" href="zlib.html">Leggi &raquo;</a></p>
+                        <h2>textwrap</h2>
+                        <p><strong>Formatta paragrafi di testo</strong></p>
+                        <p>Formatta il testo sistemando le interruzioni di riga in un paragrafo</p>
+                        <p><a class="btn btn-default" href="textwrap.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                     <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>difflib</h2>
-                        <p><strong>Calcolare le differenze tra sequenze</strong></p>
-                        <p>Libreria di strumenti per calcolare e lavorare con differenze tra sequenze, specialmente di righe nei file di testo</p>
-                        <p><a class="btn btn-default" href="difflib.html">Leggi &raquo;</a></p>
+                        <h2>time</h2>
+                        <p><strong>Funzioni per la manipolazione del tempo</strong></p>
+                        <p>Funzioni per la manipolazione del tempo</p>
+                        <p><a class="btn btn-default" href="time.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                     <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>hmac</h2>
-                        <p><strong>Firma crittografica e controllo dei messaggi</strong></p>
-                        <p>Il modulo hmac implementa il keyed-hashing  per l'autenticazione dei messaggi, come descritto in <a href='http://tools.ietf.org/html/rfc2104.html'>RFC 2104</a></p>
-                        <p><a class="btn btn-default" href="hmac.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                </div><!--/row-->
-            
-                <div class="row">
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>pydoc</h2>
-                        <p><strong>Documentazione in linea per i moduli Python</strong></p>
-                        <p>Genera aiuto per i moduli Python e le classi dal codice</p>
-                        <p><a class="btn btn-default" href="pydoc.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>dircache</h2>
-                        <p><strong>Listati di directory memorizzati in cache</strong></p>
-                        <p>Memorizza listati di directory nella cache, aggiornandoli quando cambia data/ora di modifica di una directory.</p>
-                        <p><a class="btn btn-default" href="dircache.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>itertools</h2>
-                        <p><strong>Funzioni di iterazione per un looping efficace</strong></p>
-                        <p>Il modulo itertools comprende una serie di funzioni per lavorare con insiemi di dati iterabili (tipo sequenze).</p>
-                        <p><a class="btn btn-default" href="itertools.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                </div><!--/row-->
-            
-                <div class="row">
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>ospath</h2>
-                        <p><strong>Manipolare i nomi dei file indipendentemente dalla piattaforma</strong></p>
-                        <p>Elaborare, costruire, controllare ed altro sui nomi di file e percorsi</p>
-                        <p><a class="btn btn-default" href="ospath.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>unittest</h2>
-                        <p><strong>Ambiente per l&#39;automazione dei test</strong></p>
-                        <p>Ambiente per l'automazione dei test</p>
-                        <p><a class="btn btn-default" href="unittest.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>shelve</h2>
-                        <p><strong>Persistenza di oggetti arbitrari Python</strong></p>
-                        <p>Il modulo <strong>shelve</strong> implementa una conservazione persistente di oggetti arbitrari Python i quali possono essere gestiti da <a href='/pymotw-it/shelve.html'>pickle</a>, usando una API tipo dizionario.</p>
-                        <p><a class="btn btn-default" href="shelve.html">Leggi &raquo;</a></p>
+                        <h2>trace</h2>
+                        <p><strong>Segue le istruzioni Python mentre sono eseguite</strong></p>
+                        <p>Monitora quali istruzioni e funzioni sono eseguite mentre un programma &egrave; in esecuzione per produrre informazioni di <em>code coverage</em>  e <a href='http://en.wikipedia.org/wiki/Call_graph'>grafici di chiamata</a></p>
+                        <p><a class="btn btn-default" href="trace.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                 </div><!--/row-->
@@ -173,6 +174,12 @@
                 <a href="index_6.html"
                    class="btn btn-primary btn-lg" >
                     <span class="glyphicon glyphicon-chevron-left"></span> Altri moduli
+                </a>
+            
+            
+                <a href="index_4.html"
+                   class="btn btn-primary btn-lg" >
+                    <span class="glyphicon glyphicon-chevron-right"></span> Altri moduli
                 </a>
             
             </p>
@@ -198,13 +205,14 @@
     </div><!--/row-->
 
     <hr>
+        <div id="footer">
+        <div class="container">
+            <p class="text-muted">PyMOTW-it 
+            2013 / 
+            Documento aggiornato il: 25-01-2014</p>
+        </div>
+    </div
 
-
-    <hr>
-
-    <footer>
-        <p>&copy; PyMOTW-it / 2013</p>
-    </footer>
 
 </div><!--/.container-->
 
