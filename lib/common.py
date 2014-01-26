@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+ #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 __date__=''
@@ -111,6 +111,29 @@ def get_html_files():
         for f in os.listdir(html_path())
         if f.endswith('.html') and not 'index' in f
     ]
+
+def my_title(frase):
+    """(str) -> str
+    
+    Capitalizzazione delle parole di una frase a ragion veduta (nel senso)
+    che non vengono rese maiuscole tutte le parole di una lettera, le
+    preposizioni e gli articoli
+    
+    TODO: Sicuramente funzione imperfetta da verificare più accuratamente
+    """
+    non_capitalizzare = (
+        'di da in con su per tra fra il la lo gli uno uno una del dello della degli dei al allo agli alle ed od'
+    )
+    l = []
+    for parola in frase.split():
+        if len(parola) == 1:
+            pass
+        elif parola in non_capitalizzare:
+            pass
+        else:
+            parola = parola.title()
+        l.append(parola)
+    return " ".join(l)
     
 def _estrai_da_tag(righe, nome_tag, ripeti=False):
     """(list of str, str [,bool]) -> list of str
@@ -136,6 +159,17 @@ def _estrai_da_tag(righe, nome_tag, ripeti=False):
                 retval.append(riga.strip())
     return retval            
 
+RE_CATEGORIA = re.compile(r'<categoria>(.*)</categoria>')
+def _ottieni_categoria(righe):
+    for riga in righe:
+        match = RE_CATEGORIA.match(riga)
+        if match and len(match.groups()) == 1:
+            return match.groups()[0]
+    return None
+            
+        
+        
+
 def ottieni_modulo(nome_modulo):
     modulo = get_xml_files()[0]
     xml_dir = xml_path()
@@ -154,6 +188,7 @@ def _ottieni_modulo(nome_file):
     - titolo
     - data aggiornamento (ultima data accesso al file)
     - versione traduzione
+    - categoria
     """
     righe = open(nome_file).readlines()
     try:
@@ -161,12 +196,17 @@ def _ottieni_modulo(nome_file):
     except ValueError:
         descr, vers = '', ''
     titolo = " ".join(_estrai_da_tag(righe, 'titolo_1'))
+    categ = _ottieni_categoria(righe).strip()
+    if not categ:
+        print os.path.basename(nome_file), " manca categoria"
+        categ = 'Sconosciuta'
     ultimo_agg = datetime.date.fromtimestamp(os.stat(nome_file).st_mtime)
     return {
         'descr': descr,
         'titolo': titolo.split('-', 1)[1].strip() if '-' in titolo else titolo,
         'agg': ultimo_agg,
         'versione': vers,
+        'categ': categ,
     }
         
 def ottieni_moduli_tradotti():
