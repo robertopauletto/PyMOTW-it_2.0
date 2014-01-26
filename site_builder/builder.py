@@ -36,7 +36,7 @@ try:
     import sys
     import datetime
     import traceback
-    
+    from collections import defaultdict
     from math import ceil
     from django import template
     from django.template import loader
@@ -48,7 +48,7 @@ try:
     import modulo_xml2html 
     from index_builder import ottieni_tabella
     sys.path.append(r'../lib')
-    from common import clear_console
+    from common import clear_console, my_title
     from footer import Footer
 except ImportError as imperr:
     raise Exception("Errore importazione modulo\n\n" + imperr.message)
@@ -116,6 +116,27 @@ def _chunks(l, n):
     """
     return [l[i:i+n] for i in range(0, len(l), n)]
 
+def _categorie_per_indice(elenco_moduli):
+    """(list of :py:class:`Modulo`) -> list 
+    
+    Scorre `elenco_moduli`, ottiene un dizionario per categoria di modulo che
+    contiene i moduli appartenenti a detta categoria; quindi scorre il
+    dizionario ordinato per chiavi e ritorna una lista formata da liste il
+    cui primo elemento è il nome della categoria ed il secondo è una lista di
+    tuple il cui primo valore è il nome del modulo ed il secondo l'indirizzo
+    
+    Serve per popolare la barra destra delle pagine indice (elenco moduli per
+    categorie)
+    """
+    dd = defaultdict(list)
+    for modulo in elenco_moduli:
+        isinstance(modulo, Modulo)
+        dd[my_title(modulo.categoria)].append((modulo.nome, modulo.url))
+    l = []
+    for k in sorted(dd.iterkeys()):
+        l.append((k, dd[k]))
+    return l
+
 def crea_pagine_indice(template_name, file_indice, mod_per_pagina, footer):
     """(str, str)
     
@@ -123,14 +144,17 @@ def crea_pagine_indice(template_name, file_indice, mod_per_pagina, footer):
     """
     gm = []
     prg = 0
-    moduli =  sorted(elenco_per_indice(), key=lambda x: x.nome)
+    ms =  elenco_per_indice()
+    moduli =  sorted(ms, key=lambda x: x.nome)
+    categ_per_indice = _categorie_per_indice(moduli)
+    
     #e = sorted(moduli, key=lambda x: x.nome)
    
     pagine = ceil(len(moduli) / mod_per_pagina)
     for gruppo_moduli in _chunks(moduli, mod_per_pagina):
         for m in gruppo_moduli:
             gm.append(m)
-        i = Indice(gm, footer)
+        i = Indice(gm, footer, categ_per_indice)
         if ((prg + 1) < pagine):
             i.prev_nr_page = prg + 1
         if (prg + 1 ) == 1:
@@ -175,7 +199,7 @@ def crea_tabella_indice(template_name):
     """
     moduli = elenco_per_indice()
     #corpo = ottieni_tabella(moduli)
-    m = DjTabelleIndici(moduli)
+    m = DjTabelleIndici(moduli, FOOTER)
     fn = 'indice_alfabetico.html'
     dic = {'modulo': m,}
     build(template_name, dic, os.path.join(HTML_DIR, fn))

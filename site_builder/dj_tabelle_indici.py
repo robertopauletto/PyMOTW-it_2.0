@@ -15,9 +15,10 @@ class DjTabelleIndici(object):
     """
     Rappresenta una pagina che contiene una tabella con l'indice dei moduli
     """
-    def __init__(self, moduli):
-        """(list of :py:class:Modulo)"""
+    def __init__(self, moduli, footer):
+        """(list of :py:class:Modulo, :py:class:`Footer`)"""
         self._moduli = moduli
+        self.footer = footer
 
     @property
     def elenco_moduli(self):

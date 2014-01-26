@@ -17,7 +17,7 @@ class Indice(object):
     Rappresenta una pagina indice con elenco moduli in ordine
     cronologicamente decrescente
     """
-    def __init__(self, elenco_moduli, footer, nr_pagina=None):
+    def __init__(self, elenco_moduli, footer, categ, nr_pagina=None):
         """(list of :py:class:Modulo, :py:class:`Footer` [,int])"""
         assert len(elenco_moduli) < 13  # 12 moduli per pagina
         self.moduli = elenco_moduli
@@ -27,6 +27,9 @@ class Indice(object):
         self.prev_nr_page = -1
         self.next_nr_page = -1
         self.footer = footer
+        self.elenco_categorie = categ
+
+
 
     @property
     def prev_url(self):

@@ -21,6 +21,7 @@ class Modulo(object):
         self.descrizione = ''
         self.data_agg = None
         self.url = nome + '.html'
+        self.categoria = ''
 
     @property
     def nome_per_teaser(self):
@@ -31,6 +32,7 @@ class Modulo(object):
     def ottieni_modulo(nome_modulo):
         diz = ottieni_modulo(nome_modulo)
         m = Modulo(nome_modulo)
+        m.categoria = diz['categ']
         m.data_agg = diz['agg']
         m.descrizione = Modulo.insubs.rimpiazza(diz['descr'])
         m.titolo = diz['titolo']
@@ -57,6 +59,7 @@ def elenco_per_indice():
         modulo.descrizione = insubs.rimpiazza(v['descr'])
         modulo.titolo = v['titolo']
         modulo.versione = v['versione']
+        modulo.categoria = v['categ']
         elenco.append(modulo)
     return elenco
         
