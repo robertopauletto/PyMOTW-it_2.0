@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="Latin-1"?>
+<documento_tradotto>
+<categoria>comunicazione interprocesso e networking </categoria>
+<inserito_il>
+    2014-05-10
+</inserito_il>
+<titolo_1>
+asyncore - Gestore di I/O Asincrono
+</titolo_1>
+<descrizione>
+Gestore di I/O Asincrono
+1.5.2 e successivo
+</descrizione>
+<testo_normale>
+Il modulo <strong>asynchat</strong> include strumenti per lavorare con oggetti I/O tipo sockets in modo che essi possano essere gestiti in modo asincrono (invece che, ad esempio, usando thread). La classe principale fornita è <code>dispatcher</code>, un wrapper intorno ad un socket che fornisce agganci per gestire eventi tipo connessioni, letture e scritture quanto chiamati dalla funzione del ciclo principale, <code>loop()</code>.
+</testo_normale>
+<titolo_2>
+Client
+</titolo_2>
+<testo_normale>
+Per creare un client basato su asyncore, si deriva da <code>dispatcher</code> e si fornisce l'implementazione per creare il socket, leggere e scrivere. Si esamina ora il seguente client HTTP, basato su quello dalla  documentazione della libreria standard.
+</testo_normale>
+<py_code>
+import asyncore
+import logging
+import socket
+from cStringIO import StringIO
+import urlparse
+
+class HttpClient(asyncore.dispatcher):
+
+    def __init__(self, url):
+        self.url = url
+        self.logger = logging.getLogger(self.url)
+        self.parsed_url = urlparse.urlparse(url)
+        asyncore.dispatcher.__init__(self)
+        self.write_buffer = 'GET %s HTTP/1.0\r\n\r\n' % self.url
+        self.read_buffer = StringIO()
+        self.create_socket(socket.AF_INET, socket.SOCK_STREAM)
+        address = (self.parsed_url.netloc, 80)
+        self.logger.debug('connecting to %s', address)
+        self.connect(address)
+
+    def handle_connect(self):
+        self.logger.debug('handle_connect()')
+
+    def handle_close(self):
+        self.logger.debug('handle_close()')
+        self.close()
+
+    def writable(self):
+        is_writable = (len(self.write_buffer) > 0)
+        if is_writable:
+            self.logger.debug('writable() -> %s', is_writable)
+        return is_writable
+    
+    def readable(self):
+        self.logger.debug('readable() -> True')
+        return True
+
+    def handle_write(self):
+        sent = self.send(self.write_buffer)
+        self.logger.debug('handle_write() -> "%s"', self.write_buffer[:sent])
+        self.write_buffer = self.write_buffer[sent:]
+
+    def handle_read(self):
+        data = self.recv(8192)
+        self.logger.debug('handle_read() -> %d bytes', len(data))
+        self.read_buffer.write(data)
+
+if __name__ == '__main__':
+    logging.basicConfig(level=logging.DEBUG,
+                        format='%(name)s: %(message)s',
+                        )
+
+    clients = [
+        HttpClient('http://www.python.org/'),
+        HttpClient('http://www.doughellmann.com/PyMOTW/contents.html'),
+        ]
+
+    logging.debug('INIZIO DEL CICLO')
+
+    asyncore.loop()
+
+    logging.debug('CICLO TERMINATO')
+
+    for c in clients:
+        response_body = c.read_buffer.getvalue()
+        print c.url, 'ottenuti', len(response_body), 'byte'    
+</py_code>        
+<testo_normale>
+Per cominciare, viene creato il socket in <span class='snip'>__init__()</span> usando il metodo della classe base <code>create_socket()</code>. Possono essere fornite implementazioni alternative del metodo, ma in questo caso si vuole un socket TCP/IP, quindi la versione della classe base è sufficiente.
+</testo_normale>
+<testo_normale>
+L'aggancio <code>handle_connect</code> è presente semplicemente per illustrare quando viene chiamato. Altri tipi di client che deveno effettuare una qualche sorta di <a href="http://it.wikipedia.org/wiki/Handshake">handshake</a> o negoziazione di protocollo dovrebbero svolgere il compito in <code>handle_connect()</code>.
+</testo_normale>
+<testo_normale>
+<code>handle_close()</code> è alla stessa stregua presentato allo scopo di mostrare quando il metodo viene chiamato. La versione della classe base chiude correttamente il socket, quindi se non si necessita di una pulizia supplementare in chiusura si può ignorare il metodo.
+</testo_normale>
+<testo_normale>
+Il ciclo di <strong>asyncore</strong> utilizza il metodo <code>writable()</code> ed il suo parente <code>readable()</code> per decidere quale azione intraprendere con ogni dispatcher. Il reale uso di <code>poll()</code> o <code>select()</code> sui socket o sui descrittori di file gestiti da ciascun dispatcher sono gestiti all'ìnterno del codice di <strong>asyncore</strong>, quindi non occorre che lo faccia il programmatore. Basta semplicemente indicare se il dispatcher deve occuparsi interamente di lettura e scrittura. Nel caso di questo client HTTP, <code>writeable()</code> ritorna <span class='snip'>True</span> fintanto che ci sono dati provenienti dalla richiesta da inviare al server. <code>readable()</code> ritorna sempre <span class='snip'>True</span> visto che vuole leggere tutti i dati.
+</testo_normale>
+<py_output>
+
+</py_output>
+<vedi_anche>
+http://docs.python.org/library/asynchat.html|asynchat|La documentazione della libreria standard per questo modulo
+asyncore.html|asyncore|Il modulo asyncore implementa un ciclo di eventi I/O asincroni
+</vedi_anche>
+</documento_tradotto>
