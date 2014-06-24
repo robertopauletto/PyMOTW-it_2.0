@@ -22,6 +22,7 @@ class DjModulo(object):
     @property
     def titolo(self):
         x = " - ".join((self.modulo.nome, self.modulo.titolo))
+        x = x.replace('_', ' ')
         if self.modulo.nome == "os":
             return "os - Accesso portabile alle funzionalit&agrave; specifiche di un sistema operativo"
         return x

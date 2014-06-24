@@ -49,6 +49,15 @@
 
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
             <div class="well sidebar-nav">
+                    <h4>Ultimi moduli aggiunti/aggiornati</h4>
+                            <ul>
+                                <li>12-06-2014: <a style='display: block;' href='asynchat.html'>asynchat</a></li>
+                                <li>12-06-2014: <a style='display: block;' href='asyncore.html'>asyncore</a></li>
+                                <li>12-06-2014: <a style='display: block;' href='logging.html'>logging</a></li>
+                            </ul>
+            </div><!--/.well -->
+
+            <div class="well sidebar-nav">
                     <h3>Categorie</h3>
                         {% for categoria, moduli in indice.elenco_categorie %}
                             <div class='dropdown'>
@@ -69,7 +78,8 @@
         <div class="container">
             <p class="text-muted">{{ indice.footer.nome_sito }} 
             {{ indice.footer.periodo }} / 
-            Documento aggiornato il: {{ indice.footer.data_agg }}</p>
+            Documento aggiornato il: {{ indice.footer.data_agg }}
+            - Contatto: pymotw-it(at)robyp.x10host.com</p>
         </div>
     </div
 

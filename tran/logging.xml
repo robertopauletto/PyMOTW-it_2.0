@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="Latin-1"?>
+<?xml version="1.0" encoding="Latin-1"?>
 <categoria>servizi generici di sistema operativo </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- # tag <titolo_1> titolo principale -->
@@ -16,16 +16,19 @@ Riporta messaggi di stato, di errore ed informativi
 2.3
 </descrizione>
 <testo_normale>
-Il modulo <strong>logging</strong> definisce una <a href='http://it.wikipedia.org/wiki/Application_programming_interface'>API</a> standard per segnalare errori ed informazioni da tutti i propri moduli. Il vantaggio chiave dell'avere l'API di logging fornita da un modulo di libreria standard è che tutti i moduli Python possono concorrere al logging, in modo che il log della propria applicazione possa includere messaggi da moduli di terze parti.
+Il modulo <strong>logging</strong> definisce una <a href='http://it.wikipedia.org/wiki/Application_programming_interface'>API</a> standard per segnalare errori ed informazioni di stato da applicazioni e librerie. Il vantaggio chiave dell'avere l'API di logging fornita da un modulo di libreria standard è che tutti i moduli Python possono concorrere al logging, in modo che il log della propria applicazione possa includere messaggi da moduli di terze parti.
 </testo_normale>
+<titolo_2>
+Log nelle Applicazioni
+</titolo_2>
 <testo_normale>
-E' possibile registrare messaggi con livelli di dettaglio diversi oppure verso destinazioni diverse. Il modulo standard supporta la scrittura del registro dei messaggi ai file, ad indirizzi HTTP GET/POST, email tramite SMTP, socket generici oppure verso meccanismi di registrazione specifici di un sistema operativo. Si possono anche creare le proprie classi di destinazione del log se si hanno specifiche esigenze che non sono coperte dalle classi built-in.
+Ci sono due prospettive da cui esaminare i log. Gli sviluppatori dell'applicazione imposta il modulo <strong>logging</strong>, smistando i messaggi agli appropriati canali in uscita. E' possibile registrare messaggi con livelli di dettaglio diversi oppure verso destinazioni diverse. Gestori per la scrittura dei messaggi di log a file, ad indirizzi HTTP GET/POST, email tramite SMTP, socket generici oppure verso meccanismi di registrazione specifici di un sistema operativo sono tutti inclusi ed è possibile creare le proprie classi di destinazione del log se si hanno specifiche esigenze che non sono coperte dalle classi built-in.
 </testo_normale>
 <titolo_2>
 Logging ad un file    
 </titolo_2>
 <testo_normale>
-La maggior parte delle applicazioni probabilmente vorranno eseguire il log ad un file, quindi si inizia con questo caso. Tramite la funzione ${sbk}basicConfig()${ebk}, si può impostare l'handler predefinito in modo che i messaggi di debug siano scritti ad un file.
+La maggior parte delle applicazioni probabilmente vorranno eseguire il log ad un file. Si usa la funzione <code>basicConfig()</code> per impostare il gestore predefinito in modo che i messaggi di debug siano scritti ad un file.
 </testo_normale>
 <py_code>
 import logging
@@ -47,7 +50,7 @@ print 'FILE:'
 print body
 </py_code>
 <testo_normale>
-Adesso se si esegue lo script e si guarda quello che si è ottenuto, si dovrebbe trovare il messaggio di log:    
+Dopo l'esecuzione dello script  il messaggio di log viene scritto in :    
 </testo_normale>
 <py_output>
 $python logging_file_example.py

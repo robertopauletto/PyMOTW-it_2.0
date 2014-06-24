@@ -221,21 +221,6 @@ c['ilmiocookie'] = 'valore_cookie'
 c['altro_cookie'] = 'secondo valore'
 print c.js_output()
 </py_code>
-<py_output>
-$ python Cookie_js_output.py 
-
-        <script type="text/javascript">
-        <!-- begin hiding
-        document.cookie = "altro_cookie="secondo valore"";
-        // end hiding -->
-        </script>
-        
-        <script type="text/javascript">
-        <!-- begin hiding
-        document.cookie = "ilmiocookie=valore_cookie";
-        // end hiding -->
-        </script>
-</py_output>
 <titolo_2>
 Classi Deprecate
 </titolo_2>

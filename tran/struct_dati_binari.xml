@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Latin-1"?>
+ï»¿<?xml version="1.0" encoding="Latin-1"?>
 <categoria>servizi di stringa </categoria><!-- # tag <descrizione> contiene le voci per la tabella di riepilogo iniziale -->
 <!-- # tag <titolo_1> titolo principale -->
 <!-- # tag <titolo_1> titolo principale -->
@@ -22,7 +22,7 @@ Il modulo <strong>struct</strong> include le funzioni per la conversione tra str
 Le Funzioni contro la Classe Struct
 </titolo_2>
 <testo_normale>
-Ci sono un insieme di funzioni a livello modulo per lavorare con valori strutturati, e c'è anche la classe Struct (nuova in Python 2.5). Gli specificatori di formato sono convertiti dal loro formato stringa ad una rappresentazione compilata, simile al modo in cui sono compilate le espressioni regolari. La conversione richiede delle risorse, quindi in genere è più efficiente farlo una volta sola quando si crea l'istanza di Struct, quindi chiamare i metodi dell'istanza invece che usare le funzioni a livello modulo. Tutti gli esempi seguenti usano la classe Struct.
+Ci sono un insieme di funzioni a livello modulo per lavorare con valori strutturati, e c'Ã¨ anche la classe Struct (nuova in Python 2.5). Gli specificatori di formato sono convertiti dal loro formato stringa ad una rappresentazione compilata, simile al modo in cui sono compilate le espressioni regolari. La conversione richiede delle risorse, quindi in genere Ã¨ piÃ¹ efficiente farlo una volta sola quando si crea l'istanza di Struct, quindi chiamare i metodi dell'istanza invece che usare le funzioni a livello modulo. Tutti gli esempi seguenti usano la classe Struct.
 </testo_normale>
 <titolo_2>
 Packing e Unpacking
@@ -138,7 +138,7 @@ Valore unpacked: (1, 'ab', 2.7000000476837158)
 Buffer
 </titolo_2>
 <testo_normale>
-Il lavorare con dati binari packed è in genere riservato per situazioni delicate ad alte prestazioni o per il passaggio di dati da/per moduli estensione. Un modo di ottimizzare è di evitare di allocare un nuovo buffer per ogni struttura packed. I metodi ${sbk}pack_into()${ebk} e ${sbk}unpack_from()${ebk} forniscono il supporto alla scrittura diretta a buffer pre-allocati.
+Il lavorare con dati binari packed Ã¨ in genere riservato per situazioni delicate ad alte prestazioni o per il passaggio di dati da/per moduli estensione. Un modo di ottimizzare Ã¨ di evitare di allocare un nuovo buffer per ogni struttura packed. I metodi ${sbk}pack_into()${ebk} e ${sbk}unpack_from()${ebk} forniscono il supporto alla scrittura diretta a buffer pre-allocati.
 </testo_normale>
 <py_code>
 import struct

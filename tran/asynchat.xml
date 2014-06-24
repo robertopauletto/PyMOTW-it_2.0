@@ -23,16 +23,16 @@ I messaggi in arrivo sono divisi in base a <em>terminatori</em>, ogni istanza de
 <lista_ordinata>
     Se viene passato un argomento stringa  a <code>set_terminator()</code> il messaggio viene considerato completo quando quella stringa compare nei dati in input.
     Se viene passato un argomento numerico, il messaggio viene considerato completo quando quel numero di byte sono stati letti.
-    Se viene passato <code>None</code>, la conclusione del messaggio non viene gestita da <code>async_chat</code>.
+    Se viene passato <code>None</code>, la determinazione della fine del messaggio non viene gestita da <code>async_chat</code>.
 </lista_ordinata>
 <testo_normale>
-L'esempio <code>Echoserver</code> qui sotto utilizza sia un semplice terminatore stringa che un terminatore a lunghezza, in base al contesto dei dati in input. L'esempio per il gestore della richiesta HTTP nella documentazione della libreria standard offre un altro esempio di come modificare il terminatore in base al conteso per differenziare tra header HTTP e corpo di richieste HTTP POST.
+L'esempio <code>Echoserver</code> qui sotto utilizza sia un semplice terminatore stringa che un terminatore a lunghezza, in base al contesto dei dati in input. L'esempio per il gestore della richiesta HTTP nella documentazione della libreria standard offre un altro esempio di come modificare il terminatore in base al contesto per differenziare tra header HTTP e corpo di richieste HTTP POST.
 </testo_normale>
 <titolo_2>
 Server e Gestore
 </titolo_2>
 <testo_normale>
-Per facilitare la comprensione di come <strong>asynchat</strong> sia diverso da <a href="asyncore.html">asyncore</a>, gli esempi in questa pagina duplicano la funzionalità dell'esempio <strong>Echoserver</strong> nella pagina di <a href="asyncore.html">asyncore</a>. Sono necessari gli stessi strumenti: un oggetto server per accettare connessioni, oggetti gestori per lavorare con la comunicazione con ogni client, ed oggetti client per iniziare la conversazione.
+Per facilitare la comprensione di come <strong>asynchat</strong> sia diverso da <a href="asyncore.html">asyncore</a>, gli esempi in questa pagina duplicano la funzionalità dell'esempio <strong>Echoserver</strong> nella pagina di <a href="asyncore.html">asyncore</a>. Sono necessari gli stessi strumenti: un oggetto server per accettare connessioni, oggetti gestori per lavorare con la comunicazione con ogni client, ed oggetti client per avviare la conversazione.
 </testo_normale>
 <testo_normale>
 <strong>Echoserver</strong> che serve  per lavorare con <strong>asynchat</strong> è essenzialmente lo stesso rispetto a quello creato per l'esempio di <a href="asyncore.html">asyncore</a>, con meno chiamate a <a href="asyncore.html">logging</a> in quanto in questo caso hanno meno interesse:
@@ -72,7 +72,7 @@ class EchoServer(asyncore.dispatcher):
         self.close()
 </py_code>        
 <testo_normale>
-Questa volta <strong>EchoHandler</strong> è basato su <code>asynchat.async_chat</code> invece che su <code>asyncore.dispatcher</code>. Opera at un livello di astrazione leggermente più elevato, in modo che la lettura e la scrittura siano gestite automaticamente. Il buffer deve sapere quattro cose:
+Questa volta <strong>EchoHandler</strong> è basato su <code>asynchat.async_chat</code> invece che su <code>asyncore.dispatcher</code>. Opera ad un livello di astrazione leggermente più elevato, in modo che la lettura e la scrittura siano gestite automaticamente. Il buffer deve sapere quattro cose:
 </testo_normale>
 <lista>
     cosa fare con i dati in arrivo (sovrascrivendo <code>handle_incoming_data()</code>)
@@ -81,7 +81,7 @@ Questa volta <strong>EchoHandler</strong> è basato su <code>asynchat.async_chat
     quali dati inviare (tramite <code>push()</code>)
 </lista>
 <testo_normale>
-L'applicazione di esempio ha due modi operativi. Può attendere un comando nella forma <pre>ECHO length\n</pre>  oppure attendere dati da ripetere. La modalità viene attivata alternativamente impostando una variabile <em>process_data</em> per il metodo che sarà chiamato quando viene trovato il terminatore, quindi modificando il terminatore nel modo appropriato.
+L'applicazione di esempio ha due modi operativi. Può attendere un comando nella forma <pre>ECHO length\n</pre>  oppure attendere per dati da ripetere. La modalità viene attivata alternativamente impostando una variabile <em>process_data</em> per il metodo che sarà chiamato quando viene trovato il terminatore, quindi modificando il terminatore nel modo appropriato.
 </testo_normale>    
 <py_code>
 import asynchat
@@ -118,7 +118,7 @@ class EchoHandler(asynchat.async_chat):
         self.process_data()
     
     def _process_command(self):        
-        """Abbiamo il comando ECHO completp"""
+        """Abbiamo il comando ECHO completo"""
         command = ''.join(self.received_data)
         self.logger.debug('_process_command() "%s"', command)
         command_verb, command_arg = command.strip().split(' ')
@@ -133,7 +133,7 @@ class EchoHandler(asynchat.async_chat):
         self.logger.debug('_process_message() echoing\n"""%s"""', to_echo)
         self.push(to_echo)
         # Disconnessione dopo avere inviato l'intera risposta
-        # visto che si vuole fare sono una cosa per volta
+        # visto che si vuole fare solo una cosa per volta
         self.close_when_done()
 </py_code>        
 <testo_normale>
@@ -149,7 +149,7 @@ Il client funziona pressochè alla stessa maniera del gestore. Nell'implementazi
 Il comando viene inviato direttamente, mentre una classe speciale "producer" viene usata per il testo del messaggio. Il producer viene interrogato per porzioni di dati da far uscire attraverso la rete. Quando il producer ritorna una stringa vuota, si assume che sia vuoto e che stia scrivendo stop.
 </testo_normale>
 <testo_normale>
-Il client si attende semplicemente i dati del messaggio in risposta, quindi imposta un terminatore intero e raccoglie i dati in una lista fino a che l'intero messaggio viene ricevuto.
+Il client attende semplicemente i dati del messaggio in risposta, quindi imposta un terminatore intero e raccoglie i dati in una lista fino a che l'intero messaggio viene ricevuto.
 </testo_normale>
 <py_code>
 import asynchat
@@ -217,6 +217,30 @@ Mettiamo Tutto Assieme
 </titolo_2>
 <testo_normale>
 Il programma principale per questo esempio imposta il client ed il server nello stesso ciclo principale di <a href="asyncore.html">asyncore</a>.
+</testo_normale>
+<py_code>
+import asyncore
+import logging
+import socket
+
+from asynchat_echo_server import EchoServer
+from asynchat_echo_client import EchoClient
+
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(name)s: %(message)s',
+                    )
+
+address = ('localhost', 0) # lasciamo che sia il kernel a fornire una porta
+server = EchoServer(address)
+ip, port = server.address # scopriamo quale porta è stata assegnata
+
+message_data = open('lorem.txt', 'r').read()
+client = EchoClient(ip, port, message=message_data)
+
+asyncore.loop()    
+</py_code>
+<testo_normale>
+Normalmente si dovrebbero trovare in processi separati, ma in questo modo si facilita la presentazione dell'output combinato.
 </testo_normale>
 <py_output>
 $ python asynchat_echo_main.py 

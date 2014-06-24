@@ -31,7 +31,7 @@
         </div><!--/span-->
 
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-            <div class="well sidebar-nav">
+            <div class="well sidebar-nav" style='position: fixed;' >
                 <ul class="nav">
                     <li>Indice articolo</li>
                     {% for voce in modulo.indice_laterale %}
@@ -43,7 +43,8 @@
     </div><!--/row-->
     <div id="footer">
         <div class="container">
-            <p class="text-muted">{{ modulo.footer.nome_sito }} {{ modulo.footer.periodo }} / Documento aggiornato il: {{ modulo.footer.data_agg }}</p>
+            <p class="text-muted">{{ modulo.footer.nome_sito }} {{ modulo.footer.periodo }} / Documento aggiornato il: {{ modulo.footer.data_agg }}
+            - Contatto: pymotw-it(at)robyp.x10host.com</p>
         </div>
     </div
 

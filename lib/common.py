@@ -115,9 +115,9 @@ def get_html_files():
 def my_title(frase):
     """(str) -> str
     
-    Capitalizzazione delle parole di una frase a ragion veduta (nel senso)
-    che non vengono rese maiuscole tutte le parole di una lettera, le
-    preposizioni e gli articoli
+    Capitalizzazione delle parole di una frase a ragion veduta (nel senso
+    che non vengono rese maiuscole tutte le parole di una frase, le
+    preposizioni e gli articoli)
     
     TODO: Sicuramente funzione imperfetta da verificare più accuratamente
     """

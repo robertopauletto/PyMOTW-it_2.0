@@ -24,12 +24,20 @@ pagina modulo
 pagine indice (:py:func:`crea_tabella_indice`)
     le pagine che riepilogano tutti i moduli presenti
     
+Argomenti della versione console:
+
+- Nessun argomento: ricostruzione di tutti i moduli (dopo conferma)
+- Se il primo argomento inizia con ind si ricostruisce la pagina indice
+- Se il primo argomento inizia con tab si ricostruisce la tabella riepilogativa
+- qualsiasi altra stringa iniziale rappresenta il nome di un modulo da costruire,
+  se ne possono passare diverse separate da virgola
     
     
 Versione %s %s
 """ % ( __version__, __date__ )
 
 try:
+    import glob
     import codecs
     import os.path
     import os
@@ -84,7 +92,6 @@ def imposta_param_django(template_dirs):
             DEBUG=True, TEMPLATE_DEBUG=True, 
             TEMPLATE_DIRS=(template_dirs),
             INSTALLED_APPS=(
-                'django.contrib.markup',
                 'django.contrib.auth',
                 'django.contrib.contenttypes',
                 'django.contrib.sessions',
@@ -208,16 +215,36 @@ def crea_tabella_indice(template_name):
 def _sintassi(pn):
     return '%s [ind|tab|<nome_modulo>]' % os.path.basename(pn)
 
+def rebuild_all():
+    crea_pagine_indice(
+        TEMPLATE_INDEX_NAME,
+        FILE_INDICE,
+        INDICE_MODULI_PER_PAGINA,
+        FOOTER
+    )    
+    crea_tabella_indice(TEMPLATE_TABALFA_NAME)
+
+    pattern =  "%s/*.xml" % TRAN_DIR
+    for choice in glob.glob(pattern):
+        if not os.path.exists(choice):
+            exit(0)
+        print "Costruzione pagina %s in corso ..." % os.path.basename(choice)
+        crea_pagina_modulo(TEMPLATE_MODULE_NAME, choice, FOOTER)
+
 if __name__ == '__main__':
     print __doc__
     parms = sys.argv
-    if not len(parms) == 2:
-        print _sintassi(sys.argv[0])
-        exit(0)
-    clear_console
+    clear_console()
     # Per prima cosa si impostano i parametri per django
     imposta_param_django(TEMPLATE_DIRS)
+    # Nessun parametro ricostruzione di tutti i moduli (dopo conferma)
+    if len(parms) == 1:  
+        scelta = raw_input('Ricostruire tutto? (S/N)')
+        if scelta and scelta[0].lower() == 's':
+            rebuild_all()
+        exit(0)
     dummy, choices = parms
+    # Se il primo argomento inizia con ind si ricostruisce la pagina indice
     if choices.lower().startswith('ind'):
         crea_pagine_indice(
             TEMPLATE_INDEX_NAME,
@@ -225,17 +252,22 @@ if __name__ == '__main__':
             INDICE_MODULI_PER_PAGINA,
             FOOTER
         )
+    # Se il primo argomento inizia con tab si ricostruisce la tabella riepilogativa
     elif choices.lower().startswith('tab'):
         crea_tabella_indice(TEMPLATE_TABALFA_NAME)
     else:
+        # si possono indicare tanti moduli quanto desiderati senza estensione
+        # ed intervallati da una virgola
         for choice in choices.split(','):
             if not os.path.splitext(choice)[1]:
                 choice += '.xml'
                 choice = os.path.join(TRAN_DIR, choice)
             if not os.path.exists(choice):
-                exit(0)
-            print "Costruzione pagina in corso ..."
+                print "Il modulo %s non è stato trovato" % choice
+                continue
+            print "Costruzione pagina %s in corso ..." % os.path.basename(choice)
             crea_pagina_modulo(TEMPLATE_MODULE_NAME, choice, FOOTER)
+            print "Costruzione pagina %s terminata" % os.path.basename(choice)
     
     
     print "Fine"

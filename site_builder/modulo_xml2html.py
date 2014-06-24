@@ -53,7 +53,8 @@ MY_TAGS = {
     'deflist': partial(h.dl),
     'incipit': None, 
     'inserito_il': None, 
-    'lista': partial(h.ul), 
+    'lista': partial(h.ul),
+    'lista_ordinata': partial(h.ol),
     'lista_ricorsiva': partial(h.ul),
     'mk_xml_code': partial(h.code_xml, class_='well pre-scrollable'),
     'mk_xml_code_lineno': partial(
@@ -71,6 +72,7 @@ MY_TAGS = {
     'titolo_1': None,
     'titolo_2': partial(h.h2),
     'titolo_3': partial(h.h3),
+    'titolo_4': partial(h.h4),
     'vedi_anche': partial(h.biblio, class_='well'),
 }
 
@@ -163,12 +165,13 @@ def check_my_tags(seq_elementi):
     return not_found
 
 # In produzione questo sparisce
-TEMP_FATTI = ('titolo_2', 'testo_normale', 'lista', 'py_code', ''
+TEMP_FATTI = ('titolo_2', 'titolo_3', 'titolo_4', 'testo_normale',
+              'lista', 'py_code', '', 
               'py_output', 'vedi_anche', 'tabella_semplice', 'mk_xml_code', 
               'avvertimento', 'note', 'titolo_3', 'deflist', 'sql_code', 
               'sottotitolo', 'lista_ricorsiva', 'py_code_lineno',
-              'mk_xml_code_lineno')
-def prepara_articolo(seq_elementi, tag_da_indicizzare=('titolo_2')):
+              'mk_xml_code_lineno', 'lista_ordinata')
+def prepara_articolo(seq_elementi, tag_da_indicizzare=('titolo_2', 'titolo_3')):
     """(list of str, tuple of str) -> list, list
     
     Prepara il codice html per la pagina del modulo

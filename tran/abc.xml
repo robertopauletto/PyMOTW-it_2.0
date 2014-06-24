@@ -1,8 +1,6 @@
-https://www.google.it/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&ved=0CC4QtwIwAA&url=http%3A%2F%2Fblip.tv%2Fpycon-us-videos-2009-2010-2011%2Fplugins-and-monkeypatching-increasing-flexibility-dealing-with-inflexibility-1958972&ei=CyMNUp3DGazd7Qa65oHIDQ&usg=AFQjCNE8JTy_dwauZPTrlME7OxU2FVbsYw&sig2=c06hHqhEVLBqP2OmAFfKsQ&bvm=bv.50768961,d.ZGU<?xml version="1.0" encoding="Latin-1"?>
+<?xml version="1.0" encoding="Latin-1"?>
 <documento_tradotto>
-<categoria>
-    servizi python in fase di esecuzione 
-</categoria>
+<categoria>servizi python in fase di esecuzione </categoria>
 <inserito_il>
     2013-08-15
 </inserito_il>
@@ -16,10 +14,10 @@ Definisce ed usa classi base per verifiche API nel proprio codice
 <titolo_2>
 Perchè usare le Classi Base Astratte?
 </titolo_2>
-<incipit>
+<testo_normale>
 Le classi base astratte sono una forma di verifica di interfaccia più stretta dei controlli individuali per particolari metodi come hasattr().
 Definendo una classe base astratta si può definire una API comune per un insieme di sottoclassi...
-</incipit>    
+</testo_normale>    
 <testo_normale>
 Le classi base astratte sono una forma di verifica di interfaccia più stretta dei controlli individuali per particolari metodi come ${sbk}hasattr()${ebk}. Definendo una classe base astratta si può definire una API comune per un insieme di sottoclassi. Questa capacità è specialmente utile in situazioni dove un terzo andrà a fornire una implementazione, ad esempio con plugin ad una applicazione, ma può anche essere d'aiuto quando si lavora in squadra con un grande numero di componenti oppure con una base di codice molto vasta, dove mantenere tutte le classi nella propria testa allo stesso tempo à difficile o non possibile.
 </testo_normale>

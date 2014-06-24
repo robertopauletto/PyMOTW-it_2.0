@@ -65,7 +65,7 @@ Nella maggior parte dei casi si può semplicemente fornire un metodo ${sbk}handl
 Esempio di Eco
 </titolo_2>
 <testo_normale>
-Si esamina una semplice coppia server/gestore di richiesta che accetta connessioni TCP e ritorna gli stessi dati inviati dal client. Il solo metodo che occorre fornire nel codice di esempio è ${sbk}EchoRequestHandler.handle()${ebk} , ma tutti i metodi sopra descritti sono riscritti per inserire delle chiamate a <a href=http://www.doughellmann.com/PyMOTW/logging/index.html#module-logging>logging</a> in modo che l'output del programma di esempio possa illustrare la sequenza delle chiamate fatte.
+Si esamina una semplice coppia server/gestore di richiesta che accetta connessioni TCP e ritorna gli stessi dati inviati dal client. Il solo metodo che occorre fornire nel codice di esempio è ${sbk}EchoRequestHandler.handle()${ebk} , ma tutti i metodi sopra descritti sono riscritti per inserire delle chiamate a <a href='logging.html' title='Il modulo logging'>logging</a> in modo che l'output del programma di esempio possa illustrare la sequenza delle chiamate fatte.
 </testo_normale>
 <testo_normale>
 La sola cosa rimasta da fare è quella di avere un semplice programma che crea il server, lo esegue in un thread, e si connette ad esso per illustrare quali metodi sono stati chiamati mentre i dati sono restituiti
@@ -218,7 +218,7 @@ client: done
 Il numero della porta usata cambierà ogni volta che il programma viene eseguito, visto che il kernel alloca automaticamente una porta disponibile. Se si vuole che il server sia in ascolto su di una specifica porta ogni volta che si esegue, allora si fornisce il numero di porta desiderato nella tupla dell'indirizzo invece che 0.
 </testo_normale>
 <testo_normale>
-Ecco una versione semplificata dello stesso programma, senza <a href=http://www.doughellmann.com/PyMOTW/logging/index.html#module-logging>logging</a>:
+Ecco una versione semplificata dello stesso programma, senza <a href='logging.html' title='Il modulo logging'>logging</a>:
 </testo_normale>
 <py_code>
 import SocketServer

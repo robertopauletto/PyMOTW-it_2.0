@@ -23,6 +23,7 @@ td.pymotwit-jumbo-key {
 }
 
 h2 { font-size: 22px; }
+h3 { font-size: 20px; }
 
 .bkIstruzione {     
 	font-family: courier;
@@ -31,6 +32,7 @@ h2 { font-size: 22px; }
  }	
 .bkItem { background-color: #FFC0CB; }	
 
+code.bold { font-weight: bolder; }
 
 .well_console {
 	background-color: green;
@@ -216,4 +218,10 @@ dd.indent { margin-left: 50px; margin-bottom: 10px; margin-top: 10px; }
 .vi { color: #19177C } /* Name.Variable.Instance */
 .il { color: #666666 } /* Literal.Number.Integer.Long */
 /* --- fine  */
+
+code { font-weight: bolder; }
+.snip { 
+  font-family: monospace;
+  background-color: #DEDCDC;
+}
 

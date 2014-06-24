@@ -183,6 +183,9 @@ class MyHtml(object):
     
     def ul(self, value, **kwargs):
         return self._lista(value, is_ordered=False, **kwargs)
+
+    def ol(self, value, **kwargs):
+        return self._lista(value, is_ordered=True, **kwargs)
     
     def code(self, value, **kwargs):
         pigmentato = self._codice(value)
@@ -220,8 +223,11 @@ class MyHtml(object):
     
     def td(self, values, is_header=False, **kwargs):
         output = []
+        splitchar = ";"
+        if 'splichar' in kwargs:
+            splitchar = kwargs['splitchar']
         tag = 'td' if not is_header else 'th'
-        for value in values.split(";"):
+        for value in values.split(splitchar):
             output.append(self._get_start_end_tag(
                 tag, value=value, **kwargs
             ))

@@ -93,7 +93,7 @@ File di configurazione mancanti: ['anche-questo-non-esiste.ini', 'multisezione.i
 Dati di Configurazioni Unicode
 </titolo_2>
 <testo_normale>
-I file di configurazione che contengono dati Unicode dovrebbero essere aperti con il modulo <a href='http://www.doughellmann.com/PyMOTW/codecs/index.html#module-codecs'>codecs</a> per impostare il valore di codifica appropriato.
+I file di configurazione che contengono dati Unicode dovrebbero essere aperti con il modulo <a href='codecs.html'>codecs</a> per impostare il valore di codifica appropriato.
 </testo_normale>
 <testo_normale>
 Modificare il valore di <em>password</em> originale in modo che contengo caratteri Unicode e salvare i risultati nella codifica UTF-8 genera:
@@ -105,7 +105,7 @@ username = dhellmann
 password = ßéç®é†
 </py_output>
 <testo_normale>
-Il file handle di <a href='http://www.doughellmann.com/PyMOTW/codecs/index.html#module-codecs'>codecs</a> può essere passato a ${sbk}readfp()${ebk}, il quale usa il metodo <a href='${baseurl}/pymotw-it/readline.html'>readline()</a> dei suoi parametri per ottenere le righe dal file ed analizzarle.
+Il file handle di <a href='codecs.html'>codecs</a> può essere passato a ${sbk}readfp()${ebk}, il quale usa il metodo <a href='readline.html'>readline()</a> dei suoi parametri per ottenere le righe dal file ed analizzarle.
 </testo_normale>
 <py_code>
 from ConfigParser import SafeConfigParser

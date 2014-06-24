@@ -336,10 +336,6 @@ warnings_warn_stacklevel.py:12: UserWarning: old_function() &egrave; deprecata, 
   old_function()
 </py_output>
 <vedi_anche>
-http://www.opml.org/|Outline Processor Markup 
-<testo_normale>
-Si noterà che nella modalità predefinita il messaggio di avvertimento include la riga sorgente che lo ha generato, quando disponibile. Non &egrave; sempre cos&igrave; utile vedere la riga di codice assieme all'effettivo messaggio di avvertimento. Si pu&ograve; dire a ${sbk}warn()${ebk} di quando deve risalire lo stack per trovare la riga che ha chiamato la funzione contenente l'avvertimento. In questo modo gli utilizzatori di funzioni deprecate vedono dove &egrave; stata chiamata la funzione e non l'implementazione della funzione.
-</testo_normale>
 http://docs.python.org/lib/module-warnings.html|warnings|La documentazione della libreria standard per questo modulo
 http://www.python.org/dev/peps/pep-0230|PEP 230|Warning Framework
 eccezioni.html|eccezioni|Classi base per eccezioni ed avvertimenti
