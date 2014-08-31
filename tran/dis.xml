@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="Latin-1"?>
+<documento_tradotto>
+<categoria>servizi del linguaggio python</categoria>
+<titolo_1>
+dis - Disassemblatore di Bytecode Python
+</titolo_1>
+<descrizione>
+Converte oggetti codice in una rappresentazione leggibile dall'uomo dei bytecode per un'analisi
+1.4 e successivo
+</descrizione>
+<testo_normale>
+Il modulo <strong>dis</strong> contiene funzioni per lavorare con codice bytecode per "disassemblarlo" in una forma più leggibile dall'uomo. Riesaminare il bytecode che l'interprete sta eseguendo è un buon modo per eseguire una "sintonizzazione manuale" di cicli ed esegurire altri tipi di ottimizzazioni. E' anche utile per trovare <a href="http://it.wikipedia.org/wiki/Race_condition">race conditions</a> in applicazioni multi thread, visto che è possibile stabilire il punto nel proprio codice nel quale il controllo del thread potrebbe trasferirsi.
+</testo_normale>
+<titolo_2>
+Disassemblare - Le Basi
+</titolo_2>
+<testo_normale>
+La funzione <code>dis.dis()</code> stampa la rappresentazione disasseblata di una sorgente di codice Python (modulo, classe, metodo, funzione o codice oggetto). Si può disassemblare un modulo in questo modo:
+</testo_normale>
+<vedi_anche>
+https://docs.python.org/2.7/library/profile.html?highlight=cprofile#cProfile|profile e cProfile|La documentazione della libreria standard per questo modulo
+https://docs.python.org/2.7/library/profile.html?highlight=pstats#pstats|pstats|La documentazione della libreria standard per pstats
+http://code.google.com/p/jrfonseca/wiki/Gprof2Dot|Gprof2Dot|Strumento per la visualizzazione dei dati in uscita di profile
+http://en.literateprograms.org/Fibonacci_numbers_(Python)|Fibonacci numbers (Python) - LiteratePrograms|
+http://avinashv.net/2008/04/python-decorators-syntactic-sugar/|Python Decorators: Syntactic Sugar - avinash.vora|
+</vedi_anche>
+</documento_tradotto>
