@@ -22,7 +22,7 @@ Il modulo <strong>cmd</strong> contiene una sola classe pubblica: ${sbk}Cmd${ebk
 Elaborazione dei Comandi
 </titolo_2>
 <testo_normale>
-L'interprete usa un ciclo per leggere tutte le righe dal suo input, anlizzarle, quindi inviare il comando all'appropriato gestore di comando. Le righe in input sono elaborate in due parti. Il comando, quindi qualsiasi altro testo nella riga. Se si digita il comando ${sev}foo bar${eev}, e la propria classe comprende un metodo chiamato ${sev}do_foo()${eev}, esso viene chiamato con ${sev}"bar"${eev} come unico parametro.
+L'interprete usa un ciclo per leggere tutte le righe dal suo input, analizzarle, quindi inviare il comando all'appropriato gestore di comando. Le righe in input sono elaborate in due parti. Il comando, quindi qualsiasi altro testo nella riga. Se si digita il comando ${sev}foo bar${eev}, e la propria classe comprende un metodo chiamato ${sev}do_foo()${eev}, esso viene chiamato con ${sev}"bar"${eev} come unico parametro.
 </testo_normale>
 <testo_normale>
 Il marcatore di fine file viene inviato a ${sbk}do_EOF()${ebk}. Se un gestore di comando restituisce un valore True. il programma uscirà in modo pulito. Quindi per fare sì che il proprio interprete esca in modo pulito, ci si deve assicurare di implementare ${sbk}do_EOF()${ebk} in modo che restituisca True
@@ -35,10 +35,10 @@ import cmd
 
 class HelloWorld(cmd.Cmd):
     """Semplice esempio di processore di comando."""
-    
+
     def do_greet(self, line):
         print "Salve"
-    
+
     def do_EOF(self, line):
         return True
 
@@ -98,7 +98,7 @@ import cmd
 
 class HelloWorld(cmd.Cmd):
     """Semplice esempio di processore di comando."""
-    
+
     def do_greet(self, person):
         """greet [persona]
         Saluta la persona"""
@@ -106,10 +106,10 @@ class HelloWorld(cmd.Cmd):
             print "ciao,", person
         else:
             print 'ciao'
-    
+
     def do_EOF(self, line):
         return True
-    
+
     def postloop(self):
         print
 
@@ -120,7 +120,7 @@ if __name__ == '__main__':
 Per prima cosa, si chiede aiuto. La <i>docstring</i> aggiunta a ${sbk}do_greet${ebk} diventa il testo di aiuto per il comando:
 </testo_normale>
 <py_output>
-$ python  cmd_arguments.py 
+$ python  cmd_arguments.py
 (Cmd) help
 
 Documented commands (type help <topic>):
@@ -158,18 +158,18 @@ import cmd
 
 class HelloWorld(cmd.Cmd):
     """Semplice esempio di processore di comando."""
-    
+
     def do_greet(self, person):
         if person:
             print "salve,", person
         else:
             print 'salve'
-    
+
     def help_greet(self):
         print '\n'.join([ 'greet [persona]',
                            'Saluta la persona',
                            ])
-    
+
     def do_EOF(self, line):
         return True
 
@@ -180,7 +180,7 @@ if __name__ == '__main__':
 In questo semplice esempio, il testo è statico ma la formattazione è migliore. Sarebbe stato anche possibilie usare lo stato del comando precedente per modellare il contenuto del testo di aiuto sul contesto corrente.
 </testo_normale>
 <py_output>
-$ python cmd_do_help.py 
+$ python cmd_do_help.py
 (Cmd) help greet
 greet [persona]
 Saluta la persona
@@ -209,9 +209,9 @@ import cmd
 
 class HelloWorld(cmd.Cmd):
     """Semplice esempio di processore di comando."""
-    
+
     FRIENDS = [ 'Alice', 'Adam', 'Barbara', 'Bob' ]
-    
+
     def do_greet(self, person):
         "Saluta la persona"
         if person and person in self.FRIENDS:
@@ -221,7 +221,7 @@ class HelloWorld(cmd.Cmd):
         else:
             greeting = 'Salve'
         print greeting
-    
+
     def complete_greet(self, text, line, begidx, endidx):
         if not text:
             completions = self.FRIENDS[:]
@@ -231,7 +231,7 @@ class HelloWorld(cmd.Cmd):
                             if f.startswith(text)
                             ]
         return completions
-    
+
     def do_EOF(self, line):
         return True
 
@@ -242,11 +242,11 @@ if __name__ == '__main__':
 Se c'è un testo in input, ${sbk}complete_greet()${ebk} restituisce un elenco di amici che corrispondono. Altrimenti viene restituita l'intera lista di amici.
 </testo_normale>
 <py_output>
-$ python cmd_arg_completion.py 
+$ python cmd_arg_completion.py
 (Cmd) greet<tab><tab>
-Adam     Alice    Barbara  Bob      
+Adam     Alice    Barbara  Bob
 (Cmd) greet A<tab><tab>
-Adam   Alice  
+Adam   Alice
 (Cmd) greet Ad<tab>
 Ciao, Adam!
 </py_output>
@@ -268,23 +268,23 @@ import cmd
 
 class Illustrate(cmd.Cmd):
     "Illustra l'uso dei metodi base della classe."
-    
+
     def cmdloop(self, intro=None):
         print 'cmdloop(%s)' % intro
         return cmd.Cmd.cmdloop(self, intro)
-    
+
     def preloop(self):
         print 'preloop()'
-    
+
     def postloop(self):
         print 'postloop()'
-        
+
     def parseline(self, line):
         print 'parseline(%s) =>' % line,
         ret = cmd.Cmd.parseline(self, line)
         print ret
         return ret
-    
+
     def onecmd(self, s):
         print 'onecmd(%s)' % s
         return cmd.Cmd.onecmd(self, s)
@@ -292,19 +292,19 @@ class Illustrate(cmd.Cmd):
     def emptyline(self):
         print 'emptyline()'
         return cmd.Cmd.emptyline(self)
-    
+
     def default(self, line):
         print 'default(%s)' % line
         return cmd.Cmd.default(self, line)
-    
+
     def precmd(self, line):
         print 'precmd(%s)' % line
         return cmd.Cmd.precmd(self, line)
-    
+
     def postcmd(self, stop, line):
         print 'postcmd(%s, %s)' % (stop, line)
         return cmd.Cmd.postcmd(self, stop, line)
-    
+
     def do_greet(self, line):
         print 'Salve,', line
 
@@ -372,9 +372,9 @@ class HelloWorld(cmd.Cmd):
     doc_header = 'doc_header'
     misc_header = 'misc_header'
     undoc_header = 'undoc_header'
-    
+
     ruler = '-'
-    
+
     def do_prompt(self, line):
         "Cambia il prompt interattivo"
         self.prompt = line + ': '
@@ -386,7 +386,7 @@ if __name__ == '__main__':
     HelloWorld().cmdloop()
 </py_code>
 <py_output>
-$ python cmd_attributes.py 
+$ python cmd_attributes.py
 Semplice esempio di processore di comando.
 prompt: prompt hello
 hello: help
@@ -399,7 +399,7 @@ undoc_header
 ------------
 EOF  help
 
-hello: 
+hello:
 </py_output>
 <titolo_2>
 Uscire dalla Shell
@@ -412,7 +412,7 @@ import cmd
 import os
 
 class ShellEnabled(cmd.Cmd):
-    
+
     last_output = ''
 
     def do_shell(self, line):
@@ -421,20 +421,20 @@ class ShellEnabled(cmd.Cmd):
         output = os.popen(line).read()
         print output
         self.last_output = output
-    
+
     def do_echo(self, line):
         "Stampa l'input, sostituendo '$out' con l'output dell'ultimo comando di shell"
         # Ovviamente non robusto
         print line.replace('$out', self.last_output)
-    
+
     def do_EOF(self, line):
         return True
-    
+
 if __name__ == '__main__':
     ShellEnabled().cmdloop()
 </py_code>
 <py_output>
-$ python cmd_do_shell.py 
+$ python cmd_do_shell.py
 (Cmd) ?
 
 Documented commands (type help <topic>):
@@ -460,7 +460,7 @@ esecuzione di un comando di shell: pwd
 (Cmd) echo $out
 /home/robby/pydev/pymotw-it/dumpscripts
 
-(Cmd) 
+(Cmd)
 </py_output>
 <titolo_2>
 Input Alternativi
@@ -470,8 +470,8 @@ Sebbene la modalità predefinita per ${sbk}Cmd()${ebk} sia l'interazione con l'u
 </testo_normale>
 <py_output>
 pydev/pymotw-it/dumpscripts/
-robby@robby-desktop:~/pydev/pymotw-it/dumpscripts$ echo help | python cmd_do_help.py 
-(Cmd) 
+robby@robby-desktop:~/pydev/pymotw-it/dumpscripts$ echo help | python cmd_do_help.py
+(Cmd)
 Documented commands (type help <topic>):
 ========================================
 greet
@@ -480,7 +480,7 @@ Undocumented commands:
 ======================
 EOF  help
 
-(Cmd) 
+(Cmd)
 </py_output>
 <testo_normale>
 Se si preferisce che sia il proprio programma a leggere il file script direttamente, allora potrebbe servire qualche altra modifica. Visto che <a href='readline.html'>readline</a>  interagisce con il dispositivo <i>termnal/tty</i> piuttosto che con il flusso standard di input, si dovrebbe disabilitarlo se si sa che il proprio script sarà letto da un file. Inotre, per evitare la stampa di prompt supreflui, si può impostare il prompt ad una stringa vuota. Questo esempio mostra come aprire un file e passarlo come input ad una versione modificata dell'esempio HelloWorld:
@@ -490,16 +490,16 @@ import cmd
 
 class HelloWorld(cmd.Cmd):
     """Semplice esempio di processore di comando."""
-    
+
     # Disabilita l'uso del modulo rawinput module
     use_rawinput = False
-    
+
     # Non mostra il prompt dopo ogni lettura di comando
     prompt = ''
-    
+
     def do_greet(self, line):
         print "Salve,", line
-    
+
     def do_EOF(self, line):
         return True
 
@@ -523,7 +523,7 @@ per produrre un output tipo:
 </testo_normale>
 <py_output>
 $ python cmd_file.py cmd_file.txt
-Salve, 
+Salve,
 Salve, Alice e Bob
 </py_output>
 <titolo_2>
@@ -537,10 +537,10 @@ import cmd
 
 class InteractiveOrCommandLine(cmd.Cmd):
     """Accetta comandi tramite il normale prompt interattivo o da riga di comando"""
-    
+
     def do_greet(self, line):
         print 'Salve,', line
-    
+
     def do_EOF(self, line):
         return True
 

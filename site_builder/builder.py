@@ -44,6 +44,7 @@ try:
     import sys
     import datetime
     import traceback
+    import urlparse
     from collections import defaultdict
     from math import ceil
     from django import template
@@ -58,6 +59,7 @@ try:
     sys.path.append(r'../lib')
     from common import clear_console, my_title
     from footer import Footer
+    from rss_feed_builder import Feed, FeedItem
 except ImportError as imperr:
     raise Exception("Errore importazione modulo\n\n" + imperr.message)
 
@@ -76,9 +78,13 @@ HTML_EXT = '.html'
 TEST_XML_FILE = r'/home/robby/Dropbox/Code/python/pymotw-it/tran/abc.xml'
 FOOTER = Footer(
     'PyMOTW-it',
-    periodo='2013/2014',
+    periodo='2013/2015',
     data_agg=datetime.date.today().strftime("%d-%m-%Y")
 )    
+RSS_REMOTE_ROOT_FOLDER = r'http://robyp.x10host.com'
+RSS_FEED_NAME = r'pymotw-it_feed.xml'
+RSS_FEED_TITLE = 'PyMOTW-it: Il modulo python della settimana'
+RSS_FEED_DESCR = "Traduzione italiana di 'The Python Module of the Week (http://pymotw.com/2/)"
 
 def imposta_param_django(template_dirs):
     """(list of str)
@@ -176,6 +182,7 @@ def crea_pagine_indice(template_name, file_indice, mod_per_pagina, footer):
         build(template_name, dic, os.path.join(HTML_DIR, fn))
         prg += 1
         gm = []
+    return
 
 def crea_pagina_modulo(template_name, file_modulo, footer):
     """(str, str, str)
@@ -196,6 +203,69 @@ def crea_pagina_modulo(template_name, file_modulo, footer):
     fn += '.html'
     dic = {'modulo': m,}
     build(template_name, dic, os.path.join(HTML_DIR, fn))
+
+def get_cronologia(file_cronologia="../cronologia.txt"):
+    """(str) -> list of tuple
+    
+    Ottiene i dati relativi alla data di pubblicazione dei moduli
+    """
+    retval = []
+    for riga in open(file_cronologia).readlines():
+        if not riga or not riga[0].isdigit():
+            continue
+        data, temp = riga.strip().split(" ", 1)
+        nome, junk = temp.split('-', 1)
+        retval.append((data, nome.strip()))
+    return retval
+
+def abbina_cronologia(cronologia, moduli, data_fmt='%d.%m.%Y'):
+    """(list of tuple, Modulo)
+    
+    Cerca la data di pubblicazione del modulo, aggiorna l'oggetto se la
+    trova
+    """
+    for modulo in moduli:
+        isinstance(modulo, Modulo)
+        for data, nome in cronologia:
+            nome_alias = nome.split(":")
+            if nome_alias[0] == modulo.nome:
+                modulo.data_pub = datetime.datetime.strptime(data, data_fmt)
+                if len(nome_alias) == 2:
+                    modulo.nome_per_rss = nome_alias[1]
+                else:
+                    modulo.nome_per_rss = nome_alias[0]
+                break
+        if not modulo.data_pub:
+            print modulo.nome
+
+def crea_feed_rss(base_path, outfile, title, description=''):
+    """(list of tuple, str, str, str, str)
+    
+    Scrive un file rss per il sito
+    """
+    moduli = elenco_per_indice()
+    
+    abbina_cronologia(get_cronologia(), moduli)
+    moduli_ordinati = Modulo.ordina_per_data(moduli)
+    local_feed = os.path.join(HTML_DIR, outfile)
+    outfile = urlparse.urljoin(base_path, outfile)
+    feed = Feed(title, outfile, description)
+    for modulo in moduli_ordinati:
+        assert isinstance(modulo, Modulo)
+        link_guid = urlparse.urljoin(base_path, modulo.url)
+        item = FeedItem(
+            title=modulo.nome_per_rss,
+            lnk=link_guid,
+            descr=modulo.descrizione,
+            date=datetime.datetime.combine(
+                modulo.data_pub, datetime.datetime.min.time(),
+            ),
+            guid=link_guid
+            
+        )
+        
+        feed.set_item(item)
+    open(local_feed, mode='w').write(feed.get_feed())
 
 def crea_tabella_indice(template_name):
     """(str)
@@ -231,6 +301,17 @@ def rebuild_all():
         print "Costruzione pagina %s in corso ..." % os.path.basename(choice)
         crea_pagina_modulo(TEMPLATE_MODULE_NAME, choice, FOOTER)
 
+def pubblica(moduli):
+    crea_pagine_indice(
+        TEMPLATE_INDEX_NAME,
+        FILE_INDICE,
+        INDICE_MODULI_PER_PAGINA,
+        FOOTER
+    )
+    crea_tabella_indice(TEMPLATE_TABALFA_NAME)
+    
+
+
 if __name__ == '__main__':
     print __doc__
     parms = sys.argv
@@ -246,6 +327,12 @@ if __name__ == '__main__':
     dummy, choices = parms
     # Se il primo argomento inizia con ind si ricostruisce la pagina indice
     if choices.lower().startswith('ind'):
+        #crea_feed_rss(
+            #RSS_REMOTE_ROOT_FOLDER,
+            #RSS_FEED_NAME,
+            #RSS_FEED_TITLE,
+            #RSS_FEED_DESCR
+        #)
         crea_pagine_indice(
             TEMPLATE_INDEX_NAME,
             FILE_INDICE,
@@ -256,6 +343,12 @@ if __name__ == '__main__':
     elif choices.lower().startswith('tab'):
         crea_tabella_indice(TEMPLATE_TABALFA_NAME)
     else:
+        pubblica = False
+        da_pubblicare = []
+        if choices.lower().startswith('pubblica'):
+            pubblica = True
+            choices = choices[1:]
+            
         # si possono indicare tanti moduli quanto desiderati senza estensione
         # ed intervallati da una virgola
         for choice in choices.split(','):
@@ -265,10 +358,15 @@ if __name__ == '__main__':
             if not os.path.exists(choice):
                 print "Il modulo %s non è stato trovato" % choice
                 continue
+            if pubblica:
+                da_pubblicare.append(choice)
             print "Costruzione pagina %s in corso ..." % os.path.basename(choice)
             crea_pagina_modulo(TEMPLATE_MODULE_NAME, choice, FOOTER)
             print "Costruzione pagina %s terminata" % os.path.basename(choice)
-    
+        
+        if pubblica:
+            pubblica(da_pubblicare)
+            
     
     print "Fine"
     #raw_input()

@@ -138,8 +138,9 @@ def my_title(frase):
 def _estrai_da_tag(righe, nome_tag, ripeti=False):
     """(list of str, str [,bool]) -> list of str
     
-    Scansione `righe` e ritorna il testo racchiuso tra `tag` 1 sola volta
-    se `ripeti` == `True`
+    Scansione `righe` e ritorna il testo racchiuso tra `tag` 
+    Se `ripeti` == `False` ritorna non appena individua la prima occorrenza
+    di `nome_tag`
     
     Da utilizzare per recuperare valori di tag univoci tipo descrizione
     """
@@ -167,7 +168,13 @@ def _ottieni_categoria(righe):
             return match.groups()[0]
     return None
             
-        
+RE_DATA_ARTICOLO = re.compile(r'<data_articolo>(.*)</data_articolo>')
+def _ottieni_data_articolo(righe):
+    for riga in righe:
+        match = RE_DATA_ARTICOLO.match(riga)
+        if match and len(match.groups()) == 1:
+            return match.groups()[0].strip()
+    return None
         
 
 def ottieni_modulo(nome_modulo):
@@ -197,16 +204,23 @@ def _ottieni_modulo(nome_file):
         descr, vers = '', ''
     titolo = " ".join(_estrai_da_tag(righe, 'titolo_1'))
     categ = _ottieni_categoria(righe).strip()
+    data_articolo = _ottieni_data_articolo(righe)
     if not categ:
         print os.path.basename(nome_file), " manca categoria"
         categ = 'Sconosciuta'
     ultimo_agg = datetime.date.fromtimestamp(os.stat(nome_file).st_mtime)
+    if '-' in titolo:
+        nome_modulo, titolo =  titolo.strip().split('-', 1)
+    else:
+        nome_modulo = titolo
     return {
         'descr': descr,
-        'titolo': titolo.split('-', 1)[1].strip() if '-' in titolo else titolo,
+        'nome_modulo': nome_modulo,
+        'titolo': titolo,
         'agg': ultimo_agg,
         'versione': vers,
         'categ': categ,
+        'data_articolo': data_articolo,
     }
         
 def ottieni_moduli_tradotti():

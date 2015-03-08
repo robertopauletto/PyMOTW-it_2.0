@@ -135,7 +135,7 @@ class MyHtml(object):
         ddargs = {}
         if dd_class:
             ddargs['class'] = dd_class
-        for riga in [riga.split("|") for riga in lista]:
+        for riga in [riga.split("|") for riga in lista if riga]:
             biblio = Biblio(*riga)
             u = self.a(biblio.url, biblio.desc)
             output.append(self._get_start_end_tag('dt', u))

@@ -12,7 +12,7 @@
 dbhash - API in stile DBM per la libreria database BSD
 </titolo_1>
 <descrizione>
-Fornisce una API tipo dizionario per accedere ai file ${sbk}db${ebk} BSD.
+Fornisce una API tipo dizionario per accedere ai file  BSD.
 1.4 e superiore
 </descrizione>
 <testo_normale>

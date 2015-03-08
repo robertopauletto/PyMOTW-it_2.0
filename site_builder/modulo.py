@@ -22,6 +22,8 @@ class Modulo(object):
         self.data_agg = None
         self.url = nome + '.html'
         self.categoria = ''
+        self.data_pub = None
+        self.nome_per_rss = None
 
     @property
     def nome_per_teaser(self):
@@ -32,11 +34,13 @@ class Modulo(object):
     def ottieni_modulo(nome_modulo):
         diz = ottieni_modulo(nome_modulo)
         m = Modulo(nome_modulo)
+        m.nome = diz['nome_modulo']
         m.categoria = diz['categ']
         m.data_agg = diz['agg']
         m.descrizione = Modulo.insubs.rimpiazza(diz['descr'])
         m.titolo = diz['titolo']
         m.versione = diz['versione']
+        
         return m
     
     def per_tabella_indice(self):
@@ -47,6 +51,12 @@ class Modulo(object):
         ]
 
     
+    @staticmethod
+    def ordina_per_data(moduli):
+        x = sorted(moduli, key=lambda m: m.data_pub, reverse=True)
+        for m in x:
+            print  m.data_pub, m.nome
+        return x
 
 def elenco_per_indice():
     """Ritorna una lista di oggetti :py:class:`Modulo`"""
@@ -61,5 +71,6 @@ def elenco_per_indice():
         modulo.versione = v['versione']
         modulo.categoria = v['categ']
         elenco.append(modulo)
+    #Modulo.ordina_per_data(elenco)
     return elenco
         

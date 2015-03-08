@@ -9,7 +9,7 @@ Analisi delle prestazioni dei programmi Python
 1.4 e successivo, questi esempi sono per Python 2.5
 </descrizione>
 <testo_normale>
-I moduli <strong>profile</strong> e <strong>cProfile</strong>forniscono API per raccogliere ed analizzare statistiche circa il modo in  cui la sorgente Python consuma le risorse del processore.
+I moduli <strong>profile</strong> e <strong>cProfile</strong> forniscono API per raccogliere ed analizzare statistiche circa il modo in  cui la sorgente Python consuma le risorse del processore.
 </testo_normale>
 <titolo_2>
 run()
@@ -41,7 +41,7 @@ print '=' * 80
 profile.run('print fib_seq(20); print')
 </py_code>
 <testo_normale>
-La versione ricorsiva del calcolatore della sequenza di Fibonacci è particolarmente utile per la dimostrazione di <strong>profile</strong>, visto che si possono di molto migliorare le prestazioni. Il formato standard del rapporto mostra un riepilogo, quindi i dettagli per ogni funzione eseguita.
+La versione ricorsiva del <a href='http://en.literateprograms.org/Fibonacci_numbers_(Python)'>calcolatore della sequenza di Fibonacci</a>  è particolarmente utile per la dimostrazione di <strong>profile</strong>, visto che si possono di molto migliorare le prestazioni. Il formato standard del rapporto mostra un riepilogo, quindi i dettagli per ogni funzione eseguita.
 </testo_normale>
 <py_output>
 $ python profile_fibonacci_raw.py
@@ -68,7 +68,7 @@ GREZZA
 Come si nota, sono state effettuate 57356 chiamate separate di funzione e circa un quarto di secondo per l'esecuzione (ovviamente il tempo varia a seconda del processore - n.d.t. ). Visto che si sono state solo 66 chiamate <em>originali</em>, le altre 57 mila e passa sono ricorsive. I dettagli sul dove il tempo è stato speso sono divisi per funzione nel listato che mostra il numero di chiamate, il tempo totale trascorso nella funzione, il tempo per chiamata (tottime/ncalls), il tempo cumulato trascorso in una funzione ed il rapporto di tempo cumulativo per le chiamate originali
 </testo_normale>
 <testo_normale>
-Non sorprendentemente, la maggior parte del tempo è trascorso chiamando <code>fib()</code> ripetutatemte. Si può aggiungere un decoratore di <a href="http://it.wikipedia.org/wiki/Memoizzazione">memoizzazione</a> <em>memoize</em> per ridurre il numero di chiamate ricorsive ed ottenute un grosso impatto sulle prestazioni di questa funzione.
+Non sorprendentemente, la maggior parte del tempo è trascorso chiamando <code>fib()</code> ripetutatemte. Si può aggiungere un decoratore di <a href="http://it.wikipedia.org/wiki/Memoizzazione">memoizzazione</a>, tratto da <a href='http://avinashv.net/2008/04/python-decorators-syntactic-sugar/'><em>qui</em></a> per ridurre il numero di chiamate ricorsive ed ottenere un grosso impatto sulle prestazioni di questa funzione.
 </testo_normale>
 <py_code>
 import profile
@@ -173,7 +173,7 @@ s$ python profile_runctx.py
 pstats: Salvare e Lavorare le Statistiche
 </titolo_2>
 <testo_normale>
-Il rapporto standard creato delle funzioni in <strong>profile</strong> non è molto elastico. Se non fa al proprio scopo, si possono autonomamente produrre i propri rapporti salvando  la profilatura dei dati grezza da <code>run()</code> e <code>runctx()</code>, qundi lavorandola separatamente con la classe <em class='code'>Stats</strong> dal modulo <strong>pstats</strong>.
+Il rapporto standard creato delle funzioni in <strong>profile</strong> non è molto elastico. Se non fa al proprio scopo, si possono autonomamente produrre i propri rapporti salvando  la profilatura dei dati grezza da <code>run()</code> e <code>runctx()</code>, qundi elaborandola separatamente con la classe <em class='code'>Stats</em> dal modulo <strong>pstats</strong>.
 </testo_normale>
 <testo_normale>
 Ad esempio, per eseguire parecchie iterazioni dello stesso test e combinarne i risultati, si potrebbe fare qualcosa del tipo:
@@ -261,7 +261,7 @@ stats.sort_stats('cumulative')
 stats.print_stats('\(fib')
 </py_code>
 <testo_normale>
-L'espressione regolare include una parentesi tonda di apertura che farla corrispondere alla porzione di nome di funzione nel valore che descrive il punto in cui si trova la funzione nel codice.
+L'espressione regolare include una parentesi tonda di apertura per farla corrispondere alla porzione di nome di funzione nel valore che descrive il punto in cui si trova la funzione nel codice.
 </testo_normale>
 <py_output>
 $ python profile_stats_restricted.py
@@ -336,8 +336,7 @@ profile_fibonacci_memoized.py:19(fib)      -> profile_fibonacci_memoized.py:12(_
 https://docs.python.org/2.7/library/profile.html?highlight=cprofile#cProfile|profile e cProfile|La documentazione della libreria standard per questo modulo
 https://docs.python.org/2.7/library/profile.html?highlight=pstats#pstats|pstats|La documentazione della libreria standard per pstats
 http://code.google.com/p/jrfonseca/wiki/Gprof2Dot|Gprof2Dot|Strumento per la visualizzazione dei dati in uscita di profile
-http://pymotw.com/2/profile/index.html#id1|[1]|<a href='http://en.literateprograms.org/Fibonacci_numbers_(Python'>Fibonacci numbers (Python) - LiteratePrograms</a>
-2|[2]|<a href='http://avinashv.net/2008/04/python-decorators-syntactic-sugar/'>|Python Decorators: Syntactic Sugar | avinash.vora
-
+http://en.literateprograms.org/Fibonacci_numbers_(Python)|Fibonacci numbers (Python) - LiteratePrograms|
+http://avinashv.net/2008/04/python-decorators-syntactic-sugar/|Python Decorators: Syntactic Sugar - avinash.vora|
 </vedi_anche>
 </documento_tradotto>

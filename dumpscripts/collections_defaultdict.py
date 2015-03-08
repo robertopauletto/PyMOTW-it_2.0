@@ -7,6 +7,6 @@ def default_factory():
     return 'valore predefinito'
 
 d = collections.defaultdict(default_factory, foo='bar')
-print d
-print d['foo']
-print d['bar']
+print 'd:', d
+print 'foo =>', d['foo']
+print 'bar =>', d['bar']

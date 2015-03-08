@@ -190,7 +190,12 @@ def prepara_articolo(seq_elementi, tag_da_indicizzare=('titolo_2', 'titolo_3')):
             if  tag in tag_da_indicizzare:
                 item['a_name'] = h.a_name(str(prg))
                 b = " ".join(item['buffer'])
-                indice.append(h.a("#"+str(prg), smart_text(b, encoding='utf-8'))
+                if '3' in tag:
+                    b = "&nbsp;&nbsp;&nbsp;&nbsp;" + b
+                indice.append(
+                    h.a(
+                        "#"+str(prg), smart_text(b, encoding='utf-8')
+                    )
                 )
                 #indice.append(h.a("#"+str(prg), smart_text(b, encoding='utf-8')))
                 contenuti.append(h.section(str(prg)))

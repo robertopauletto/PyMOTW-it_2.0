@@ -8,44 +8,44 @@
 abc - Classi Base Astratte
 </titolo_1>
 <descrizione>
-Definisce ed usa classi base per verifiche API nel proprio codice
+Definisce ed usa classi base per verifiche<a href='http://it.wikipedia.org/wiki/Application_programming_interface'>API</a>nel proprio codice
 2.6
 </descrizione>
 <titolo_2>
 Perchè usare le Classi Base Astratte?
 </titolo_2>
 <testo_normale>
-Le classi base astratte sono una forma di verifica di interfaccia più stretta dei controlli individuali per particolari metodi come hasattr().
-Definendo una classe base astratta si può definire una API comune per un insieme di sottoclassi...
-</testo_normale>    
+Le classi base astratte sono una forma di verifica di interfaccia più stretta dei controlli individuali per particolari metodi come <a href='https://docs.python.org/2/library/functions.html#hasattr'>hasattr()</a>.
+Definendo una classe base astratta si può definire una<a href='http://it.wikipedia.org/wiki/Application_programming_interface'>API</a>comune per un insieme di sottoclassi.
+</testo_normale>
 <testo_normale>
-Le classi base astratte sono una forma di verifica di interfaccia più stretta dei controlli individuali per particolari metodi come ${sbk}hasattr()${ebk}. Definendo una classe base astratta si può definire una API comune per un insieme di sottoclassi. Questa capacità è specialmente utile in situazioni dove un terzo andrà a fornire una implementazione, ad esempio con plugin ad una applicazione, ma può anche essere d'aiuto quando si lavora in squadra con un grande numero di componenti oppure con una base di codice molto vasta, dove mantenere tutte le classi nella propria testa allo stesso tempo à difficile o non possibile.
+Le classi base astratte sono una forma di verifica di interfaccia più stretta dei controlli individuali per particolari metodi come ${sbk}hasattr()${ebk}. Definendo una classe base astratta si può definire una <a href='http://it.wikipedia.org/wiki/Application_programming_interface'>API</a> comune per un insieme di sottoclassi. Questa capacità è specialmente utile in situazioni dove un terzo andrà a fornire una implementazione, ad esempio con plugin ad una applicazione, ma può anche essere d'aiuto quando si lavora in squadra con un grande numero di componenti oppure con una base di codice molto vasta, dove mantenere tutte le classi nella propria testa è allo stesso tempo difficile o non possibile.
 </testo_normale>
 <titolo_2>
-Come funziona abc    
-</titolo_2>    
+Come funziona abc
+</titolo_2>
 <testo_normale>
-<strong>abc</strong> funziona marcando i metodi della classe base come astratti, quindi registra le classi concrete come implementazioni della base astratta. Se il proprio codice richiede una API particolare, si può usare ${sbk}issubclass()${ebk} oppure ${sbk}isinstance()${ebk} per verificare un oggetto rispetto alla classe base.
+<strong>abc</strong> funziona marcando i metodi della classe base come astratti, quindi registra le classi concrete come implementazioni della base astratta. Se il proprio codice richiede una<a href='http://it.wikipedia.org/wiki/Application_programming_interface'>API</a>particolare, si può usare ${sbk}issubclass()${ebk} oppure ${sbk}isinstance()${ebk} per verificare un oggetto rispetto alla classe base.
 </testo_normale>
 <testo_normale>
-Iniziamo con il definire una classe base astratta per rappresentare l'API di un insieme di plugin per salvare e caricare dati.    
-</testo_normale>    
+Iniziamo con il definire una classe base astratta per rappresentare l'API di un insieme di plugin per salvare e caricare dati.
+</testo_normale>
 <py_code>
 import abc
 
 class PluginBase(object):
     __metaclass__ = abc.ABCMeta
-    
+
     @abc.abstractmethod
     def load(self, input):
         """Recupera dati dalla sorgente in input e ritorna un oggetto"""
         return
-    
+
     @abc.abstractmethod
     def save(self, output, data):
         """Salva l'oggetto dati in output."""
         return
-</py_code>        
+</py_code>
 <titolo_2>
 Registrare una Classe Concreta
 </titolo_2>
@@ -57,10 +57,10 @@ import abc
 from abc_base import PluginBase
 
 class RegisteredImplementation(object):
-    
+
     def load(self, input):
         return input.read()
-    
+
     def save(self, output, data):
         return output.write(data)
 
@@ -69,7 +69,7 @@ PluginBase.register(RegisteredImplementation)
 if __name__ == '__main__':
     print 'Sottoclasse:', issubclass(RegisteredImplementation, PluginBase)
     print 'Istanza    :', isinstance(RegisteredImplementation(), PluginBase)
-</py_code>        
+</py_code>
 <testo_normale>
 In questo esempio ${sbk}PluginImplentation${ebk} non è derivata da ${sbk}PluginBase${ebk} ma è registrata come implementazione dell'API ${sbk}PluginBase${ebk}
 </testo_normale>
@@ -90,28 +90,28 @@ import abc
 from abc_base import PluginBase
 
 class SubclassImplementation(PluginBase):
-    
+
     def load(self, input):
         return input.read()
-    
+
     def save(self, output, data):
         return output.write(data)
 
 if __name__ == '__main__':
     print 'Sottoclasse:', issubclass(SubclassImplementation, PluginBase)
     print 'Istanza    :', isinstance(SubclassImplementation(), PluginBase)
-</py_code>        
+</py_code>
 <testo_normale>
 In questo caso la normale gestione delle classi di Python viene usata per riconoscere ${sbk}PluginImplementation${ebk} come implementazione della classe astratta ${sbk}PluginBase${ebk}
 </testo_normale>
 <py_output>
-$ python abc_subclass.py 
+$ python abc_subclass.py
 
 Sottoclasse: True
 Istanza    : True
 </py_output>
 <testo_normale>
-Un effetto collaterale nell'uso della derivazione diretta è che è possibile trovare tutte le implementazioni del proprio plugin interrogando la classe base per ottenere  la lista delle classi derivate conosciute derivate da essa (non si tratta di una caratteristica di <strong>abc</strong>, tutte le classi lo possono fare). 
+Un effetto collaterale nell'uso della derivazione diretta è che è possibile trovare tutte le implementazioni del proprio plugin interrogando la classe base per ottenere  la lista delle classi derivate conosciute derivate da essa (non si tratta di una caratteristica di <strong>abc</strong>, tutte le classi lo possono fare).
 </testo_normale>
 <py_code>
 import abc
@@ -126,10 +126,10 @@ for sc in PluginBase.__subclasses__():
 Si noti che, sebbene ${sbk}abc_register${ebk} sia importato, ${sbk}RegisteredImplementation${ebk} non è tra la lista di sottoclassi visto che non è in realtà derivata dalla classe base.
 </testo_normale>
 <py_output>
-$ python abc_find_subclasses.py 
+$ python abc_find_subclasses.py
 
 SubclassImplementation
-</py_output>    
+</py_output>
 <testo_normale>
 Il Dr. André Roberge <a href='https://www.google.it/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&ved=0CC4QtwIwAA&url=http%3A%2F%2Fblip.tv%2Fpycon-us-videos-2009-2010-2011%2Fplugins-and-monkeypatching-increasing-flexibility-dealing-with-inflexibility-1958972&ei=CyMNUp3DGazd7Qa65oHIDQ&usg=AFQjCNE8JTy_dwauZPTrlME7OxU2FVbsYw&sig2=c06hHqhEVLBqP2OmAFfKsQ&bvm=bv.50768961,d.ZGU'>ha descritto</a> l'uso di questa capacità per scoprire i plugin importando tutti i moduli in una directory dinamicamente, quindi cercando nell'elenco di tutte le sottoclassi per trovare
 le classi di implementazione.
@@ -145,7 +145,7 @@ import abc
 from abc_base import PluginBase
 
 class IncompleteImplementation(PluginBase):
-    
+
     def save(self, output, data):
         return output.write(data)
 
@@ -153,16 +153,16 @@ PluginBase.register(IncompleteImplementation)
 
 if __name__ == '__main__':
     print 'Sottoclasse:', issubclass(IncompleteImplementation, PluginBase)
-    print 'Istanza    :', isinstance(IncompleteImplementation(), PluginBase)    
-</py_code>        
+    print 'Istanza    :', isinstance(IncompleteImplementation(), PluginBase)
+</py_code>
 <py_output>
-$ python abc_incomplete.py 
+$ python abc_incomplete.py
 
 Sottoclasse: True
 Istanza    :
 Traceback (most recent call last):
   File "abc_incomplete.py", line 16, in <module>
-    print 'Istanza    :', isinstance(IncompleteImplementation(), PluginBase)    
+    print 'Istanza    :', isinstance(IncompleteImplementation(), PluginBase)
 TypeError: Can't instantiate abstract class IncompleteImplementation with abstract methods load
 </py_output>
 <titolo_2>
@@ -177,14 +177,14 @@ from cStringIO import StringIO
 
 class ABCWithConcreteImplementation(object):
     __metaclass__ = abc.ABCMeta
-    
+
     @abc.abstractmethod
     def retrieve_values(self, input):
         print 'classe base che legge dati'
         return input.read()
 
 class ConcreteOverride(ABCWithConcreteImplementation):
-    
+
     def retrieve_values(self, input):
         base_data = super(ConcreteOverride, self).retrieve_values(input)
         print 'sottoclasse che ordina dati'
@@ -195,12 +195,12 @@ input = StringIO("""riga uno
 riga due
 riga tre
 """)
-</py_code>        
+</py_code>
 <testo_normale>
 Visto che ${sbk}ABCWithConcreteImplementation${ebk} è una classe base astratta, non è possibile istanziarla per usarla direttamente. La classe derivata <em>deve</em> fornire una riscrittura per ${sbk}retrieve_values${ebk}, ed in questo caso la classe concreta riordina i dati prima di ritornarli
 </testo_normale>
 <py_output>
-$ python abc_concrete_method.py 
+$ python abc_concrete_method.py
 
 classe base che legge dati
 sottoclasse che ordina dati
@@ -210,21 +210,21 @@ sottoclasse che ordina dati
 Proprietà Astratte
 </titolo_2>
 <testo_normale>
-Se la propria specifica API comprende attributi, oltre a metodi, si possono richiedere gli attributi nelle classi concrete definendoli tramite ${sbk}@abstractproperty${ebk}.
+Se la propria specifica<a href='http://it.wikipedia.org/wiki/Application_programming_interface'>API</a>comprende attributi, oltre a metodi, si possono richiedere gli attributi nelle classi concrete definendoli tramite ${sbk}@abstractproperty${ebk}.
 </testo_normale>
 <py_code>
 import abc
 
 class Base(object):
     __metaclass__ = abc.ABCMeta
-    
+
     @abc.abstractproperty
     def value(self):
         return 'Non si dovrebbe mai arrivare qui'
 
 
 class Implementation(Base):
-    
+
     @property
     def value(self):
         return 'proprietà concreta'
@@ -238,12 +238,12 @@ except Exception, err:
 
 i = Implementation()
 print 'Implementation.value:', i.value
-</py_code>        
+</py_code>
 <testo_normale>
 La classe ${sbk}Base${ebk} nell'esempio non può essere istanziata visto che ha solo una versione astratta della proprietà <em>value</em>
 </testo_normale>
 <py_output>
-$ python abc_abstract_property.py 
+$ python abc_abstract_property.py
 
 ERRORE: Can't instantiate abstract class Base with abstract methods value
 Implementation.value: proprietà concreta
@@ -256,10 +256,10 @@ import abc
 
 class Base(object):
     __metaclass__ = abc.ABCMeta
-    
+
     def value_getter(self):
         return 'Questo non si dovrebbe mai vedere'
-    
+
     def value_setter(self, newvalue):
         return
 
@@ -267,16 +267,16 @@ class Base(object):
 
 
 class PartialImplementation(Base):
-    
+
     @abc.abstractproperty
     def value(self):
         return 'Sola lettura'
 
 
 class Implementation(Base):
-    
+
     _value = 'Valore predefinito'
-    
+
     def value_getter(self):
         return self._value
 
@@ -303,12 +303,12 @@ print 'Implementation.value:', i.value
 
 i.value = 'Nuovo valore'
 print 'Valore modificato:', i.value#if __name__ == '__main__':
-</py_code>        
+</py_code>
 <testo_normale>
 Si noti che la proprietà concreta deve essere definita allo stesso modo di quella astratta. Cercando di sovrascrivere una proprietà in lettura/scrittura in ${sbk}PartialImplementation${ebk} con una a sola lettura non funzionerà.
 </testo_normale>
 <py_output>
-$ python abc_abstract_property_rw.py 
+$ python abc_abstract_property_rw.py
 
 ERRORE: Can't instantiate abstract class Base with abstract methods value
 ERRORE: Can't instantiate abstract class PartialImplementation with abstract methods value
@@ -323,20 +323,20 @@ import abc
 
 class Base(object):
     __metaclass__ = abc.ABCMeta
-    
+
     @abc.abstractproperty
     def value(self):
         return 'Questo non si dovrebbe mai vedere'
-    
+
     @value.setter
     def value(self, newvalue):
         return
 
 
 class Implementation(Base):
-    
+
     _value = 'Valore predefinito'
-    
+
     @property
     def value(self):
         return self._value
@@ -350,13 +350,13 @@ i = Implementation()
 print 'Implementation.value:', i.value
 
 i.value = 'Nuovo valore'
-print 'Valore modificato:', i.value    
-</py_code>        
+print 'Valore modificato:', i.value
+</py_code>
 <testo_normale>
 Si noti che entrambi i metodi nelle classi ${sbk}Base${ebk} ed ${sbk}Implementation${ebk} sono chiamati ${sbk}value()${ebk}, sebbene abbiano diverse impronte.
 </testo_normale>
 <py_output>
-s$ python abc_abstract_property_rw_deco.py 
+s$ python abc_abstract_property_rw_deco.py
 
 Implementation.value: Valore predefinito
 Valore modificato: Nuovo valore
@@ -400,7 +400,7 @@ MutableMapping
 MappingView
 KeysView
 ItemsView
-ValuesView    
+ValuesView
 </lista>
 <testo_normale>
 Miscellanea:
@@ -415,7 +415,7 @@ Oltre a servire come esempi dettagliati ed applicabili di classi base astratte, 
 http://docs.python.org/library/abc.html|abc|La documentazione della libreria standard per questo modulo
 http://www.python.org/dev/peps/pep-3119|PEP 3119|Introduzione alle classi base astratte
 http://docs.python.org/library/collections.html|collections|La documentazione della libreria standard per le collezioni
-http://www.python.org/dev/peps/pep-3141|PEP 3141|Una gerarchia di tipo per i numeri 
+http://www.python.org/dev/peps/pep-3141|PEP 3141|Una gerarchia di tipo per i numeri
 http://it.wikipedia.org/wiki/Strategy_pattern|Wikipedia: Strategy Pattern|Descrizione ed esempi per lo strategy pattern
 https://www.google.it/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&ved=0CC4QtwIwAA&url=http%3A%2F%2Fblip.tv%2Fpycon-us-videos-2009-2010-2011%2Fplugins-and-monkeypatching-increasing-flexibility-dealing-with-inflexibility-1958972&ei=CyMNUp3DGazd7Qa65oHIDQ&usg=AFQjCNE8JTy_dwauZPTrlME7OxU2FVbsYw&sig2=c06hHqhEVLBqP2OmAFfKsQ&bvm=bv.50768961,d.ZGU|Plugins and monkeypatching|Presentazione a PyCon 2009 del Dr. André Roberge (Video)
 </vedi_anche>

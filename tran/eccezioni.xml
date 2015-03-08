@@ -29,19 +29,19 @@ il modulo delle eccezioni definisce gli errori built-in usati attraverso tutta l
 Descrizione
 </titolo_2>
 <testo_normale>
-Nel passato, Ptyhon supportava come eccezioni sia semplici stringhe di messaggi che classi. Dalla versione 1.5, tutti i moduli della libreria standard usano le classi per le eccezioni. A partire da Python 2.5, le stringhe di eccezione generano un DeprecationWarning, ed il supporto per le stringhe di eccezione verrà rimosso in futuro.	
+Nel passato, Ptyhon supportava come eccezioni sia semplici stringhe di messaggi che classi. Dalla versione 1.5, tutti i moduli della libreria standard usano le classi per le eccezioni. A partire da Python 2.5, le stringhe di eccezione generano un DeprecationWarning, ed il supporto per le stringhe di eccezione verrà rimosso in futuro.
 </testo_normale>
 <titolo_2>
-Classi base	
+Classi base
 </titolo_2>
 <testo_normale>
-Le classi delle eccezioni sono definite in una gerarchia, descritta nella documentazione della libreria standard. Oltre agli ovvi vantaggi di organizzazione, l'ereditarietà nelle eccezioni è utile perchè le eccezioni correlate possono essere intercettate tramite la loro classe base. Nella maggior parte dei casi, queste classi base non sono concepite per essere sollevate direttamente	
+Le classi delle eccezioni sono definite in una gerarchia, descritta nella documentazione della libreria standard. Oltre agli ovvi vantaggi di organizzazione, l'ereditarietà nelle eccezioni è utile perchè le eccezioni correlate possono essere intercettate tramite la loro classe base. Nella maggior parte dei casi, queste classi base non sono concepite per essere sollevate direttamente
 </testo_normale>
 <sottotitolo>
-BaseException	
+BaseException
 </sottotitolo>
 <testo_normale>
-E' la classe base per tutte le eccezioni. Implementa la logica per creare una rappresentazione sotto forma di stringa dell'eccezione usando str() dai parametri passati al costruttore	
+E' la classe base per tutte le eccezioni. Implementa la logica per creare una rappresentazione sotto forma di stringa dell'eccezione usando str() dai parametri passati al costruttore
 </testo_normale>
 <sottotitolo>
 Exception
@@ -74,7 +74,7 @@ EnvironmentError
 Classe base per errori che provengono al di fuori di Python (il sistema operativo, il filesystem ecc.).
 </testo_normale>
 <titolo_2>
-Eccezioni Sollevate	
+Eccezioni Sollevate
 </titolo_2>
 <sottotitolo>
 <a name='asserr'></a>AssertionError
@@ -83,10 +83,10 @@ Eccezioni Sollevate
 AssertionError viene sollevata quando fallisce una istruzione di ${sbk}assert${ebk}.
 </testo_normale>
 <py_code>
-assert False, 'Asserzione fallita'	
+assert False, 'Asserzione fallita'
 </py_code>
 <py_output>
-$ python exceptions_AssertionError_assert.py 
+$ python exceptions_AssertionError_assert.py
 Traceback (most recent call last):
   File "exceptions_AssertionError_assert.py", line 1, in <module>
     assert False, 'Asserzione fallita'
@@ -97,14 +97,14 @@ Viene anche usata nel modulo <a href='unittest.html'>unittest</a> in metodi tipo
 </testo_normale>
 <py_code>
 class AssertionExample(unittest.TestCase):
-    
+
     def test(self):
         self.failUnless(False)
 
 unittest.main()
 </py_code>
 <py_output>
-$ python exceptions_AssertionError_unittest.py 
+$ python exceptions_AssertionError_unittest.py
 F
 ======================================================================
 FAIL: test (__main__.AssertionExample)
@@ -126,7 +126,7 @@ FAILED (failures=1)
 Quando fallisce un riferimento od una assegnazione ad un attributo, viene sollevata AttributeError.
 </testo_normale>
 <testo_normale>
-Ad esempio, quando si tenta di referenziare un attributo che non esiste:	
+Ad esempio, quando si tenta di referenziare un attributo che non esiste:
 </testo_normale>
 <py_code>
 class NoAttributes(object):
@@ -136,18 +136,18 @@ o = NoAttributes()
 print o.attribute
 </py_code>
 <py_output>
-$ python exceptions_AttributeError.py 
+$ python exceptions_AttributeError.py
 Traceback (most recent call last):
   File "exceptions_AttributeError.py", line 7, in <module>
     print o.attribute
 AttributeError: 'NoAttributes' object has no attribute 'attribute'
 </py_output>
 <testo_normale>
-O quando si tenta di modificare un attributo a sola lettura:	
+O quando si tenta di modificare un attributo a sola lettura:
 </testo_normale>
 <py_code>
 class MyClass(object):
-    
+
     @property
     def attribute(self):
         return "Questo è il valore dell'attributo"
@@ -157,7 +157,7 @@ print o.attribute
 o.attribute = 'Nuovo valore'
 </py_code>
 <py_output>
-$ python exceptions_AttributeError_assignment.py 
+$ python exceptions_AttributeError_assignment.py
 Questo è il valore dell'attributo
 Traceback (most recent call last):
   File "exceptions_AttributeError_assignment.py", line 13, in <module>
@@ -168,16 +168,16 @@ AttributeError: can't set attribute
 EOFError
 </sottotitolo>
 <testo_normale>
-EOFError viene sollevata quando una funzione built-in tipo ${sbk}input()${ebk} o ${sbk}raw_input()${ebk} non leggono alcun dato prima 
+EOFError viene sollevata quando una funzione built-in tipo ${sbk}input()${ebk} o ${sbk}raw_input()${ebk} non leggono alcun dato prima
 di trovare la fine del flusso di input. I metodi di file come ${sbk}read()${ebk} restituiscono una stringa vuota alla fine del file.
 </testo_normale>
 <py_code>
 while True:
     data = raw_input('prompt:')
-    print 'LEGGO:', data	
+    print 'LEGGO:', data
 </py_code>
 <py_output>
-$ echo Ciao | python exceptions_EOFError.py 
+$ echo Ciao | python exceptions_EOFError.py
 prompt:LEGGO: Ciao
 prompt:Traceback (most recent call last):
   File "exceptions_EOFError.py", line 6, in <module>
@@ -185,7 +185,7 @@ prompt:Traceback (most recent call last):
 EOFError: EOF when reading a line
 </py_output>
 <sottotitolo>
-FloatingPointError	
+FloatingPointError
 </sottotitolo>
 <testo_normale>
 Viene sollevata dalle operazioni con virgola mobile che risultano in errori, quando il controllo degli errori in
@@ -200,10 +200,10 @@ fpectl.turnon_sigfpe()
 print 'Control attivato:', math.exp(1000)
 </py_code>
 <sottotitolo>
-GeneratorExit	
+GeneratorExit
 </sottotitolo>
 <testo_normale>
-Sollevata all'interno di un generatore, quando viene chiamato il metodo ${sbk}close()${ebk} del generatore.	
+Sollevata all'interno di un generatore, quando viene chiamato il metodo ${sbk}close()${ebk} del generatore.
 </testo_normale>
 <py_code>
 def my_generator():
@@ -219,7 +219,7 @@ print g.next()
 g.close()
 </py_code>
 <py_output>
-$ python exceptions_GeneratorExit.py 
+$ python exceptions_GeneratorExit.py
 Trattengo 0
 0
 Uscita prematura
@@ -228,13 +228,13 @@ Uscita prematura
 IOError
 </sottotitolo>
 <testo_normale>
-Sollevata quando fallisce una operazione di input od output, ad esempio se il disco è pieno, od un file di input non esiste.	
+Sollevata quando fallisce una operazione di input od output, ad esempio se il disco è pieno, od un file di input non esiste.
 </testo_normale>
 <py_code>
 f = open('/non/esiste', 'r')
 </py_code>
 <py_output>
-$ python exceptions_IOError.py 
+$ python exceptions_IOError.py
 Traceback (most recent call last):
   File "exceptions_IOError.py", line 5, in <module>
     f = open('/non/esiste', 'r')
@@ -244,30 +244,30 @@ IOError: [Errno 2] No such file or directory: '/non/esiste'
 ImportError
 </sottotitolo>
 <testo_normale>
-Sollevata quando un modulo, od un membro di un modulo, non può essere importato. Sono poche le condizioni laddove 
+Sollevata quando un modulo, od un membro di un modulo, non può essere importato. Sono poche le condizioni laddove
 ImportError possa essere sollevata:
 </testo_normale>
 <testo_normale>
-1. Se un modulo non esiste.	
+1. Se un modulo non esiste.
 </testo_normale>
 <py_code>
 import modulo_non_esiste
 </py_code>
 <py_output>
-$ python exceptions_ImportError_nomodule.py 
+$ python exceptions_ImportError_nomodule.py
 Traceback (most recent call last):
   File "exceptions_ImportError_nomodule.py", line 4, in <module>
     import modulo_non_esiste
 ImportError: No module named modulo_non_esiste
 </py_output>
 <testo_normale>
-2. Se si usa ${sbk}from X import Y${ebk} e Y non si trova all'interno del modulo X	
+2. Se si usa ${sbk}from X import Y${ebk} e Y non si trova all'interno del modulo X
 </testo_normale>
 <py_code>
 from exceptions import NomeFasullo
 </py_code>
 <py_output>
-$ python exceptions_ImportError_missingname.py 
+$ python exceptions_ImportError_missingname.py
 Traceback (most recent call last):
   File "exceptions_ImportError_missingname.py", line 4, in <module>
     from exceptions import NomeFasullo
@@ -277,21 +277,21 @@ ImportError: cannot import name NomeFasullo
 IndexError
 </sottotitolo>
 <testo_normale>
-Sollevata quando il riferimento di una sequenza è fuori dai limiti	
+Sollevata quando il riferimento di una sequenza è fuori dai limiti
 </testo_normale>
 <py_code>
 my_seq = [ 0, 1, 2 ]
 print my_seq[3]
 </py_code>
 <py_output>
-$ python exceptions_IndexError.py 
+$ python exceptions_IndexError.py
 Traceback (most recent call last):
   File "exceptions_IndexError.py", line 5, in <module>
     print my_seq[3]
 IndexError: list index out of range
 </py_output>
 <sottotitolo>
-KeyError	
+KeyError <a name='keyerror'></a>
 </sottotitolo>
 <testo_normale>
 Viene sollevata quando un valore non viene trovato come chiave di un dizionario.
@@ -301,14 +301,14 @@ d = { 'a':1, 'b':2 }
 print d['c']
 </py_code>
 <py_output>
-$ python exceptions_KeyError.py 
+$ python exceptions_KeyError.py
 Traceback (most recent call last):
   File "exceptions_KeyError.py", line 5, in <module>
     print d['c']
 KeyError: 'c'
 </py_output>
 <sottotitolo>
-KeyboardInterrupt	
+KeyboardInterrupt
 </sottotitolo>
 <testo_normale>
 Viene sollevata ogniqualvolta l'utente preme Ctrl-C (o Canc) per interrompere un programma in esecuzione.
@@ -327,14 +327,14 @@ else:
     print 'Nessuna eccezione'
 </py_code>
 <py_output>
-$ python exceptions_KeyboardInterrupt.py 
+$ python exceptions_KeyboardInterrupt.py
 Premere Invio o Ctrl-C: ^CCatturato KeyboardInterrupt
 </py_output>
 <sottotitolo>
-MemoryError	
+MemoryError
 </sottotitolo>
 <testo_normale>
-Se il programma esaurisce la memoria ed è possibile recuperarne (ad esempio eliminando alcuni oggetti), viene 
+Se il programma esaurisce la memoria ed è possibile recuperarne (ad esempio eliminando alcuni oggetti), viene
 sollevata MemoryError.
 </testo_normale>
 <py_code>
@@ -352,7 +352,7 @@ for i in range(3):
         l = []
 </py_code>
 <py_output>
-$ python exceptions_MemoryError.py 
+$ python exceptions_MemoryError.py
 0 1
 0 2
 (errore, si svuota la lista esistente)
@@ -377,7 +377,7 @@ def func():
 func()
 </py_code>
 <py_output>
-$ python exceptions_NameError.py 
+$ python exceptions_NameError.py
 Traceback (most recent call last):
   File "exceptions_NameError.py", line 7, in <module>
     func()
@@ -411,7 +411,7 @@ SubClass().do_something()
 BaseClass().do_something()
 </py_code>
 <py_output>
-$ python exceptions_NotImplementedError.py 
+$ python exceptions_NotImplementedError.py
 SubClass facendo qualcosa!
 Traceback (most recent call last):
   File "exceptions_NotImplementedError.py", line 19, in <module>
@@ -421,10 +421,10 @@ Traceback (most recent call last):
 NotImplementedError: BaseClass.fa_qualcosa
 </py_output>
 <sottotitolo>
-OSError	
+OSError
 </sottotitolo>
 <testo_normale>
-Funge da classe di errore per il modulo <a href='http://www.doughellmann.com/PyMOTW/os/index.html#module-os'>os</a>, e viene sollevato quando l'errore ritorna da una funzione specifica di os	
+Funge da classe di errore per il modulo <a href='http://www.doughellmann.com/PyMOTW/os/index.html#module-os'>os</a>, e viene sollevato quando l'errore ritorna da una funzione specifica di os
 </testo_normale>
 <py_code>
 import os
@@ -443,11 +443,11 @@ Traceback (most recent call last):
 OSError: [Errno 9] Bad file descriptor
 </py_output>
 <sottotitolo>
-OverflowError	
+OverflowError
 </sottotitolo>
 <testo_normale>
 Quando una operazione matematica eccede i limiti del tipo di variabile, viene sollevata OverflowError. Gli interi long
-allocano tanto più spazio quanto più crescono i loro valori, quindi finiscono per sollevare MemoryError. La gestione degli 
+allocano tanto più spazio quanto più crescono i loro valori, quindi finiscono per sollevare MemoryError. La gestione degli
 errori in virgola mobile non è standardizzata, quindi i valori a virgola mobile non sono verificati.
 Gli interi normali sono convertiti nei corrispondenti valori long quando necessario.
 </testo_normale>
@@ -477,7 +477,7 @@ except OverflowError, err:
     print 'Overflow dopo ', f, err
 </py_code>
 <py_output>
-$ python exceptions_OverflowError.py 
+$ python exceptions_OverflowError.py
 Intero normale: (maxint=2147483647)
 Nessun overflow per  <type 'long'> i = 6442450941
 
@@ -501,7 +501,7 @@ Valori a virgola mobile:
 Overflow dopo  5.5156522631e+216 (34, 'Numerical result out of range')
 </py_output>
 <sottotitolo>
-ReferenceError
+ReferenceError<a name='referenceerror'></a>
 </sottotitolo>
 <testo_normale>
 Quando si usa un proxy <a href='http://www.doughellmann.com/PyMOTW/weakref/index.html#module-weakref'>weakref</a> per accedere ad un oggetto che è già stato recuperato dalla garbage collection, si genera un errore ReferenceError.
@@ -524,7 +524,7 @@ obj = None
 print 'DOPO :', p.name
 </py_code>
 <py_output>
-$ python exceptions_ReferenceError.py 
+$ python exceptions_ReferenceError.py
 PRIMA: obj
 (Elimino <__main__.ExpensiveObject object at 0xb7855c8c>)
 DOPO :
@@ -537,14 +537,14 @@ ReferenceError: weakly-referenced object no longer exists
 RuntimeError
 </sottotitolo>
 <testo_normale>
-Una eccezione RuntimeError si usa quando non si può applicare nessun'altra eccezione più specifica. L'interprete 
+Una eccezione RuntimeError si usa quando non si può applicare nessun'altra eccezione più specifica. L'interprete
 solleva questa eccezione raramente, ma qualche porzione di codice utente lo può fare.
 </testo_normale>
 <sottotitolo>
 StopIteration
 </sottotitolo>
 <testo_normale>
-Quando un iterator ha concluso il ciclo, il suo metodo ${sbk}next()${ebk} solleva StopIteration. Questa eccezione non è considerata un errore.	
+Quando un iterator ha concluso il ciclo, il suo metodo ${sbk}next()${ebk} solleva StopIteration. Questa eccezione non è considerata un errore.
 </testo_normale>
 <py_code>
 l=[0,1,2]
@@ -557,7 +557,7 @@ print i.next()
 print i.next()
 </py_code>
 <py_output>
-$ python exceptions_StopIteration.py 
+$ python exceptions_StopIteration.py
 <listiterator object at 0xb788918c>
 0
 1
@@ -584,7 +584,7 @@ except SyntaxError, err:
     print err
 </py_code>
 <py_output>
-$ python exceptions_SyntaxError.py 
+$ python exceptions_SyntaxError.py
 Errore di sintassi <string> (1-12): cinque volte tre
 invalid syntax (<string>, line 1)
 </py_output>
@@ -592,7 +592,7 @@ invalid syntax (<string>, line 1)
 SystemError
 </sottotitolo>
 <testo_normale>
-Quando l'errore capita nell'interprete stesso ed esiste qualche possibilità di continuare l'esecuzione con successo, si 
+Quando l'errore capita nell'interprete stesso ed esiste qualche possibilità di continuare l'esecuzione con successo, si
 solleva un SystemError. SystemError in genere indica un baco nell'interprete e dovrebbe essere notificato al curatore.
 </testo_normale>
 <sottotitolo>
@@ -613,17 +613,17 @@ Le eccezioni TypeError sono causate combinando tipi di oggetti sbagliati, o chia
 result = ('tuple',) + 'string'
 </py_code>
 <py_output>
-$ python exceptions_TypeError.py 
+$ python exceptions_TypeError.py
 Traceback (most recent call last):
   File "exceptions_TypeError.py", line 4, in <module>
     result = ('tuple',) + 'string'
 TypeError: can only concatenate tuple (not "str") to tuple
 </py_output>
 <sottotitolo>
-UnboundLocalError	
+UnboundLocalError
 </sottotitolo>
 <testo_normale>
-E' un tipo di NameError specifico per i nomi di variabili locali.	
+E' un tipo di NameError specifico per i nomi di variabili locali.
 </testo_normale>
 <py_code>
 def throws_global_name_error():
@@ -641,14 +641,14 @@ except NameError, err:
 try:
     throws_unbound_local()
 except UnboundLocalError, err:
-    print 'Errore di nome locale:', err	
+    print 'Errore di nome locale:', err
 </py_code>
 <testo_normale>
 La differenza tra NameError globale e UnboundLocal è il modo nel quale viene usato il nome. Visto che il nome
 "local_val" si trova nella parte sinistra di una espressione, viene interpretato come nome di variabile locale.
 </testo_normale>
 <py_output>
-$ python exceptions_UnboundLocalError.py 
+$ python exceptions_UnboundLocalError.py
 Errore di nome globale: global name 'unknown_global_name' is not defined
 Errore di nome locale: local variable 'local_val' referenced before assignment
 </py_output>
@@ -669,7 +669,7 @@ ValueError viene usata quando una funzione riceve un dato del tipo giusto ma del
 print chr(1024)
 </py_code>
 <py_output>
-$ python exceptions_ValueError.py 
+$ python exceptions_ValueError.py
 Traceback (most recent call last):
   File "exceptions_ValueError.py", line 4, in <module>
     print chr(1024)
@@ -679,7 +679,7 @@ ValueError: chr() arg not in range(256)
 ZeroDivisionError
 </sottotitolo>
 <testo_normale>
-Quando zero è il denominatore di una operazione di divisione, viene sollevata ZeroDivisionError.	
+Quando zero è il denominatore di una operazione di divisione, viene sollevata ZeroDivisionError.
 </testo_normale>
 <py_code>
 print 1/0
@@ -691,7 +691,7 @@ exceptions_ZeroDivisionError.py
 Categorie di avvertimento
 </titolo_2>
 <testo_normale>
-Si sono anche parecchie eccezioni definite per l'uso con il modulo <a href='warnings.html'>warnings</a>	
+Si sono anche parecchie eccezioni definite per l'uso con il modulo <a href='warnings.html'>warnings</a>
 </testo_normale>
 <deflist>
 <a name='warning'></a>Warning|La classe base per tutti gli avvertimenti.
@@ -702,7 +702,7 @@ SyntaxWarning|Usata per sintassi discutibile.
 RuntimeWarning|Usati per eventi che accadono in fase di esecuzione che potrebbero causare problemi.
 FutureWarning|Avverte circa le modifiche al linguaggio od alla libreria che saranno attive in futuro
 ImportWarning|Avverte circa problemi nell'importazione di un modulo.
-UnicodeWarning|Avverte di problemi riguardanti testo unicode.  
+UnicodeWarning|Avverte di problemi riguardanti testo unicode.
 </deflist>
 <vedi_anche>
 http://www.opml.org/|Outline Processor Markup Language (OPML)|Le specifiche dell'OPML di Dave Winer e la documentazione.

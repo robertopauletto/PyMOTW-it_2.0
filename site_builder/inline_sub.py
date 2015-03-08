@@ -13,10 +13,10 @@ from os.path import exists
 from collections import defaultdict
 
 DEFAULT_SUBS = [
-    "sbk|<span class='bkIstruzione'>", 
-    "ebk|</span>", 
-    "sev|<span class='bkItem'>", 
-    "eev|</span>", 
+    "sbk|<code>",
+    "ebk|</code>",
+    "sev|<span class='bkItem'>",
+    "eev|</span>",
 ]
 
 class InlineSubs(object):
@@ -26,28 +26,28 @@ class InlineSubs(object):
     """
     def __init__(self, file_diz=None):
         """(str)
-        
+
         Inizializza e carica gli elementi predefiniti nel
         dizionario di traduzione oppure gli elementi presenti nel file
         `file_diz`
-        
+
         Prerequisito: `file_diz` contiene valori nel formato
         chiave|valore dove valore è un valido pezzo di codice html
         """
         self.diz = defaultdict(str)
         self.carica_diz(file_diz)
-        
+
     def aggiungi_voce(self, chiave, valore):
         """(str, str)
-        
+
         Incrementa il dizionario dei valori da sostituire
         """
         self.diz[chiave] = valore
-        
-        
+
+
     def carica_diz(self, file_diz):
         """([str])
-        
+
         Carica le chiavi che restituiscono il codice html dal file
         `file_diz` se valorizzato oppure un insieme predefinito
         """
@@ -62,21 +62,21 @@ class InlineSubs(object):
                 continue
             chiave, valore = riga.strip().split('|')
             self.diz[chiave] = valore
-        
-        
+
+
     def rimpiazza(self, testo):
         """(str) -> str
-        
+
         Ritorna la stringa modificata con il codice html
         """
         return string.Template(testo).safe_substitute(self.diz)
 
-    
-    
-    
+
+
+
 if __name__ == '__main__':
     print __doc__
     i = InlineSubs()
     import pprint
     pprint.pprint(i.diz)
-    
+

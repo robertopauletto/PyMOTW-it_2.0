@@ -16,7 +16,7 @@ Implementa un database relazionale incorporabile con supporto SQL
 2.5 e superiore
 </descrizione>
 <testo_normale>
-Il modulo <strong>sqlite3</strong> fornisce una interfaccia compatibile DB-API 2.0 al database relazionale <a href='http://www.sqlite.org/'>SQLite</a>. SQLite &egrave; un database <em>in-process</em> concepito per essere incorporato in applicazioni, invece di usare un programma server di database separato tipo MySQL, PostgreSQL oppure Oracle. SQLite &egrave; veloce, rigorosamente testato, flessibile, rendendolo candidato per il prototipizzazione e lo sviluppo di produzione per certe applicazioni.
+Il modulo <strong>sqlite3</strong> fornisce una interfaccia compatibile DB-API 2.0 al database relazionale <a href='http://www.sqlite.org/'>SQLite</a>. SQLite &egrave; un database <em>in-process</em> concepito per essere incorporato in applicazioni, invece di usare un programma server di database separato tipo MySQL, PostgreSQL oppure Oracle. SQLite &egrave; veloce, rigorosamente testato, flessibile, rendendolo candidato per la prototipizzazione e lo sviluppo di produzione per certe applicazioni.
 </testo_normale>
 <titolo_2>
 Creare un Database
@@ -25,7 +25,7 @@ Creare un Database
 Un database SQLite viene conservato in un singolo file nel filesystem. La libreria gestisce l'accesso al file, incluso il bloccaggio per prevenire corruzione di dati quando viene usato in scrittura da utenti multipli. Il database viene creato la prima volta che si accede al file, ma l'applicazione &egrave; responsabile per la gestione delle definizioni della tabella, note come <em>schema</em>. all'interno del database.
 </testo_normale>
 <testo_normale>
-In questo esempio si cerca il file database prima di aprirlo con ${sbk}connect()${ebk} in modo da sapere quando creare lo <em>schema</em> per i nuovi database.
+In questo esempio si cerca il file database prima di aprirlo con <code>connect()</code> in modo da sapere quando creare lo <em>schema</em> per i nuovi database.
 </testo_normale>
 <py_code>
 import os
@@ -51,13 +51,13 @@ Quando si esegue lo script per due volte si dimostra che esso crea il file vuoto
 $ ls *.db
 ls: impossibile accedere a *.db: File o directory non esistente
 
-$ python sqlite3_createdb.py 
+$ python sqlite3_createdb.py
 Occorre creare lo schema
 
 $ ls *.db
 todo.db
 
-$ python sqlite3_createdb.py 
+$ python sqlite3_createdb.py
 Il database esiste, si suppone che esista anche lo schema.
 </py_output>
 <testo_normale>
@@ -95,19 +95,19 @@ progetto;testo;il nome del progetto per questo compito.
 
 </testo_normale>
 <testo_normale>
-Le istruzioni in <em>data definition language</em> (DDL) per creare le tabelle sono:
+Le istruzioni in <em>data definition language</em> (<a href='http://it.wikipedia.org/wiki/Data_Definition_Language'>DDL</a>) per creare le tabelle sono:
 </testo_normale>
 <sql_code>
 -- Schema per gli esempi dell'applicazione to-do.
 
--- I progetti sono le attivita'; di alto livello composte da compiti
+-- I progetti sono le attivita' di alto livello composte da compiti
 create table progetto (
     nome        text primary key,
     descrizione text,
     scadenza    date
 );
 
--- I compiti sono le attivita'; che possono essere svolte per completare un progetto
+-- I compiti sono le attivita' che possono essere svolte per completare un progetto
 
 create table compito (
     id            integer primary key autoincrement not null,
@@ -120,7 +120,7 @@ create table compito (
 );
 </sql_code>
 <testo_normale>
-Il metodo ${sbk}executescript()${ebk} della <strong>connessione</strong> pu&ograve; essere usato per eseguire le istruzioni DDL per creare lo schema.
+Il metodo <code>executescript()</code> della <strong>connessione</strong> pu&ograve; essere usato per eseguire le istruzioni DDL per creare lo schema.
 </testo_normale>
 <py_code>
 import os
@@ -139,22 +139,22 @@ with sqlite3.connect(db_filename) as conn:
         conn.executescript(schema)
 
         print 'Inserimento dei dati di partenza'
-        
+
         conn.execute("""
         insert into progetto (nome, descrizione, scadenza)
         values ('pymotw-it', 'Il modulo Python della Settimana', '2010-11-01')
         """)
-        
+
         conn.execute("""
         insert into compito (dettagli, stato, scadenza, progetto)
         values ('descrivere select', 'fatto', '2010-10-03', 'pymotw-it')
         """)
-        
+
         conn.execute("""
         insert into compito (dettagli, stato, scadenza, progetto)
         values ('descrivere random', 'in attesa', '2010-10-10', 'pymotw-it')
         """)
-        
+
         conn.execute("""
         insert into compito (dettagli, stato, scadenza, progetto)
         values ('descrivere sqlite3', 'attivo', '2010-10-17', 'pymotw-it')
@@ -167,7 +167,7 @@ with sqlite3.connect(db_filename) as conn:
 Dopo che sono state create le tabelle, alcune istruzioni ${sev}insert${eev} creano un progetto di esempio ed i compiti relativi. Il programma da riga di comando <strong>sqlite3</strong> pu&ograve; essere usato per esaminare il contenuto del database.
 </testo_normale>
 <py_output>
-$ python sqlite3_create_schema.py 
+$ python sqlite3_create_schema.py
 
 Creazione dello schema
 Inserimento dei dati di partenza
@@ -182,7 +182,7 @@ $ sqlite3 todo.db 'select * from compito'
 Recuperare i Dati
 </titolo_2>
 <testo_normale>
-Per recuperare i valori salvati nella tabella <strong>compito</strong> all'interno di un programma Python, si crea un cursore ${sbk}Cursor${ebk} da una connessione del database usando il metodo ${sbk}cursor()${ebk}. Un cursore fornisce una vista consistente dei dati, e costituisce il mezzo principale per interagire con un sistema di database transazionale come SQLite.
+Per recuperare i valori salvati nella tabella <strong>compito</strong> all'interno di un programma Python, si crea un cursore <code>Cursor</code> da una connessione del database usando il metodo <code>cursor()</code>. Un cursore fornisce una vista consistente dei dati, e costituisce il mezzo principale per interagire con un sistema di database transazionale come SQLite.
 </testo_normale>
 <py_code>
 import sqlite3
@@ -201,17 +201,17 @@ with sqlite3.connect(db_filename) as conn:
         print '%2d {%d} %-20s [%-8s] (%s)' % (task_id, priority, details, status, deadline)
 </py_code>
 <testo_normale>
-L'interrogazione si svolge in due passi. Per prima cosa si esegue l'interrogazione con il metodo del cursore ${sbk}execute()${ebk} per informare il motore del database di quali dati deve raccogliere. Quindi si usa ${sbk}fetchall()${ebk} per recuperare i risultati. Il valore restituito &egrave; una sequenza di tuple che contengono i valori per le colonne indicate nella clausola ${sev}select${eev} dell'interrogazione.
+L'interrogazione si svolge in due passi. Per prima cosa si esegue l'interrogazione con il metodo del cursore <code>execute()</code> per informare il motore del database di quali dati deve raccogliere. Quindi si usa <code>fetchall()</code> per recuperare i risultati. Il valore restituito &egrave; una sequenza di tuple che contengono i valori per le colonne indicate nella clausola ${sev}select${eev} dell'interrogazione.
 </testo_normale>
 <py_output>
-$ python sqlite3_select_tasks.py 
+$ python sqlite3_select_tasks.py
 
  1 {1} descrivere select    [fatto    ] (2010-10-03)
  2 {1} descrivere random    [in attesa] (2010-10-10)
  3 {1} descrivere sqlite3   [attivo   ] (2010-10-17)
 </py_output>
 <testo_normale>
-I risultati possono essere recuperati uno alla volta con ${sbk}fetchone()${ebk}, oppure in blocchi di dimensione finita con ${sbk}fetchmany()${ebk}.
+I risultati possono essere recuperati uno alla volta con <code>fetchone()</code>, oppure in blocchi di dimensione finita con <code>fetchmany()</code>.
 </testo_normale>
 <py_code>
 import sqlite3
@@ -240,10 +240,10 @@ with sqlite3.connect(db_filename) as conn:
         print '%2d {%d} %-25s [%-8s] (%s)' % (task_id, priority, details, status, deadline)
 </py_code>
 <testo_normale>
-Il valore passato a ${sbk}fetchmany()${ebk} &egrave; il numero massimo di elementi da restituire. Se gli elementi disponibili sono meno, la sequenza restituita sar&agrave; pi&ugrave; piccola rispetto al valore massimo passato.
+Il valore passato a <code>fetchmany()</code> &egrave; il numero massimo di elementi da restituire. Se gli elementi disponibili sono meno, la sequenza restituita sar&agrave; pi&ugrave; piccola rispetto al valore massimo passato.
 </testo_normale>
 <py_output>
-$ python sqlite3_select_variations.py 
+$ python sqlite3_select_variations.py
 
 Dettagli del progetto per Il modulo Python della Settimana (pymotw-it) scadenza 2010-11-01
 
@@ -252,11 +252,11 @@ Prossimi 5 compiti:
  2 {1} descrivere random         [in attesa] (2010-10-10)
  3 {1} descrivere sqlite3        [attivo   ] (2010-10-17)
 </py_output>
-<titolo_2>
+<titolo_3>
 Interrogare i Metadati
-</titolo_2>
+</titolo_3>
 <testo_normale>
-Le specifiche <a href='http://www.python.org/dev/peps/pep-0249/'>DB-API 2.0</a>  dicono che dopo la chiamata di ${sbk}execute()${ebk}, il cursore ${sbk}Cursor${ebk} dovrebbe impostare l'attributo <em>description</em> in modo che contenga delle informazioni circa i dati che verranno restituiti dai metodi di recupero. Le specifiche API dicono che il valore di <em>description</em> deve essere una sequenza di tuple che contengono il nome della colonna, il tipo, la dimensione di visualizzazione, la dimensione interna, la precisione, la scala ed un flag che dice se i valori null debbano essere accettati.
+Le specifiche <a href='http://www.python.org/dev/peps/pep-0249/'>DB-API 2.0</a>  dicono che dopo la chiamata di <code>execute()</code>, il cursore <code>Cursor</code> dovrebbe impostare l'attributo <em>description</em> in modo che contenga delle informazioni circa i dati che verranno restituiti dai metodi di recupero. Le specifiche API dicono che il valore di <em>description</em> deve essere una sequenza di tuple che contengono il nome della colonna, il tipo, la dimensione di visualizzazione, la dimensione interna, la precisione, la scala ed un flag che dice se i valori null debbano essere accettati.
 </testo_normale>
 <py_code>
 import sqlite3
@@ -278,7 +278,7 @@ with sqlite3.connect(db_filename) as conn:
 Visto che <strong>sqlite3</strong> non impone costrizioni di tipo o dimensione sui dati inseriti nel database, viene inserito solo il valore del nome della colonna.
 </testo_normale>
 <py_output>
-$ python sqlite3_cursor_description.py 
+$ python sqlite3_cursor_description.py
 
 La tabella Compito ha queste colonne:
 ('id', None, None, None, None, None, None)
@@ -296,7 +296,7 @@ Oggetti Riga
 Nella modalit&agrave; predefinita, i valori restituiti dai metodi di recupero sotto forma di "righe" dal database sono tuple. Il chiamante &egrave; responsabile della conoscenza dell'ordine delle colonne nell'interrogazione e dell'estrazione dei valori individuali dalla tupla. Quando il numero di valori in una interrogazione cresce, oppure il codice che lavora con i dati &egrave; sparso in una libreria, in genere &egrave; pi&ugrave; facile lavorare con un oggetto ed accedere i valori di colonna usando il nome delle colonne stesse, visto che in questo modo il numero e l'ordine degli elementi della tupla possono cambiare nel corso del tempo mano a mano che l'interrogazione viene modificata, ed il codice che dipende dai risultati dell'interrogazione &egrave; meno prono agli errori.
 </testo_normale>
 <testo_normale>
-Gli oggetti ${sbk}Connection${ebk} hanno una propriet&agrave; ${sev}row_factory${eev} che consente al codice chiamante di controllare il tipo di oggetto creato per rappresentare ogni riga nel risultato dell'interrogazione impostata. <strong>sqlite3</strong> comprende anche una classe ${sbk}Row${ebk} che &egrave; intesa per l'uso come row factory. Le istanze di ${sbk}Row${ebk} possono essere indirizzate tramite l'indice di colonna ed il nome.
+Gli oggetti <code>Connection</code> hanno una propriet&agrave; ${sev}row_factory${eev} che consente al codice chiamante di controllare il tipo di oggetto creato per rappresentare ogni riga nel risultato dell'interrogazione impostata. <strong>sqlite3</strong> comprende anche una classe <code>Row</code> che &egrave; intesa per l'uso come row factory. Le istanze di <code>Row</code> possono essere indirizzate tramite l'indice di colonna ed il nome.
 </testo_normale>
 <py_code>
 import sqlite3
@@ -306,7 +306,7 @@ db_filename = 'todo.db'
 with sqlite3.connect(db_filename) as conn:
     # Modifica row factory per usare Row
     conn.row_factory = sqlite3.Row
-    
+
     cursor = conn.cursor()
 
     cursor.execute("""
@@ -329,10 +329,10 @@ with sqlite3.connect(db_filename) as conn:
             )
 </py_code>
 <testo_normale>
-Questa versione dell'esempio ${sev}sqlite3_select_variations.py${eev} &egrave; stato riscritto usando istanze di ${sbk}Row${ebk} in luogo delle tuple. La riga progetto viene comunque stampata indirizzando i valori di colonna in base alla posizione, ma l'istruzione ${sbk}print${ebk} per i compiti usa invece la ricerca tramite parola chiave, in modo che non importi se l'ordine delle colonne nell'interrogazione &egrave; stato cambiato.
+Questa versione dell'esempio ${sev}sqlite3_select_variations.py${eev} &egrave; stato riscritto usando istanze di <code>Row</code> in luogo delle tuple. La riga progetto viene comunque stampata indirizzando i valori di colonna in base alla posizione, ma l'istruzione <code>print</code> per i compiti usa invece la ricerca tramite parola chiave, in modo che non importi se l'ordine delle colonne nell'interrogazione &egrave; stato cambiato.
 </testo_normale>
 <py_output>
-$ python sqlite3_row_factory.py 
+$ python sqlite3_row_factory.py
 
 Dettagli del progetto Il modulo Python della Settimana (pymotw-it) scadenza 2010-11-01
 
@@ -348,13 +348,13 @@ Usare Variabili con le Interrogazioni
 L'uso di interrogazioni definite come stringhe letterali incorporate nel programma non consente mutamenti. Ad esempio, quando viene aggiunto un altro progetto al database l'interrogazione per mostrare i primi cinque compiti dovrebbe essere aggiornata in modo che possa funzionare per entrambi i progetti. Un modo per aggiungere maggiore flessibilit&agrave; &egrave; di costruire l'istruzione SQL con l'interrogazione desiderata combinando i valori in Python. Comunque, costruire in questo modo una stringa di interrogazione &egrave; pericoloso, e dovrebbe essere evitato. Sbagliare la costruzione di una sequenza di escape per i caratteri speciali nelle parti variabili dell'interrogazione pu&ograve; risultare in un errore di analisi in SQL, o peggio in una classe di vulnerabilit&agrave; alla sicurezza nota come <a href='http://it.wikipedia.org/wiki/SQL_injection'>attacchi SQL-injection</a>.
 </testo_normale>
 <testo_normale>
-Il modo giusto per usare valori dinamici con le interrogazioni &egrave; tramite <em>variabili ospiti</em> passate ad ${sbk}execute()${ebk} assieme all'istruzione SQL. Un valore segnaposto in SQL viene sostiuito dal valore nella variabile ospite quando viene eseguita l'istruzione. L'uso di variabili ospite al posto dell'inserimento di valori arbitrari nell'istruzione SQL prima che sia analizzata evita gli attacchi <em>SQL-injection</em> perch&egrave; non esiste possibilit&agrave; che valori non affidabili possano influenzare il modo in cui l'istruzione SQL viene analizzata. SQLite supporta due forme di interrogazioni con segnaposto, posizionali e nominali.
+Il modo giusto per usare valori dinamici con le interrogazioni &egrave; tramite <em>variabili ospiti</em> passate ad <code>execute()</code> assieme all'istruzione SQL. Un valore segnaposto in SQL viene sostiuito dal valore nella variabile ospite quando viene eseguita l'istruzione. L'uso di variabili ospite al posto dell'inserimento di valori arbitrari nell'istruzione SQL prima che sia analizzata evita gli attacchi <em>SQL-injection</em> perch&egrave; non esiste possibilit&agrave; che valori non affidabili possano influenzare il modo in cui l'istruzione SQL viene analizzata. SQLite supporta due forme di interrogazioni con segnaposto, posizionali e nominali.
 </testo_normale>
 <titolo_3>
 Parametri Posizionali
 </titolo_3>
 <testo_normale>
-Un punto interrogativo (?) denota un parametro posizionale, passato ad ${sbk}execute()${ebk} come membro di una tupla.
+Un punto interrogativo (?) denota un parametro posizionale, passato ad <code>execute()</code> come membro di una tupla.
 </testo_normale>
 <py_code>
 import sqlite3
@@ -453,7 +453,7 @@ $ python sqlite3_argument_named.py pymotw-it
 Caricamento Massivo
 </titolo_2>
 <testo_normale>
-Per applicare la stessa istruzione SQL ad un gran numero di dati si usa ${sbk}executemany()${ebk}. Questo metodo &egrave; utile per caricare i dati, visto che si evita di iterare attraverso gli input in Python e si lascia che sia la libreria sottostante ad occuparsi dell'ottimizzazione delle iterazioni. Questo programma di esempio legge una lista di compiti da un file in formato .csv (valori separati da virgola) usando il modulo <a href='csv.html'>csv</a> e li carica nel database.
+Per applicare la stessa istruzione SQL ad un gran numero di dati si usa <code>executemany()</code>. Questo metodo &egrave; utile per caricare i dati, visto che si evita di iterare attraverso gli input in Python e si lascia che sia la libreria sottostante ad occuparsi dell'ottimizzazione delle iterazioni. Questo programma di esempio legge una lista di compiti da un file in formato .csv (valori separati da virgola) usando il modulo <a href='csv.html'>csv</a> e li carica nel database.
 </testo_normale>
 <py_code>
 import csv
@@ -469,7 +469,7 @@ SQL = """insert into compito (dettagli, priorita, stato, scadenza, progetto)
 
 with open(data_filename, 'rt') as csv_file:
     csv_reader = csv.DictReader(csv_file)
-    
+
     with sqlite3.connect(db_filename) as conn:
         cursor = conn.cursor()
         cursor.executemany(SQL, csv_reader)
@@ -478,7 +478,7 @@ with open(data_filename, 'rt') as csv_file:
 I dati di esempio contenuti nel file ${sev}tasks.csv${eev} sono:
 </testo_normale>
 <py_output>
-$ cat tasks.csv 
+$ cat tasks.csv
 
 scadenza,progetto,priorita,dettagli
 2010-10-02,pymotw-it,2,"finire la revisione di markup"
@@ -489,7 +489,7 @@ scadenza,progetto,priorita,dettagli
 L'esecuzione del programma produce:
 </testo_normale>
 <py_output>
-$ python sqlite3_load_csv.py tasks.csv 
+$ python sqlite3_load_csv.py tasks.csv
 $ python sqlite3_argument_nominal.py pymotw-it
 
  4 {2} finire la revisione di markup [attivo   ] (2010-10-02)
@@ -538,10 +538,10 @@ with sqlite3.connect(db_filename, detect_types=sqlite3.PARSE_DECLTYPES) as conn:
     show_deadline(conn)
 </py_code>
 <testo_normale>
-<strong>sqlite3</strong> fornisce del convertitori per colonne data e timestamp, usando ${sbk}date${ebk} e ${sbk}datetime${ebk} dal modulo <a href='datetime.html'>datetime</a> per rappresentare i valori in Python. Entrambi i convertitori relativi alle date sono abilitati automaticamente quando viene attivata l'identificazione del tipo.
+<strong>sqlite3</strong> fornisce del convertitori per colonne data e timestamp, usando <code>date</code> e <code>datetime</code> dal modulo <a href='datetime.html'>datetime</a> per rappresentare i valori in Python. Entrambi i convertitori relativi alle date sono abilitati automaticamente quando viene attivata l'identificazione del tipo.
 </testo_normale>
 <py_output>
-$ python sqlite3_date_types.py 
+$ python sqlite3_date_types.py
 Senza identificazione del tipo:
   colunna: id
     valore : 1
@@ -568,7 +568,7 @@ Con identificazione del tipo:
 Tipi Personalizzati
 </titolo_2>
 <testo_normale>
-Occorre registrare due funzioni per definire un nuovo tipo. <em>adapter</em> riceve l'oggetto Python come input e lo restituisce come stringa di byte che pu&ograve; essere conservata nel database. <em>converter</em> riceve la stringa dal database e restituisce un oggetto Python. Si usa ${sbk}register_adapter()${ebk} per definire una funzione <em>adapter</em> e ${sbk}register_converter()${ebk} per la funzione <em>converter</em>.
+Occorre registrare due funzioni per definire un nuovo tipo. <em>adapter</em> riceve l'oggetto Python come input e lo restituisce come stringa di byte che pu&ograve; essere conservata nel database. <em>converter</em> riceve la stringa dal database e restituisce un oggetto Python. Si usa <code>register_adapter()</code> per definire una funzione <em>adapter</em> e <code>register_converter()</code> per la funzione <em>converter</em>.
 </testo_normale>
 <py_code>
 import sqlite3
@@ -631,7 +631,7 @@ with sqlite3.connect(db_filename, detect_types=sqlite3.PARSE_DECLTYPES) as conn:
 Questo esempio usa <a href='pickle.html'>pickle</a> per salvare un oggetto verso una stringa che possa essere conservata nel database. Questa tecnica &egrave; utile per conservare oggetti arbitrari, ma non consente una interrogazione basata sugli attributi dell'oggetto. Un vero mappatore relazionale di oggetti tipo SQLAlchemy che conserva i valori di attributo nelle sue proprie colonne sarebbe molto pi&ugrave; utile per grandi quantit&agrave; di dati.
 </testo_normale>
 <py_output>
-$ python sqlite3_custom_type.py 
+$ python sqlite3_custom_type.py
 
 adapter_func(MyObj("questo e' il valore da salvare"))
 
@@ -712,7 +712,7 @@ with sqlite3.connect(db_filename, detect_types=sqlite3.PARSE_DECLTYPES) as conn:
 Si usa il flag ${sev}detect_types${eev} con il valore ${sev}PARSE_COLNAMES${eev} quando il tipo &egrave; parte dell'interrogazione invece che della definizione originale della tabella.
 </testo_normale>
 <py_output>
-$ python sqlite3_custom_type_column.py 
+$ python sqlite3_custom_type_column.py
 
 adapter_func(MyObj("questo e' il valore da salvare"))
 
@@ -736,10 +736,10 @@ Una delle funzionalit&agrave; chiave dei database relazionali &egrave; l'uso del
 Preservare le Modifiche
 </titolo_3>
 <testo_normale>
-Le modifiche al database, sia tramite istruzioni di ${sev}insert${eev} o ${sev}update${eev} devono essere salvate chiamando esplicitamente ${sbk}commit()${ebk}. Questo requisito fornisce ad una applicazione la possibilit&agrave; di effettuare parecchie modifiche insieme, per poi conservarle <em>atomicamente</em> invece che in modo incrementale, evitando situazioni nelle quali aggiornamenti parziali possano essere visti da client diversi in connessione al database. 
+Le modifiche al database, sia tramite istruzioni di ${sev}insert${eev} o ${sev}update${eev} devono essere salvate chiamando esplicitamente <code>commit()</code>. Questo requisito fornisce ad una applicazione la possibilit&agrave; di effettuare parecchie modifiche insieme, per poi conservarle <em>atomicamente</em> invece che in modo incrementale, evitando situazioni nelle quali aggiornamenti parziali possano essere visti da client diversi in connessione al database.
 </testo_normale>
 <testo_normale>
-L'effetto della chiamata di ${sbk}commit()${ebk} pu&ograve; essere visto con un programma che usa parecchie connessioni al database. Una nuova riga viene inserita con la prima connessione, quindi vengono effettuati due tentativi di leggere la riga inserita usando connessioni separate.
+L'effetto della chiamata di <code>commit()</code> pu&ograve; essere visto con un programma che usa parecchie connessioni al database. Una nuova riga viene inserita con la prima connessione, quindi vengono effettuati due tentativi di leggere la riga inserita usando connessioni separate.
 </testo_normale>
 <py_code>
 import sqlite3
@@ -780,10 +780,10 @@ with sqlite3.connect(db_filename) as conn1:
         show_projects(conn3)
 </py_code>
 <testo_normale>
-Quando viene chiamato ${sbk}show_projects()${ebk} prima della chiamata di commit da ${sev}conn1${eev}, i risultati dipendono da quale connessione viene usata. Visto che le modifiche sono state fatte tramite ${sev}conn1${eev}, essa vede i dati modificati. D'altro canto ${sev}conn2${eev} non li vede. Dopo la chiamata di commit, la nuova connessione ${sev}conn3${eev} vede la riga inserita.
+Quando viene chiamato <code>show_projects()</code> prima della chiamata di commit da ${sev}conn1${eev}, i risultati dipendono da quale connessione viene usata. Visto che le modifiche sono state fatte tramite ${sev}conn1${eev}, essa vede i dati modificati. D'altro canto ${sev}conn2${eev} non li vede. Dopo la chiamata di commit, la nuova connessione ${sev}conn3${eev} vede la riga inserita.
 </testo_normale>
 <py_output>
-$ python sqlite3_transaction_commit.py 
+$ python sqlite3_transaction_commit.py
 Prima delle modifiches:
    pymotw-it
 
@@ -802,7 +802,7 @@ Dopo commit:
 Scartare le Modifiche
 </titolo_3>
 <testo_normale>
-Le modifiche non ancora confermate possono essere scartate interamente usando ${sbk}rollback()${ebk}. I metodi ${sbk}commit()${ebk} e ${sbk}rollback()${ebk} sono in genere chiamati da parti diverse dello stesso blocco ${sev}tyr:except${eev}, con gli errori che fanno scattare lo scarto delle modifiche.
+Le modifiche non ancora confermate possono essere scartate interamente usando <code>rollback()</code>. I metodi <code>commit()</code> e <code>rollback()</code> sono in genere chiamati da parti diverse dello stesso blocco ${sev}tyr:except${eev}, con gli errori che fanno scattare lo scarto delle modifiche.
 </testo_normale>
 <py_code>
 import sqlite3
@@ -838,7 +838,7 @@ with sqlite3.connect(db_filenome) as conn:
         # Scarta le  modifiche
         print 'ERRORE:', err
         conn.rollback()
-        
+
     else:
         # Salva le modifiche
         conn.commit()
@@ -848,10 +848,10 @@ with sqlite3.connect(db_filenome) as conn:
     show_progettos(conn)
 </py_code>
 <testo_normale>
-Dopo la chiamata di ${sbk}rollback()${ebk} le modifiche al database non esistono pi&ugrave;.
+Dopo la chiamata di <code>rollback()</code> le modifiche al database non esistono pi&ugrave;.
 </testo_normale>
 <py_output>
-$ python sqlite3_transaction_rollback.py 
+$ python sqlite3_transaction_rollback.py
 
 Prima delle modifiche:
    pymotw-it
@@ -925,9 +925,9 @@ if __name__ == '__main__':
         threading.Thread(name='Scrittore 1', target=writer),
         threading.Thread(name='Scrittore 2', target=writer),
         ]
-    
+
     [ t.start() for t in threads ]
-    
+
     time.sleep(1)
     logging.debug('impostazioni pronte')
     ready.set()
@@ -935,7 +935,7 @@ if __name__ == '__main__':
     [ t.join() for t in threads ]
 </py_code>
 <testo_normale>
-I thread sono sincronizzati usando ${sev}Event${eev} dal modulo threading. La funzione ${sbk}writer()${ebk} connette ed effettua le modifiche al database, ma non chiama commit prima che scatti l'evento. La funzione ${sbk}reader()${ebk} si connette, quindi attende prima di interrogare il database fino a quando l'evento di sincronizzazione non si verifica.
+I thread sono sincronizzati usando ${sev}Event${eev} dal modulo threading. La funzione <code>writer()</code> connette ed effettua le modifiche al database, ma non chiama commit prima che scatti l'evento. La funzione <code>reader()</code> si connette, quindi attende prima di interrogare il database fino a quando l'evento di sincronizzazione non si verifica.
 </testo_normale>
 
 <titolo_3>
@@ -1032,13 +1032,13 @@ $ python sqlite3_isolation_levels.py EXCLUSIVE
 2011-02-13 10:11:51,920 (Lettore 2 ) risultati recuperati
 </py_output>
 <testo_normale>
-Visto che la prima connessione in scrittura ha iniziato a compiere modifiche, le connessioni in lettura e la seconda connessione in scrittura sono bloccate fino alla chiamata di commit della prima. La chiamata di ${sbk}sleep()${ebk} induce un ritardo artificiale nel thread di scrittura per evidenziare il fatto che le altre connessioni sono bloccate.
+Visto che la prima connessione in scrittura ha iniziato a compiere modifiche, le connessioni in lettura e la seconda connessione in scrittura sono bloccate fino alla chiamata di commit della prima. La chiamata di <code>sleep()</code> induce un ritardo artificiale nel thread di scrittura per evidenziare il fatto che le altre connessioni sono bloccate.
 </testo_normale>
 <titolo_3>
 Modalit&agrave; Autocommit
 </titolo_3>
 <testo_normale>
-Il parametro <em>isolation_level</em> per una connessione pu&agrave; anche essere impostato a ${sev}None${eev} per abilitare la modalit&agrave; di conferma automatica (autocommit). Con autocommit abilitato, ogni chiamata di ${sbk}execute()${ebk} viene confermata immediatamente dopo che l'istruzione finisce. La modalit&agrave; autocommit &egrave; adatta per brevi transazioni, tipo l'inserimento di una piccola mole di dati in una singola tabella. Il database viene bloccato per il minor tempo possibile, in modo che le possibilit&agrave; di conflitto tra i thread siano minori.
+Il parametro <em>isolation_level</em> per una connessione pu&agrave; anche essere impostato a ${sev}None${eev} per abilitare la modalit&agrave; di conferma automatica (autocommit). Con autocommit abilitato, ogni chiamata di <code>execute()</code> viene confermata immediatamente dopo che l'istruzione finisce. La modalit&agrave; autocommit &egrave; adatta per brevi transazioni, tipo l'inserimento di una piccola mole di dati in una singola tabella. Il database viene bloccato per il minor tempo possibile, in modo che le possibilit&agrave; di conflitto tra i thread siano minori.
 </testo_normale>
 <py_code>
 import logging
@@ -1091,9 +1091,9 @@ if __name__ == '__main__':
         threading.Thread(name='Scrittore 1', target=writer),
         threading.Thread(name='Scrittore 2', target=writer),
         ]
-    
+
     [ t.start() for t in threads ]
-    
+
     time.sleep(1)
     logging.debug('impostazioni pronte')
     ready.set()
@@ -1101,10 +1101,10 @@ if __name__ == '__main__':
     [ t.join() for t in threads ]
 </py_code>
 <testo_normale>
-La chiamata esplicita a ${sbk}commit()${ebk} &egrave; stata rimossa, ma per tutto il resto ${sev}sqlite3_autocommit.py${eev} &egrave; uguale a ${sev}sqlite3_isolation_levels.py${eev}. L'output &egrave; diverso, comunque, visto che entrambi i thread in scrittura finiscono il proprio lavoro prima che i thread in lettura inizino le interrogazioni.
+La chiamata esplicita a <code>commit()</code> &egrave; stata rimossa, ma per tutto il resto ${sev}sqlite3_autocommit.py${eev} &egrave; uguale a ${sev}sqlite3_isolation_levels.py${eev}. L'output &egrave; diverso, comunque, visto che entrambi i thread in scrittura finiscono il proprio lavoro prima che i thread in lettura inizino le interrogazioni.
 </testo_normale>
 <py_output>
-$ python sqlite3_autocommit.py 
+$ python sqlite3_autocommit.py
 
 2011-02-13 13:15:31,097 (Scrittore 1) in connessione
 2011-02-13 13:15:31,097 (Scrittore 2) in connessione
@@ -1169,13 +1169,13 @@ with sqlite3.connect(db_filename) as conn:
     print '\nCodifica...'
     query = "update compito set dettagli = encrypt(dettagli)"
     cursor.execute(query)
-    
+
     print '\nValori codificati grezzi:'
     query = "select id, dettagli from compito"
     cursor.execute(query)
     for row in cursor.fetchall():
         print row
-    
+
     print "\nDecodifica nell'interrogazione ..."
     query = "select id, decrypt(dettagli) from compito"
     cursor.execute(query)
@@ -1183,10 +1183,10 @@ with sqlite3.connect(db_filename) as conn:
         print row
 </py_code>
 <testo_normale>
-Le funzioni sono esposte usando il metodo ${sbk}create_function()${ebk} della <strong>Connessione</strong>. I parametri sono il nome della funzione (come dovrebbe essere usata dall'interno di SQL), il numero di parametri che riceve la funzione e la funzione Python da esporre.
+Le funzioni sono esposte usando il metodo <code>create_function()</code> della <strong>Connessione</strong>. I parametri sono il nome della funzione (come dovrebbe essere usata dall'interno di SQL), il numero di parametri che riceve la funzione e la funzione Python da esporre.
 </testo_normale>
 <py_output>
-$ python sqlite3_create_function.py 
+$ python sqlite3_create_function.py
 
 Valori originali:
 (1, u'descrivere select')
@@ -1233,7 +1233,7 @@ Aggregazione Personalizzata
 Una funzione di aggregazione raccoglie molte parti di dati individuali e li somma in un qualche modo. Esempi di funzioni di aggregazione built-in sono ${sev}avg()${eev} (media), ${sev}min()${eev}, ${sev}max()${eev} e ${sev}count()${eev}.
 </testo_normale>
 <testo_normale>
-L'API per gli aggregatori usati da <strong>sqlite3</strong> &egrave; definita nei termini di una classe con due metodi. Il metodo ${sbk}step()${ebk} viene chiamato una volta per ogni valore di dati mentre l'interrogazione viene elaborata. Il metodo ${sbk}finalize()${ebk} viene chiamato una volta alla fine dell'interogazione e dovrebbre restituire il valore aggregato. Questo esempio implementa un aggregatore che ottiene il valore che appare pi&ugrave; frequentemente nell'input.
+L'API per gli aggregatori usati da <strong>sqlite3</strong> &egrave; definita nei termini di una classe con due metodi. Il metodo <code>step()</code> viene chiamato una volta per ogni valore di dati mentre l'interrogazione viene elaborata. Il metodo <code>finalize()</code> viene chiamato una volta alla fine dell'interogazione e dovrebbre restituire il valore aggregato. Questo esempio implementa un aggregatore che ottiene il valore che appare pi&ugrave; frequentemente nell'input.
 </testo_normale>
 <py_code>
 import sqlite3
@@ -1243,7 +1243,7 @@ db_filename = 'todo.db'
 
 class Mode(object):
     def __init__(self):
-        self.counter = collections.Counter()  # Counter è disponibile dalla versione 2.7 
+        self.counter = collections.Counter()  # Counter è disponibile dalla versione 2.7
     def step(self, value):
         print 'step(%r)' % value
         self.counter[value] += 1
@@ -1255,14 +1255,14 @@ class Mode(object):
 with sqlite3.connect(db_filename) as conn:
 
     conn.create_aggregate('mode', 1, Mode)
-    
+
     cursor = conn.cursor()
     cursor.execute("select mode(scadenza) from compito where progetto = 'pymotw-it'")
     row = cursor.fetchone()
     print "Il mode(scadenza) &egrave;:", row[0]
 </py_code>
 <testo_normale>
-La classe aggregatore viene registrata con il metodo ${sbk}create_aggregate()${ebk} della <strong>Connessione</strong>. I parametri sono il nome della funzione (come dovrebbe essere usata all'interno di SQL), il numero di parametri che riceve il metodo ${sbk}step()${ebk} e la classe da usare.
+La classe aggregatore viene registrata con il metodo <code>create_aggregate()</code> della <strong>Connessione</strong>. I parametri sono il nome della funzione (come dovrebbe essere usata all'interno di SQL), il numero di parametri che riceve il metodo <code>step()</code> e la classe da usare.
 </testo_normale>
 <py_output>
 $ python sqlite3_create_aggregate.py
@@ -1337,7 +1337,7 @@ with sqlite3.connect(db_filename, detect_types=sqlite3.PARSE_DECLTYPES) as conn:
 I parametri della funzione collation sono stringhe di byte, in modo che possano essere estratti dal pickle e convertiti in istanze di ${sev}MyObj${eev} prima che il confronto sia eseguito.
 </testo_normale>
 <py_output>
-$ python sqlite3_create_collation.py 
+$ python sqlite3_create_collation.py
 
 Interrogazione in corso:
 collation_func(MyObj(5), MyObj(4))
@@ -1376,7 +1376,7 @@ def authorizer_func(action_code, table, column, sql_location, ignore):
     if action_code == sqlite3.SQLITE_SELECT:
         print 'richiesta permessi per eseguire una istruzione select'
         response = sqlite3.SQLITE_OK
-    
+
     elif action_code == sqlite3.SQLITE_READ:
         print 'richiesta permessi per alla colonna %s.%s da %s' % \
             (table, column, sql_location)
@@ -1405,10 +1405,10 @@ with sqlite3.connect(db_filename) as conn:
         print row['id'], row['dettagli']
 </py_code>
 <testo_normale>
-Questo esempio usa ${sbk}SQLITE_IGNORE${ebk} per fare s&igrave; che le stringhe dalla colonna ${sev}compito.dettagli${eev} vengano sostituite con valori null nel risultato dell'interrogazione. Vengono inoltre negati tutti gli accessi alla colonna ${sev}compito.priorita${eev} restituendo ${sbk}SQLITE_DENY${ebk}, che di conseguenza provoca il sollevamento di una eccezione di SQLite.
+Questo esempio usa <code>SQLITE_IGNORE</code> per fare s&igrave; che le stringhe dalla colonna ${sev}compito.dettagli${eev} vengano sostituite con valori null nel risultato dell'interrogazione. Vengono inoltre negati tutti gli accessi alla colonna ${sev}compito.priorita${eev} restituendo <code>SQLITE_DENY</code>, che di conseguenza provoca il sollevamento di una eccezione di SQLite.
 </testo_normale>
 <py_output>
-$ python sqlite3_set_authorizer.py 
+$ python sqlite3_set_authorizer.py
 
 Si usa SQLITE_IGNORE per nascondere un valore di colonna:
 
@@ -1469,18 +1469,18 @@ with sqlite3.connect(':memory:') as conn:
     conn.executescript(schema)
 
     print 'Inserimento dei dati di partenza'
-        
+
     conn.execute("""
     insert into progetto (nome, descrizione, scadenza)
     values ('pymotw-it', 'Il modulo Python della Settimana', '2010-11-01')
     """)
-        
+
     data = [
         ('descrivere select', 'fatto', '2010-10-03', 'pymotw-it'),
         ('descrivere random', 'in attesa', '2010-10-10', 'pymotw-it'),
         ('descrivere sqlite3', 'attivo', '2010-10-17', 'pymotw-it'),
         ]
-    
+
     conn.executemany("""
             insert into compito (dettagli, stato, scadenza, progetto)
             values (?, ?, ?, ?)
@@ -1513,7 +1513,7 @@ with sqlite3.connect(':memory:') as conn2:
 Il secondo tentativo di  interrogazione in questo esempio fallisce con un errore visto che la tabella non esiste. Ogni connessione crea un database separato, quindi le modifiche fatte da un cursore di una connessione non si ripercuotono sulle altre.
 </testo_normale>
 <py_output>
-$ python sqlite3_memory.py 
+$ python sqlite3_memory.py
 
 Creazione dello schema
 Inserimento dei dati di partenza
@@ -1532,7 +1532,7 @@ sqlite3.OperationalError: no such table: compito
 Esportare il Contenuto di un Database
 </titolo_2>
 <testo_normale>
-Il contenuto di un database in-memoria pu&ograve; essere salvato usando il metodo ${sbk}iterdump()${ebk} della <strong>Connessione</strong>. L'iteratore restituito da ${sbk}iterdump()${ebk} produce una serie di stringhe che assieme costruiscono istruzioni SQL per ricreare lo stato del database.
+Il contenuto di un database in-memoria pu&ograve; essere salvato usando il metodo <code>iterdump()</code> della <strong>Connessione</strong>. L'iteratore restituito da <code>iterdump()</code> produce una serie di stringhe che assieme costruiscono istruzioni SQL per ricreare lo stato del database.
 </testo_normale>
 <py_code>
 import os
@@ -1550,18 +1550,18 @@ with sqlite3.connect(':memory:') as conn:
     conn.executescript(schema)
 
     print 'Inserimento dei dati di partenza'
-        
+
     conn.execute("""
     insert into progetto (nome, descrizione, scadenza)
     values ('pymotw-it', 'Il modulo Python della Settimana', '2010-11-01')
     """)
-        
+
     data = [
         ('descrivere select', 'fatto', '2010-10-03', 'pymotw-it'),
         ('descrivere random', 'in attesa', '2010-10-10', 'pymotw-it'),
         ('descrivere sqlite3', 'attivo', '2010-10-17', 'pymotw-it'),
         ]
-    
+
     conn.executemany("""
             insert into compito (dettagli, stato, scadenza, progetto)
             values (?, ?, ?, ?)
@@ -1572,10 +1572,10 @@ with sqlite3.connect(':memory:') as conn:
         print text
 </py_code>
 <testo_normale>
-${sbk}iterdump()${ebk} pu&ograve; anche essere usato con database salvati su file, ma &egrave; pi&ugrave; utile per preservare un database che altrimenti non potrebbe essere salvato.
+<code>iterdump()</code> pu&ograve; anche essere usato con database salvati su file, ma &egrave; pi&ugrave; utile per preservare un database che altrimenti non potrebbe essere salvato.
 </testo_normale>
 <py_output>
-$ python sqlite3_iterdump.py 
+$ python sqlite3_iterdump.py
 Creazione dello schema
 Inserimento dei dati di partenza
 Scaricamento:
@@ -1606,7 +1606,7 @@ COMMIT;
 Threading e Condivisione della Connessione
 </titolo_2>
 <testo_normale>
-Per ragioni storiche che hanno a che fare con vecchie versioni di SQLite, gli oggetti ${sbk}Connection${ebk} non possono essere condivisi fra thread. Ogni thread deve creare la sua propria connessione al database.
+Per ragioni storiche che hanno a che fare con vecchie versioni di SQLite, gli oggetti <code>Connection</code> non possono essere condivisi fra thread. Ogni thread deve creare la sua propria connessione al database.
 </testo_normale>
 <py_code>
 import sqlite3
@@ -1615,7 +1615,7 @@ import threading
 import time
 
 db_filename = 'todo.db'
-isolation_level = None # modalit&agrave; autocommit 
+isolation_level = None # modalit&agrave; autocommit
 
 def reader(conn):
     my_name = threading.currentThread().name
@@ -1640,7 +1640,7 @@ if __name__ == '__main__':
 I tentativi di condividere una connessione fra thread generano una eccezione.
 </testo_normale>
 <py_output>
-$ python sqlite3_threading.py 
+$ python sqlite3_threading.py
 Partenza del thread
 ERRORE: SQLite objects created in a thread can only be used in that same thread.The object was created in thread id -1216571712 and this is thread id -1219478672
 </py_output>
