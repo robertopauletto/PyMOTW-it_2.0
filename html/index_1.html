@@ -23,6 +23,17 @@
     <link href="css/bootstrap.css" rel="stylesheet" media="screen">
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.js"></script>      -->
+    <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+
+    <!-- Minified Cookie Consent served from our CDN -->
+    <script src="//s3.amazonaws.com/cc.silktide.com/cookieconsent.latest.min.js"></script>
+    <script type="text/javascript">
+        window.cookieconsent_options = {"message":"Questo sito utilizza i cookie  per migliorarne l'utilizzo e l'esperienza di navigazione ","dismiss":"Ho capito!","learnMore":"Più informazioni","link":"http://www.shinystat.com/it/informativa_privacy_generale_free.html","theme":"dark-bottom"};
+    </script>
+
+    <script type="text/javascript" src="cookieconsent.js"></script>
+    <!-- End Cookie Consent plugin -->
+
 </head>
 <body>
 <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
@@ -39,6 +50,13 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="index.html" >Home</a></li>
                 <li class="active"><a href="indice_alfabetico.html" title='Indice alfabetico dei moduli'>Indice Moduli</a></li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+                <li class="active"><a href="privacy.html" >Privacy</a></li>
+                <li class="active">
+	                <li class="active"><a href="/pymotw-it_feed.xml" >
+					<img src="img/feed-icon-28x28.png" ></a></li>
+		        </li>
             </ul>
         </div><!-- /.nav-collapse -->
     </div><!-- /.container -->
@@ -69,24 +87,49 @@
                 <div class="row">
                 
                     <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>cmd</h2>
+                        <p><strong> Crea processori di riga di comando</strong></p>
+                        <p>Crea processori di riga di comando.</p>
+                        <p><a class="btn btn-default" href="cmd.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
                         <h2>codecs</h2>
-                        <p><strong>Codifica e Decodifica di Stringhe</strong></p>
+                        <p><strong> Codifica e Decodifica di Stringhe</strong></p>
                         <p>Codificatori e decodificatori per convertire testo tra diverse rappresentazioni</p>
                         <p><a class="btn btn-default" href="codecs.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                     <div class="col-6 col-sm-6 col-lg-4">
                         <h2>collections</h2>
-                        <p><strong>Tipi di dato contenitore</strong></p>
+                        <p><strong> Tipi di dato contenitore</strong></p>
                         <p>Tipi di dato contenitore</p>
                         <p><a class="btn btn-default" href="collections.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
+                </div><!--/row-->
+            
+                <div class="row">
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>compileall</h2>
+                        <p><strong> Compila in Bytecode i File Sorgente</strong></p>
+                        <p>Converte i file sorgente nella versione compilata <a href="http://it.wikipedia.org/wiki/Bytecode">bytecode</a></p>
+                        <p><a class="btn btn-default" href="compileall.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
                     <div class="col-6 col-sm-6 col-lg-4">
                         <h2>configParser</h2>
-                        <p><strong>Lavora con i File di Configurazione</strong></p>
+                        <p><strong> Lavora con i File di Configurazione</strong></p>
                         <p>Leggere/scrivere file di configurazione simili ai file INI di Windows</p>
                         <p><a class="btn btn-default" href="configParser.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>contextlib</h2>
+                        <p><strong> Utilità per gestore di contesto</strong></p>
+                        <p>Utilità per creare e lavorare con gestori di contesto</p>
+                        <p><a class="btn btn-default" href="contextlib.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                 </div><!--/row-->
@@ -95,21 +138,21 @@
                 
                     <div class="col-6 col-sm-6 col-lg-4">
                         <h2>cookie</h2>
-                        <p><strong>Cookie HTTP</strong></p>
+                        <p><strong> Cookie HTTP</strong></p>
                         <p>Il modulo Cookie definisce le classi per l'analisi e la creazione di intestazioni cookie HTTP.</p>
                         <p><a class="btn btn-default" href="cookie.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                     <div class="col-6 col-sm-6 col-lg-4">
                         <h2>copy</h2>
-                        <p><strong>Duplica oggetti</strong></p>
+                        <p><strong> Duplica oggetti</strong></p>
                         <p>Fornisce funzioni per la duplicazione di oggetti usando semantiche di deep e shallow copy</p>
                         <p><a class="btn btn-default" href="copy.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                     <div class="col-6 col-sm-6 col-lg-4">
                         <h2>csv</h2>
-                        <p><strong>File con valori separati da virgole</strong></p>
+                        <p><strong> File con valori separati da virgole</strong></p>
                         <p>Legge e scrive file con valori separati da virgole</p>
                         <p><a class="btn btn-default" href="csv.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
@@ -120,48 +163,23 @@
                 
                     <div class="col-6 col-sm-6 col-lg-4">
                         <h2>datetime</h2>
-                        <p><strong>Manipolazione dei valori di data/ora</strong></p>
+                        <p><strong> Manipolazione dei valori di data/ora</strong></p>
                         <p>Il modulo datetime include le funzioni e le classi per analizzare, formattare e compiere operazioni aritmetiche sulle date.</p>
                         <p><a class="btn btn-default" href="datetime.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                     <div class="col-6 col-sm-6 col-lg-4">
                         <h2>dbhash</h2>
-                        <p><strong>API in stile DBM per la libreria database BSD</strong></p>
-                        <p>Fornisce una API tipo dizionario per accedere ai file <span class='bkIstruzione'>db</span> BSD.</p>
+                        <p><strong> API in stile DBM per la libreria database BSD</strong></p>
+                        <p>Fornisce una API tipo dizionario per accedere ai file  BSD.</p>
                         <p><a class="btn btn-default" href="dbhash.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                     <div class="col-6 col-sm-6 col-lg-4">
                         <h2>dbm</h2>
-                        <p><strong>Semplice Interfaccia di Database</strong></p>
+                        <p><strong> Semplice Interfaccia di Database</strong></p>
                         <p>Fornisce una interfaccia alla libreria Unix (n)dbm.</p>
                         <p><a class="btn btn-default" href="dbm.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                </div><!--/row-->
-            
-                <div class="row">
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>decimal</h2>
-                        <p><strong>matematica con virgola fissa e mobile</strong></p>
-                        <p>Artimetica decimale usando numeri a virgola fissa e mobile</p>
-                        <p><a class="btn btn-default" href="decimal.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>difflib</h2>
-                        <p><strong>Calcolare le differenze tra sequenze</strong></p>
-                        <p>Libreria di strumenti per calcolare e lavorare con differenze tra sequenze, specialmente di righe nei file di testo</p>
-                        <p><a class="btn btn-default" href="difflib.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>dircache</h2>
-                        <p><strong>Listati di directory memorizzati in cache</strong></p>
-                        <p>Memorizza listati di directory nella cache, aggiornandoli quando cambia data/ora di modifica di una directory.</p>
-                        <p><a class="btn btn-default" href="dircache.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                 </div><!--/row-->
@@ -187,9 +205,9 @@
             <div class="well sidebar-nav">
                     <h4>Ultimi moduli aggiunti/aggiornati</h4>
                             <ul>
-                                <li>12-06-2014: <a style='display: block;' href='asynchat.html'>asynchat</a></li>
-                                <li>12-06-2014: <a style='display: block;' href='asyncore.html'>asyncore</a></li>
-                                <li>12-06-2014: <a style='display: block;' href='logging.html'>logging</a></li>
+                                <li>08-03-2015: <a style='display: block;' title='Queue - Una implementazione FIFO thread-safe' href='queue.html'>Queue</a></li>
+                                <li>08-03-2015: <a style='display: block;' title='weakref - Riferimenti ad oggetti raccoglibili dal <em>garbage collector' href='weakref.html'>weakref</a></li>
+                                <li>08-03-2015: <a style='display: block;' title='gc - garbage collector' href='gc.html'>gc</a></li>
                             </ul>
             </div><!--/.well -->
 
@@ -254,6 +272,15 @@
                                 <li><a style='display: block;' href='asyncore.html'>asyncore</a></li>
                             
                                 <li><a style='display: block;' href='subprocess.html'>subprocess</a></li>
+                            
+                            </ul>
+                            </div>
+                        
+                            <div class='dropdown'>
+                            <a data-toggle='dropdown' href='#'>Debug e Profilatura</a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            
+                                <li><a style='display: block;' href='profile.html'>profile</a></li>
                             
                             </ul>
                             </div>
@@ -356,6 +383,12 @@
                             
                                 <li><a style='display: block;' href='socketserver.html'>socketserver</a></li>
                             
+                                <li><a style='display: block;' href='urllib.html'>urllib</a></li>
+                            
+                                <li><a style='display: block;' href='urllib2.html'>urllib2</a></li>
+                            
+                                <li><a style='display: block;' href='urlparse.html'>urlparse</a></li>
+                            
                                 <li><a style='display: block;' href='uuid.html'>uuid</a></li>
                             
                                 <li><a style='display: block;' href='webbrowser.html'>webbrowser</a></li>
@@ -368,6 +401,8 @@
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                             
                                 <li><a style='display: block;' href='argparse.html'>argparse</a></li>
+                            
+                                <li><a style='display: block;' href='getpass.html'>getpass</a></li>
                             
                                 <li><a style='display: block;' href='logging.html'>logging</a></li>
                             
@@ -386,6 +421,12 @@
                             
                                 <li><a style='display: block;' href='abc.html'>abc</a></li>
                             
+                                <li><a style='display: block;' href='atexit.html'>atexit</a></li>
+                            
+                                <li><a style='display: block;' href='contextlib.html'>contextlib</a></li>
+                            
+                                <li><a style='display: block;' href='gc.html'>gc</a></li>
+                            
                                 <li><a style='display: block;' href='inspect.html'>inspect</a></li>
                             
                                 <li><a style='display: block;' href='trace.html'>trace</a></li>
@@ -400,6 +441,17 @@
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                             
                                 <li><a style='display: block;' href='pipes.html'>pipes</a></li>
+                            
+                            </ul>
+                            </div>
+                        
+                            <div class='dropdown'>
+                            <a data-toggle='dropdown' href='#'>Servizi del Linguaggio Python</a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            
+                                <li><a style='display: block;' href='compileall.html'>compileall</a></li>
+                            
+                                <li><a style='display: block;' href='dis.html'>dis</a></li>
                             
                             </ul>
                             </div>
@@ -502,7 +554,11 @@
                             
                                 <li><a style='display: block;' href='pprint.html'>pprint</a></li>
                             
+                                <li><a style='display: block;' href='queue.html'>queue</a></li>
+                            
                                 <li><a style='display: block;' href='sched.html'>sched</a></li>
+                            
+                                <li><a style='display: block;' href='weakref.html'>weakref</a></li>
                             
                             </ul>
                             </div>
@@ -515,8 +571,8 @@
         <div id="footer">
         <div class="container">
             <p class="text-muted">PyMOTW-it 
-            2013/2014 / 
-            Documento aggiornato il: 15-06-2014
+            2013/2015 / 
+            Documento aggiornato il: 07-06-2015
             - Contatto: pymotw-it(at)robyp.x10host.com</p>
         </div>
     </div
@@ -524,14 +580,29 @@
 
 </div><!--/.container-->
 
-
-
+<!-- Forza il refresh della pagina -->
+<script type='text/javascript'>
+    window.onload = function() {
+        if(!window.location.hash) {
+            window.location = window.location + '#loaded';
+            window.location.reload();
+        }
+    }
+</script>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="assets/js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="assets/js/offcanvas.js"></script>
+<!-- Begin Shinystat code -->
+<script type="text/javascript" src="http://codice.shinystat.com/cgi-bin/getcod.cgi?USER=pymotwit"></script>
+<noscript>
+<a href="http://www.shinystat.com" target="_top">
+<img src="http://www.shinystat.com/cgi-bin/shinystat.cgi?USER=pymotwit" alt="Free hit counters" border="0" /></a>
+</noscript>
+<!-- End Shinystat code -->
+
 </body>
 </html>
 

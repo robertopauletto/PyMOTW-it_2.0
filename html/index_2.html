@@ -23,6 +23,17 @@
     <link href="css/bootstrap.css" rel="stylesheet" media="screen">
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.js"></script>      -->
+    <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+
+    <!-- Minified Cookie Consent served from our CDN -->
+    <script src="//s3.amazonaws.com/cc.silktide.com/cookieconsent.latest.min.js"></script>
+    <script type="text/javascript">
+        window.cookieconsent_options = {"message":"Questo sito utilizza i cookie  per migliorarne l'utilizzo e l'esperienza di navigazione ","dismiss":"Ho capito!","learnMore":"Più informazioni","link":"http://www.shinystat.com/it/informativa_privacy_generale_free.html","theme":"dark-bottom"};
+    </script>
+
+    <script type="text/javascript" src="cookieconsent.js"></script>
+    <!-- End Cookie Consent plugin -->
+
 </head>
 <body>
 <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
@@ -39,6 +50,13 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="index.html" >Home</a></li>
                 <li class="active"><a href="indice_alfabetico.html" title='Indice alfabetico dei moduli'>Indice Moduli</a></li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+                <li class="active"><a href="privacy.html" >Privacy</a></li>
+                <li class="active">
+	                <li class="active"><a href="/pymotw-it_feed.xml" >
+					<img src="img/feed-icon-28x28.png" ></a></li>
+		        </li>
             </ul>
         </div><!-- /.nav-collapse -->
     </div><!-- /.container -->
@@ -69,29 +87,61 @@
                 <div class="row">
                 
                     <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>decimal</h2>
+                        <p><strong> matematica con virgola fissa e mobile</strong></p>
+                        <p>Artimetica decimale usando numeri a virgola fissa e mobile</p>
+                        <p><a class="btn btn-default" href="decimal.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>difflib</h2>
+                        <p><strong> Calcolare le differenze tra sequenze</strong></p>
+                        <p>Libreria di strumenti per calcolare e lavorare con differenze tra sequenze, specialmente di righe nei file di testo</p>
+                        <p><a class="btn btn-default" href="difflib.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>dircache</h2>
+                        <p><strong> Listati di directory memorizzati in cache</strong></p>
+                        <p>Memorizza listati di directory nella cache, aggiornandoli quando cambia data/ora di modifica di una directory.</p>
+                        <p><a class="btn btn-default" href="dircache.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                </div><!--/row-->
+            
+                <div class="row">
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>dis</h2>
+                        <p><strong> Disassemblatore di bytecode Python</strong></p>
+                        <p>Converte oggetti codice in una rappresentazione leggibile dall'uomo dei <a href='http://it.wikipedia.org/wiki/Bytecode'>bytecode</a> per un'analisi</p>
+                        <p><a class="btn btn-default" href="dis.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
                         <h2>doctest</h2>
-                        <p><strong>Test attraverso la documentazione</strong></p>
+                        <p><strong> Test attraverso la documentazione</strong></p>
                         <p>Scrive test automatizzati come parte della documentazione di un modulo</p>
                         <p><a class="btn btn-default" href="doctest.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                     <div class="col-6 col-sm-6 col-lg-4">
                         <h2>dumbdbm</h2>
-                        <p><strong>Implementazione Portabile di DBM</strong></p>
+                        <p><strong> Implementazione Portabile di DBM</strong></p>
                         <p>Implementazione <a href='http://it.wikipedia.org/wiki/Front-end_e_back-end'>back-end</a> come ultima risorsa per <a href='anydbm.html'>anydbm</a>.</p>
                         <p><a class="btn btn-default" href="dumbdbm.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>eccezioni</h2>
-                        <p><strong>Classi di errore built-in</strong></p>
-                        <p>il modulo delle eccezioni definisce gli errori built-in usati attraverso tutta la libreria standard e dall'interprete.</p>
-                        <p><a class="btn btn-default" href="eccezioni.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                 </div><!--/row-->
             
                 <div class="row">
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>eccezioni</h2>
+                        <p><strong> Classi di errore built-in</strong></p>
+                        <p>il modulo delle eccezioni definisce gli errori built-in usati attraverso tutta la libreria standard e dall'interprete.</p>
+                        <p><a class="btn btn-default" href="eccezioni.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
                 
                     <div class="col-6 col-sm-6 col-lg-4">
                         <h2>elaborazione testo</h2>
@@ -102,16 +152,9 @@
                 
                     <div class="col-6 col-sm-6 col-lg-4">
                         <h2>filecompare</h2>
-                        <p><strong>Confronta file</strong></p>
+                        <p><strong> Confronta file</strong></p>
                         <p>Confronta file e directory nel filesystem</p>
                         <p><a class="btn btn-default" href="filecompare.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>fileinput</h2>
-                        <p><strong>Elabora righe da flussi di input</strong></p>
-                        <p>Crea programmi filtro da riga di comando per elaborare righe da flussi di input</p>
-                        <p><a class="btn btn-default" href="fileinput.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                 </div><!--/row-->
@@ -119,49 +162,24 @@
                 <div class="row">
                 
                     <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>fileinput</h2>
+                        <p><strong> Elabora righe da flussi di input</strong></p>
+                        <p>Crea programmi filtro da riga di comando per elaborare righe da flussi di input</p>
+                        <p><a class="btn btn-default" href="fileinput.html">Leggi &raquo;</a></p>
+                    </div><!--/span-->
+                
+                    <div class="col-6 col-sm-6 col-lg-4">
                         <h2>fnmatch</h2>
-                        <p><strong>Confrontare nomi di file con i modelli di glob in stile Unix</strong></p>
+                        <p><strong> Confrontare nomi di file con i modelli di glob in stile Unix</strong></p>
                         <p>Gestisce il confronto con i nomi dei file in stile Unix</p>
                         <p><a class="btn btn-default" href="fnmatch.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                     <div class="col-6 col-sm-6 col-lg-4">
                         <h2>fractions</h2>
-                        <p><strong>Numeri razionali</strong></p>
+                        <p><strong> Numeri razionali</strong></p>
                         <p>Implementa una classe per lavorare coi numeri razionali</p>
                         <p><a class="btn btn-default" href="fractions.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>functools</h2>
-                        <p><strong>Strumenti per generare decoratori ed altri wrapper di funzione</strong></p>
-                        <p>Il modulo functools include strumenti per il wrapping di funzioni ed altri oggetti chiamabili</p>
-                        <p><a class="btn btn-default" href="functools.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                </div><!--/row-->
-            
-                <div class="row">
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>gdbm</h2>
-                        <p><strong>Versione GNU della libreria dbm</strong></p>
-                        <p>Versione GNU della libreria dbm.</p>
-                        <p><a class="btn btn-default" href="gdbm.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>gzip</h2>
-                        <p><strong>Leggere e scrivere file zip GNU</strong></p>
-                        <p>Leggere e scrivere file gzip.</p>
-                        <p><a class="btn btn-default" href="gzip.html">Leggi &raquo;</a></p>
-                    </div><!--/span-->
-                
-                    <div class="col-6 col-sm-6 col-lg-4">
-                        <h2>hashlib</h2>
-                        <p><strong>Hash crittografici e digest del messaggio</strong></p>
-                        <p>Hash crittografici e digest del messaggio</p>
-                        <p><a class="btn btn-default" href="hashlib.html">Leggi &raquo;</a></p>
                     </div><!--/span-->
                 
                 </div><!--/row-->
@@ -187,9 +205,9 @@
             <div class="well sidebar-nav">
                     <h4>Ultimi moduli aggiunti/aggiornati</h4>
                             <ul>
-                                <li>12-06-2014: <a style='display: block;' href='asynchat.html'>asynchat</a></li>
-                                <li>12-06-2014: <a style='display: block;' href='asyncore.html'>asyncore</a></li>
-                                <li>12-06-2014: <a style='display: block;' href='logging.html'>logging</a></li>
+                                <li>08-03-2015: <a style='display: block;' title='Queue - Una implementazione FIFO thread-safe' href='queue.html'>Queue</a></li>
+                                <li>08-03-2015: <a style='display: block;' title='weakref - Riferimenti ad oggetti raccoglibili dal <em>garbage collector' href='weakref.html'>weakref</a></li>
+                                <li>08-03-2015: <a style='display: block;' title='gc - garbage collector' href='gc.html'>gc</a></li>
                             </ul>
             </div><!--/.well -->
 
@@ -254,6 +272,15 @@
                                 <li><a style='display: block;' href='asyncore.html'>asyncore</a></li>
                             
                                 <li><a style='display: block;' href='subprocess.html'>subprocess</a></li>
+                            
+                            </ul>
+                            </div>
+                        
+                            <div class='dropdown'>
+                            <a data-toggle='dropdown' href='#'>Debug e Profilatura</a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            
+                                <li><a style='display: block;' href='profile.html'>profile</a></li>
                             
                             </ul>
                             </div>
@@ -356,6 +383,12 @@
                             
                                 <li><a style='display: block;' href='socketserver.html'>socketserver</a></li>
                             
+                                <li><a style='display: block;' href='urllib.html'>urllib</a></li>
+                            
+                                <li><a style='display: block;' href='urllib2.html'>urllib2</a></li>
+                            
+                                <li><a style='display: block;' href='urlparse.html'>urlparse</a></li>
+                            
                                 <li><a style='display: block;' href='uuid.html'>uuid</a></li>
                             
                                 <li><a style='display: block;' href='webbrowser.html'>webbrowser</a></li>
@@ -368,6 +401,8 @@
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                             
                                 <li><a style='display: block;' href='argparse.html'>argparse</a></li>
+                            
+                                <li><a style='display: block;' href='getpass.html'>getpass</a></li>
                             
                                 <li><a style='display: block;' href='logging.html'>logging</a></li>
                             
@@ -386,6 +421,12 @@
                             
                                 <li><a style='display: block;' href='abc.html'>abc</a></li>
                             
+                                <li><a style='display: block;' href='atexit.html'>atexit</a></li>
+                            
+                                <li><a style='display: block;' href='contextlib.html'>contextlib</a></li>
+                            
+                                <li><a style='display: block;' href='gc.html'>gc</a></li>
+                            
                                 <li><a style='display: block;' href='inspect.html'>inspect</a></li>
                             
                                 <li><a style='display: block;' href='trace.html'>trace</a></li>
@@ -400,6 +441,17 @@
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                             
                                 <li><a style='display: block;' href='pipes.html'>pipes</a></li>
+                            
+                            </ul>
+                            </div>
+                        
+                            <div class='dropdown'>
+                            <a data-toggle='dropdown' href='#'>Servizi del Linguaggio Python</a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            
+                                <li><a style='display: block;' href='compileall.html'>compileall</a></li>
+                            
+                                <li><a style='display: block;' href='dis.html'>dis</a></li>
                             
                             </ul>
                             </div>
@@ -502,7 +554,11 @@
                             
                                 <li><a style='display: block;' href='pprint.html'>pprint</a></li>
                             
+                                <li><a style='display: block;' href='queue.html'>queue</a></li>
+                            
                                 <li><a style='display: block;' href='sched.html'>sched</a></li>
+                            
+                                <li><a style='display: block;' href='weakref.html'>weakref</a></li>
                             
                             </ul>
                             </div>
@@ -515,8 +571,8 @@
         <div id="footer">
         <div class="container">
             <p class="text-muted">PyMOTW-it 
-            2013/2014 / 
-            Documento aggiornato il: 15-06-2014
+            2013/2015 / 
+            Documento aggiornato il: 07-06-2015
             - Contatto: pymotw-it(at)robyp.x10host.com</p>
         </div>
     </div
@@ -524,14 +580,29 @@
 
 </div><!--/.container-->
 
-
-
+<!-- Forza il refresh della pagina -->
+<script type='text/javascript'>
+    window.onload = function() {
+        if(!window.location.hash) {
+            window.location = window.location + '#loaded';
+            window.location.reload();
+        }
+    }
+</script>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="assets/js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="assets/js/offcanvas.js"></script>
+<!-- Begin Shinystat code -->
+<script type="text/javascript" src="http://codice.shinystat.com/cgi-bin/getcod.cgi?USER=pymotwit"></script>
+<noscript>
+<a href="http://www.shinystat.com" target="_top">
+<img src="http://www.shinystat.com/cgi-bin/shinystat.cgi?USER=pymotwit" alt="Free hit counters" border="0" /></a>
+</noscript>
+<!-- End Shinystat code -->
+
 </body>
 </html>
 

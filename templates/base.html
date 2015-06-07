@@ -23,6 +23,17 @@
     <link href="css/bootstrap.css" rel="stylesheet" media="screen">
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.js"></script>      -->
+    <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+
+    <!-- Minified Cookie Consent served from our CDN -->
+    <script src="//s3.amazonaws.com/cc.silktide.com/cookieconsent.latest.min.js"></script>
+    <script type="text/javascript">
+        window.cookieconsent_options = {"message":"Questo sito utilizza i cookie  per migliorarne l'utilizzo e l'esperienza di navigazione ","dismiss":"Ho capito!","learnMore":"Più informazioni","link":"http://www.shinystat.com/it/informativa_privacy_generale_free.html","theme":"dark-bottom"};
+    </script>
+
+    <script type="text/javascript" src="cookieconsent.js"></script>
+    <!-- End Cookie Consent plugin -->
+
 </head>
 <body>
 <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
@@ -40,6 +51,13 @@
                 <li class="active"><a href="index.html" >Home</a></li>
                 <li class="active"><a href="indice_alfabetico.html" title='Indice alfabetico dei moduli'>Indice Moduli</a></li>
             </ul>
+            <ul class="nav navbar-nav pull-right">
+                <li class="active"><a href="privacy.html" >Privacy</a></li>
+                <li class="active">
+	                <li class="active"><a href="/pymotw-it_feed.xml" >
+					<img src="img/feed-icon-28x28.png" ></a></li>
+		        </li>
+            </ul>
         </div><!-- /.nav-collapse -->
     </div><!-- /.container -->
 </div><!-- /.navbar -->
@@ -49,8 +67,15 @@
     {% block content %}{% endblock %}
 </div><!--/.container-->
 
-
-
+<!-- Forza il refresh della pagina -->
+<script type='text/javascript'>
+    window.onload = function() {
+        if(!window.location.hash) {
+            window.location = window.location + '#loaded';
+            window.location.reload();
+        }
+    }
+</script>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
